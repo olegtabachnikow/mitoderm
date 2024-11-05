@@ -1,0 +1,27 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 130px;
+  width: 90%;
+  position: fixed;
+  z-index: 10;
+  margin-inline: 5%;
+}
+
+.logo {
+  -webkit-user-drag: none;
+}
+.logoContainer {
+  display: flex;
+  align-items: center;
+  width: 264px;
+}
+.logoText {
+  font-family: var(--font-Rubik);
+  font-size: 34px;
+  font-weight: 500;
+  line-height: 40.3px;
+  user-select: none;
+  text-shadow: 0 4px 4px #984d65;
+}

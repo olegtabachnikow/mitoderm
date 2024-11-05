@@ -1,0 +1,20 @@
+.button {
+  margin-top: 20px;
+  background-color: #e3c57e77;
+  color: #571c33;
+  border: 2px solid #ffffff50;
+  border-radius: 15px;
+  width: 210px;
+  height: 73px;
+  filter: drop-shadow(0px 4px 4px #00000025);
+  transition: all 0.3s linear;
+  font-family: var(--font-Rubik);
+  font-size: 25px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #e3c57e;
+  border: 2px solid #fff;
+}

@@ -1,0 +1,31 @@
+.container {
+  min-width: 264px;
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+}
+.button {
+  cursor: pointer;
+  height: 120px;
+}
+.popup {
+  position: absolute;
+  width: 130px;
+  top: 110%;
+  right: 0;
+}
+.container,
+.popup a {
+  height: 60px;
+  width: 130px;
+  border: none;
+  margin: 0;
+}
+.popup a {
+  display: block;
+  overflow: hidden;
+}
+.container img,
+.popup a img {
+  margin-top: -25px;
+}
