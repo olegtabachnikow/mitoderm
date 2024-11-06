@@ -1,9 +1,10 @@
+import { FC } from 'react';
 import Intro from '@/components/Intro/Intro';
 import Header from '@/components/Header/Header';
 import HowToUse from '@/components/HowToUse/HowToUse';
 import About from '@/components/About/About';
 
-export const Page = () => {
+export const MainPage: FC = () => {
   return (
     <div>
       <Header />
@@ -17,4 +18,4 @@ export const Page = () => {
   );
 };
 
-export default Page;
+export default MainPage;

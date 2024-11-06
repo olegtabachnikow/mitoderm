@@ -16,7 +16,7 @@ const About: FC = () => {
       </div>
       <div className={styles.containerInner}>
         <article className={styles.articleBox}>
-          <div className={styles.article}>
+          <div>
             <span>{t('about.titleP1')}</span>
             <span className={styles.colored}>{t('about.titleP2')}</span>
             <p className={styles.text}>{t('about.text1')}</p>
