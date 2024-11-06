@@ -1,10 +1,10 @@
-import { FC } from 'react';
+'use client';
 import Intro from '@/components/Intro/Intro';
 import Header from '@/components/Header/Header';
 import HowToUse from '@/components/HowToUse/HowToUse';
 import About from '@/components/About/About';
 
-export const MainPage: FC = () => {
+export const HomePage = () => {
   return (
     <div>
       <Header />
@@ -18,4 +18,4 @@ export const MainPage: FC = () => {
   );
 };
 
-export default MainPage;
+export default HomePage;

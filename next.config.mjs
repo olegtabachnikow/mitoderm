@@ -7,18 +7,11 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: '/blog/:slug((?!en|ru|he)[^/]+)', // Exclude 'en', 'ru', and 'he' from the path
-        destination: '/news/en',
+        source: '/:slug((?!en|ru|he)[^/]+)',
+        destination: '/en',
         permanent: true,
       },
     ];
-  },
-  typescript: {
-    // !! WARN !!
-    // Dangerously allow production builds to successfully complete even if
-    // your project has type errors.
-    // !! WARN !!
-    ignoreBuildErrors: true,
   },
 };
 
