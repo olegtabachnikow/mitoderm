@@ -7,7 +7,9 @@
     "contact": "Contact us"
   },
   "buttons": {
-    "contact": "Contact us"
+    "contact": "Contact us",
+    "learnMore": "Learn More",
+    "moreAbout": "More About"
   },
   "intro": {
     "item1": {
@@ -17,5 +19,26 @@
       "titleP2": "in Israel",
       "text": "MitoDerm combines advanced aesthetic technology with science to bring innovative solutions to the field of aesthetics. Are you a doctor or cosmetologist looking to enhance your services? Let's innovate together!"
     }
+  },
+  "howToUse": {
+    "titleP1": "How ",
+    "titleP2": "Exosome",
+    "titleP3": " can be used",
+    "item1": "post-surgery scars recovery",
+    "item2": "acne and post-acne scars",
+    "item3": "hair loss treatment",
+    "item4": "facial skin rejuvenation"
+  },
+  "about": {
+    "subtitle": "About Exosome",
+    "titleP1": "What is ",
+    "titleP2": "Exosome",
+    "text1": "Exosomes have gained attention in the field of aesthetics due to their potential for skin rejuvenation, anti-aging effects, and breakthroughs in treating acne scars and hair loss.",
+    "text2": "These exosomes are rich in growth factors, cytokines, and other bioactive molecules that have the potential to promote tissue regeneration, collagen synthesis, and provide a more radiant youthful appearance. Combined with advanced technologies, exosomes offer innovative solutions for improving skin texture, reducing scarring, and revitalizing hair follicles.",
+    "itemExp1": "Milliard cells",
+    "itemExp2": "Inflammation Reduction",
+    "itemExp3": "Proteins",
+    "itemExp4": "Times faster",
+    "itemExp5": "Nanometers"
   }
 }

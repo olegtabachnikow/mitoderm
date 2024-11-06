@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import styles from './Navbar.module.css';
-import { NavList } from '@/constants';
+import { navList } from '@/constants';
 import NavItem from '../NavItem/NavItem';
 import { useTranslations } from 'next-intl';
 
@@ -9,7 +9,7 @@ const Navbar: FC = () => {
   return (
     <nav className={styles.navigation}>
       <ul className={styles.list}>
-        {NavList.map((item) => (
+        {navList.map((item) => (
           <NavItem key={item.text} text={t(item.text)} />
         ))}
       </ul>

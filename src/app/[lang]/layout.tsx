@@ -2,10 +2,7 @@ import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import '../globals.css';
-import {
-  Rubik,
-  // Jost
-} from 'next/font/google';
+import { Rubik } from 'next/font/google';
 
 const rubik = Rubik({
   weight: ['300', '400', '500', '900'],
