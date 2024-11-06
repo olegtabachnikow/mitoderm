@@ -17,7 +17,11 @@ const HowToUse: FC = () => {
       </h3>
       <div className={styles.itemsContainer}>
         {howToUseItemList.map((item: ItemType) => (
-          <HowToUseItem imagePath={item.imagePath} text={item.text} />
+          <HowToUseItem
+            imagePath={item.imagePath}
+            text={item.text}
+            key={item.imagePath}
+          />
         ))}
       </div>
       <LearnMoreButton />

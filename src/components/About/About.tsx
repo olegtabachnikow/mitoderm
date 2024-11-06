@@ -32,7 +32,7 @@ const About: FC = () => {
       </div>
       <div className={styles.bullets}>
         {aboutBulletItems.map((item: AboutBulletItem) => (
-          <AboutBullet data={item.data} text={item.text} />
+          <AboutBullet data={item.data} text={item.text} key={item.data} />
         ))}
       </div>
     </section>

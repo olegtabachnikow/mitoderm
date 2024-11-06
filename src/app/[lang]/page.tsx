@@ -1,10 +1,11 @@
-'use client';
 import Intro from '@/components/Intro/Intro';
 import Header from '@/components/Header/Header';
 import HowToUse from '@/components/HowToUse/HowToUse';
 import About from '@/components/About/About';
+import { unstable_setRequestLocale } from 'next-intl/server';
 
-export const HomePage = () => {
+export default function HomePage({ params: { lang } }: any) {
+  unstable_setRequestLocale(lang);
   return (
     <div>
       <Header />
@@ -16,6 +17,4 @@ export const HomePage = () => {
       <footer></footer>
     </div>
   );
-};
-
-export default HomePage;
+}
