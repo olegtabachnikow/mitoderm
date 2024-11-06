@@ -1,5 +1,5 @@
 import HomePage from './[lang]/page';
 
-export default async function Page() {
+export default function Page() {
   return <HomePage />;
 }
