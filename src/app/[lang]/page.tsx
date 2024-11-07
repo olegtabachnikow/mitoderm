@@ -3,6 +3,7 @@ import Header from '@/components/Header/Header';
 import HowToUse from '@/components/HowToUse/HowToUse';
 import About from '@/components/About/About';
 import { unstable_setRequestLocale } from 'next-intl/server';
+import Solution from '@/components/Solution/Solution';
 
 export default function HomePage({ params: { lang } }: any) {
   unstable_setRequestLocale(lang);
@@ -13,6 +14,7 @@ export default function HomePage({ params: { lang } }: any) {
         <Intro />
         <HowToUse />
         <About />
+        <Solution />
       </main>
       <footer></footer>
     </div>

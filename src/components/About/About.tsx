@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { aboutBulletItems } from '@/constants';
 import AboutBullet from '../AboutBullet/AboutBullet';
 import { AboutBulletItem } from '@/types';
+import AboutButton from '../AboutButton/AboutButton';
 
 const About: FC = () => {
   const t = useTranslations();
@@ -35,6 +36,7 @@ const About: FC = () => {
           <AboutBullet data={item.data} text={item.text} key={item.data} />
         ))}
       </div>
+      <AboutButton />
     </section>
   );
 };

@@ -1,6 +1,4 @@
 .button {
-  margin-bottom: 5%;
-  margin-inline: 2%;
   cursor: pointer;
   background-color: #d9d9d915;
   transition: all 0.3s linear;

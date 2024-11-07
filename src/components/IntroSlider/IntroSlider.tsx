@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import styles from './IntroSlider.module.css';
-import IntroSliderButton from '../IntroSliderButton/IntroSliderButton';
+import IntroSliderButton from '../SliderButton/SliderButton';
 import { useTranslations } from 'next-intl';
 import ContactButton from '../ContactButton/ContactButton';
 
@@ -8,7 +8,9 @@ const IntroSlider: FC = () => {
   const t = useTranslations();
   return (
     <div className={styles.container}>
-      <IntroSliderButton />
+      <IntroSliderButton
+        addStyles={{ marginBottom: '5%', marginInline: '2%' }}
+      />
       <div className={styles.containerInner}>
         <div className={styles.subtitle}>
           <span>{t('intro.item1.subtitleP1')}</span>
@@ -24,7 +26,10 @@ const IntroSlider: FC = () => {
           <ContactButton />
         </div>
       </div>
-      <IntroSliderButton reverced />
+      <IntroSliderButton
+        reverced
+        addStyles={{ marginBottom: '5%', marginInline: '2%' }}
+      />
     </div>
   );
 };
