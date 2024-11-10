@@ -10,21 +10,23 @@ const HowToUse: FC = () => {
   const t = useTranslations();
   return (
     <section className={styles.container}>
-      <h3 className={styles.title}>
-        {t('howToUse.titleP1')}
-        <span className={styles.colored}>{t('howToUse.titleP2')}</span>
-        {t('howToUse.titleP3')}
-      </h3>
-      <div className={styles.itemsContainer}>
-        {howToUseItemList.map((item: ItemType) => (
-          <HowToUseItem
-            imagePath={item.imagePath}
-            text={item.text}
-            key={item.imagePath}
-          />
-        ))}
+      <div className={styles.containerInner}>
+        <h3 className={styles.title}>
+          {t('howToUse.titleP1')}
+          <span className={styles.colored}>{t('howToUse.titleP2')}</span>
+          {t('howToUse.titleP3')}
+        </h3>
+        <div className={styles.itemsContainer}>
+          {howToUseItemList.map((item: ItemType) => (
+            <HowToUseItem
+              imagePath={item.imagePath}
+              text={item.text}
+              key={item.imagePath}
+            />
+          ))}
+        </div>
+        <LearnMoreButton />
       </div>
-      <LearnMoreButton />
     </section>
   );
 };

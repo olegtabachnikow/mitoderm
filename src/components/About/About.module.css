@@ -1,6 +1,8 @@
 .container {
-  width: 90%;
-  margin-inline: 5%;
+  width: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: 3%;
   display: flex;
   flex-direction: column;
   color: #000;
@@ -9,7 +11,7 @@
 .subtitle {
   margin-block: 40px;
   color: #984d65;
-  font-size: 24px;
+  font-size: 20px;
   display: flex;
   align-items: center;
 }
@@ -25,10 +27,10 @@
   gap: 40px;
 }
 .articleBox {
-  font-size: 83px;
+  font-size: 70px;
 }
 .text {
-  font-size: 27px;
+  font-size: 20px;
   margin-block: 20px;
   margin-left: 20%;
 }
@@ -39,5 +41,7 @@
   width: 90%;
   margin-inline: 5%;
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
 }

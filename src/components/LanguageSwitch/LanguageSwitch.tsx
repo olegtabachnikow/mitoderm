@@ -8,8 +8,8 @@ import { useLocale } from 'next-intl';
 const ruLink = (
   <Link style={{ color: '#000', marginRight: 10 }} href='/ru/'>
     <Image
-      width={129}
-      height={109}
+      width={90}
+      height={80}
       alt='russian flag'
       src='/images/ru_button.svg'
     />
@@ -19,8 +19,8 @@ const ruLink = (
 const heLink = (
   <Link style={{ color: '#000', marginRight: 10 }} href='/he/'>
     <Image
-      width={129}
-      height={109}
+      width={90}
+      height={80}
       alt='israel flag'
       src='/images/he_button.svg'
     />
@@ -29,12 +29,7 @@ const heLink = (
 
 const enLink = (
   <Link style={{ color: '#000', marginRight: 10 }} href='/en/'>
-    <Image
-      width={129}
-      height={109}
-      alt='usa flag'
-      src='/images/en_button.svg'
-    />
+    <Image width={90} height={80} alt='usa flag' src='/images/en_button.svg' />
   </Link>
 );
 
@@ -66,8 +61,8 @@ const LanguageSwitch: FC = () => {
       <Image
         className={styles.button}
         onClick={handleClick}
-        width={129}
-        height={109}
+        width={90}
+        height={80}
         alt={`${locale} flag`}
         src={`/images/${locale}_button.svg`}
       />

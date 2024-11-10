@@ -3,6 +3,7 @@ import styles from './Solution.module.css';
 import { useTranslations } from 'next-intl';
 import SliderButton from '../SliderButton/SliderButton';
 import Image from 'next/image';
+import ContactButton from '../ContactButton/ContactButton';
 
 const Solution: FC = () => {
   const t = useTranslations();
@@ -14,14 +15,14 @@ const Solution: FC = () => {
         <span>{t('solution.titleP3')}</span>
       </div>
       <div className={styles.contentOuter}>
-        <SliderButton />
+        <SliderButton addStyles={{ marginLeft: '2%' }} />
         <div className={styles.contentInner}>
           <div className={styles.content}>
             <div className={styles.contentItem}>
               <Image
                 src='/images/bottle1.svg'
-                width={350}
-                height={350}
+                width={70}
+                height={150}
                 alt='bottle of mixture'
               />
               <div className={styles.itemTitle}>
@@ -36,8 +37,9 @@ const Solution: FC = () => {
               <span>{t('solution.item1textP4')}</span>
             </div>
             <Image
-              width={50}
-              height={50}
+              width={40}
+              height={40}
+              quality={100}
               alt='plus'
               src='/images/plus.svg'
               className={styles.plus}
@@ -45,8 +47,9 @@ const Solution: FC = () => {
             <div className={styles.contentItem}>
               <Image
                 src='/images/bottle2.svg'
-                width={350}
-                height={350}
+                width={70}
+                height={150}
+                quality={100}
                 alt='bottle of mixture'
               />
               <div className={styles.itemTitle}>
@@ -58,9 +61,13 @@ const Solution: FC = () => {
           </div>
           <div className={styles.contentFooter}>
             <span>{t('solution.usage')}</span>
+            <ContactButton
+              style={{ marginInline: 'auto' }}
+              text={t('buttons.contactForPrice')}
+            />
           </div>
         </div>
-        <SliderButton reverced />
+        <SliderButton reverced addStyles={{ marginRight: '2%' }} />
       </div>
     </section>
   );

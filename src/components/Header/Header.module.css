@@ -1,27 +1,32 @@
 .header {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 130px;
-  width: 90%;
+  justify-content: center;
+  width: 100%;
   position: absolute;
   z-index: 10;
-  margin-inline: 5%;
+  top: 20px;
 }
-
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1440px;
+  width: 100%;
+  padding-inline: 5%;
+}
 .logo {
   -webkit-user-drag: none;
 }
 .logoContainer {
   display: flex;
   align-items: center;
-  width: 264px;
+  width: 20%;
 }
 .logoText {
   font-family: var(--font-Rubik);
-  font-size: 34px;
+  font-size: 30px;
   font-weight: 500;
-  line-height: 40.3px;
+  line-height: 34px;
   user-select: none;
   text-shadow: 0 4px 4px #984d65;
 }

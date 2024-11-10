@@ -1,6 +1,6 @@
 .button {
-  width: 210px;
-  height: 71px;
+  width: 180px;
+  height: 60px;
   background-color: #984d65;
   color: #fff;
   border: none;
@@ -10,7 +10,7 @@
   border-radius: 15px;
   font-family: var(--font-Rubik);
   font-weight: 500;
-  font-size: 24px;
+  font-size: 20px;
   margin: 40px auto;
 }
 .button:hover {

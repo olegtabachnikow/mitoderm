@@ -1,8 +1,8 @@
 .container {
-  min-width: 264px;
   display: flex;
   justify-content: flex-end;
   position: relative;
+  width: 20%;
 }
 .button {
   cursor: pointer;
@@ -10,14 +10,12 @@
 }
 .popup {
   position: absolute;
-  width: 130px;
-  top: 110%;
+  top: 100%;
   right: 0;
 }
 .container,
 .popup a {
-  height: 60px;
-  width: 130px;
+  height: 40px;
   border: none;
   margin: 0;
 }
@@ -25,7 +23,13 @@
   display: block;
   overflow: hidden;
 }
-.container img,
+.container img {
+  margin-top: -40px;
+}
 .popup a img {
-  margin-top: -25px;
+  margin-top: -20px;
+}
+.popup a {
+  margin-right: 0 !important;
+  margin-top: 5px;
 }

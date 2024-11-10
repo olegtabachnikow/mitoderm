@@ -7,19 +7,21 @@ import LanguageSwitch from '../LanguageSwitch/LanguageSwitch';
 const Header: FC = () => {
   return (
     <header className={styles.header}>
-      <div className={styles.logoContainer}>
-        <Image
-          className={styles.logo}
-          src='/images/logo.svg'
-          alt='MitoDerm logo'
-          width={107}
-          height={100}
-          priority
-        />
-        <span className={styles.logoText}>MitoDerm</span>
+      <div className={styles.container}>
+        <div className={styles.logoContainer}>
+          <Image
+            className={styles.logo}
+            src='/images/logo.svg'
+            alt='MitoDerm logo'
+            width={80}
+            height={80}
+            priority
+          />
+          <span className={styles.logoText}>MitoDerm</span>
+        </div>
+        <Navbar />
+        <LanguageSwitch />
       </div>
-      <Navbar />
-      <LanguageSwitch />
     </header>
   );
 };

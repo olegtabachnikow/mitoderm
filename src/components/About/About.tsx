@@ -25,8 +25,8 @@ const About: FC = () => {
           </div>
         </article>
         <Image
-          width={559}
-          height={327}
+          width={400}
+          height={300}
           alt='molecula'
           src='/images/about.svg'
         />

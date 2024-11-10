@@ -15,8 +15,8 @@ const SliderButton: FC<Props> = ({ reverced, addStyles }) => {
     >
       <Image
         src='/images/arrowButton.svg'
-        width={60}
-        height={60}
+        width={50}
+        height={50}
         alt='arrow icon'
       />
     </button>

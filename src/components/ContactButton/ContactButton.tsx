@@ -1,10 +1,17 @@
-import { FC } from 'react';
+import { CSSProperties, FC } from 'react';
 import styles from './ContactButton.module.css';
-import { useTranslations } from 'next-intl';
 
-const ContactButton: FC = () => {
-  const t = useTranslations();
-  return <button className={styles.button}>{t('buttons.contact')}</button>;
+interface Props {
+  text: string;
+  style?: CSSProperties;
+}
+
+const ContactButton: FC<Props> = ({ text, style }) => {
+  return (
+    <button style={{ ...style }} className={styles.button}>
+      {text}
+    </button>
+  );
 };
 
 export default ContactButton;

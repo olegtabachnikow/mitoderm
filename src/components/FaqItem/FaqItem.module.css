@@ -1,0 +1,17 @@
+.container {
+  border-bottom: 1px solid #984d65;
+  margin-bottom: 30px;
+}
+.title {
+  display: block;
+  color: #984d65;
+  font-size: 30px;
+  font-weight: 500;
+  margin-block: 20px;
+  cursor: pointer;
+}
+.text {
+  color: #000;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
