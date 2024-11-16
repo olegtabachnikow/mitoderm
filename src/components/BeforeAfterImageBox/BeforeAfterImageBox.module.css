@@ -1,0 +1,23 @@
+.imageBox {
+  display: flex;
+  width: 100%;
+  gap: 20px;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+  margin: 0 20px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  scroll-snap-type: x mandatory;
+}
+.imageBox::-webkit-scrollbar {
+  display: none;
+}
+.item {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  scroll-snap-align: start;
+}
+.image {
+  min-width: 200px;
+}

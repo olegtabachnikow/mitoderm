@@ -1,0 +1,10 @@
+.container {
+  max-width: 880px;
+  width: 75%;
+  min-height: 420px;
+  background-color: #ecf0f4;
+  padding: 60px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

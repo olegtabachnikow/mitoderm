@@ -10,7 +10,8 @@
     "contact": "Contact us",
     "learnMore": "Learn More",
     "moreAbout": "More About",
-    "contactForPrice": "Contact for Price details"
+    "contactForPrice": "Contact for Price details",
+    "contactForInfo": "Contact for More Info"
   },
   "intro": {
     "item1": {
@@ -71,5 +72,9 @@
       "title": "WHAT CONDITIONS ARE HELPED BY EXOSOMES?",
       "text": "At Mitoderm, our exosome therapy offers transformative solutions—including skin rejuvenation to enhance texture and reduce signs of aging; hair restoration to promote growth and address thinning hair; reduction of acne scars for smoother skin and post-procedure healing to accelerate recovery—all by unlocking your body’s natural ability to renew."
     }
+  },
+  "beforeAfter": {
+    "title": "Before & After",
+    "gallery": "Gallery"
   }
 }
