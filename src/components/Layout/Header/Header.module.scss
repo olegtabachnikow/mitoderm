@@ -1,0 +1,28 @@
+.header {
+  position: fixed;
+  width: 100%;
+  background-color: var(--colorBG);
+  padding-block: 10px;
+  z-index: 10;
+}
+
+.container {
+  max-width: var(--contentWidthDesktop);
+  height: 40px;
+  width: 100%;
+  margin-inline: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.logoText {
+  color: var(--colorAccentDark);
+  font-size: var(--fontSizeP2);
+}

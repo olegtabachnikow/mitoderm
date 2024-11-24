@@ -7,20 +7,16 @@
     "contact": "Contact us"
   },
   "buttons": {
-    "contact": "Contact us",
     "learnMore": "Learn More",
     "moreAbout": "More About",
     "contactForPrice": "Contact for Price details",
     "contactForInfo": "Contact for More Info"
   },
   "intro": {
-    "item1": {
-      "subtitleP1": "Korean product",
-      "subtitleP2": "Official distributor",
-      "titleP1": "Exoxe Exosome",
-      "titleP2": "in Israel",
-      "text": "MitoDerm combines advanced aesthetic technology with science to bring innovative solutions to the field of aesthetics. Are you a doctor or cosmetologist looking to enhance your services? Let's innovate together!"
-    }
+    "subtitleP1": "Korean product",
+    "subtitleP2": "Official distributor",
+    "title": "Exoxe Exosome in Israel",
+    "text": "MitoDerm combines advanced aesthetic technology with science to bring innovative solutions to the field of aesthetics. Are you a doctor or cosmetologist looking to enhance your services? Let's innovate together!"
   },
   "howToUse": {
     "titleP1": "How ",

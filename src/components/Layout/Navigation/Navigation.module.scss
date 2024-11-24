@@ -1,0 +1,17 @@
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 536px;
+}
+
+.button {
+  background-color: transparent;
+  color: var(--colorAccentDark);
+  font-size: var(--fontSizeP2);
+  line-height: 24px;
+}
+
+.arrowIcon {
+  margin: 0 0 2px 5px;
+}

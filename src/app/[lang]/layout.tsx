@@ -2,10 +2,11 @@ import type { Metadata } from 'next';
 import { unstable_setRequestLocale } from 'next-intl/server';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
-import '../globals.css';
+import '../globals.scss';
 import { Rubik } from 'next/font/google';
 import { routing } from '@/i18n/routing';
 import { notFound } from 'next/navigation';
+import Header from '@/components/Layout/Header/Header';
 
 const rubik = Rubik({
   weight: ['300', '400', '500', '900'],
@@ -42,7 +43,10 @@ export default async function RootLayout({
   return (
     <html lang={params.lang}>
       <NextIntlClientProvider messages={messages}>
-        <body className={rubik.className}>{children}</body>
+        <body className={rubik.className}>
+          <Header />
+          {children}
+        </body>
       </NextIntlClientProvider>
     </html>
   );

@@ -5,12 +5,17 @@ export interface NavItem {
   text: string;
 }
 
-export interface HowToUseItem {
-  imagePath: string;
-  text: string;
-}
+// export interface HowToUseItem {
+//   imagePath: string;
+//   text: string;
+// }
 
-export interface AboutBulletItem {
-  data: string;
-  text: string;
+// export interface AboutBulletItem {
+//   data: string;
+//   text: string;
+// }
+
+export interface LanguageSwitchItem {
+  imageUrl: string;
+  url: string;
 }

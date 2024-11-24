@@ -1,23 +1,23 @@
-'use client';
 import { FC } from 'react';
-import styles from './Intro.module.css';
-import bg from '../../../public/images/introBG.jpeg';
-import Image from 'next/image';
-import IntroSlider from '../IntroSlider/IntroSlider';
-import IntroSliderDots from '../IntroSliderDots/IntroSliderDots';
+import styles from './Intro.module.scss';
+import { useTranslations } from 'next-intl';
 
 const Intro: FC = () => {
+  const t = useTranslations();
   return (
-    <section className={styles.container}>
-      <Image
-        className={styles.background}
-        src={bg}
-        alt='few cosmetics items'
-        layout='responsive'
-        quality={100}
-      />
-      <IntroSlider />
-      <IntroSliderDots />
+    <section className={styles.section}>
+      <div className={styles.container}>
+        <span>
+          <span>{t('intro.subtitleP1')}</span>
+          <span className={styles.dot}>&#x2022;</span>
+          <span>{t('intro.subtitleP2')}</span>
+        </span>
+        <h1 className={styles.title}>{t('intro.title')}</h1>
+        <div className={styles.row}>
+          <button>asdadw</button>
+          <p className={styles.text}>{t('intro.text')}</p>
+        </div>
+      </div>
     </section>
   );
 };

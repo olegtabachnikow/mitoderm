@@ -1,0 +1,49 @@
+:root {
+  --font-Rubik: 'Rubik', sans-serif;
+  --fontSizeH1: 88px;
+  --fontSizeH2: 48px;
+  --fontSizeP1: 24px;
+  --fontSizeP2: 16px;
+  --fontSizeMobH1: 44px;
+  --fontSizeMobH2: 24px;
+  --fontSizeMobP1: 18px;
+  --fontSizeMobP2: 14px;
+  --fontSizeMobExtra: 12px;
+  --textColorMain: #000000;
+  --colorAccentDark: #451715;
+  --colorAccentLight: #9c3e5c;
+  --colorBG: #faf5f7;
+  --colorWhite: #fff;
+  --colorDark: #222222;
+  --contentWidthDesktop: 1200px;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  color: var(--textColorMain);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+a {
+  cursor: pointer;
+  outline: none;
+  border: none;
+}

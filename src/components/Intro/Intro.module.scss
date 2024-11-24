@@ -1,0 +1,43 @@
+.section {
+  background-image: url(/images/introBG.png);
+  min-height: 578px;
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  max-width: var(--contentWidthDesktop);
+  width: 100%;
+}
+
+.section span {
+  color: var(--colorWhite);
+  font-size: var(--fontSizeP2);
+}
+
+.dot {
+  margin-inline: 10px;
+}
+
+.title {
+  font-size: var(--fontSizeH1);
+  font-weight: 400;
+  color: var(--colorWhite);
+  margin: 0;
+  padding: 0;
+  max-width: 640px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.text {
+  color: var(--colorWhite);
+  font-size: var(--fontSizeP2);
+  max-width: 380px;
+  letter-spacing: 2%;
+}
