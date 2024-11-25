@@ -3,8 +3,11 @@
   min-height: 578px;
   margin-top: 60px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  padding-inline: 20px;
+  position: relative;
+  z-index: 1;
 }
 
 .container {
@@ -25,7 +28,7 @@
   font-size: var(--fontSizeH1);
   font-weight: 400;
   color: var(--colorWhite);
-  margin: 0;
+  margin: 40px 0;
   padding: 0;
   max-width: 640px;
 }
@@ -33,6 +36,7 @@
 .row {
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
 }
 
 .text {
@@ -40,4 +44,11 @@
   font-size: var(--fontSizeP2);
   max-width: 380px;
   letter-spacing: 2%;
+}
+
+.lines {
+  position: absolute;
+  right: -90px;
+  bottom: -290px;
+  -webkit-user-drag: none;
 }

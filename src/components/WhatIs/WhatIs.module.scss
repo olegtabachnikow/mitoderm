@@ -1,0 +1,37 @@
+.section {
+  background-color: var(--colorBG);
+  display: flex;
+  justify-content: center;
+}
+
+.article {
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  color: var(--colorAccentDark);
+  font-size: var(--fontSizeP2);
+  margin-bottom: 40px;
+}
+
+.textContainer h2 {
+  font-size: var(--fontSizeH2);
+  font-weight: 400;
+  margin-bottom: 24px;
+}
+
+.textContainer h2 span,
+.textContainer p span {
+  color: var(--colorAccentLight);
+}
+
+.imageContainer {
+  max-width: 40%;
+  width: 100%;
+  aspect-ratio: 1.49/1;
+  position: relative;
+}
+
+.textContainer {
+  max-width: 45%;
+}

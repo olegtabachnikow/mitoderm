@@ -27,15 +27,14 @@ const LanguageSwitch: FC = () => {
   }, [isOpen]);
 
   return (
-    <div ref={popupRef} className={styles.container}>
-      <div className={styles.currenSelection} onClick={handleClick}>
+    <div ref={popupRef} className={styles.container} onClick={handleClick}>
+      <div className={styles.currenSelection}>
         <Image
           className={styles.button}
           width={20}
           height={20}
           alt={`${locale} flag`}
-          src={`/images/languageSwitch/en.svg`}
-          // src={`/images/languageSwitch/${locale}.svg`}
+          src={`/images/languageSwitch/${locale}.svg`}
         />
         <span className={styles.localeText}>{locale}</span>
         <Image
@@ -51,11 +50,11 @@ const LanguageSwitch: FC = () => {
               <>
                 <SwitchItem
                   url='/ru/'
-                  imageSrc='/images/languageSwitch/en.svg'
+                  imageSrc='/images/languageSwitch/ru.svg'
                 />
                 <SwitchItem
                   url='/he/'
-                  imageSrc='/images/languageSwitch/en.svg'
+                  imageSrc='/images/languageSwitch/he.svg'
                 />
               </>
             ) : locale === 'ru' ? (
@@ -66,7 +65,7 @@ const LanguageSwitch: FC = () => {
                 />
                 <SwitchItem
                   url='/he/'
-                  imageSrc='/images/languageSwitch/en.svg'
+                  imageSrc='/images/languageSwitch/he.svg'
                 />
               </>
             ) : (
@@ -77,7 +76,7 @@ const LanguageSwitch: FC = () => {
                 />
                 <SwitchItem
                   url='/ru/'
-                  imageSrc='/images/languageSwitch/en.svg'
+                  imageSrc='/images/languageSwitch/ru.svg'
                 />
               </>
             )}

@@ -1,0 +1,27 @@
+.section {
+  padding-block: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--colorBG);
+}
+
+.title {
+  font-size: var(--fontSizeH2);
+  color: var(--colorAccentDark);
+}
+
+.titleColored {
+  color: var(--colorAccentLight);
+}
+
+.itemList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  width: 100%;
+  margin-block: 40px;
+  gap: 10px;
+}

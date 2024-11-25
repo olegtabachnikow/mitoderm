@@ -1,6 +1,6 @@
 import {
   NavItem,
-  // HowToUseItem,
+  HowToUseItem,
   // AboutBulletItem,
   LanguageSwitchItem,
 } from './types';
@@ -13,12 +13,12 @@ export const navList: NavItem[] = [
   { text: 'navigation.contact' },
 ];
 
-// export const howToUseItemList: HowToUseItem[] = [
-//   { imagePath: '/images/howToUse/surgery.png', text: 'howToUse.item1' },
-//   { imagePath: '/images/howToUse/acne.svg', text: 'howToUse.item2' },
-//   { imagePath: '/images/howToUse/hairLoss.svg', text: 'howToUse.item3' },
-//   { imagePath: '/images/howToUse/facial.svg', text: 'howToUse.item4' },
-// ];
+export const howToUseItemList: HowToUseItem[] = [
+  { imagePath: '/images/howToUse/surgery.png', text: 'howToUse.item1' },
+  { imagePath: '/images/howToUse/acne.png', text: 'howToUse.item2' },
+  { imagePath: '/images/howToUse/hair.png', text: 'howToUse.item3' },
+  { imagePath: '/images/howToUse/skin.png', text: 'howToUse.item4' },
+];
 
 // export const aboutBulletItems: AboutBulletItem[] = [
 //   { data: '6000', text: 'about.itemExp1' },
