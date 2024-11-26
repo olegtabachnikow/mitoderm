@@ -1,7 +1,8 @@
 .section {
   background-color: var(--colorBG);
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .article {
@@ -34,4 +35,12 @@
 
 .textContainer {
   max-width: 45%;
+}
+
+.itemContainer {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  width: 100%;
+  gap: 10px;
 }

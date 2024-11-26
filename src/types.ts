@@ -10,10 +10,10 @@ export interface HowToUseItem {
   text: string;
 }
 
-// export interface AboutBulletItem {
-//   data: string;
-//   text: string;
-// }
+export interface AboutBulletItem {
+  data: string;
+  text: string;
+}
 
 export interface LanguageSwitchItem {
   imageUrl: string;

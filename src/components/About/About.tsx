@@ -1,9 +1,13 @@
 import { FC } from 'react';
-import styles from './WhatIs.module.scss';
+import styles from './About.module.scss';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
+import { aboutBulletItems } from '@/constants';
+import { AboutBulletItem } from '@/types';
+import AboutItem from './AboutItem/AboutItem';
+import Button from '../Shared/Button/Button';
 
-const WhatIs: FC = () => {
+const About: FC = () => {
   const t = useTranslations();
   return (
     <section className={styles.section}>
@@ -26,8 +30,18 @@ const WhatIs: FC = () => {
           <Image src='/images/whatIsExosome.png' fill alt='exosome examples' />
         </div>
       </article>
+      <div className={styles.itemContainer}>
+        {aboutBulletItems.map((item: AboutBulletItem) => (
+          <AboutItem data={item.data} text={t(item.text)} />
+        ))}
+      </div>
+      <Button
+        style={{ marginBlock: 40 }}
+        colored
+        text={t('buttons.moreAbout')}
+      />
     </section>
   );
 };
 
-export default WhatIs;
+export default About;

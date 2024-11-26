@@ -1,7 +1,7 @@
 import { unstable_setRequestLocale } from 'next-intl/server';
 import Intro from '@/components/Intro/Intro';
 import HowCanBeUsed from '@/components/HowCanBeUsed/HowCanBeUsed';
-import WhatIs from '@/components/WhatIs/WhatIs';
+import About from '@/components/About/About';
 
 export default function HomePage({ params: { lang } }: any) {
   unstable_setRequestLocale(lang);
@@ -9,7 +9,7 @@ export default function HomePage({ params: { lang } }: any) {
     <main>
       <Intro />
       <HowCanBeUsed />
-      <WhatIs />
+      <About />
     </main>
   );
 }

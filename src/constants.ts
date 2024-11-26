@@ -1,7 +1,7 @@
 import {
   NavItem,
   HowToUseItem,
-  // AboutBulletItem,
+  AboutBulletItem,
   LanguageSwitchItem,
 } from './types';
 
@@ -20,13 +20,13 @@ export const howToUseItemList: HowToUseItem[] = [
   { imagePath: '/images/howToUse/skin.png', text: 'howToUse.item4' },
 ];
 
-// export const aboutBulletItems: AboutBulletItem[] = [
-//   { data: '6000', text: 'about.itemExp1' },
-//   { data: '50%', text: 'about.itemExp2' },
-//   { data: '1000+', text: 'about.itemExp3' },
-//   { data: '3', text: 'about.itemExp4' },
-//   { data: '100-150', text: 'about.itemExp5' },
-// ];
+export const aboutBulletItems: AboutBulletItem[] = [
+  { data: '6000', text: 'about.itemExp1' },
+  { data: '3', text: 'about.itemExp4' },
+  { data: '1000+', text: 'about.itemExp3' },
+  { data: '50%', text: 'about.itemExp2' },
+  { data: '100-150', text: 'about.itemExp5' },
+];
 
 export const languageSwitchItemList: LanguageSwitchItem[] = [
   { imageUrl: '/languageSwitch/en.svg', url: '/en/' },
