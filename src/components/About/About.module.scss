@@ -1,5 +1,4 @@
 .section {
-  background-color: var(--colorBG);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,7 +9,6 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  color: var(--colorAccentDark);
   font-size: var(--fontSizeP2);
   margin-bottom: 40px;
 }

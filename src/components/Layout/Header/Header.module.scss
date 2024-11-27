@@ -1,5 +1,7 @@
 .header {
   position: fixed;
+  display: flex;
+  align-items: center;
   width: 100%;
   background-color: var(--colorBG);
   padding-block: 10px;
@@ -23,6 +25,30 @@
 }
 
 .logoText {
-  color: var(--colorAccentDark);
   font-size: var(--fontSizeP2);
+}
+
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  filter: blur(5px);
+  background-color: var(--colorBG);
+  opacity: 70%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: all 0.3s linear;
+  z-index: -1;
+}
+
+.overlay.active {
+  opacity: 70%;
+}
+
+@media screen and (max-width: 1224px) {
+  .header {
+    height: 72px;
+    padding: 0 80px 0 20px;
+  }
 }

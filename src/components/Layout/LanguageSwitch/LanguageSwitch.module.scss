@@ -1,5 +1,7 @@
-.container {
+.container,
+.containerMobile {
   width: 90px;
+  height: 40px;
   background-color: var(--colorWhite);
   border-radius: 16px;
   display: flex;
@@ -11,6 +13,12 @@
   z-index: 11;
 }
 
+.containerMobile {
+  width: 60px;
+  height: 26px;
+  margin-block: auto;
+}
+
 .currenSelection {
   display: flex;
   align-items: center;
@@ -20,6 +28,10 @@
 .localeText {
   text-transform: uppercase;
   font-size: var(--fontSizeP2);
+}
+
+.localeText.mobile {
+  font-size: var(--fontSizeMobExtra);
 }
 
 .switchIcon {
@@ -38,5 +50,8 @@
   gap: 5px;
   bottom: -90px;
   left: 0;
-  width: 100%;
+}
+
+.containerMobile .popup {
+  bottom: -62px;
 }

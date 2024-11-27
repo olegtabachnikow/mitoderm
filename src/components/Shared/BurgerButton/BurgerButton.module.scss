@@ -3,6 +3,10 @@
   height: 40px;
   padding: 10px;
   background-color: transparent;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 20px;
 }
 
 .button:nth-child(1) {

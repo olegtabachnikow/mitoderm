@@ -15,3 +15,34 @@
 .arrowIcon {
   margin: 0 0 2px 5px;
 }
+
+.mobileNavigation {
+  position: absolute;
+  top: 72px;
+  left: 0;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0 0 50px 50px;
+  background-color: var(--colorBG);
+  transition: all 1s linear;
+  height: 0;
+  overflow: hidden;
+}
+
+.buttonMobile {
+  user-select: none;
+  width: 100%;
+  padding: 20px 40px;
+  background-color: transparent;
+  font-size: var(--fontSizeP2);
+  text-align: end;
+}
+
+.buttonMobile:last-child {
+  margin-bottom: 60px;
+}
+
+.mobileNavigation.active {
+  height: auto;
+}

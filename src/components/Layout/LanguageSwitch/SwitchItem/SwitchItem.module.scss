@@ -1,4 +1,5 @@
-.link {
+.link,
+.linkMobile {
   width: 90px;
   height: 40px;
   background-color: var(--colorWhite);
@@ -13,7 +14,17 @@
   position: relative;
 }
 
+.linkMobile {
+  width: 60px;
+  height: 26px;
+}
+
 .text {
   font-size: var(--fontSizeP2);
   margin-right: 15px;
+}
+
+.linkMobile .text {
+  margin-right: 10px;
+  font-size: var(--fontSizeMobExtra);
 }

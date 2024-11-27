@@ -1,14 +1,16 @@
 'use client';
-import { FC, useState } from 'react';
+import { FC, Dispatch, SetStateAction } from 'react';
 import styles from './BurgerButton.module.scss';
 
-interface Props {}
+interface Props {
+  isOpen: boolean;
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
+}
 
-const BurgerButton: FC<Props> = () => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+const BurgerButton: FC<Props> = ({ isOpen, setIsOpen }) => {
   return (
     <button
-      onClick={() => setIsOpen((state) => !state)}
+      onClick={() => setIsOpen(!isOpen)}
       className={`${styles.button} ${isOpen ? styles.active : ''}`}
     >
       <div className={`${styles.line} ${styles.line1}`} />

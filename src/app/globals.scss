@@ -9,7 +9,6 @@
   --fontSizeMobP1: 18px;
   --fontSizeMobP2: 14px;
   --fontSizeMobExtra: 12px;
-  --textColorMain: #000000;
   --colorAccentDark: #451715;
   --colorAccentLight: #9c3e5c;
   --colorBG: #faf5f7;
@@ -26,7 +25,8 @@ body {
 }
 
 body {
-  color: var(--textColorMain);
+  color: var(--colorAccentDark);
+  background-color: var(--colorBG);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
