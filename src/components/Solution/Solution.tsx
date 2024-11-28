@@ -12,7 +12,7 @@ const Solution: FC = () => {
         <span>{t('solution.titleP2')}</span>
         {t('solution.titleP3')}
       </p>
-      <span>{t('solution.subtitle')}</span>
+      <span className={styles.subtitle}>{t('solution.subtitle')}</span>
       <div className={styles.slider}></div>
       <Button
         style={{ margin: '40px auto' }}

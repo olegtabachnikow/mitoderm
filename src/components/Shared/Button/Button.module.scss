@@ -36,3 +36,12 @@
   background-color: #82022c;
   color: #ffffffb2;
 }
+
+@media screen and (max-width: 1224px) {
+  .button,
+  .buttonColored {
+    width: 100%;
+    height: 53px;
+    font-size: var(--fontSizeMobP2);
+  }
+}

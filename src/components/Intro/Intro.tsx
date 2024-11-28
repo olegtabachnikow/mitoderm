@@ -10,7 +10,9 @@ const Intro: FC = () => {
   const t = useTranslations();
   return (
     <section className={styles.section}>
-      <ArrowButton reversed />
+      <div className={styles.buttonBox}>
+        <ArrowButton reversed />
+      </div>
       <div className={styles.container}>
         <span>
           <span>{t('intro.subtitleP1')}</span>
@@ -23,7 +25,9 @@ const Intro: FC = () => {
           <p className={styles.text}>{t('intro.text')}</p>
         </div>
       </div>
-      <ArrowButton />
+      <div className={styles.buttonBox}>
+        <ArrowButton />
+      </div>
       <Image
         className={styles.lines}
         src='/images/lines1.svg'

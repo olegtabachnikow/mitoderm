@@ -6,11 +6,13 @@ interface Props {
   onClick?: () => void;
   style?: CSSProperties;
   colored?: boolean;
+  submit?: boolean;
 }
 
-const Button: FC<Props> = ({ text, onClick, style, colored }) => {
+const Button: FC<Props> = ({ text, onClick, style, colored, submit }) => {
   return (
     <button
+      type={submit ? 'submit' : 'button'}
       style={style}
       onClick={onClick}
       className={colored ? styles.buttonColored : styles.button}

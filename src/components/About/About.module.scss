@@ -42,3 +42,29 @@
   width: 100%;
   gap: 10px;
 }
+
+@media screen and (max-width: 1224px) {
+  .section {
+    padding-inline: 20px;
+    padding-bottom: 60px;
+  }
+  .article {
+    flex-direction: column;
+  }
+  .textContainer,
+  .imageContainer {
+    max-width: 100%;
+  }
+  .imageContainer {
+    margin-top: 40px;
+  }
+  .textContainer h2 {
+    font-size: var(--fontSizeMobH2);
+  }
+  .textContainer p {
+    font-size: var(--fontSizeMobP2);
+  }
+  .itemContainer {
+    flex-direction: column;
+  }
+}

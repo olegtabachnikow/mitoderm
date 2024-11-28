@@ -19,3 +19,15 @@
 .text {
   font-size: var(--fontSizeP2);
 }
+
+@media screen and (max-width: 1224px) {
+  .section {
+    padding-inline: 20px;
+  }
+  .title {
+    font-size: var(--fontSizeMobH2);
+  }
+  .subtitle {
+    display: none;
+  }
+}

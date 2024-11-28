@@ -40,10 +40,12 @@
   opacity: 0;
   transition: all 0.3s linear;
   z-index: -1;
+  pointer-events: none;
 }
 
 .overlay.active {
   opacity: 70%;
+  pointer-events: all;
 }
 
 @media screen and (max-width: 1224px) {

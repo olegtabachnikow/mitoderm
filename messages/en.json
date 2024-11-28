@@ -11,7 +11,20 @@
     "learnMore": "Learn More",
     "moreAbout": "More About",
     "contactForPrice": "Contact for Price details",
-    "contactForInfo": "Contact for More Info"
+    "contactForInfo": "Contact for More Info",
+    "requestCallback": "Request A Callback"
+  },
+  "form": {
+    "titleP1": "Get Personalized",
+    "titleP2": "Solutions ",
+    "titleP3": "for Your Practice",
+    "subtitleP1": "Our Specialist Will Reach Out ",
+    "subtitleP2": "Within 30 Minutes",
+    "placeholderInputName": "Name",
+    "placeholderEmailName": "E-mail",
+    "placeholderPhoneName": "Phone Number",
+    "checkboxLabel": "I agree with rules of Mitoderm *",
+    "sharing": "Your information will never be shared with third parties *"
   },
   "intro": {
     "subtitleP1": "Korean product",

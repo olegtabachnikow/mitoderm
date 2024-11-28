@@ -52,3 +52,36 @@
   bottom: -290px;
   -webkit-user-drag: none;
 }
+
+@media screen and (max-width: 1224px) {
+  .section {
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-top: 0;
+  }
+  .buttonBox {
+    display: none;
+  }
+  .section span {
+    font-size: var(--fontSizeMobExtra);
+  }
+  .title {
+    font-size: var(--fontSizeMobH1);
+  }
+  .row {
+    flex-direction: column-reverse;
+    gap: 40px;
+  }
+  .lines {
+    scale: 0.6;
+    right: -150px;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .text {
+    font-size: var(--fontSizeMobP2);
+  }
+}

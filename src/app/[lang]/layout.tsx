@@ -1,12 +1,16 @@
 import type { Metadata } from 'next';
 import { unstable_setRequestLocale } from 'next-intl/server';
+import dynamic from 'next/dynamic';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import '../globals.scss';
 import { Rubik } from 'next/font/google';
 import { routing } from '@/i18n/routing';
 import { notFound } from 'next/navigation';
-import Header from '@/components/Layout/Header/Header';
+
+const Header = dynamic(() => import('@/components/Layout/Header/Header'), {
+  ssr: false,
+});
 
 const rubik = Rubik({
   weight: ['300', '400', '500', '900'],
