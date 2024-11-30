@@ -24,7 +24,15 @@
     "placeholderEmailName": "E-mail",
     "placeholderPhoneName": "Phone Number",
     "checkboxLabel": "I agree with rules of Mitoderm *",
-    "sharing": "Your information will never be shared with third parties *"
+    "sharing": "Your information will never be shared with third parties *",
+    "errors": {
+      "name_length": "Name must be at least 3 characters",
+      "name_required": "Name is required",
+      "email_required": "Email is required",
+      "email_invalid": "Invalid email",
+      "phone_required": "Phone number is required",
+      "phone_length": "Phone number must be at least 9 characters"
+    }
   },
   "intro": {
     "subtitleP1": "Korean product",

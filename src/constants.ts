@@ -33,3 +33,5 @@ export const languageSwitchItemList: LanguageSwitchItem[] = [
   { imageUrl: '/languageSwitch/en.svg', url: '/ru/' },
   { imageUrl: '/languageSwitch/en.svg', url: '/he/' },
 ];
+
+export const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;

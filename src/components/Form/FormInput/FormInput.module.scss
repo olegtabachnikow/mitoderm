@@ -1,0 +1,45 @@
+.inputLabel {
+  display: flex;
+  flex-direction: column;
+  font-size: var(--fontSizeMobP2);
+  color: var(--colorAccentDark);
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.inputLabel input {
+  height: 53px;
+  padding-inline: 15px;
+  border-radius: 12px;
+  outline: none;
+  border: none;
+  background-color: var(--colorBG);
+  font-size: var(--fontSizeP2);
+  margin-top: 5px;
+  border: 1px solid transparent;
+  transition: all 0.3s linear;
+}
+
+.inputLabel input::placeholder {
+  color: #222222;
+  opacity: 0.5;
+}
+
+.inputLabel input:hover {
+  border: 1px solid var(--colorAccentLight);
+}
+
+.inputLabel input:focus {
+  border: 1px solid var(--colorAccentDark);
+  filter: drop-shadow(0 0 3px rgb(156, 62, 92));
+}
+
+.inputLabel .error {
+  border: 1px solid #d00043;
+}
+
+.errorText {
+  font-size: var(--fontSizeMobP2);
+  color: #d00043;
+  margin-top: 5px;
+}

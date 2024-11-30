@@ -12,6 +12,10 @@ const Header = dynamic(() => import('@/components/Layout/Header/Header'), {
   ssr: false,
 });
 
+const Modal = dynamic(() => import('@/components/Layout/Modal/Modal'), {
+  ssr: false,
+});
+
 const rubik = Rubik({
   weight: ['300', '400', '500', '900'],
   style: 'normal',
@@ -49,6 +53,7 @@ export default async function RootLayout({
       <NextIntlClientProvider messages={messages}>
         <body className={rubik.className}>
           <Header />
+          <Modal />
           {children}
         </body>
       </NextIntlClientProvider>

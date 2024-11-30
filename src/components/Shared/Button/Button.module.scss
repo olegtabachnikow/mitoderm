@@ -37,6 +37,10 @@
   color: #ffffffb2;
 }
 
+.buttonColored:disabled {
+  background-color: gray;
+}
+
 @media screen and (max-width: 1224px) {
   .button,
   .buttonColored {

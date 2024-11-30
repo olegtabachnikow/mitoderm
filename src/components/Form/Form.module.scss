@@ -1,5 +1,6 @@
 .container {
   max-width: 1200px;
+  width: 100%;
   border-radius: 40px;
   overflow: hidden;
   display: flex;
@@ -32,30 +33,6 @@
   height: 100%;
   flex-direction: column;
   background-color: var(--colorWhite);
-}
-
-.inputLabel {
-  display: flex;
-  flex-direction: column;
-  font-size: var(--fontSizeMobP2);
-  color: var(--colorAccentDark);
-  margin-bottom: 15px;
-}
-
-.inputLabel input {
-  height: 53px;
-  padding-inline: 15px;
-  border-radius: 12px;
-  outline: none;
-  border: none;
-  background-color: var(--colorBG);
-  font-size: var(--fontSizeP2);
-  margin-top: 5px;
-}
-
-.inputLabel input::placeholder {
-  color: #222222;
-  opacity: 0.5;
 }
 
 .checkboxLabel {
@@ -116,4 +93,13 @@
 
 .closeButton:hover {
   opacity: 100%;
+}
+
+@media screen and (max-width: 1224px) {
+  .container {
+    width: 92%;
+  }
+  .formContainer {
+    padding: 50px;
+  }
 }
