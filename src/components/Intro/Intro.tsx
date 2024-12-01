@@ -1,10 +1,14 @@
 import { FC } from 'react';
+import dynamic from 'next/dynamic';
 import styles from './Intro.module.scss';
 import { useTranslations } from 'next-intl';
-import Button from '../Shared/Button/Button';
 import ArrowButton from '../Shared/ArrowButton/ArrowButton';
 import Image from 'next/image';
 import DotPagination from '../Shared/DotPagination/DotPagination';
+
+const Button = dynamic(() => import('@/components/Shared/Button/Button'), {
+  ssr: false,
+});
 
 const Intro: FC = () => {
   const t = useTranslations();
@@ -21,7 +25,11 @@ const Intro: FC = () => {
         </span>
         <h1 className={styles.title}>{t('intro.title')}</h1>
         <div className={styles.row}>
-          <Button text={t('buttons.contact')} style={{ marginTop: 20 }} />
+          <Button
+            text={t('buttons.contact')}
+            style={{ marginTop: 20 }}
+            contact
+          />
           <p className={styles.text}>{t('intro.text')}</p>
         </div>
       </div>

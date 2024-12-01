@@ -1,41 +1,52 @@
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import styles from './FormInput.module.scss';
 
 interface Props {
-  value: string;
-  onChange: (str: string) => void;
-  name: string;
+  validator: (data: string) => string;
+  setFormData: (
+    data: string,
+    name: 'name' | 'email' | 'phone',
+    isValid: boolean
+  ) => void;
+  name: 'name' | 'email' | 'phone';
   type: 'text' | 'tel' | 'email';
   label: string;
-  error: string;
   placeholder: string;
   min?: number;
   max?: number;
 }
 
 const FormInput: FC<Props> = ({
-  value,
-  onChange,
+  validator,
+  setFormData,
   type,
   name,
   placeholder,
   min,
   max,
   label,
-  error,
 }) => {
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    onChange(e.target.value);
+  const [data, setData] = useState<string>('');
+  const [error, setError] = useState<string>('');
+
+  const onChange = (data: string) => {
+    setData(data);
+    setError(validator(data));
   };
+
+  useEffect(() => {
+    if (!error.length) {
+      setFormData(data, name, true);
+    } else setFormData(data, name, false);
+  }, [error]);
+
   return (
     <label className={styles.inputLabel}>
       {label}
       <input
-        className={error.length ? styles.error : ''}
-        value={value}
-        onChange={handleChange}
+        className={error ? styles.error : ''}
+        value={data}
+        onChange={(e) => onChange(e.target.value)}
         min={min}
         max={max}
         type={type}

@@ -8,7 +8,6 @@ const Modal: FC = () => {
   const { modalIsOpen, toggleModal } = useAppStore((state) => state);
   const handleClose = (e: MouseEvent) => {
     const { target } = e;
-    console.log(target);
     if ((target as HTMLDivElement).id === 'modal') toggleModal(false);
   };
 

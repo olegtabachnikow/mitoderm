@@ -1,5 +1,5 @@
 'use client';
-import { FC, FormEvent, useState } from 'react';
+import { FC, FormEvent, useState, useEffect } from 'react';
 import styles from './Form.module.scss';
 import Image from 'next/image';
 import Button from '../Shared/Button/Button';
@@ -8,86 +8,77 @@ import FormInput from './FormInput/FormInput';
 import { emailRegex } from '@/constants';
 import { useMediaQuery } from 'react-responsive';
 import useAppStore from '@/store/store';
-
-interface FormDataType {
-  name: { value: string; error: string };
-  email: { value: string; error: string };
-  phone: { value: string; error: string };
-}
-
-const initialFormData: FormDataType = {
-  name: { value: '', error: '' },
-  email: { value: '', error: '' },
-  phone: { value: '', error: '' },
-};
+import type { FormDataType } from '@/types';
 
 const Form: FC = () => {
   const toggleModal = useAppStore((state) => state.toggleModal);
   const t = useTranslations();
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
   const [isChecked, setIsChecked] = useState<boolean>(false);
-  const [formData, setFormData] = useState<FormDataType>(initialFormData);
+  const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true);
+  const [formData, setFormData] = useState<FormDataType>({
+    name: { value: '', isValid: false },
+    email: { value: '', isValid: false },
+    phone: { value: '', isValid: false },
+  });
   const [isSending, setIsSending] = useState<boolean>(false);
   const [isSent, setIsSent] = useState<boolean>(false);
-  const [isError, setIsError] = useState<boolean>(false);
+
+  const validateName = (data: string) => {
+    let error: string = '';
+    if (data.trim().length < 3) {
+      error = t('form.errors.name_length');
+    }
+    if (!data.length) {
+      error = t('form.errors.name_required');
+    }
+    return error;
+  };
+
+  const validateEmail = (data: string) => {
+    let error: string = '';
+    if (!data.match(emailRegex)) {
+      error = t('form.errors.email_invalid');
+    }
+    if (!data.length) {
+      error = t('form.errors.email_required');
+    }
+    return error;
+  };
+
+  const validatePhone = (data: string) => {
+    let error: string = '';
+    if (data.trim().length < 9) {
+      error = t('form.errors.phone_length');
+    }
+    if (!data.length) {
+      error = t('form.errors.phone_required');
+    }
+    return error;
+  };
+
+  const handleData = (
+    data: string,
+    name: 'name' | 'email' | 'phone',
+    isValid: boolean
+  ) => {
+    setFormData({ ...formData, [name]: { value: data, isValid } });
+  };
 
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    const { name, email, phone } = formData;
-    const errors = { name: '', email: '', message: '' };
-    if (name.value.trim().length < 3) {
-      errors.name = t('form.errors.name_length');
-    }
-    if (!name.value.length) {
-      errors.name = t('form.errors.name_required');
-    }
-    if (!email.value.match(emailRegex)) {
-      errors.email = t('form.errors.email_invalid');
-    }
-    if (!email.value.length) {
-      errors.email = t('form.errors.email_required');
-    }
-    if (phone.value.trim().length < 9) {
-      errors.message = t('form.errors.phone_length');
-    }
-    if (!phone.value.length) {
-      errors.message = t('form.errors.phone_required');
-    }
-    if (errors.name || errors.email || errors.message) {
-      setFormData({
-        name: { value: name.value, error: errors.name },
-        email: { value: email.value, error: errors.email },
-        phone: { value: phone.value, error: errors.message },
-      });
-      return;
-    }
-    const validatedData = {
-      name: name.value,
-      email: email.value,
-      phone: phone.value,
-    };
-    // setIsSending(true);
-    // try {
-    //   const response = await fetch('/api/contact', {
-    //     method: 'POST',
-    //     body: JSON.stringify(validatedData),
-    //   });
-
-    //   if (!response.ok) {
-    //     throw new Error(`response status: ${response.status}`);
-    //   }
-
-    //   setIsSending(false);
-    //   setIsSent(true);
-    //   setIsError(false);
-    // } catch (err) {
-    //   setIsSending(false);
-    //   setIsSent(true);
-    //   setIsError(true);
-    // }
-
-    console.log(validatedData);
+    console.log(formData);
+    return;
   };
+
+  useEffect(() => {
+    !formData.email.isValid ||
+    !formData.name.isValid ||
+    !formData.phone.isValid ||
+    !isChecked
+      ? setIsButtonDisabled(true)
+      : setIsButtonDisabled(false);
+  }, [formData, isChecked]);
 
   return (
     <div className={styles.container}>
@@ -118,38 +109,29 @@ const Form: FC = () => {
         >
           <FormInput
             label={t('form.placeholderInputName')}
-            value={formData.name.value}
-            onChange={(str: string) => {
-              setFormData({ ...formData, name: { value: str, error: '' } });
-            }}
+            setFormData={handleData}
             min={3}
             max={20}
             type='text'
             name='name'
             placeholder='Aaron Smith'
-            error={formData.name.error}
+            validator={validateName}
           />
           <FormInput
             label={t('form.placeholderEmailName')}
-            value={formData.email.value}
-            onChange={(str: string) => {
-              setFormData({ ...formData, email: { value: str, error: '' } });
-            }}
+            setFormData={handleData}
             type='email'
             name='email'
             placeholder='mitoderm@mail.com'
-            error={formData.email.error}
+            validator={validateEmail}
           />
           <FormInput
             label={t('form.placeholderPhoneName')}
-            value={formData.phone.value}
-            onChange={(str: string) => {
-              setFormData({ ...formData, phone: { value: str, error: '' } });
-            }}
+            setFormData={handleData}
             type='tel'
             name='phone'
             placeholder='586 412 924'
-            error={formData.phone.error}
+            validator={validatePhone}
           />
           <label className={styles.checkboxLabel}>
             {t('form.checkboxLabel')}
@@ -163,7 +145,7 @@ const Form: FC = () => {
             <div className={styles.customCheckbox} />
           </label>
           <Button
-            disabled={!isChecked}
+            disabled={isButtonDisabled}
             submit
             colored
             text={t('buttons.requestCallback')}

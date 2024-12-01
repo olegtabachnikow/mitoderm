@@ -6,7 +6,7 @@ interface RootState {
 }
 
 const useAppStore = create<RootState>((set) => ({
-  modalIsOpen: true,
+  modalIsOpen: false,
   toggleModal: () =>
     set((state) => ({ modalIsOpen: (state.modalIsOpen = !state.modalIsOpen) })),
 }));
