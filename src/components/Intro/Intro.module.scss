@@ -55,12 +55,12 @@
 
 @media screen and (max-width: 1224px) {
   .section {
-    height: 100vh;
+    height: 100%;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-position: center;
-    margin-top: 0;
+    margin-top: 30px;
   }
   .buttonBox {
     display: none;
@@ -83,5 +83,6 @@
   }
   .text {
     font-size: var(--fontSizeMobP2);
+    max-width: 100%;
   }
 }

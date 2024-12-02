@@ -68,6 +68,7 @@ const Form: FC = () => {
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
     console.log(formData);
+    setIsSent(true);
     return;
   };
 
@@ -91,75 +92,91 @@ const Form: FC = () => {
         />
       </button>
       <div className={styles.formContainer}>
-        <h2>
-          {t('form.titleP1')}
-          <br />
-          <span>{t('form.titleP2')}</span>
-          {t('form.titleP3')}
-        </h2>
-        <p>
-          {t('form.subtitleP1')}
-          <span>{t('form.subtitleP2')}</span>
-        </p>
-        <form
-          noValidate
-          className={styles.form}
-          onSubmit={onSubmit}
-          action='submit'
-        >
-          <FormInput
-            label={t('form.placeholderInputName')}
-            setFormData={handleData}
-            min={3}
-            max={20}
-            type='text'
-            name='name'
-            placeholder='Aaron Smith'
-            validator={validateName}
-          />
-          <FormInput
-            label={t('form.placeholderEmailName')}
-            setFormData={handleData}
-            type='email'
-            name='email'
-            placeholder='mitoderm@mail.com'
-            validator={validateEmail}
-          />
-          <FormInput
-            label={t('form.placeholderPhoneName')}
-            setFormData={handleData}
-            type='tel'
-            name='phone'
-            placeholder='586 412 924'
-            validator={validatePhone}
-          />
-          <label className={styles.checkboxLabel}>
-            {t('form.checkboxLabel')}
-            <input
-              checked={isChecked}
-              onChange={() => setIsChecked((state) => !state)}
-              name='approve'
-              type='checkbox'
-              required
-            />
-            <div className={styles.customCheckbox} />
-          </label>
-          <Button
-            disabled={isButtonDisabled}
-            submit
-            colored
-            text={t('buttons.requestCallback')}
-          />
-          <div className={styles.row}>
-            <Image
-              src='/images/lockIcon.svg'
-              width={14}
-              height={14}
-              alt='lock icon'
-            />
-            <p>{t('form.sharing')}</p>
-          </div>
-        </form>
+        {isSent ? (
+          <>
+            {isTabletOrMobile ? (
+              <span className={styles.isSentTitle}>
+                {t('form.sent.mobTitle')}
+              </span>
+            ) : null}
+            <p className={styles.formSubmitted}>
+              {t('form.sent.text')}
+              <span>{t('form.sent.textColored')}</span>
+            </p>
+          </>
+        ) : (
+          <>
+            <h2>
+              {t('form.titleP1')}
+              <br />
+              <span>{t('form.titleP2')}</span>
+              {t('form.titleP3')}
+            </h2>
+            <p>
+              {t('form.subtitleP1')}
+              <span>{t('form.subtitleP2')}</span>
+            </p>
+            <form
+              noValidate
+              className={styles.form}
+              onSubmit={onSubmit}
+              action='submit'
+            >
+              <FormInput
+                label={t('form.placeholderInputName')}
+                setFormData={handleData}
+                min={3}
+                max={20}
+                type='text'
+                name='name'
+                placeholder='Aaron Smith'
+                validator={validateName}
+              />
+              <FormInput
+                label={t('form.placeholderEmailName')}
+                setFormData={handleData}
+                type='email'
+                name='email'
+                placeholder='mitoderm@mail.com'
+                validator={validateEmail}
+              />
+              <FormInput
+                label={t('form.placeholderPhoneName')}
+                setFormData={handleData}
+                type='tel'
+                name='phone'
+                placeholder='586 412 924'
+                validator={validatePhone}
+              />
+              <label className={styles.checkboxLabel}>
+                {t('form.checkboxLabel')}
+                <input
+                  checked={isChecked}
+                  onChange={() => setIsChecked((state) => !state)}
+                  name='approve'
+                  type='checkbox'
+                  required
+                />
+                <div className={styles.customCheckbox} />
+              </label>
+              <Button
+                disabled={isButtonDisabled}
+                submit
+                colored
+                text={t('buttons.requestCallback')}
+              />
+              <div className={styles.row}>
+                <Image
+                  src='/images/lockIcon.svg'
+                  width={14}
+                  height={14}
+                  alt='lock icon'
+                />
+                <p>{t('form.sharing')}</p>
+              </div>
+            </form>
+          </>
+        )}
       </div>
       {isTabletOrMobile ? null : (
         <Image

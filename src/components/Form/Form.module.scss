@@ -11,6 +11,9 @@
 .formContainer {
   padding: 50px 120px 50px 50px;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .formContainer h2 {
@@ -41,6 +44,7 @@
   justify-content: flex-end;
   font-size: var(--fontSizeMobP2);
   margin-bottom: 30px;
+  align-items: center;
   cursor: pointer;
 }
 
@@ -98,11 +102,44 @@
   opacity: 100%;
 }
 
+.formSubmitted {
+  font-size: var(--fontSizeH2) !important;
+}
+
+.formSubmitted span {
+  color: var(--colorAccentLight);
+}
+
 @media screen and (max-width: 1224px) {
   .container {
     width: 92%;
   }
   .formContainer {
     padding: 50px;
+  }
+  .closeButton {
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+  }
+  .formContainer {
+    padding-inline: 20px;
+  }
+  .formContainer h2 {
+    font-size: var(--fontSizeMobP1);
+  }
+  .formContainer p {
+    font-size: var(--fontSizeMobP2);
+  }
+  .formSubmitted {
+    font-size: var(--fontSizeP2) !important;
+    margin-bottom: 0 !important;
+  }
+  .formSubmitted span {
+    color: var(--colorAccentDark) !important;
+  }
+  .isSentTitle {
+    font-size: var(--fontSizeMobH2);
+    color: var(--colorAccentLight);
   }
 }

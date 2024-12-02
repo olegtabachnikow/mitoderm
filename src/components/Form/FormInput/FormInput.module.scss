@@ -44,3 +44,19 @@
   color: #d00043;
   margin-top: 5px;
 }
+
+@media screen and (max-width: 1224px) {
+  .inputLabel {
+    font-size: var(--fontSizeMobExtra);
+    margin-bottom: 3px;
+  }
+  .inputLabel input {
+    height: 42px;
+  }
+  .inputLabel input::placeholder {
+    font-size: var(--fontSizeMobP2);
+  }
+  .errorText {
+    font-size: var(--fontSizeMobExtra);
+  }
+}

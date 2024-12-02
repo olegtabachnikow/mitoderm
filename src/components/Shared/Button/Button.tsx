@@ -21,7 +21,6 @@ const Button: FC<Props> = ({
   contact,
 }) => {
   const toggleModal = useAppStore((state) => state.toggleModal);
-
   const handleClick = () => {
     contact ? toggleModal(true) : null;
   };

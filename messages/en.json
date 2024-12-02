@@ -32,6 +32,11 @@
       "email_invalid": "Invalid email",
       "phone_required": "Phone number is required",
       "phone_length": "Phone number must be at least 9 characters"
+    },
+    "sent": {
+      "mobTitle": "Congratulations!",
+      "text": "Your form has been submitted ",
+      "textColored": "successfully"
     }
   },
   "intro": {
