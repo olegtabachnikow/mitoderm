@@ -20,6 +20,12 @@ export interface LanguageSwitchItem {
   url: string;
 }
 
+export interface SolutionItem {
+  imageUrl: string;
+  title: string;
+  text: string[];
+}
+
 export interface FormDataType {
   name: { value: string; isValid: boolean };
   email: { value: string; isValid: boolean };

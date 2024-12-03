@@ -4,16 +4,24 @@ import Image from 'next/image';
 
 interface Props {
   reversed?: boolean;
+  colored?: boolean;
+  dark?: boolean;
+  onClick?: (arg: any) => void;
 }
 
-const ArrowButton: FC<Props> = ({ reversed }) => {
+const ArrowButton: FC<Props> = ({ reversed, colored, onClick, dark }) => {
   return (
     <button
-      className={styles.button}
+      onClick={onClick}
+      className={`${styles.button} ${colored ? styles.colored : ''} ${
+        dark ? styles.dark : ''
+      }`}
       style={reversed ? { transform: 'rotate(180deg)' } : {}}
     >
       <Image
-        className={styles.image}
+        className={`${styles.image} ${colored ? styles.colored : ''} ${
+          dark ? styles.dark : ''
+        }`}
         src='/images/arrowRight.svg'
         width={40}
         height={40}

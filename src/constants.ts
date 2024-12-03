@@ -3,6 +3,7 @@ import {
   HowToUseItem,
   AboutBulletItem,
   LanguageSwitchItem,
+  SolutionItem,
 } from './types';
 
 export const navList: NavItem[] = [
@@ -32,6 +33,39 @@ export const languageSwitchItemList: LanguageSwitchItem[] = [
   { imageUrl: '/languageSwitch/en.svg', url: '/en/' },
   { imageUrl: '/languageSwitch/en.svg', url: '/ru/' },
   { imageUrl: '/languageSwitch/en.svg', url: '/he/' },
+];
+
+export const solutionItems: SolutionItem[] = [
+  {
+    imageUrl: '/images/solution/item1.png',
+    title: 'solution.item1title',
+    text: [
+      'solution.item1textP1',
+      'solution.item1textP2',
+      'solution.item1textP3',
+      'solution.item1textP4',
+    ],
+  },
+  {
+    imageUrl: '/images/solution/item2.png',
+    title: 'solution.item2title',
+    text: ['solution.item2textP1', 'solution.item2textP2'],
+  },
+  {
+    imageUrl: '/images/solution/item1.png',
+    title: 'solution.item1title',
+    text: [
+      'solution.item1textP1',
+      'solution.item1textP2',
+      'solution.item1textP3',
+      'solution.item1textP4',
+    ],
+  },
+  {
+    imageUrl: '/images/solution/item2.png',
+    title: 'solution.item2title',
+    text: ['solution.item2textP1', 'solution.item2textP2'],
+  },
 ];
 
 export const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;

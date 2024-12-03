@@ -12,7 +12,8 @@
     "moreAbout": "More About",
     "contactForPrice": "Contact for Price details",
     "contactForInfo": "Contact for More Info",
-    "requestCallback": "Request A Callback"
+    "requestCallback": "Request A Callback",
+    "contactForSolutions": "Contact for personal solutions"
   },
   "form": {
     "titleP1": "Get Personalized",
@@ -72,13 +73,12 @@
     "titleP2": "Exoxe",
     "titleP3": " Exosome",
     "subtitle": "Only for professional usage",
-    "item1titleP1": "PURE EXO",
-    "item1titleP2": " - LYOPHILIZED POWDER 50mg",
+    "item1title": "Pure exo - lyophilized powder 50mg",
     "item1textP1": "Hydrolyzed Collagen - 886,000PPM",
     "item1textP2": "Collagen - 100,000PPM",
     "item1textP3": "Sodium Hyaluronate",
     "item1textP4": "Trehalose",
-    "item2title": "STERILIZED HA SOLUTION 5ml",
+    "item2title": "Sterilized ha solution 5ml",
     "item2textP1": "Aqua",
     "item2textP2": "Sodium Hyaluronate",
     "usage": "Only for professional usage."
@@ -101,5 +101,16 @@
   "beforeAfter": {
     "title": "Before & After",
     "gallery": "Gallery"
+  },
+  "dream": {
+    "titleP1": "Your Dream",
+    "titleP2": "is Our Mission",
+    "textP1": "MitoDerm fulfills a vision by focusing on the ",
+    "textP2": "combination of beauty and technology. ",
+    "textP3": "The company leads the skincare industry by providing innovative and effective solutions to professionals in the field of aesthetics.",
+    "textP4": "Enhance your confidence ",
+    "textP5": "with our advanced exosome treatments. At MitoDerm, we provide cutting-edge solutions for skin rejuvenation, anti-aging, hair thinning, and skin concerns, tailored to ",
+    "textP6": "meet your unique needs. ",
+    "textP7": "Experience our commitment to quality and care in a supportive environment where you can feel empowered and revitalized."
   }
 }
