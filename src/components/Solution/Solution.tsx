@@ -1,5 +1,5 @@
 'use client';
-import { FC, useState, useEffect } from 'react';
+import { FC } from 'react';
 import styles from './Solution.module.scss';
 import { useTranslations } from 'next-intl';
 import Button from '../Shared/Button/Button';
@@ -14,24 +14,14 @@ const Solution: FC = () => {
   const t = useTranslations();
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
 
-  const [currentPage, setCurrentPage] = useState<number>(1);
-
   const handleScroll = (arg: 1 | 2) => {
-    currentPage !== arg
-      ? setCurrentPage(arg)
-      : arg === 1
-      ? setCurrentPage(2)
-      : setCurrentPage(1);
-  };
-
-  useEffect(() => {
-    const currentScroll = document.getElementById(`block${currentPage}`);
+    const currentScroll = document.getElementById(`block${arg}`);
     currentScroll?.scrollIntoView({
       behavior: 'smooth',
       block: 'nearest',
       inline: 'center',
     });
-  }, [currentPage]);
+  };
 
   const solutionBlocks = combinedArray(solutionItems);
   return (
