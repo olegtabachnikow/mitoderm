@@ -5,6 +5,7 @@ import About from '@/components/About/About';
 import Solution from '@/components/Solution/Solution';
 import Mission from '@/components/Mission/Mission';
 import Faq from '@/components/Faq/Faq';
+import Contact from '@/components/Contact/Contact';
 
 export default function HomePage({ params: { lang } }: any) {
   unstable_setRequestLocale(lang);
@@ -16,6 +17,7 @@ export default function HomePage({ params: { lang } }: any) {
       <Solution />
       <Mission />
       <Faq />
+      <Contact />
     </main>
   );
 }

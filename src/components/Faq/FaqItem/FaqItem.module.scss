@@ -32,3 +32,15 @@
 .image.active {
   transform: rotate(180deg);
 }
+
+@media screen and (max-width: 1224px) {
+  .container {
+    padding: 24px;
+  }
+  .title {
+    font-size: var(--fontSizeMobP1);
+  }
+  .text {
+    font-size: var(--fontSizeMobP2);
+  }
+}

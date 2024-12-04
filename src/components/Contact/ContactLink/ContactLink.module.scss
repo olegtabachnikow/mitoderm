@@ -1,0 +1,17 @@
+.link {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--colorBG);
+}
+
+.link img {
+  transition: all 0.2s linear;
+}
+
+.link:hover img {
+  opacity: 60%;
+}

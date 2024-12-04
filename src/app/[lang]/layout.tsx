@@ -7,6 +7,7 @@ import '../globals.scss';
 import { Rubik } from 'next/font/google';
 import { routing } from '@/i18n/routing';
 import { notFound } from 'next/navigation';
+import Footer from '@/components/Layout/Footer/Footer';
 
 const Header = dynamic(() => import('@/components/Layout/Header/Header'), {
   ssr: false,
@@ -55,6 +56,7 @@ export default async function RootLayout({
           <Header />
           <Modal />
           {children}
+          <Footer />
         </body>
       </NextIntlClientProvider>
     </html>
