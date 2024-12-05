@@ -80,15 +80,19 @@
   .content {
     padding-inline: 20px;
   }
+  .iframe {
+    z-index: 5;
+  }
   .contacts {
     flex-direction: column;
     margin-top: -140px;
+    z-index: 8;
   }
   .contactsItem {
     padding: 24px 20px 20px 20px;
   }
   .item2textBox {
-    padding-bottom: 58px;
+    padding-bottom: 80px;
     position: relative;
   }
   .item2textBox .column {
@@ -96,7 +100,7 @@
   }
   .linkBox {
     position: absolute;
-    bottom: 10px;
+    bottom: 30px;
     left: 0;
     width: 100%;
     display: flex;

@@ -128,5 +128,11 @@
     "saturday": "Saturday",
     "closed": "Closed",
     "followUs": "Follow us on"
+  },
+  "footer": {
+    "copyright": "© 2024 Mitoderm. All Rights Reserved.",
+    "accessibility": "Accessibility Statement",
+    "privacy": "Privacy Policy",
+    "group": "SinoSciences Group"
   }
 }

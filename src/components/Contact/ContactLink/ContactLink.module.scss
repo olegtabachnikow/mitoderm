@@ -15,3 +15,10 @@
 .link:hover img {
   opacity: 60%;
 }
+
+@media screen and (max-width: 1224px) {
+  .link {
+    width: 62px;
+    height: 62px;
+  }
+}
