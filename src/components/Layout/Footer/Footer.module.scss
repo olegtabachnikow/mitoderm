@@ -28,10 +28,6 @@
   transition: all 0.3s linear;
 }
 
-.item:hover {
-  color: #000;
-}
-
 @media screen and (max-width: 1224px) {
   .content {
     flex-direction: column-reverse;
@@ -45,5 +41,11 @@
   .copyright,
   .item {
     font-size: var(--fontSizeMobP2);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .item:hover {
+    color: #000;
   }
 }

@@ -38,3 +38,17 @@
   display: flex;
   gap: 10px;
 }
+
+.colored:hover,
+.dotActive.colored {
+  border: 1px solid var(--colorAccentLight);
+}
+
+.colored:hover::after,
+.colored.dotActive::after {
+  background-color: var(--colorAccentLight);
+}
+
+.colored::after {
+  background-color: var(--colorAccentDark);
+}

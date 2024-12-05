@@ -6,18 +6,20 @@ import Solution from '@/components/Solution/Solution';
 import Mission from '@/components/Mission/Mission';
 import Faq from '@/components/Faq/Faq';
 import Contact from '@/components/Contact/Contact';
+import Gallery from '@/components/Gallery/Gallery';
 
 export default function HomePage({ params: { lang } }: any) {
   unstable_setRequestLocale(lang);
   return (
     <main>
       <Intro />
-      <HowCanBeUsed />
+      {/* <HowCanBeUsed />
       <About />
-      <Solution />
-      <Mission />
+      <Solution /> */}
+      <Gallery />
+      {/* <Mission />
       <Faq />
-      <Contact />
+      <Contact /> */}
     </main>
   );
 }

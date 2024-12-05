@@ -51,6 +51,7 @@
   right: -90px;
   bottom: -290px;
   -webkit-user-drag: none;
+  pointer-events: none;
 }
 
 @media screen and (max-width: 1224px) {

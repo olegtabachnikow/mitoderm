@@ -1,0 +1,19 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-block: 60px;
+}
+
+.title {
+  font-size: var(--fontSizeH2);
+  font-weight: 400;
+  color: var(--colorAccentLight);
+  margin-bottom: 30px;
+}
+
+.paginationBox {
+  padding-block: 20px;
+}
