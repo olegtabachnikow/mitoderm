@@ -13,13 +13,13 @@ export default function HomePage({ params: { lang } }: any) {
   return (
     <main>
       <Intro />
-      {/* <HowCanBeUsed />
+      <HowCanBeUsed />
       <About />
-      <Solution /> */}
+      <Solution />
       <Gallery />
-      {/* <Mission />
+      <Mission />
       <Faq />
-      <Contact /> */}
+      <Contact />
     </main>
   );
 }

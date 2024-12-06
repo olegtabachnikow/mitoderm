@@ -4,6 +4,7 @@ import ArrowButton from '@/components/Shared/ArrowButton/ArrowButton';
 import styles from './GalleryItem.module.scss';
 import { useTranslations } from 'next-intl';
 import useAppStore from '@/store/store';
+import { useMediaQuery } from 'react-responsive';
 
 interface Props {
   itemList: Array<[string, string]>;
@@ -11,9 +12,16 @@ interface Props {
 
 const GalleryItem: FC<Props> = ({ itemList }) => {
   const t = useTranslations();
-  const { galleryPage, setGalleryPage } = useAppStore((state) => state);
+  const isTabletOrMobile = useMediaQuery({
+    query: '(max-width: 1224px)',
+  });
+  const { galleryPage, setGalleryPage, isFirstRender, setIsFirstRender } =
+    useAppStore((state) => state);
 
   useEffect(() => {
+    if (isFirstRender) {
+      return;
+    }
     const element = document.getElementById(`item${galleryPage}`);
     if (galleryPage >= itemList.length) setGalleryPage(0);
     if (galleryPage < 0) setGalleryPage(itemList.length - 1);
@@ -25,16 +33,25 @@ const GalleryItem: FC<Props> = ({ itemList }) => {
   }, [galleryPage]);
 
   const increment = () => {
+    setIsFirstRender(false);
     setGalleryPage(galleryPage + 1);
   };
   const decrement = () => {
+    setIsFirstRender(false);
     setGalleryPage(galleryPage - 1);
   };
   return (
     <div className={styles.container}>
-      <ArrowButton reversed colored onClick={decrement} />
+      {!isTabletOrMobile ? (
+        <ArrowButton
+          disabled={galleryPage === 0}
+          reversed
+          colored
+          onClick={decrement}
+        />
+      ) : null}
       <div className={styles.itemWrapper}>
-        <div className={styles.imageBox}>
+        <div className={styles.imageBox} onScroll={(e) => console.log(123)}>
           {itemList.map((item, i) => (
             <div id={`item${i}`} className={styles.item} key={`key${i}`}>
               <img
@@ -56,7 +73,13 @@ const GalleryItem: FC<Props> = ({ itemList }) => {
           <span className={styles.label}>{t('gallery.after')}</span>
         </div>
       </div>
-      <ArrowButton colored onClick={increment} />
+      {!isTabletOrMobile ? (
+        <ArrowButton
+          disabled={galleryPage === itemList.length - 1}
+          colored
+          onClick={increment}
+        />
+      ) : null}
     </div>
   );
 };

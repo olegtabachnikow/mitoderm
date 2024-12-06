@@ -7,15 +7,23 @@ interface Props {
   colored?: boolean;
   dark?: boolean;
   onClick?: (arg: any) => void;
+  disabled?: boolean;
 }
 
-const ArrowButton: FC<Props> = ({ reversed, colored, onClick, dark }) => {
+const ArrowButton: FC<Props> = ({
+  reversed,
+  colored,
+  onClick,
+  dark,
+  disabled,
+}) => {
   return (
     <button
+      disabled={disabled}
       onClick={onClick}
       className={`${styles.button} ${colored ? styles.colored : ''} ${
         dark ? styles.dark : ''
-      }`}
+      } ${disabled ? styles.disabled : ''}`}
       style={reversed ? { transform: 'rotate(180deg)' } : {}}
     >
       <Image

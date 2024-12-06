@@ -1,5 +1,5 @@
 'use client';
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import styles from './Solution.module.scss';
 import { useTranslations } from 'next-intl';
 import Button from '../Shared/Button/Button';
@@ -11,10 +11,12 @@ import ArrowButton from '../Shared/ArrowButton/ArrowButton';
 import { useMediaQuery } from 'react-responsive';
 
 const Solution: FC = () => {
+  const [currentPage, setCurrentPage] = useState<number>(1);
   const t = useTranslations();
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
 
   const handleScroll = (arg: 1 | 2) => {
+    setCurrentPage(arg);
     const currentScroll = document.getElementById(`block${arg}`);
     currentScroll?.scrollIntoView({
       behavior: 'smooth',
@@ -34,7 +36,12 @@ const Solution: FC = () => {
       <span className={styles.subtitle}>{t('solution.subtitle')}</span>
       <div className={styles.sliderContainer}>
         {!isTabletOrMobile ? (
-          <ArrowButton colored reversed onClick={() => handleScroll(1)} />
+          <ArrowButton
+            disabled={currentPage === 1}
+            colored
+            reversed
+            onClick={() => handleScroll(1)}
+          />
         ) : null}
         <div className={styles.slider}>
           {solutionBlocks.map((block: SolutionItemType[], index: number) => (
@@ -49,13 +56,28 @@ const Solution: FC = () => {
           ))}
         </div>
         {!isTabletOrMobile ? (
-          <ArrowButton colored onClick={() => handleScroll(2)} />
+          <ArrowButton
+            disabled={currentPage === 2}
+            colored
+            onClick={() => handleScroll(2)}
+          />
         ) : null}
       </div>
       {isTabletOrMobile ? (
         <div className={styles.mobileButtons}>
-          <ArrowButton colored dark reversed onClick={() => handleScroll(1)} />
-          <ArrowButton colored dark onClick={() => handleScroll(2)} />
+          <ArrowButton
+            disabled={currentPage === 1}
+            colored
+            dark
+            reversed
+            onClick={() => handleScroll(1)}
+          />
+          <ArrowButton
+            disabled={currentPage === 2}
+            colored
+            dark
+            onClick={() => handleScroll(2)}
+          />
         </div>
       ) : null}
       <Button

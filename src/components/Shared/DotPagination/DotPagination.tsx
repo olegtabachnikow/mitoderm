@@ -1,34 +1,29 @@
+'use client';
 import { CSSProperties, FC } from 'react';
 import styles from './DotPagination.module.scss';
-
-type DotProps = {
-  index: number;
-  active?: boolean;
-  colored?: boolean;
-};
-
-const Dot: FC<DotProps> = ({ colored, index, active }) => {
-  return (
-    <button
-      className={`${colored ? styles.colored : ''} ${
-        active ? styles.dotActive : styles.dot
-      }`}
-    />
-  );
-};
+import useAppStore from '@/store/store';
+import Dot from './Dot/Dot';
 
 interface Props {
   count: number;
   style?: CSSProperties;
   colored?: boolean;
+  gallery?: boolean;
 }
 
-const DotPagination: FC<Props> = ({ colored, count, style }) => {
+const DotPagination: FC<Props> = ({ colored, count, style, gallery }) => {
+  const galleryPage = useAppStore((state) => state.galleryPage);
   const arr = Array.from(Array(count).keys());
   return (
     <div style={style} className={styles.container}>
       {arr.map((item: any, i: number) => (
-        <Dot colored={colored} key={i} index={i} active={i === 0} />
+        <Dot
+          gallery={gallery}
+          colored={colored}
+          key={i}
+          index={i}
+          active={galleryPage === i}
+        />
       ))}
     </div>
   );

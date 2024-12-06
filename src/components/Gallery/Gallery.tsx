@@ -4,7 +4,7 @@ import { promises as fs } from 'fs';
 import styles from './Gallery.module.scss';
 import GalleryItem from './GalleryItem/GalleryItem';
 import { getTranslations } from 'next-intl/server';
-import DotPagination from '../Shared/DotPagination/DotPagination';
+import GalleryPagination from './GalleryPagination/GalleryPagination';
 
 const Gallery: FC = async () => {
   const t = await getTranslations('gallery');
@@ -25,9 +25,7 @@ const Gallery: FC = async () => {
     <div className={styles.container}>
       <h2 className={styles.title}>{t('title')}</h2>
       <GalleryItem itemList={itemList} />
-      <div className={styles.paginationBox}>
-        <DotPagination colored count={itemList.length} />
-      </div>
+      <GalleryPagination count={itemList.length} />
     </div>
   );
 };

@@ -63,3 +63,13 @@
 .button.dark:active {
   background-color: var(--colorAccentDark);
 }
+
+.disabled {
+  background-color: lightgray !important;
+  cursor: not-allowed;
+}
+
+.disabled img {
+  filter: brightness(0) saturate(100%) invert(99%) sepia(23%) saturate(0%)
+    hue-rotate(355deg) brightness(113%) contrast(101%) !important;
+}
