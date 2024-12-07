@@ -9,6 +9,7 @@ import { SolutionItem as SolutionItemType } from '@/types';
 import SolutionItem from './SolutionItem/SolutionItem';
 import ArrowButton from '../Shared/ArrowButton/ArrowButton';
 import { useMediaQuery } from 'react-responsive';
+import MobileButtons from '../Shared/MobileButtons/MobileButtons';
 
 const Solution: FC = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -27,7 +28,7 @@ const Solution: FC = () => {
 
   const solutionBlocks = combinedArray(solutionItems);
   return (
-    <section className={styles.section}>
+    <section id='solution' className={styles.section}>
       <p className={styles.title}>
         {t('solution.titleP1')}
         <span>{t('solution.titleP2')}</span>
@@ -64,21 +65,12 @@ const Solution: FC = () => {
         ) : null}
       </div>
       {isTabletOrMobile ? (
-        <div className={styles.mobileButtons}>
-          <ArrowButton
-            disabled={currentPage === 1}
-            colored
-            dark
-            reversed
-            onClick={() => handleScroll(1)}
-          />
-          <ArrowButton
-            disabled={currentPage === 2}
-            colored
-            dark
-            onClick={() => handleScroll(2)}
-          />
-        </div>
+        <MobileButtons
+          disabledLeft={currentPage === 1}
+          disabledRight={currentPage === 2}
+          onClickLeft={() => handleScroll(1)}
+          onClickRight={() => handleScroll(2)}
+        />
       ) : null}
       <Button
         style={{ margin: '40px auto' }}

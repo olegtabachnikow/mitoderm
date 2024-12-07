@@ -3,6 +3,7 @@ export type LocaleType = 'en' | 'he' | 'ru';
 
 export interface NavItem {
   text: string;
+  scrollId?: ScrollItems;
 }
 
 export interface HowToUseItem {
@@ -30,4 +31,10 @@ export interface FormDataType {
   name: { value: string; isValid: boolean };
   email: { value: string; isValid: boolean };
   phone: { value: string; isValid: boolean };
+}
+
+export enum ScrollItems {
+  gallery = 'gallery',
+  solution = 'solution',
+  mission = 'mission',
 }

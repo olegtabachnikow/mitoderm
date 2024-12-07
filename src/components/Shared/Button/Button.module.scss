@@ -27,7 +27,8 @@
   color: #ffffffb2;
 }
 
-.buttonColored:disabled {
+.buttonColored:disabled,
+.buttonColored.disabled:hover {
   background-color: lightgray;
   color: var(--colorWhite);
   border: 1px solid transparent;

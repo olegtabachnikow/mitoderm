@@ -4,12 +4,13 @@ import {
   AboutBulletItem,
   LanguageSwitchItem,
   SolutionItem,
+  ScrollItems,
 } from './types';
 
 export const navList: NavItem[] = [
-  { text: 'navigation.product' },
-  { text: 'navigation.results' },
-  { text: 'navigation.about' },
+  { text: 'navigation.product', scrollId: ScrollItems.solution },
+  { text: 'navigation.results', scrollId: ScrollItems.gallery },
+  { text: 'navigation.about', scrollId: ScrollItems.mission },
   { text: 'navigation.info' },
   { text: 'navigation.contact' },
 ];

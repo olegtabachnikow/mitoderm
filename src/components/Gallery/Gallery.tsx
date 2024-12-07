@@ -22,11 +22,11 @@ const Gallery: FC = async () => {
     }
 
   return (
-    <div className={styles.container}>
+    <section id='gallery' className={styles.container}>
       <h2 className={styles.title}>{t('title')}</h2>
       <GalleryItem itemList={itemList} />
       <GalleryPagination count={itemList.length} />
-    </div>
+    </section>
   );
 };
 

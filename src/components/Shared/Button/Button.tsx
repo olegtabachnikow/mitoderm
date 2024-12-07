@@ -31,7 +31,9 @@ const Button: FC<Props> = ({
       style={style}
       onClick={handleClick}
       disabled={disabled}
-      className={colored ? styles.buttonColored : styles.button}
+      className={`${colored ? styles.buttonColored : styles.button} ${
+        disabled ? styles.disabled : ''
+      }`}
     >
       {text}
     </button>

@@ -6,13 +6,17 @@ import { NavItem } from '@/types';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { useMediaQuery } from 'react-responsive';
+import Link from 'next/link';
+import useAppStore from '@/store/store';
 
 interface Props {
   isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Navigation: FC<Props> = ({ isOpen }) => {
+const Navigation: FC<Props> = ({ isOpen, setIsOpen }) => {
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
+  const toggleModal = useAppStore((state) => state.toggleModal);
   const t = useTranslations();
 
   const putImage = (index: number) => {
@@ -28,6 +32,11 @@ const Navigation: FC<Props> = ({ isOpen }) => {
       );
   };
 
+  const handleClick = () => {
+    setIsOpen(false);
+    toggleModal(true);
+  };
+
   return (
     <>
       {isTabletOrMobile ? (
@@ -36,20 +45,55 @@ const Navigation: FC<Props> = ({ isOpen }) => {
             className={`${styles.mobileNavigation} ${isOpen && styles.active}`}
           >
             {navList.map((item: NavItem, index: number) => (
-              <button key={index} className={styles.buttonMobile}>
-                {t(item.text)}
-                {putImage(index)}
-              </button>
+              <>
+                {item.scrollId ? (
+                  <Link
+                    onClick={() => setIsOpen(false)}
+                    href={`#${item.scrollId}`}
+                    key={index}
+                    className={styles.buttonMobile}
+                  >
+                    {t(item.text)}
+                    {putImage(index)}
+                  </Link>
+                ) : (
+                  <button
+                    onClick={handleClick}
+                    key={index}
+                    className={styles.buttonMobile}
+                  >
+                    {t(item.text)}
+                    {putImage(index)}
+                  </button>
+                )}
+              </>
             ))}
           </nav>
         </>
       ) : (
         <nav className={styles.navigation}>
           {navList.map((item: NavItem, index: number) => (
-            <button key={index} className={styles.button}>
-              {t(item.text)}
-              {putImage(index)}
-            </button>
+            <>
+              {item.scrollId ? (
+                <Link
+                  href={`#${item.scrollId}`}
+                  key={index}
+                  className={styles.button}
+                >
+                  {t(item.text)}
+                  {putImage(index)}
+                </Link>
+              ) : (
+                <button
+                  onClick={handleClick}
+                  key={index}
+                  className={styles.button}
+                >
+                  {t(item.text)}
+                  {putImage(index)}
+                </button>
+              )}
+            </>
           ))}
         </nav>
       )}

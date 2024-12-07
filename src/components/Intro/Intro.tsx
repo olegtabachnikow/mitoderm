@@ -13,7 +13,7 @@ const Button = dynamic(() => import('@/components/Shared/Button/Button'), {
 const Intro: FC = () => {
   const t = useTranslations();
   return (
-    <section className={styles.section}>
+    <section id='intro' className={styles.section}>
       <div className={styles.buttonBox}>
         <ArrowButton reversed />
       </div>

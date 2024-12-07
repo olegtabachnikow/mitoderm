@@ -6,6 +6,7 @@ import LanguageSwitch from '../LanguageSwitch/LanguageSwitch';
 import Navigation from '../Navigation/Navigation';
 import { useMediaQuery } from 'react-responsive';
 import BurgerButton from '@/components/Shared/BurgerButton/BurgerButton';
+import Link from 'next/link';
 
 const Header: FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -30,7 +31,7 @@ const Header: FC = () => {
         id='overlay'
       />
       <div className={styles.container}>
-        <div className={styles.logoContainer}>
+        <Link className={styles.logoContainer} href='#intro'>
           <Image
             src='/images/logo.svg'
             width={40}
@@ -39,8 +40,8 @@ const Header: FC = () => {
             alt='mitoderm logo'
           />
           <span className={styles.logoText}>MitoDerm</span>
-        </div>
-        <Navigation isOpen={isOpen} />
+        </Link>
+        <Navigation setIsOpen={setIsOpen} isOpen={isOpen} />
         <LanguageSwitch />
         {isTabletOrMobile && (
           <BurgerButton isOpen={isOpen} setIsOpen={setIsOpen} />

@@ -13,3 +13,9 @@
   color: var(--colorAccentLight);
   margin-bottom: 30px;
 }
+
+@media screen and (max-width: 1224px) {
+  .title {
+    font-size: var(--fontSizeMobH2);
+  }
+}

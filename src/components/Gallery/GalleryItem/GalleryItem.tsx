@@ -5,6 +5,7 @@ import styles from './GalleryItem.module.scss';
 import { useTranslations } from 'next-intl';
 import useAppStore from '@/store/store';
 import { useMediaQuery } from 'react-responsive';
+import MobileButtons from '@/components/Shared/MobileButtons/MobileButtons';
 
 interface Props {
   itemList: Array<[string, string]>;
@@ -51,7 +52,7 @@ const GalleryItem: FC<Props> = ({ itemList }) => {
         />
       ) : null}
       <div className={styles.itemWrapper}>
-        <div className={styles.imageBox} onScroll={(e) => console.log(123)}>
+        <div className={styles.imageBox}>
           {itemList.map((item, i) => (
             <div id={`item${i}`} className={styles.item} key={`key${i}`}>
               <img
@@ -64,14 +65,23 @@ const GalleryItem: FC<Props> = ({ itemList }) => {
                 src={`/images/beforeAfterExamples/${item[1]}`}
                 alt='result after usage exoxo'
               />
+              {isTabletOrMobile ? (
+                <div className={styles.itemLabel}>
+                  <span className={styles.roundLabel}>&</span>
+                  <span className={styles.label}>{t('gallery.before')}</span>
+                  <span className={styles.label}>{t('gallery.after')}</span>
+                </div>
+              ) : null}
             </div>
           ))}
         </div>
-        <div className={styles.itemLabel}>
-          <span className={styles.roundLabel}>&</span>
-          <span className={styles.label}>{t('gallery.before')}</span>
-          <span className={styles.label}>{t('gallery.after')}</span>
-        </div>
+        {isTabletOrMobile ? null : (
+          <div className={styles.itemLabel}>
+            <span className={styles.roundLabel}>&</span>
+            <span className={styles.label}>{t('gallery.before')}</span>
+            <span className={styles.label}>{t('gallery.after')}</span>
+          </div>
+        )}
       </div>
       {!isTabletOrMobile ? (
         <ArrowButton
@@ -79,6 +89,16 @@ const GalleryItem: FC<Props> = ({ itemList }) => {
           colored
           onClick={increment}
         />
+      ) : null}
+      {isTabletOrMobile ? (
+        <div className={styles.mobileButtinContainer}>
+          <MobileButtons
+            disabledLeft={galleryPage === 0}
+            disabledRight={galleryPage === itemList.length - 1}
+            onClickLeft={decrement}
+            onClickRight={increment}
+          />{' '}
+        </div>
       ) : null}
     </div>
   );

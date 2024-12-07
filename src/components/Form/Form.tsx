@@ -180,6 +180,7 @@ const Form: FC = () => {
       </div>
       {isTabletOrMobile ? null : (
         <Image
+          className={styles.desktopImage}
           width={620}
           height={664}
           src='/images/formImage.png'

@@ -7,7 +7,7 @@ import Button from '../Shared/Button/Button';
 const Mission: FC = () => {
   const t = useTranslations();
   return (
-    <section className={styles.container}>
+    <section id='mission' className={styles.container}>
       <div className={styles.bg} />
       <article className={styles.textContainer}>
         <p className={styles.title}>
