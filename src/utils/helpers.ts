@@ -1,5 +1,3 @@
-import { SolutionItem } from '@/types';
-
 export const combinedArray = (arr: Array<any>) =>
   arr
     .map((_, index, array) => {

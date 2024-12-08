@@ -2,7 +2,7 @@ import { FC } from 'react';
 import path from 'path';
 import { promises as fs } from 'fs';
 import styles from './Gallery.module.scss';
-import GalleryItem from './GalleryItem/GalleryItem';
+import GalleryWrapper from './GalleryWrapper/GalleryWrapper';
 import { getTranslations } from 'next-intl/server';
 import GalleryPagination from './GalleryPagination/GalleryPagination';
 
@@ -24,7 +24,7 @@ const Gallery: FC = async () => {
   return (
     <section id='gallery' className={styles.container}>
       <h2 className={styles.title}>{t('title')}</h2>
-      <GalleryItem itemList={itemList} />
+      <GalleryWrapper itemList={itemList} />
       <GalleryPagination count={itemList.length} />
     </section>
   );
