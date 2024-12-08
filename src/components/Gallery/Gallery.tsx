@@ -1,10 +1,17 @@
 import { FC } from 'react';
+import dynamic from 'next/dynamic';
 import path from 'path';
 import { promises as fs } from 'fs';
 import styles from './Gallery.module.scss';
-import GalleryWrapper from './GalleryWrapper/GalleryWrapper';
 import { getTranslations } from 'next-intl/server';
 import GalleryPagination from './GalleryPagination/GalleryPagination';
+
+const GalleryWrapper = dynamic(
+  () => import('@/components/Gallery/GalleryWrapper/GalleryWrapper'),
+  {
+    ssr: false,
+  }
+);
 
 const Gallery: FC = async () => {
   const t = await getTranslations('gallery');
