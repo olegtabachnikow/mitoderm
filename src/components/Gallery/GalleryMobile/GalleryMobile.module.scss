@@ -6,7 +6,6 @@
   max-width: 100%;
   width: 100%;
   border-radius: 32px;
-  max-height: 560px;
 }
 
 .imageBox {
@@ -87,4 +86,10 @@
 .mobileButtonContainer {
   width: 100%;
   padding-inline: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .itemWrapper {
+    max-height: 560px;
+  }
 }
