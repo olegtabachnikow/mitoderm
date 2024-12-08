@@ -21,7 +21,7 @@ const Gallery: FC = async () => {
   );
   const imageFilenames = await fs.readdir(imageDirectory);
   const itemList: Array<[string, string]> = [];
-  const sliderItemsArray = imageFilenames.slice(1);
+  const sliderItemsArray = imageFilenames;
 
   if (sliderItemsArray)
     for (let i = 0; i < sliderItemsArray.length; i += 2) {
