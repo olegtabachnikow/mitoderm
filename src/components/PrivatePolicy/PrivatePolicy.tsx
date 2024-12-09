@@ -20,7 +20,7 @@ const PrivatePolicy: FC = () => {
     <div className={styles.container}>
       <button onClick={() => toggleModal(false)} className={styles.closeButton}>
         <Image
-          src='/images/formCLoseButton.svg'
+          src='/images/formCloseButton.svg'
           width={30}
           height={30}
           alt='cross icon'
