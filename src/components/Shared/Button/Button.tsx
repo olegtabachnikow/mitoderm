@@ -20,9 +20,15 @@ const Button: FC<Props> = ({
   disabled = false,
   contact,
 }) => {
-  const toggleModal = useAppStore((state) => state.toggleModal);
+  const { toggleModal, setModalContent } = useAppStore((state) => state);
+
+  const openForm = () => {
+    setModalContent('form');
+    toggleModal(true);
+  };
+
   const handleClick = () => {
-    contact ? toggleModal(true) : null;
+    contact ? openForm() : null;
   };
 
   return (

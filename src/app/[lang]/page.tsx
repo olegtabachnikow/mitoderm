@@ -7,6 +7,7 @@ import Mission from '@/components/Mission/Mission';
 import Faq from '@/components/Faq/Faq';
 import Contact from '@/components/Contact/Contact';
 import Gallery from '@/components/Gallery/Gallery';
+import Reviews from '@/components/Reviews/Reviews';
 
 export default function HomePage({ params: { lang } }: any) {
   unstable_setRequestLocale(lang);
@@ -16,6 +17,7 @@ export default function HomePage({ params: { lang } }: any) {
       <HowCanBeUsed />
       <About />
       <Solution />
+      <Reviews />
       <Gallery />
       <Mission />
       <Faq />

@@ -38,3 +38,11 @@ export enum ScrollItems {
   solution = 'solution',
   mission = 'mission',
 }
+
+export type ModalType = 'form' | 'privatePolicy';
+
+export interface ReviewType {
+  name: string;
+  rating: number;
+  text: string;
+}

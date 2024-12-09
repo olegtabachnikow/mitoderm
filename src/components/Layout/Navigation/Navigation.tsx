@@ -16,7 +16,14 @@ interface Props {
 
 const Navigation: FC<Props> = ({ isOpen, setIsOpen }) => {
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
-  const toggleModal = useAppStore((state) => state.toggleModal);
+  const { toggleModal, setModalContent } = useAppStore((state) => state);
+
+  const randomString = () => (Math.random() + 1).toString(36).substring(7);
+
+  const openForm = () => {
+    setModalContent('form');
+    toggleModal(true);
+  };
   const t = useTranslations();
 
   const putImage = (index: number) => {
@@ -34,42 +41,40 @@ const Navigation: FC<Props> = ({ isOpen, setIsOpen }) => {
 
   const handleClick = () => {
     setIsOpen(false);
-    toggleModal(true);
+    openForm();
   };
 
   return (
     <>
       {isTabletOrMobile ? (
-        <>
-          <nav
-            className={`${styles.mobileNavigation} ${isOpen && styles.active}`}
-          >
-            {navList.map((item: NavItem, index: number) => (
-              <>
-                {item.scrollId ? (
-                  <Link
-                    onClick={() => setIsOpen(false)}
-                    href={`#${item.scrollId}`}
-                    key={index}
-                    className={styles.buttonMobile}
-                  >
-                    {t(item.text)}
-                    {putImage(index)}
-                  </Link>
-                ) : (
-                  <button
-                    onClick={handleClick}
-                    key={index}
-                    className={styles.buttonMobile}
-                  >
-                    {t(item.text)}
-                    {putImage(index)}
-                  </button>
-                )}
-              </>
-            ))}
-          </nav>
-        </>
+        <nav
+          className={`${styles.mobileNavigation} ${isOpen && styles.active}`}
+        >
+          {navList.map((item: NavItem, index: number) => (
+            <>
+              {item.scrollId ? (
+                <Link
+                  onClick={() => setIsOpen(false)}
+                  href={`#${item.scrollId}`}
+                  key={index + randomString()}
+                  className={styles.buttonMobile}
+                >
+                  {t(item.text)}
+                  {putImage(index)}
+                </Link>
+              ) : (
+                <button
+                  onClick={handleClick}
+                  key={index + randomString()}
+                  className={styles.buttonMobile}
+                >
+                  {t(item.text)}
+                  {putImage(index)}
+                </button>
+              )}
+            </>
+          ))}
+        </nav>
       ) : (
         <nav className={styles.navigation}>
           {navList.map((item: NavItem, index: number) => (
@@ -77,7 +82,7 @@ const Navigation: FC<Props> = ({ isOpen, setIsOpen }) => {
               {item.scrollId ? (
                 <Link
                   href={`#${item.scrollId}`}
-                  key={index}
+                  key={index + randomString()}
                   className={styles.button}
                 >
                   {t(item.text)}
@@ -86,7 +91,7 @@ const Navigation: FC<Props> = ({ isOpen, setIsOpen }) => {
               ) : (
                 <button
                   onClick={handleClick}
-                  key={index}
+                  key={index + randomString()}
                   className={styles.button}
                 >
                   {t(item.text)}

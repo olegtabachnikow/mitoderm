@@ -6,6 +6,8 @@ import styles from './Gallery.module.scss';
 import { getTranslations } from 'next-intl/server';
 import GalleryPagination from './GalleryPagination/GalleryPagination';
 
+const env = process.env.NODE_ENV;
+
 const GalleryWrapper = dynamic(
   () => import('@/components/Gallery/GalleryWrapper/GalleryWrapper'),
   {
@@ -21,7 +23,11 @@ const Gallery: FC = async () => {
   );
   const imageFilenames = await fs.readdir(imageDirectory);
   const itemList: Array<[string, string]> = [];
-  const sliderItemsArray = imageFilenames;
+  let sliderItemsArray: string[] = [];
+
+  if (env == 'development') {
+    sliderItemsArray = imageFilenames.slice(1);
+  } else sliderItemsArray = imageFilenames;
 
   if (sliderItemsArray)
     for (let i = 0; i < sliderItemsArray.length; i += 2) {

@@ -1,0 +1,44 @@
+.container {
+  background-color: var(--colorWhite);
+  padding: 24px 32px;
+  border-radius: 48px;
+  height: 100%;
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.name {
+  font-size: var(--fontSizeP1);
+}
+
+.stars {
+  display: flex;
+  gap: 5px;
+}
+
+.star {
+  width: 19px;
+  height: 19px;
+}
+
+.text {
+  font-size: var(--fontSizeP2);
+}
+
+.googleRow {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.googleTextBox {
+  display: flex;
+  flex-direction: column;
+}
+
+.colored {
+  color: #197bff;
+}
