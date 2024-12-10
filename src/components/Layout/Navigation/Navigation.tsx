@@ -51,7 +51,10 @@ const Navigation: FC<Props> = ({ isOpen, setIsOpen }) => {
           className={`${styles.mobileNavigation} ${isOpen && styles.active}`}
         >
           {navList.map((item: NavItem, index: number) => (
-            <>
+            <div
+              className={styles.linkContainerMobile}
+              key={`item${index + Math.random()}`}
+            >
               {item.scrollId ? (
                 <Link
                   onClick={() => setIsOpen(false)}
@@ -72,13 +75,16 @@ const Navigation: FC<Props> = ({ isOpen, setIsOpen }) => {
                   {putImage(index)}
                 </button>
               )}
-            </>
+            </div>
           ))}
         </nav>
       ) : (
         <nav className={styles.navigation}>
           {navList.map((item: NavItem, index: number) => (
-            <>
+            <div
+              className={styles.linkContainer}
+              key={`item${index + Math.random()}`}
+            >
               {item.scrollId ? (
                 <Link
                   href={`#${item.scrollId}`}
@@ -98,7 +104,7 @@ const Navigation: FC<Props> = ({ isOpen, setIsOpen }) => {
                   {putImage(index)}
                 </button>
               )}
-            </>
+            </div>
           ))}
         </nav>
       )}

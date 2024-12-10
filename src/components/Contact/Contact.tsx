@@ -10,6 +10,7 @@ const Contact: FC = () => {
       <div className={styles.content}>
         <div className={styles.cardContainer}>
           <iframe
+            title='map'
             className={styles.iframe}
             src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3381.742871905674!2d34.838356476322325!3d32.04915057397624!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151d4b0d109f21bb%3A0x3ea185837fd0354b!2z16jXpNeQ15wg15DXmdeq158gMzgsIFJhbWF0IEdhbg!5e0!3m2!1sru!2sil!4v1733341052563!5m2!1sru!2sil'
             style={{ border: 'none' }}

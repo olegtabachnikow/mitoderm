@@ -21,6 +21,7 @@ const Dot: FC<DotProps> = ({ colored, index, active, gallery }) => {
 
   return (
     <button
+      name='pagination dot'
       onClick={handleClick}
       className={`${colored ? styles.colored : ''} ${
         active ? styles.dotActive : styles.dot

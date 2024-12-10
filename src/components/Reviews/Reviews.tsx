@@ -100,7 +100,11 @@ const Reviews: FC = () => {
                 ))}
           </div>
         </div>
-        <img className={styles.image} src='/images/reviewsBG.png' />
+        <img
+          className={styles.image}
+          src='/images/reviewsBG.png'
+          alt='bottles of exosome'
+        />
       </div>
       {isTabletOrMobile ? (
         <div className={styles.mobileButtons}>

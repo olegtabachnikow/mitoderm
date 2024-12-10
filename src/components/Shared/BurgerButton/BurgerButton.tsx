@@ -10,6 +10,7 @@ interface Props {
 const BurgerButton: FC<Props> = ({ isOpen, setIsOpen }) => {
   return (
     <button
+      name='burger'
       onClick={() => setIsOpen(!isOpen)}
       className={`${styles.button} ${isOpen ? styles.active : ''}`}
     >
