@@ -6,21 +6,18 @@ import About from '@/components/About/About';
 import Mission from '@/components/Mission/Mission';
 import Faq from '@/components/Faq/Faq';
 import Contact from '@/components/Contact/Contact';
-import Solution from '@/components/Solution/Solution';
-import Gallery from '@/components/Gallery/Gallery';
-import Reviews from '@/components/Reviews/Reviews';
 
-// const Solution = dynamic(() => import('@/components/Solution/Solution'), {
-//   ssr: false,
-// });
+const Solution = dynamic(() => import('@/components/Solution/Solution'), {
+  ssr: false,
+});
 
-// const Gallery = dynamic(() => import('@/components/Gallery/Gallery'), {
-//   ssr: false,
-// });
+const Gallery = dynamic(() => import('@/components/Gallery/Gallery'), {
+  ssr: false,
+});
 
-// const Reviews = dynamic(() => import('@/components/Reviews/Reviews'), {
-//   ssr: false,
-// });
+const Reviews = dynamic(() => import('@/components/Reviews/Reviews'), {
+  ssr: false,
+});
 
 export default function HomePage({ params: { lang } }: any) {
   unstable_setRequestLocale(lang);
