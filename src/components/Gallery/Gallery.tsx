@@ -1,4 +1,3 @@
-'use client';
 import { FC } from 'react';
 import dynamic from 'next/dynamic';
 import path from 'path';

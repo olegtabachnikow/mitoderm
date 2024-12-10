@@ -6,12 +6,9 @@ import About from '@/components/About/About';
 import Mission from '@/components/Mission/Mission';
 import Faq from '@/components/Faq/Faq';
 import Contact from '@/components/Contact/Contact';
+import Gallery from '@/components/Gallery/Gallery';
 
 const Solution = dynamic(() => import('@/components/Solution/Solution'), {
-  ssr: false,
-});
-
-const Gallery = dynamic(() => import('@/components/Gallery/Gallery'), {
   ssr: false,
 });
 
