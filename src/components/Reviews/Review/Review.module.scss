@@ -42,3 +42,29 @@
 .colored {
   color: #197bff;
 }
+
+@media screen and (max-width: 1224px) {
+  .container {
+    gap: 10px;
+  }
+  .name {
+    font-size: var(--fontSizeMobH2);
+  }
+  .text {
+    font-size: var(--fontSizeMobP2);
+  }
+  .googleTextBox {
+    font-size: var(--fontSizeMobExtra);
+  }
+  .star {
+    width: 12px;
+    height: 12px;
+  }
+  .google {
+    width: 28px;
+    height: 28px;
+  }
+  .googleRow {
+    gap: 5px;
+  }
+}

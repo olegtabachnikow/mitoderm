@@ -2,7 +2,11 @@
   width: 100vw;
   position: relative;
   padding-block: 10px;
+}
+
+.contentWrapper {
   display: flex;
+  width: 100%;
   justify-content: flex-end;
 }
 
@@ -10,6 +14,7 @@
   position: absolute;
   top: 30px;
   left: 0px;
+  z-index: -1;
 }
 
 .containerInner {
@@ -56,10 +61,53 @@
   pointer-events: none;
 }
 
-.itemBox {
+.itemBox,
+.itemBoxMobile {
   display: flex;
   flex-direction: column;
   min-width: 100%;
   flex: 1;
   gap: 10px;
+}
+
+.itemBoxMobile {
+  flex-direction: row;
+}
+
+@media screen and (max-width: 1224px) {
+  .contentWrapper {
+    flex-direction: column;
+  }
+  .mobileButtons {
+    padding-inline: 20px;
+  }
+  .containerInner {
+    max-width: 100%;
+    width: 100%;
+    overflow: hidden;
+    order: 3;
+    margin-top: 20px;
+  }
+  .title {
+    order: 1;
+    font-size: var(--fontSizeMobH2);
+    margin: 20px 0 20px 20px;
+  }
+  .image {
+    order: 2;
+    width: 100%;
+    max-width: 100%;
+  }
+  .itemBoxMobile {
+    min-width: 98%;
+  }
+  .reviewBox {
+    width: 100%;
+    overflow: hidden;
+    padding: 0;
+    padding-inline: 20px;
+  }
+  .lastItem {
+    scroll-margin: 100px;
+  }
 }
