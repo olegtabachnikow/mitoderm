@@ -98,6 +98,12 @@
   .item2textBox .column {
     justify-content: flex-start;
   }
+  .contactsItemTitle {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
   .linkBox {
     position: absolute;
     bottom: 30px;
@@ -105,8 +111,5 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-  }
-  .contactsItemTitle {
-    margin-bottom: 20px;
   }
 }
