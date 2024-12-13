@@ -67,8 +67,23 @@ const Form: FC = () => {
 
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    console.log(formData);
-    setIsSent(true);
+    setIsSending(true);
+    try {
+      const response = await fetch('/api', {
+        method: 'POST',
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error(`response status: ${response.status}`);
+      }
+
+      setIsSending(false);
+      setIsSent(true);
+    } catch (err) {
+      setIsSending(false);
+      setIsSent(true);
+    }
     return;
   };
 
