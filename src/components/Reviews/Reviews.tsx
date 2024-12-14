@@ -1,7 +1,7 @@
 'use client';
 import { FC, useEffect } from 'react';
 import styles from './Reviews.module.scss';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import ArrowButton from '../Shared/ArrowButton/ArrowButton';
 import { reviews as items } from '@/constants';
 import { ReviewType } from '@/types';
@@ -14,6 +14,7 @@ const Reviews: FC = () => {
   const { reviewPage, setReviewPage, isFirstRender, setIsFirstRender } =
     useAppStore((state) => state);
   const t = useTranslations();
+  const locale = useLocale();
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
 
   const reviews = () => {
@@ -69,17 +70,22 @@ const Reviews: FC = () => {
                   disabled={reviewPage === 0}
                   onClick={decrement}
                   colored
-                  reversed
+                  reversed={locale === 'he' ? false : true}
                 />
                 <ArrowButton
                   disabled={reviewPage === reviews().length - 1}
                   onClick={increment}
                   colored
+                  reversed={locale === 'he'}
                 />
               </div>
             </div>
           )}
-          <div className={styles.reviewBox}>
+          <div
+            className={`${styles.reviewBox} ${
+              locale === 'he' ? styles.he : ''
+            }`}
+          >
             {isTabletOrMobile
               ? items.map((review: ReviewType, i: number) => (
                   <div

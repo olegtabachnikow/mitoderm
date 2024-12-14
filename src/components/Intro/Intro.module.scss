@@ -13,6 +13,9 @@
 .container {
   max-width: var(--contentWidthDesktop);
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .section span {
@@ -41,6 +44,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  width: 100%;
 }
 
 .text {

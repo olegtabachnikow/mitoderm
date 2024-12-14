@@ -15,7 +15,13 @@
   right: -5px;
   transform: translate(50%, -50%);
   user-select: none;
-  z-index: 10;
+  z-index: 8;
+}
+
+.container.he {
+  right: auto;
+  left: -5px;
+  transform: translate(-50%, -50%);
 }
 
 @media screen and (max-width: 1224px) {
@@ -25,5 +31,10 @@
     right: auto;
     bottom: 0;
     transform: translate(-50%, 50%);
+  }
+  .container.he {
+    left: auto;
+    right: 50%;
+    transform: translate(50%, 50%);
   }
 }

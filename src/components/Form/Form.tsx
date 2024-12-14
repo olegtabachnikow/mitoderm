@@ -3,7 +3,7 @@ import { FC, FormEvent, useState, useEffect } from 'react';
 import styles from './Form.module.scss';
 import Image from 'next/image';
 import Button from '../Shared/Button/Button';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import FormInput from './FormInput/FormInput';
 import { emailRegex } from '@/constants';
 import { useMediaQuery } from 'react-responsive';
@@ -15,6 +15,7 @@ import Loader from '../Shared/Loader/Loader';
 const Form: FC = () => {
   const toggleModal = useAppStore((state) => state.toggleModal);
   const t = useTranslations();
+  const locale = useLocale();
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
   const [isChecked, setIsChecked] = useState<boolean>(false);
   const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true);
@@ -87,7 +88,10 @@ const Form: FC = () => {
 
   return (
     <div className={styles.container}>
-      <button className={styles.closeButton} onClick={() => toggleModal(false)}>
+      <button
+        className={`${styles.closeButton} ${locale === 'he' ? styles.he : ''} `}
+        onClick={() => toggleModal(false)}
+      >
         <Image
           src='/images/formCloseButton.svg'
           width={20}
@@ -151,7 +155,11 @@ const Form: FC = () => {
                 placeholder='586 412 924'
                 validator={validatePhone}
               />
-              <label className={styles.checkboxLabel}>
+              <label
+                className={`${styles.checkboxLabel} ${
+                  locale === 'he' ? styles.he : ''
+                }`}
+              >
                 {t('form.checkboxLabel')}
                 <input
                   checked={isChecked}
@@ -168,7 +176,9 @@ const Form: FC = () => {
                 colored
                 text={t('buttons.requestCallback')}
               />
-              <div className={styles.row}>
+              <div
+                className={`${styles.row} ${locale === 'he' ? styles.he : ''}`}
+              >
                 <Image
                   src='/images/lockIcon.svg'
                   width={14}

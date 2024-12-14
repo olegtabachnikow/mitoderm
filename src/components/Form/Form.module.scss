@@ -65,6 +65,10 @@
   overflow: hidden;
 }
 
+.checkboxLabel.he .customCheckbox {
+  margin: 0 0 0 15px;
+}
+
 .checkboxLabel input {
   display: none;
 }
@@ -84,6 +88,10 @@
   margin: 0;
 }
 
+.row.he img {
+  margin: 0 0 0 10px;
+}
+
 .closeButton {
   position: absolute;
   background-color: var(--colorBG);
@@ -97,6 +105,10 @@
   justify-content: center;
   align-items: center;
   transition: all 0.3s linear;
+}
+.closeButton.he {
+  right: auto;
+  left: 20px;
 }
 
 .closeButton:hover {

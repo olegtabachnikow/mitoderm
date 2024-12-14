@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import styles from './GalleryDesktop.module.scss';
 import ArrowButton from '@/components/Shared/ArrowButton/ArrowButton';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 
 interface Props {
   disabledLeft: boolean;
@@ -19,11 +19,12 @@ const GalleryDesktop: FC<Props> = ({
   items,
 }) => {
   const t = useTranslations();
+  const locale = useLocale();
   return (
     <>
       <ArrowButton
         disabled={disabledLeft}
-        reversed
+        reversed={locale === 'he' ? false : true}
         colored
         onClick={onClickLeft}
       />
@@ -50,7 +51,12 @@ const GalleryDesktop: FC<Props> = ({
           <span className={styles.label}>{t('gallery.after')}</span>
         </div>
       </div>
-      <ArrowButton disabled={disabledRight} colored onClick={onClickRight} />
+      <ArrowButton
+        reversed={locale === 'he'}
+        disabled={disabledRight}
+        colored
+        onClick={onClickRight}
+      />
     </>
   );
 };

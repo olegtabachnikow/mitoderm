@@ -1,12 +1,18 @@
 import { FC } from 'react';
 import styles from './RoundLabel.module.scss';
+import { useLocale } from 'next-intl';
 
 interface Props {
   text: string;
 }
 
 const RoundLabel: FC<Props> = ({ text }) => {
-  return <div className={styles.container}>{text}</div>;
+  const locale = useLocale();
+  return (
+    <div className={`${styles.container} ${locale === 'he' ? styles.he : ''}`}>
+      {text}
+    </div>
+  );
 };
 
 export default RoundLabel;

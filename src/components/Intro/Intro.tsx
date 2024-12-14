@@ -15,9 +15,12 @@ const Intro: FC = () => {
   const locale = useLocale();
 
   return (
-    <section id='intro' className={styles.section}>
+    <section
+      id='intro'
+      className={`${styles.section} ${locale === 'he' ? styles.reversed : ''}`}
+    >
       <div className={styles.buttonBox}>
-        <ArrowButton reversed />
+        <ArrowButton reversed={locale === 'he' ? false : true} />
       </div>
       <div className={styles.container}>
         <span>
@@ -38,7 +41,7 @@ const Intro: FC = () => {
         </div>
       </div>
       <div className={styles.buttonBox}>
-        <ArrowButton />
+        <ArrowButton reversed={locale === 'he'} />
       </div>
       <Image
         className={styles.lines}

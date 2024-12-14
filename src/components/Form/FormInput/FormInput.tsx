@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from 'react';
 import styles from './FormInput.module.scss';
+import { useLocale } from 'next-intl';
 
 interface Props {
   validator: (data: string) => string;
@@ -28,6 +29,7 @@ const FormInput: FC<Props> = ({
 }) => {
   const [data, setData] = useState<string>('');
   const [error, setError] = useState<string>('');
+  const locale = useLocale();
 
   const onChange = (data: string) => {
     setData(data);
@@ -44,6 +46,7 @@ const FormInput: FC<Props> = ({
     <label className={styles.inputLabel}>
       {label}
       <input
+        dir={locale === 'he' ? 'rtl' : 'ltr'}
         className={error ? styles.error : ''}
         value={data}
         onChange={(e) => onChange(e.target.value)}

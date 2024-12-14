@@ -1,7 +1,7 @@
 'use client';
 import { FC, useState } from 'react';
 import styles from './Solution.module.scss';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import Button from '../Shared/Button/Button';
 import { solutionItems } from '@/constants';
 import { combinedArray } from '@/utils/helpers';
@@ -14,6 +14,7 @@ import MobileButtons from '../Shared/MobileButtons/MobileButtons';
 const Solution: FC = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const t = useTranslations();
+  const locale = useLocale();
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
 
   const handleScroll = (arg: 1 | 2) => {
@@ -40,7 +41,7 @@ const Solution: FC = () => {
           <ArrowButton
             disabled={currentPage === 1}
             colored
-            reversed
+            reversed={locale === 'he' ? false : true}
             onClick={() => handleScroll(1)}
           />
         ) : null}
@@ -61,6 +62,7 @@ const Solution: FC = () => {
             disabled={currentPage === 2}
             colored
             onClick={() => handleScroll(2)}
+            reversed={locale === 'he'}
           />
         ) : null}
       </div>

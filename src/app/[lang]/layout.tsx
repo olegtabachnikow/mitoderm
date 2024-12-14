@@ -52,7 +52,10 @@ export default async function RootLayout({
   return (
     <html lang={params.lang}>
       <NextIntlClientProvider messages={messages}>
-        <body className={rubik.className}>
+        <body
+          className={rubik.className}
+          dir={params.lang === 'he' ? 'rtl' : 'ltr'}
+        >
           <Header />
           <Modal />
           {children}

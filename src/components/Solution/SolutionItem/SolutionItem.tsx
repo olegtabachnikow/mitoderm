@@ -2,7 +2,7 @@ import { FC } from 'react';
 import styles from './SolutionItem.module.scss';
 import Image from 'next/image';
 import { SolutionItem as SolutionItemType } from '@/types';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { useMediaQuery } from 'react-responsive';
 import RoundLabel from '@/components/Shared/RoundLabel/RoundLabel';
 
@@ -20,6 +20,7 @@ function splitArray<T>(arr: T[]): [T[], T[]] {
 
 const SolutionItem: FC<Props> = ({ item, withLabel }) => {
   const t = useTranslations();
+  const locale = useLocale();
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
   const { imageUrl, title, text } = item;
   const bulletsArray = splitArray(text);
@@ -36,7 +37,11 @@ const SolutionItem: FC<Props> = ({ item, withLabel }) => {
         <div className={styles.textContainer}>
           {
             <>
-              <div className={styles.firstColumn}>
+              <div
+                className={`${styles.firstColumn} ${
+                  locale === 'he' ? styles.he : ''
+                }`}
+              >
                 {bulletsArray[0].map((el: string, i: number) => (
                   <span key={i} className={styles.text}>
                     {t(el)}
