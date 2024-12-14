@@ -74,13 +74,19 @@ const Contact: FC = () => {
                 <div className={styles.linkBox}>
                   <ContactLink
                     imageLink='/images/contacts/instagram.svg'
-                    url=''
+                    url={process.env.NEXT_PUBLIC_LINK_INSTAGRAM as string}
                   />
-                  <ContactLink imageLink='/images/contacts/tiktok.svg' url='' />
-                  <ContactLink imageLink='/images/contacts/google.svg' url='' />
+                  <ContactLink
+                    imageLink='/images/contacts/tiktok.svg'
+                    url={process.env.NEXT_PUBLIC_LINK_TIKTOK as string}
+                  />
+                  <ContactLink
+                    imageLink='/images/contacts/google.svg'
+                    url={process.env.NEXT_PUBLIC_LINK_GOOGLE as string}
+                  />
                   <ContactLink
                     imageLink='/images/contacts/facebook.svg'
-                    url=''
+                    url={process.env.NEXT_PUBLIC_LINK_FACEBOOK as string}
                   />
                 </div>
               </div>

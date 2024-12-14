@@ -10,6 +10,7 @@ interface Props {
   submit?: boolean;
   disabled?: boolean;
   contact?: boolean;
+  onClick?: () => any;
 }
 
 const Button: FC<Props> = ({
@@ -19,6 +20,7 @@ const Button: FC<Props> = ({
   submit,
   disabled = false,
   contact,
+  onClick,
 }) => {
   const { toggleModal, setModalContent } = useAppStore((state) => state);
 
@@ -28,7 +30,7 @@ const Button: FC<Props> = ({
   };
 
   const handleClick = () => {
-    contact ? openForm() : null;
+    contact ? openForm() : onClick ? onClick() : null;
   };
 
   return (

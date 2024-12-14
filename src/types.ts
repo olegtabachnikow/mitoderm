@@ -37,6 +37,7 @@ export enum ScrollItems {
   gallery = 'gallery',
   solution = 'solution',
   mission = 'mission',
+  about = 'about',
 }
 
 export type ModalType = 'form' | 'privatePolicy';

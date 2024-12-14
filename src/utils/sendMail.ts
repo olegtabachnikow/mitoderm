@@ -1,14 +1,18 @@
-import { NextApiResponse, NextApiRequest } from 'next';
+'use server';
 const nodemailer = require('nodemailer');
+import { FormDataType } from '@/types';
 
-export async function POST(request: NextApiRequest, response: NextApiResponse) {
+export async function sendData(formData: any) {
+  'use server';
   const username = process.env.NEXT_PUBLIC_EMAIL_USERNAME;
   const password = process.env.NEXT_PUBLIC_EMAIL_PASSWORD;
   const myEmail = process.env.NEXT_PUBLIC_PERSONAL_EMAIL;
 
-  const formData = await request.body;
-
-  const { name, email, phone } = JSON.parse(formData);
+  const { name, email, phone } = {
+    name: formData.name.value,
+    email: formData.email.value,
+    phone: formData.phone.value,
+  };
 
   const transporter = nodemailer.createTransport({
     service: 'Gmail',
@@ -26,14 +30,12 @@ export async function POST(request: NextApiRequest, response: NextApiResponse) {
       to: myEmail,
       subject: `New form submit from ${name}`,
       html: `
-        <p>Name: ${name} </p>
-        <p>Email: ${email} </p>
-        <p>Phone number: ${phone} </p>
-        `,
+      <p>Name: ${name} </p>
+      <p>Email: ${email} </p>
+      <p>Phone number: ${phone} </p>
+      `,
     });
-
-    response.json({ message: 'Success: email was sent' });
   } catch (error) {
-    response.status(500).json({ message: 'COULD NOT SEND MESSAGE' });
+    return new Error('Something goes wrong');
   }
 }

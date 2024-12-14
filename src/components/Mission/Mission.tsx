@@ -27,7 +27,7 @@ const Mission: FC = () => {
           {t('dream.textP7')}
         </p>
         <div className={styles.buttonContainer}>
-          <Button colored text={t('buttons.contactForSolutions')} />
+          <Button contact colored text={t('buttons.contactForSolutions')} />
         </div>
       </article>
     </section>

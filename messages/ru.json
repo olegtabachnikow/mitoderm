@@ -1,142 +1,141 @@
 {
   "navigation": {
-    "product": "Products",
-    "results": "Results",
-    "about": "About us",
-    "info": "More info",
-    "contact": "Contact us"
+    "product": "Продукция",
+    "results": "Результаты",
+    "about": "О нас",
+    "info": "Дополнительная информация",
+    "contact": "Связаться с нами"
   },
   "buttons": {
-    "contact": "Contact us",
-    "learnMore": "Learn More",
-    "moreAbout": "More About",
-    "contactForPrice": "Contact for Price details",
-    "contactForInfo": "Contact for More Info",
-    "requestCallback": "Request A Callback",
-    "contactForSolutions": "Contact for personal solutions"
+    "contact": "Связаться с нами",
+    "learnMore": "Узнать больше",
+    "moreAbout": "Подробнее о продукте",
+    "contactForPrice": "Уточнить цену",
+    "contactForInfo": "Получить дополнительную информацию",
+    "requestCallback": "Заказать обратный звонок",
+    "contactForSolutions": "Индивидуальные решения"
   },
   "form": {
-    "titleP1": "Get Personalized",
-    "titleP2": "Solutions ",
-    "titleP3": "for Your Practice",
-    "subtitleP1": "Our Specialist Will Reach Out ",
-    "subtitleP2": "Within 30 Minutes",
-    "placeholderInputName": "Name",
+    "titleP1": "Получите персонализированные",
+    "titleP2": "решения ",
+    "titleP3": "для вашей практики",
+    "subtitle": "Наш специалист свяжется с вами",
+    "placeholderInputName": "Имя",
     "placeholderEmailName": "E-mail",
-    "placeholderPhoneName": "Phone Number",
-    "checkboxLabel": "I agree with rules of Mitoderm *",
-    "sharing": "Your information will never be shared with third parties *",
+    "placeholderPhoneName": "Номер телефона",
+    "checkboxLabel": "Я согласен(а) с правилами MitoDerm *",
+    "sharing": "Ваша информация не будет передана третьим лицам *",
     "errors": {
-      "name_length": "Name must be at least 3 characters",
-      "name_required": "Name is required",
-      "email_required": "Email is required",
-      "email_invalid": "Invalid email",
-      "phone_required": "Phone number is required",
-      "phone_length": "Phone number must be at least 9 characters"
+      "name_length": "Имя должно содержать не менее 3 символов",
+      "name_required": "Имя обязательно к заполнению",
+      "email_required": "E-mail обязателен к заполнению",
+      "email_invalid": "Некорректный формат E-mail",
+      "phone_required": "Номер телефона обязателен к заполнению",
+      "phone_length": "Номер телефона должен содержать не менее 9 символов"
     },
     "sent": {
-      "mobTitle": "Congratulations!",
-      "text": "Your form has been submitted ",
-      "textColored": "successfully"
+      "mobTitle": "Поздравляем!",
+      "text": "Ваша форма успешно ",
+      "textColored": "отправлена"
     }
   },
   "intro": {
-    "subtitleP1": "Korean product",
-    "subtitleP2": "Official distributor",
-    "title": "Exoxe Exosome in Israel",
-    "text": "MitoDerm combines advanced aesthetic technology with science to bring innovative solutions to the field of aesthetics. Are you a doctor or cosmetologist looking to enhance your services? Let's innovate together!"
+    "subtitleP1": "Корейский продукт",
+    "subtitleP2": "Официальный дистрибьютор",
+    "title": "EXOXE Экзосомы в Израиле",
+    "text": "MitoDerm сочетает передовые эстетические технологии и научный подход, предлагая инновационные решения в сфере косметологии. Вы — врач или косметолог, стремящийся улучшить свои услуги? Давайте совершенствоваться вместе!"
   },
   "howToUse": {
-    "titleP1": "How ",
-    "titleP2": "Exosome",
-    "titleP3": " can be used",
-    "item1": "Post-Surgery scars Recovery",
-    "item2": "Acne and post-acne Scars",
-    "item3": "Hair Loss treatment",
-    "item4": "Facial Skin Rejuvenation"
+    "titleP1": "Как можно использовать ",
+    "titleP2": "экзосомы",
+    "titleP3": " EXOXE",
+    "item1": "Восстановление рубцов после операций",
+    "item2": "Лечение акне и постакне, рубцов",
+    "item3": "Терапия выпадения волос",
+    "item4": "Омоложение кожи лица"
   },
   "about": {
-    "titleP1": "What is ",
-    "titleP2": "Exosome",
-    "text1": "Exosomes have gained attention in the field of aesthetics due to their potential for ",
-    "text1Colored": "skin rejuvenation, anti-aging effects, and breakthroughs in treating acne scars and hair loss.",
-    "text2": "These exosomes are rich in growth factors, cytokines, and other bioactive molecules that have the potential to promote tissue regeneration, collagen synthesis, and provide a more radiant youthful appearance. Combined with ",
-    "text2Colored": "advanced technologies, exosomes offer innovative solutions for improving skin texture, reducing scarring, and revitalizing hair follicles.",
-    "itemExp1": "Milliard cells",
-    "itemExp2": "Inflammation Reduction",
-    "itemExp3": "Proteins",
-    "itemExp4": "Times faster",
-    "itemExp5": "Nanometers"
+    "titleP1": "Что такое ",
+    "titleP2": "экзосомы",
+    "text1": "Экзосомы привлекают внимание в сфере эстетики благодаря своему потенциалу в ",
+    "text1Colored": "омоложении кожи, антивозрастном воздействии, а также эффективных решениях в лечении рубцов от акне и выпадения волос.",
+    "text2": "Эти экзосомы богаты факторами роста, цитокинами и прочими биоактивными компонентами, способными стимулировать регенерацию тканей, синтез коллагена, а также обеспечить сияние и более молодой вид. В сочетании с ",
+    "text2Colored": "передовыми технологиями экзосомы предлагают инновационные подходы к улучшению текстуры кожи, снижению выраженности рубцов и укреплению волосяных фолликулов.",
+    "itemExp1": "Миллиарды клеток",
+    "itemExp2": "Снижение воспаления",
+    "itemExp3": "Белки",
+    "itemExp4": "В несколько раз быстрее",
+    "itemExp5": "Нанометры"
   },
   "solution": {
-    "titleP1": "Our Solution - ",
+    "titleP1": "Наше решение — ",
     "titleP2": "Exoxe",
-    "titleP3": " Exosome",
-    "subtitle": "Only for professional usage",
-    "item1title": "Pure exo - lyophilized powder 50mg",
-    "item1textP1": "Hydrolyzed Collagen - 886,000PPM",
-    "item1textP2": "Collagen - 100,000PPM",
-    "item1textP3": "Sodium Hyaluronate",
-    "item1textP4": "Trehalose",
-    "item2title": "Sterilized ha solution 5ml",
-    "item2textP1": "Aqua",
-    "item2textP2": "Sodium Hyaluronate",
-    "usage": "Only for professional usage."
+    "titleP3": " Экзосомы",
+    "subtitle": "Только для профессионального использования",
+    "item1title": "Чистые экзо – лиофилизированный порошок 50 мг",
+    "item1textP1": "Гидролизованный коллаген – 886 000 PPM",
+    "item1textP2": "Коллаген – 100 000 PPM",
+    "item1textP3": "Гиалуронат натрия",
+    "item1textP4": "Трегалоза",
+    "item2title": "Стерильный раствор гиалуроновой кислоты 5 мл",
+    "item2textP1": "Вода",
+    "item2textP2": "Гиалуронат натрия",
+    "usage": "Только для профессионального применения."
   },
   "faq": {
-    "title": "Faqs",
+    "title": "Частые вопросы",
     "item1": {
-      "title": "What are exosomes?",
-      "text": "Exosomes are tiny vesicles, rich in growth factors, proteins, and regenerative signals. These powerful messengers interact with your body’s cells, stimulating healing and rejuvenation."
+      "title": "Что такое экзосомы?",
+      "text": "Экзосомы — это крошечные везикулы, насыщенные факторами роста, белками и регенеративными сигналами. Эти мощные «посланники» взаимодействуют с клетками организма, стимулируя процессы заживления и омоложения."
     },
     "item2": {
-      "title": "How do exosomes work?",
-      "text": "Exosomes deliver growth factors, proteins, and regenerative signals directly to your body's target cells. When applied to a treatment area, they communicate with these cells to promote repair, regeneration, and rejuvenation. By harnessing your body's natural healing processes, exosome therapy stimulates tissue renewal, boosts collagen production, and enhances overall cellular health. The result is significant improvement in the treated area—whether it's skin, hair or other specific regions."
+      "title": "Как работают экзосомы?",
+      "text": "Экзосомы доставляют факторы роста, белки и сигналы регенерации непосредственно к целевым клеткам вашего организма. При нанесении на проблемную зону они «общаются» с клетками, стимулируя восстановление, регенерацию и омоложение. Опираясь на естественные процессы заживления, терапия экзосомами усиливает обновление тканей, повышает выработку коллагена и улучшает общее состояние клеток. Результат — заметное улучшение в выбранной области, будь то кожа, волосы или другие зоны."
     },
     "item3": {
-      "title": "What conditions are helped by exosomes?",
-      "text": "At Mitoderm, our exosome therapy offers transformative solutions—including skin rejuvenation to enhance texture and reduce signs of aging; hair restoration to promote growth and address thinning hair; reduction of acne scars for smoother skin and post-procedure healing to accelerate recovery—all by unlocking your body’s natural ability to renew."
+      "title": "При каких проблемах помогают экзосомы?",
+      "text": "В компании Mitoderm наша терапия экзосомами предлагает преобразующие решения — от омоложения кожи, улучшающего её текстуру и уменьшающего признаки старения, до восстановления волос и устранения их истончения, снижения выраженности рубцов от акне и ускорения заживления после процедур. Всё это достигается за счёт раскрытия естественных возможностей вашего организма к обновлению."
     }
   },
   "reviews": {
-    "title": "Real Reviews"
+    "title": "Реальные отзывы"
   },
   "gallery": {
-    "title": "Gallery",
-    "before": "Before",
-    "after": "After"
+    "title": "Галерея",
+    "before": "До",
+    "after": "После"
   },
   "dream": {
-    "titleP1": "Your Dream",
-    "titleP2": "is Our Mission",
-    "textP1": "MitoDerm fulfills a vision by focusing on the ",
-    "textP2": "combination of beauty and technology. ",
-    "textP3": "The company leads the skincare industry by providing innovative and effective solutions to professionals in the field of aesthetics.",
-    "textP4": "Enhance your confidence ",
-    "textP5": "with our advanced exosome treatments. At MitoDerm, we provide cutting-edge solutions for skin rejuvenation, anti-aging, hair thinning, and skin concerns, tailored to ",
-    "textP6": "meet your unique needs. ",
-    "textP7": "Experience our commitment to quality and care in a supportive environment where you can feel empowered and revitalized."
+    "titleP1": "Ваша мечта",
+    "titleP2": "— наша миссия",
+    "textP1": "MitoDerm воплощает видение, уделяя особое внимание ",
+    "textP2": "сочетанию красоты и технологий. ",
+    "textP3": "Компания лидирует в индустрии ухода за кожей, предлагая инновационные и эффективные решения для профессионалов в сфере эстетики.",
+    "textP4": "Повышайте свою уверенность ",
+    "textP5": "с помощью наших передовых экзосомальных процедур. В MitoDerm мы предлагаем прогрессивные решения для омоложения кожи, антивозрастного ухода, против выпадения волос и устранения проблем с кожей, адаптированные ",
+    "textP6": "под ваши индивидуальные потребности. ",
+    "textP7": "Оцените наш высокий стандарт качества и заботы в атмосфере поддержки, где вы почувствуете себя обновлёнными и полными сил."
   },
   "contactUs": {
-    "item1title": "Contact Us",
-    "phone": "Phone",
-    "phoneText": "For all details: ",
-    "address": "Address",
-    "addressText": "רפאל איתן 38, Ramat Gan, 5590500",
-    "email": "Email",
+    "item1title": "Связаться с нами",
+    "phone": "Телефон",
+    "phoneText": "Для получения подробностей:",
+    "address": "Адрес",
+    "addressText": "רפאל איתן 38, Рамат-Ган, 5590500",
+    "email": "E-mail",
     "emailText": "Mitoderm@gmail.com",
-    "item2title": "Office Hours",
-    "workWeek": "Sunday - Thursday",
-    "friday": "Friday",
-    "fridayText": "By appointment only",
-    "saturday": "Saturday",
-    "closed": "Closed",
-    "followUs": "Follow us on"
+    "item2title": "Часы работы",
+    "workWeek": "Воскресенье - Четверг",
+    "friday": "Пятница",
+    "fridayText": "Только по предварительной записи",
+    "saturday": "Суббота",
+    "closed": "Закрыто",
+    "followUs": "Подписывайтесь на нас"
   },
   "footer": {
-    "copyright": "© 2024 Mitoderm. All Rights Reserved.",
-    "accessibility": "Accessibility Statement",
-    "privacy": "Privacy Policy",
+    "copyright": "© 2024 Mitoderm. Все права защищены.",
+    "accessibility": "Декларация о доступности",
+    "privacy": "Политика конфиденциальности",
     "group": "SinoSciences Group"
   }
 }

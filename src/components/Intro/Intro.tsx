@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import dynamic from 'next/dynamic';
 import styles from './Intro.module.scss';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import ArrowButton from '../Shared/ArrowButton/ArrowButton';
 import Image from 'next/image';
 import DotPagination from '../Shared/DotPagination/DotPagination';
@@ -12,6 +12,8 @@ const Button = dynamic(() => import('@/components/Shared/Button/Button'), {
 
 const Intro: FC = () => {
   const t = useTranslations();
+  const locale = useLocale();
+
   return (
     <section id='intro' className={styles.section}>
       <div className={styles.buttonBox}>
@@ -23,7 +25,9 @@ const Intro: FC = () => {
           <span className={styles.dot}>&#x2022;</span>
           <span>{t('intro.subtitleP2')}</span>
         </span>
-        <h1 className={styles.title}>{t('intro.title')}</h1>
+        <h1 className={`${styles.title} ${locale === 'ru' ? styles.ru : ''}`}>
+          {t('intro.title')}
+        </h1>
         <div className={styles.row}>
           <Button
             text={t('buttons.contact')}
@@ -44,6 +48,7 @@ const Intro: FC = () => {
         alt='lines'
       />
       <DotPagination
+        intro
         count={3}
         style={{
           position: 'absolute',

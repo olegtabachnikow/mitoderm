@@ -9,9 +9,16 @@ interface Props {
   style?: CSSProperties;
   colored?: boolean;
   gallery?: boolean;
+  intro?: boolean;
 }
 
-const DotPagination: FC<Props> = ({ colored, count, style, gallery }) => {
+const DotPagination: FC<Props> = ({
+  colored,
+  count,
+  style,
+  gallery,
+  intro,
+}) => {
   const galleryPage = useAppStore((state) => state.galleryPage);
   const arr = Array.from(Array(count).keys());
   return (
@@ -22,7 +29,7 @@ const DotPagination: FC<Props> = ({ colored, count, style, gallery }) => {
           colored={colored}
           key={i}
           index={i}
-          active={galleryPage === i}
+          active={intro ? i === 0 : galleryPage === i}
         />
       ))}
     </div>

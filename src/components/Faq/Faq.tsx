@@ -6,7 +6,7 @@ import FaqItem from './FaqItem/FaqItem';
 const Faq: FC = () => {
   const t = useTranslations();
   return (
-    <section className={styles.container}>
+    <section id='faq' className={styles.container}>
       <div className={styles.containerInner}>
         <span className={styles.title}>{t('faq.title')}</span>
         <div className={styles.itemBox}>

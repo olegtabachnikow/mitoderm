@@ -1,9 +1,16 @@
+'use client';
 import { FC } from 'react';
 import styles from './HowCaBeUsed.module.scss';
 import { useTranslations } from 'next-intl';
 import { howToUseItemList } from '@/constants';
 import UsageItem from './UsageItem/UsageItem';
 import Button from '../Shared/Button/Button';
+
+const scrollTo = () => {
+  const element = document.getElementById('about');
+  if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  return;
+};
 
 const HowCanBeUsed: FC = () => {
   const t = useTranslations();
@@ -23,7 +30,7 @@ const HowCanBeUsed: FC = () => {
           />
         ))}
       </div>
-      <Button colored text={t('buttons.learnMore')} />
+      <Button colored onClick={scrollTo} text={t('buttons.learnMore')} />
     </section>
   );
 };

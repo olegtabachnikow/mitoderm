@@ -1,3 +1,4 @@
+'use client';
 import { FC } from 'react';
 import styles from './About.module.scss';
 import Image from 'next/image';
@@ -7,10 +8,16 @@ import { AboutBulletItem } from '@/types';
 import AboutItem from './AboutItem/AboutItem';
 import Button from '../Shared/Button/Button';
 
+const scrollTo = () => {
+  const element = document.getElementById('faq');
+  if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  return;
+};
+
 const About: FC = () => {
   const t = useTranslations();
   return (
-    <section className={styles.section}>
+    <section id='about' className={styles.section}>
       <article className={styles.article}>
         <div className={styles.textContainer}>
           <h2>
@@ -39,6 +46,7 @@ const About: FC = () => {
         style={{ marginBlock: 40 }}
         colored
         text={t('buttons.moreAbout')}
+        onClick={scrollTo}
       />
     </section>
   );

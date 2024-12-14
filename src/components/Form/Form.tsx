@@ -9,6 +9,8 @@ import { emailRegex } from '@/constants';
 import { useMediaQuery } from 'react-responsive';
 import useAppStore from '@/store/store';
 import type { FormDataType } from '@/types';
+import { sendData } from '@/utils/sendMail';
+import Loader from '../Shared/Loader/Loader';
 
 const Form: FC = () => {
   const toggleModal = useAppStore((state) => state.toggleModal);
@@ -68,22 +70,9 @@ const Form: FC = () => {
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setIsSending(true);
-    try {
-      const response = await fetch('/api', {
-        method: 'POST',
-        body: JSON.stringify(formData),
-      });
-
-      if (!response.ok) {
-        throw new Error(`response status: ${response.status}`);
-      }
-
-      setIsSending(false);
+    sendData(formData).then((res) => {
       setIsSent(true);
-    } catch (err) {
-      setIsSending(false);
-      setIsSent(true);
-    }
+    });
     return;
   };
 
@@ -119,6 +108,8 @@ const Form: FC = () => {
               <span>{t('form.sent.textColored')}</span>
             </p>
           </>
+        ) : isSending ? (
+          <Loader />
         ) : (
           <>
             <h2>
@@ -127,10 +118,7 @@ const Form: FC = () => {
               <span>{t('form.titleP2')}</span>
               {t('form.titleP3')}
             </h2>
-            <p>
-              {t('form.subtitleP1')}
-              <span>{t('form.subtitleP2')}</span>
-            </p>
+            <p>{t('form.subtitle')}</p>
             <form
               noValidate
               className={styles.form}
