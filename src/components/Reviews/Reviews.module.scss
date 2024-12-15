@@ -95,7 +95,7 @@
   .title {
     order: 1;
     font-size: var(--fontSizeMobH2);
-    margin: 20px 0 20px 20px;
+    margin: 20px;
   }
   .image {
     order: 2;
@@ -110,6 +110,9 @@
     overflow: hidden;
     padding: 0;
     padding-inline: 20px;
+  }
+  .reviewBox.he {
+    padding-inline: 10px;
   }
   .lastItem {
     scroll-margin: 100px;

@@ -6,10 +6,10 @@ interface Props {
   validator: (data: string) => string;
   setFormData: (
     data: string,
-    name: 'name' | 'email' | 'phone',
+    name: 'name' | 'email' | 'phone' | 'profession',
     isValid: boolean
   ) => void;
-  name: 'name' | 'email' | 'phone';
+  name: 'name' | 'email' | 'phone' | 'profession';
   type: 'text' | 'tel' | 'email';
   label: string;
   placeholder: string;

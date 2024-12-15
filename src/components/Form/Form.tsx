@@ -23,6 +23,7 @@ const Form: FC = () => {
     name: { value: '', isValid: false },
     email: { value: '', isValid: false },
     phone: { value: '', isValid: false },
+    profession: { value: '', isValid: false },
   });
   const [isSending, setIsSending] = useState<boolean>(false);
   const [isSent, setIsSent] = useState<boolean>(false);
@@ -60,9 +61,20 @@ const Form: FC = () => {
     return error;
   };
 
+  const validateProfession = (data: string) => {
+    let error: string = '';
+    if (data.trim().length < 3) {
+      error = t('form.errors.profession_length');
+    }
+    if (!data.length) {
+      error = t('form.errors.profession_required');
+    }
+    return error;
+  };
+
   const handleData = (
     data: string,
-    name: 'name' | 'email' | 'phone',
+    name: 'name' | 'email' | 'phone' | 'profession',
     isValid: boolean
   ) => {
     setFormData({ ...formData, [name]: { value: data, isValid } });
@@ -80,6 +92,7 @@ const Form: FC = () => {
   useEffect(() => {
     !formData.email.isValid ||
     !formData.name.isValid ||
+    !formData.profession.isValid ||
     !formData.phone.isValid ||
     !isChecked
       ? setIsButtonDisabled(true)
@@ -154,6 +167,16 @@ const Form: FC = () => {
                 name='phone'
                 placeholder='586 412 924'
                 validator={validatePhone}
+              />
+              <FormInput
+                label={t('form.placeholderProfession')}
+                setFormData={handleData}
+                min={3}
+                max={20}
+                type='text'
+                name='profession'
+                placeholder={t('form.placeholderProfession')}
+                validator={validateProfession}
               />
               <label
                 className={`${styles.checkboxLabel} ${

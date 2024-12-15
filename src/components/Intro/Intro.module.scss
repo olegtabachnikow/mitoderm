@@ -79,6 +79,10 @@
   }
   .title {
     font-size: var(--fontSizeMobH1);
+    margin-block: 25px;
+  }
+  .title.ru {
+    font-size: 36px;
   }
   .row {
     flex-direction: column-reverse;

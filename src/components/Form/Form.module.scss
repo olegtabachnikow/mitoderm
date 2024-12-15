@@ -6,6 +6,7 @@
   display: flex;
   background-color: var(--colorWhite);
   position: relative;
+  user-select: none;
 }
 
 .formContainer {
@@ -134,6 +135,7 @@
     width: 40px;
     height: 40px;
     background-color: transparent;
+    z-index: 9;
   }
   .formContainer {
     padding-inline: 20px;

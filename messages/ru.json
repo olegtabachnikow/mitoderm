@@ -23,6 +23,7 @@
     "placeholderInputName": "Имя",
     "placeholderEmailName": "E-mail",
     "placeholderPhoneName": "Номер телефона",
+    "placeholderProfession": "Profession",
     "checkboxLabel": "Я согласен(а) с правилами MitoDerm *",
     "sharing": "Ваша информация не будет передана третьим лицам *",
     "errors": {
@@ -31,7 +32,9 @@
       "email_required": "E-mail обязателен к заполнению",
       "email_invalid": "Некорректный формат E-mail",
       "phone_required": "Номер телефона обязателен к заполнению",
-      "phone_length": "Номер телефона должен содержать не менее 9 символов"
+      "phone_length": "Номер телефона должен содержать не менее 9 символов",
+      "profession_length": "Profession name must be at least 3 characters",
+      "profession_required": "Profession name is required"
     },
     "sent": {
       "mobTitle": "Поздравляем!",

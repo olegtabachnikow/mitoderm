@@ -31,6 +31,7 @@ export interface FormDataType {
   name: { value: string; isValid: boolean };
   email: { value: string; isValid: boolean };
   phone: { value: string; isValid: boolean };
+  profession: { value: string; isValid: boolean };
 }
 
 export enum ScrollItems {

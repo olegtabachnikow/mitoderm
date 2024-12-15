@@ -18,11 +18,12 @@
   "form": {
     "titleP1": "Get Personalized",
     "titleP2": "Solutions ",
-    "titleP3": "for Your Practice",
+    "titleP3": "for Your Clinic",
     "subtitle": "Our Specialist Will Reach Out ",
     "placeholderInputName": "Name",
     "placeholderEmailName": "E-mail",
     "placeholderPhoneName": "Phone Number",
+    "placeholderProfession": "Profession",
     "checkboxLabel": "I agree with rules of Mitoderm *",
     "sharing": "Your information will never be shared with third parties *",
     "errors": {
@@ -31,7 +32,9 @@
       "email_required": "Email is required",
       "email_invalid": "Invalid email",
       "phone_required": "Phone number is required",
-      "phone_length": "Phone number must be at least 9 characters"
+      "phone_length": "Phone number must be at least 9 characters",
+      "profession_length": "Profession name must be at least 3 characters",
+      "profession_required": "Profession name is required"
     },
     "sent": {
       "mobTitle": "Congratulations!",
@@ -83,7 +86,7 @@
     "usage": "Only for professional usage."
   },
   "faq": {
-    "title": "Faqs",
+    "title": "FAQs",
     "item1": {
       "title": "What are exosomes?",
       "text": "Exosomes are tiny vesicles, rich in growth factors, proteins, and regenerative signals. These powerful messengers interact with your body’s cells, stimulating healing and rejuvenation."
@@ -106,8 +109,8 @@
     "after": "After"
   },
   "dream": {
-    "titleP1": "Your Dream",
-    "titleP2": "is Our Mission",
+    "titleP1": "Where Science",
+    "titleP2": "meets beauty",
     "textP1": "MitoDerm fulfills a vision by focusing on the ",
     "textP2": "combination of beauty and technology. ",
     "textP3": "The company leads the skincare industry by providing innovative and effective solutions to professionals in the field of aesthetics.",
