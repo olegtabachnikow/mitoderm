@@ -4,6 +4,7 @@ import styles from './Modal.module.scss';
 import Form from '@/components/Form/Form';
 import useAppStore from '@/store/store';
 import PrivatePolicy from '@/components/PrivatePolicy/PrivatePolicy';
+import Accessibility from '@/components/Accessibility/Accessibility';
 
 const Modal: FC = () => {
   const { modalIsOpen, toggleModal, modalContent } = useAppStore(
@@ -35,8 +36,10 @@ const Modal: FC = () => {
         {modalIsOpen ? (
           modalContent === 'form' ? (
             <Form />
-          ) : (
+          ) : modalContent === 'privatePolicy' ? (
             <PrivatePolicy />
+          ) : (
+            <Accessibility />
           )
         ) : null}
       </div>

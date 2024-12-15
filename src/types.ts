@@ -41,7 +41,7 @@ export enum ScrollItems {
   about = 'about',
 }
 
-export type ModalType = 'form' | 'privatePolicy';
+export type ModalType = 'form' | 'privatePolicy' | 'accessibility';
 
 export interface ReviewType {
   name: string;

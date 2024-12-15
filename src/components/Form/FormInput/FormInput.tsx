@@ -46,6 +46,7 @@ const FormInput: FC<Props> = ({
     <label className={styles.inputLabel}>
       {label}
       <input
+        autoFocus={name === 'name'}
         dir={locale === 'he' ? 'rtl' : 'ltr'}
         className={error ? styles.error : ''}
         value={data}

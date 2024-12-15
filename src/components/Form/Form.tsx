@@ -1,6 +1,7 @@
 'use client';
 import { FC, FormEvent, useState, useEffect } from 'react';
 import styles from './Form.module.scss';
+import axios from 'axios';
 import Image from 'next/image';
 import Button from '../Shared/Button/Button';
 import { useLocale, useTranslations } from 'next-intl';
@@ -80,14 +81,46 @@ const Form: FC = () => {
     setFormData({ ...formData, [name]: { value: data, isValid } });
   };
 
-  const onSubmit = async (e: FormEvent) => {
-    e.preventDefault();
+  const onSubmit = async (e?: FormEvent) => {
+    e?.preventDefault();
     setIsSending(true);
-    sendData(formData).then((res) => {
-      setIsSent(true);
+
+    Promise.all([
+      sendData(formData)
+        .then(() => {
+          return true;
+        })
+        .catch(() => false),
+      axios({
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_CRM_API_KEY}`,
+        },
+        url: process.env.NEXT_PUBLIC_CRM_LINK,
+        data: JSON.stringify(formData),
+      })
+        .then(() => {
+          return true;
+        })
+        .catch(() => false),
+    ]).then((values: any) => {
+      console.log(values);
+      (values[0] || values[1]) && setIsSent(true);
     });
     return;
   };
+
+  const onEnterHit = (e: KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      isButtonDisabled ? null : onSubmit();
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('keypress', onEnterHit);
+    return () => window.removeEventListener('keypress', onEnterHit);
+  }, [isButtonDisabled]);
 
   useEffect(() => {
     !formData.email.isValid ||
