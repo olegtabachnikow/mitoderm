@@ -32,7 +32,9 @@ const Solution: FC = () => {
     <section id='solution' className={styles.section}>
       <p className={styles.title}>
         {t('solution.titleP1')}
-        <span>{t('solution.titleP2')}</span>
+        <span className={locale === 'ru' ? styles.orderMoved : ''}>
+          {t('solution.titleP2')}
+        </span>
         {t('solution.titleP3')}
       </p>
       <span className={styles.subtitle}>{t('solution.subtitle')}</span>

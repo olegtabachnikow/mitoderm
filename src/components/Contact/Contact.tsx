@@ -1,10 +1,11 @@
 import { FC } from 'react';
 import styles from './Contact.module.scss';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import ContactLink from './ContactLink/ContactLink';
 
 const Contact: FC = () => {
   const t = useTranslations();
+  const locale = useLocale();
   return (
     <section className={styles.section}>
       <div className={styles.content}>
@@ -28,7 +29,13 @@ const Contact: FC = () => {
               <span className={styles.text}>{t('contactUs.phone')}</span>
               <span className={styles.text}>
                 {t('contactUs.phoneText')}{' '}
-                <a href='tel:+972547621889'>+972 54-762-1889</a>
+                <a
+                  style={{ marginRight: locale === 'he' ? 5 : 0 }}
+                  dir='ltr'
+                  href='tel:+972547621889'
+                >
+                  +972-54-326-21-82
+                </a>
               </span>
             </p>
             <p>

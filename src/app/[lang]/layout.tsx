@@ -8,6 +8,7 @@ import { Rubik } from 'next/font/google';
 import { routing } from '@/i18n/routing';
 import { notFound } from 'next/navigation';
 import Footer from '@/components/Layout/Footer/Footer';
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 const Header = dynamic(() => import('@/components/Layout/Header/Header'), {
   ssr: false,
@@ -62,6 +63,7 @@ export default async function RootLayout({
           <Footer />
         </body>
       </NextIntlClientProvider>
+      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ID as string} />
     </html>
   );
 }

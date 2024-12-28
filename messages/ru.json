@@ -66,8 +66,8 @@
     "text2Colored": "передовыми технологиями экзосомы предлагают инновационные подходы к улучшению текстуры кожи, снижению выраженности рубцов и укреплению волосяных фолликулов.",
     "itemExp1": "Миллиарды клеток",
     "itemExp2": "Снижение воспаления",
-    "itemExp3": "Белки",
-    "itemExp4": "В несколько раз быстрее",
+    "itemExp3": "Факторы роста и цитокины",
+    "itemExp4": "Увеличение внутриклеточного коллагена и гиалуроновой кислоты.",
     "itemExp5": "Нанометры"
   },
   "solution": {
@@ -75,14 +75,14 @@
     "titleP2": "Exoxe",
     "titleP3": " Экзосомы",
     "subtitle": "Только для профессионального использования",
-    "item1title": "Чистые экзо – лиофилизированный порошок 50 мг",
-    "item1textP1": "Гидролизованный коллаген – 886 000 PPM",
-    "item1textP2": "Коллаген – 100 000 PPM",
-    "item1textP3": "Гиалуронат натрия",
-    "item1textP4": "Трегалоза",
-    "item2title": "Стерильный раствор гиалуроновой кислоты 5 мл",
-    "item2textP1": "Вода",
-    "item2textP2": "Гиалуронат натрия",
+    "item1title": "Pure exo - lyophilized powder 50mg",
+    "item1textP1": "Hydrolyzed Collagen - 886,000PPM",
+    "item1textP2": "Collagen - 100,000PPM",
+    "item1textP3": "Sodium Hyaluronate",
+    "item1textP4": "Trehalose",
+    "item2title": "Sterilized ha solution 5ml",
+    "item2textP1": "Aqua",
+    "item2textP2": "Sodium Hyaluronate",
     "usage": "Только для профессионального применения."
   },
   "faq": {

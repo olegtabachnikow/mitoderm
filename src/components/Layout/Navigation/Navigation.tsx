@@ -3,7 +3,7 @@ import { FC } from 'react';
 import styles from './Navigation.module.scss';
 import { navList } from '@/constants';
 import { NavItem } from '@/types';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { useMediaQuery } from 'react-responsive';
 import Link from 'next/link';
@@ -25,12 +25,15 @@ const Navigation: FC<Props> = ({ isOpen, setIsOpen }) => {
     toggleModal(true);
   };
   const t = useTranslations();
+  const locale = useLocale();
 
   const putImage = (index: number) => {
     if (index === 0)
       return (
         <Image
-          className={styles.arrowIcon}
+          className={`${styles.arrowIcon} ${
+            locale === 'he' ? styles.reversed : ''
+          }`}
           src='/images/arrowDown.svg'
           width={10}
           height={5.5}
