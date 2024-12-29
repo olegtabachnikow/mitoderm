@@ -1,8 +1,9 @@
 'use client';
 import { FC } from 'react';
 import styles from './GallleryPagination.module.scss';
-import DotPagination from '@/components/Shared/DotPagination/DotPagination';
+// import DotPagination from '@/components/Shared/DotPagination/DotPagination';
 import { useMediaQuery } from 'react-responsive';
+import ImageCounter from '../ImageCounter/ImageCounter';
 
 interface Props {
   count: number;
@@ -16,7 +17,8 @@ const GalleryPagination: FC<Props> = ({ count }) => {
     <>
       {!isTabletOrMobile ? (
         <div className={styles.paginationBox}>
-          <DotPagination gallery colored count={count} />
+          {/* <DotPagination gallery colored count={count} /> */}
+          <ImageCounter count={count} />
         </div>
       ) : null}
     </>

@@ -1,6 +1,5 @@
 import { FC } from 'react';
 import styles from './Mission.module.scss';
-import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import Button from '../Shared/Button/Button';
 

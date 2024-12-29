@@ -34,8 +34,8 @@ const Header: FC = () => {
         <Link className={styles.logoContainer} href='#intro'>
           <Image
             src='/images/logo.svg'
-            width={120}
-            height={40}
+            width={isTabletOrMobile ? 96 : 120}
+            height={isTabletOrMobile ? 32 : 40}
             quality={100}
             alt='mitoderm logo'
           />
