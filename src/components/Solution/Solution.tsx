@@ -7,36 +7,41 @@ import { solutionItems } from '@/constants';
 import { combinedArray } from '@/utils/helpers';
 import { SolutionItem as SolutionItemType } from '@/types';
 import SolutionItem from './SolutionItem/SolutionItem';
-import ArrowButton from '../Shared/ArrowButton/ArrowButton';
+// import ArrowButton from '../Shared/ArrowButton/ArrowButton';
 import { useMediaQuery } from 'react-responsive';
-import MobileButtons from '../Shared/MobileButtons/MobileButtons';
+// import MobileButtons from '../Shared/MobileButtons/MobileButtons';
 
 const Solution: FC = () => {
-  const [currentPage, setCurrentPage] = useState<number>(1);
+  // const [currentPage, setCurrentPage] = useState<number>(1);
   const t = useTranslations();
   const locale = useLocale();
-  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
+  // const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
 
-  const handleScroll = (arg: 1 | 2) => {
-    setCurrentPage(arg);
-    const currentScroll = document.getElementById(`block${arg}`);
-    currentScroll?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'nearest',
-      inline: 'center',
-    });
-  };
+  // const handleScroll = (arg: 1 | 2) => {
+  //   setCurrentPage(arg);
+  //   const currentScroll = document.getElementById(`block${arg}`);
+  //   currentScroll?.scrollIntoView({
+  //     behavior: 'smooth',
+  //     block: 'nearest',
+  //     inline: 'center',
+  //   });
+  // };
 
   const solutionBlocks = combinedArray(solutionItems);
   return (
     <section id='solution' className={styles.section}>
       <p className={styles.title}>
         {t('solution.titleP1')}
-        <span>{t('solution.titleP2')}</span>
+        <span className={locale === 'ru' ? styles.orderMoved : ''}>
+          {t('solution.titleP2')}
+        </span>
         {t('solution.titleP3')}
       </p>
       <span className={styles.subtitle}>{t('solution.subtitle')}</span>
       <div className={styles.sliderContainer}>
+        {/*
+        For now this element is hidden
+
         {!isTabletOrMobile ? (
           <ArrowButton
             disabled={currentPage === 1}
@@ -44,7 +49,7 @@ const Solution: FC = () => {
             reversed={locale === 'he' ? false : true}
             onClick={() => handleScroll(1)}
           />
-        ) : null}
+        ) : null} */}
         <div className={styles.slider}>
           {solutionBlocks.map((block: SolutionItemType[], index: number) => (
             <div
@@ -57,6 +62,9 @@ const Solution: FC = () => {
             </div>
           ))}
         </div>
+        {/* 
+        For now this element is hidden
+        
         {!isTabletOrMobile ? (
           <ArrowButton
             disabled={currentPage === 2}
@@ -64,8 +72,11 @@ const Solution: FC = () => {
             onClick={() => handleScroll(2)}
             reversed={locale === 'he'}
           />
-        ) : null}
+        ) : null} */}
       </div>
+      {/* 
+      For now this element is hidden
+
       {isTabletOrMobile ? (
         <MobileButtons
           disabledLeft={currentPage === 1}
@@ -73,7 +84,7 @@ const Solution: FC = () => {
           onClickLeft={() => handleScroll(1)}
           onClickRight={() => handleScroll(2)}
         />
-      ) : null}
+      ) : null} */}
       <Button
         style={{ margin: '40px auto' }}
         colored

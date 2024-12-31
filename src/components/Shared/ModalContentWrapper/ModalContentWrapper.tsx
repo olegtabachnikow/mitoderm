@@ -20,7 +20,9 @@ const ModalContentWrapper: FC<Props> = ({ children }) => {
           alt='cross icon'
         />
       </button>
-      <div className={styles.textContainer}>{children}</div>
+      <div dir='ltr' className={styles.textContainer}>
+        {children}
+      </div>
     </div>
   );
 };

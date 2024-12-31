@@ -20,12 +20,12 @@
 .logoContainer {
   display: flex;
   align-items: center;
-  cursor: pointer;
   user-select: none;
+  cursor: pointer;
 }
 
-.logoText {
-  font-size: var(--fontSizeP2);
+.logoContainer img {
+  -webkit-user-drag: none;
 }
 
 .overlay {

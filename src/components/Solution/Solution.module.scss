@@ -10,10 +10,16 @@
 .title {
   font-size: var(--fontSizeH2);
   margin-block: 40px;
+  display: flex;
 }
 
 .title span {
   color: var(--colorAccentLight);
+}
+
+.orderMoved {
+  order: 2;
+  margin-left: 10px;
 }
 
 .text {
@@ -59,6 +65,7 @@
   }
   .title {
     font-size: var(--fontSizeMobH2);
+    gap: 10px;
   }
   .subtitle {
     display: none;
