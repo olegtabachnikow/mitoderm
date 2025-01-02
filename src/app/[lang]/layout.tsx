@@ -33,22 +33,44 @@ export async function generateStaticParams() {
 export const metadata: Metadata = {
   title: 'MitoDerm',
   description: 'Something will be here',
-  // icons: {
-  //   icon: [{ rel: 'icon', url: '/favicon.ico', sizes: 'auto' }],
-  //   apple: [{ url: '/apple-touch-icon.png' }],
-  //   other: [
-  //     {
-  //       rel: 'icon',
-  //       sizes: '192x192',
-  //       url: '/android-chrome-192x192.png',
-  //     },
-  //     {
-  //       rel: 'icon',
-  //       sizes: '512x512',
-  //       url: '/android-chrome-512x512.png',
-  //     },
-  //   ],
-  // },
+  icons: [
+    {
+      rel: 'icon',
+      type: 'image/x-icon',
+      url: '/favicon/favicon.ico',
+      sizes: 'auto',
+    },
+    {
+      rel: 'icon',
+      type: 'image/png',
+      url: '/favicon/favicon-16x16.png',
+      sizes: '16x16',
+    },
+    {
+      rel: 'icon',
+      type: 'image/png',
+      url: '/favicon/favicon-32x32.png',
+      sizes: '32x32',
+    },
+    {
+      rel: 'icon',
+      type: 'image/png',
+      sizes: '512x512',
+      url: '/favicon/android-chrome-512x512.png',
+    },
+    {
+      rel: 'icon',
+      type: 'image/png',
+      sizes: '192x192',
+      url: '/favicon/android-chrome-192x192.png',
+    },
+    {
+      rel: 'apple-touch-icon',
+      type: 'image/png',
+      sizes: '192x192',
+      url: '/favicon/apple-touch-icon.png',
+    },
+  ],
 };
 
 export default async function RootLayout({
