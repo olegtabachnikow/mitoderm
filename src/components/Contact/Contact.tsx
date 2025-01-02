@@ -44,7 +44,7 @@ const Contact: FC = () => {
             </p>
             <p>
               <span className={styles.text}>{t('contactUs.email')}</span>
-              <a href='mailto:mitoderm@gmail.com' className={styles.text}>
+              <a href='mailto:mail@mitoderm.com' className={styles.text}>
                 {t('contactUs.emailText')}
               </a>
             </p>

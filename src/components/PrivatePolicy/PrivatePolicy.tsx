@@ -149,7 +149,7 @@ const PrivatePolicy: FC = () => {
         Withdraw Consent: If we process your personal data based on your
         consent, the right to withdraw that consent at any time without
         affecting the lawfulness of processing conducted prior to withdrawal. To
-        exercise your rights, please contact us at policy@mitoderm.com. We may
+        exercise your rights, please contact us at mail@mitoderm.com. We may
         request additional information to verify your identity and will endeavor
         to respond within the timeframes required by applicable law.
       </p>
@@ -214,7 +214,7 @@ const PrivatePolicy: FC = () => {
       </p>
       <p className={styles.text}>
         MitoDerm Email:
-        <a href='mailto:policy@mitoderm.com'> policy@mitoderm.com</a>
+        <a href='mailto:mail@mitoderm.com'> mail@mitoderm.com</a>
       </p>
       <p className={styles.text}>
         We are committed to addressing any inquiries promptly and, where
