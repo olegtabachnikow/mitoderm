@@ -24,7 +24,7 @@ export const howToUseItemList: HowToUseItem[] = [
 ];
 
 export const aboutBulletItems: AboutBulletItem[] = [
-  { data: '6000', text: 'about.itemExp1' },
+  { data: '6', text: 'about.itemExp1' },
   { data: '+150%', text: 'about.itemExp4' },
   { data: '70+', text: 'about.itemExp3' },
   { data: '50%', text: 'about.itemExp2' },
