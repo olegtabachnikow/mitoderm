@@ -30,13 +30,18 @@ const Solution: FC = () => {
   const solutionBlocks = combinedArray(solutionItems);
   return (
     <section id='solution' className={styles.section}>
-      <p className={styles.title}>
-        {t('solution.titleP1')}
-        <span className={locale === 'ru' ? styles.orderMoved : ''}>
-          {t('solution.titleP2')}
-        </span>
-        {t('solution.titleP3')}
-      </p>
+      {locale === 'ru' ? (
+        <p className={styles.title}>
+          {t('solution.titleP1') + ' ' + t('solution.titleP3')}
+          <span>{t('solution.titleP2')}</span>
+        </p>
+      ) : (
+        <p className={styles.title}>
+          {t('solution.titleP1')}
+          <span>{t('solution.titleP2')}</span>
+          {t('solution.titleP3')}
+        </p>
+      )}
       <span className={styles.subtitle}>{t('solution.subtitle')}</span>
       <div className={styles.sliderContainer}>
         {/*
