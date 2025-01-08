@@ -21,7 +21,7 @@ const Accessibility: FC = () => {
       <p className={styles.text}>{t('accessibility.difficulties')}</p>
       <p className={styles.text}>
         {t('accessibility.email')}
-        {'mail@mitoderm.com'}
+        {'info@mitoderm.com'}
       </p>
       <p className={styles.text}>
         {t('accessibility.phone')}

@@ -1,7 +1,6 @@
 'use client';
 import { FC, FormEvent, useState, useEffect } from 'react';
 import styles from './Form.module.scss';
-import axios from 'axios';
 import Image from 'next/image';
 import Button from '../Shared/Button/Button';
 import { useLocale, useTranslations } from 'next-intl';
@@ -10,7 +9,7 @@ import { emailRegex } from '@/constants';
 import { useMediaQuery } from 'react-responsive';
 import useAppStore from '@/store/store';
 import type { FormDataType } from '@/types';
-import { sendData } from '@/utils/sendMail';
+import { sendDataOnMail, sendDataToCRM } from '@/utils/sendFormData';
 import Loader from '../Shared/Loader/Loader';
 
 const Form: FC = () => {
@@ -86,26 +85,17 @@ const Form: FC = () => {
     setIsSending(true);
 
     Promise.all([
-      sendData(formData)
+      sendDataOnMail(formData)
         .then(() => {
           return true;
         })
         .catch(() => false),
-      axios({
-        method: 'post',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${process.env.NEXT_PUBLIC_CRM_API_KEY}`,
-        },
-        url: process.env.NEXT_PUBLIC_CRM_LINK,
-        data: JSON.stringify(formData),
-      })
+      sendDataToCRM(formData)
         .then(() => {
           return true;
         })
         .catch(() => false),
     ]).then((values: any) => {
-      console.log(values);
       (values[0] || values[1]) && setIsSent(true);
     });
     return;
