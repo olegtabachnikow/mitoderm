@@ -25,7 +25,7 @@ export const howToUseItemList: HowToUseItem[] = [
 
 export const aboutBulletItems: AboutBulletItem[] = [
   { data: '6', text: 'about.itemExp1' },
-  { data: '+150%', text: 'about.itemExp4' },
+  { data: '150%', text: 'about.itemExp4' },
   { data: '70+', text: 'about.itemExp3' },
   { data: '50%', text: 'about.itemExp2' },
   { data: '60-150', text: 'about.itemExp5' },
@@ -74,23 +74,13 @@ export const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
 
 export const reviews: ReviewType[] = [
   {
-    name: 'Victoria Aslanyan',
+    name: 'reviews.item1.name',
     rating: 5,
-    text: 'As a doctor and clinic owner, I integrate advanced exosome treatments into my practice. The results are outstanding! My patients see smoother, rejuvenated skin, and the products have become a cornerstone of my clinic’s offerings. I’m definitely continuing with these treatments!"',
+    text: 'reviews.item1.text',
   },
   {
-    name: 'Gregory Dyachenko',
+    name: 'reviews.item2.name',
     rating: 5,
-    text: "I had an amazing experience with the exosome treatment for hair thinning, and I want to thank Ilona especially. In just a few months, my hair has gone from thinning to fuller and healthier. I'm truly impressed with the transformation!",
-  },
-  {
-    name: 'Gregory Dyachenko',
-    rating: 5,
-    text: "I had an amazing experience with the exosome treatment for hair thinning, and I want to thank Ilona especially. In just a few months, my hair has gone from thinning to fuller and healthier. I'm truly impressed with the transformation!",
-  },
-  {
-    name: 'Victoria Aslanyan',
-    rating: 5,
-    text: 'As a doctor and clinic owner, I integrate advanced exosome treatments into my practice. The results are outstanding! My patients see smoother, rejuvenated skin, and the products have become a cornerstone of my clinic’s offerings. I’m definitely continuing with these treatments!"',
+    text: 'reviews.item2.text',
   },
 ];

@@ -1,8 +1,9 @@
 'use server';
 const nodemailer = require('nodemailer');
-import { FormDataType } from '@/types';
+import axios from 'axios';
+import type { FormDataType } from '@/types';
 
-export async function sendData(formData: any) {
+export async function sendDataOnMail(formData: any) {
   'use server';
   const username = process.env.NEXT_PUBLIC_EMAIL_USERNAME;
   const password = process.env.NEXT_PUBLIC_EMAIL_PASSWORD;
@@ -38,4 +39,26 @@ export async function sendData(formData: any) {
   } catch (error) {
     return new Error('Something goes wrong');
   }
+}
+
+export async function sendDataToCRM(formData: FormDataType) {
+  'use server';
+  const username = process.env.NEXT_PUBLIC_CRM_USERNAME;
+  const account = process.env.NEXT_PUBLIC_CRM_ACCOUNT;
+  const password = process.env.NEXT_PUBLIC_CRM_PASSWORD;
+
+  axios.post(
+    `https://${account}.senzey.com/extapi/client/add.php?username=${username}&password=${password}`,
+    {
+      x_name: formData.name,
+      x_email: formData.email,
+      x_phone: formData.phone,
+      x_comments: formData.profession,
+    },
+    {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+    }
+  );
 }

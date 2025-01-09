@@ -1,7 +1,6 @@
 'use client';
 import { FC, useEffect } from 'react';
 import styles from './GalleryWrapper.module.scss';
-import { useTranslations } from 'next-intl';
 import useAppStore from '@/store/store';
 import { useMediaQuery } from 'react-responsive';
 import GalleryDesktop from '../GalleryDesktop/GalleryDesktop';
@@ -12,7 +11,6 @@ interface Props {
 }
 
 const GalleryWrapper: FC<Props> = ({ itemList }) => {
-  const t = useTranslations();
   const isTabletOrMobile = useMediaQuery({
     query: '(max-width: 1224px)',
   });
@@ -39,27 +37,43 @@ const GalleryWrapper: FC<Props> = ({ itemList }) => {
 
   const increment = () => {
     setIsFirstRender(false);
-    setGalleryPage(galleryPage + 1);
+    itemList.length >= galleryPage
+      ? setGalleryPage(galleryPage + 1)
+      : setGalleryPage(0);
   };
   const decrement = () => {
     setIsFirstRender(false);
-    setGalleryPage(galleryPage - 1);
+    galleryPage <= 0
+      ? setGalleryPage(itemList.length - 1)
+      : setGalleryPage(galleryPage - 1);
   };
 
   return (
     <div className={styles.container}>
       {isTabletOrMobile ? (
         <GalleryMobile
-          disabledLeft={galleryPage === 0}
-          disabledRight={galleryPage === itemList.length - 1}
+          disabledLeft={
+            // galleryPage === 0
+            false
+          }
+          disabledRight={
+            // galleryPage === itemList.length - 1
+            false
+          }
           onClickLeft={decrement}
           onClickRight={increment}
           items={itemList}
         />
       ) : (
         <GalleryDesktop
-          disabledLeft={galleryPage === 0}
-          disabledRight={galleryPage === itemList.length - 1}
+          disabledLeft={
+            // galleryPage === 0
+            false
+          }
+          disabledRight={
+            // galleryPage === itemList.length - 1
+            false
+          }
           onClickLeft={decrement}
           onClickRight={increment}
           items={itemList}
