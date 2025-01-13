@@ -4,7 +4,9 @@
     "results": "Результаты",
     "about": "О нас",
     "info": "Дополнительная информация",
-    "contact": "Связаться с нами"
+    "contact": "Связаться с нами",
+    "event": "Ивент",
+    "agenda": "Agenda"
   },
   "buttons": {
     "contact": "Связаться с нами",
@@ -13,7 +15,8 @@
     "contactForPrice": "Уточнить цену",
     "contactForInfo": "Получить дополнительную информацию",
     "requestCallback": "Заказать обратный звонок",
-    "contactForSolutions": "Индивидуальные решения"
+    "contactForSolutions": "Индивидуальные решения",
+    "seat": "Reserve Seat"
   },
   "form": {
     "titleP1": "Получите персонализированные",

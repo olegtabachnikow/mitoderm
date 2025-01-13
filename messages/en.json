@@ -4,7 +4,9 @@
     "results": "Results",
     "about": "About us",
     "info": "More info",
-    "contact": "Contact us"
+    "contact": "Contact us",
+    "event": "Event",
+    "agenda": "Agenda"
   },
   "buttons": {
     "contact": "Contact us",
@@ -13,7 +15,8 @@
     "contactForPrice": "Contact for Price details",
     "contactForInfo": "Contact for More Info",
     "requestCallback": "Request A Callback",
-    "contactForSolutions": "Contact for personal solutions"
+    "contactForSolutions": "Contact for personal solutions",
+    "seat": "Reserve Seat"
   },
   "form": {
     "titleP1": "Get Personalized",
@@ -46,7 +49,9 @@
     "subtitleP1": "Korean product",
     "subtitleP2": "Official distributor",
     "title": "Exoxe Exosome in Israel",
-    "text": "MitoDerm combines advanced aesthetic technology with science to bring innovative solutions to the field of aesthetics. Are you a doctor or cosmetologist looking to enhance your services? Let's innovate together!"
+    "text": "MitoDerm combines advanced aesthetic technology with science to bring innovative solutions to the field of aesthetics. Are you a doctor or cosmetologist looking to enhance your services? Let's innovate together!",
+    "eventSubtitle": "Intimate and Inspiring Conference",
+    "eventTitle": "Join Conference by Mitoderm"
   },
   "howToUse": {
     "titleP1": "How ",

@@ -1,10 +1,10 @@
+'use client';
 import { FC } from 'react';
 import dynamic from 'next/dynamic';
 import styles from './Intro.module.scss';
 import { useTranslations, useLocale } from 'next-intl';
-// import ArrowButton from '../Shared/ArrowButton/ArrowButton';
 import Image from 'next/image';
-// import DotPagination from '../Shared/DotPagination/DotPagination';
+import { usePathname } from 'next/navigation';
 
 const Button = dynamic(() => import('@/components/Shared/Button/Button'), {
   ssr: false,
@@ -13,18 +13,16 @@ const Button = dynamic(() => import('@/components/Shared/Button/Button'), {
 const Intro: FC = () => {
   const t = useTranslations();
   const locale = useLocale();
+  const pathname = usePathname();
+  const isEventPage = pathname.includes('event');
 
   return (
     <section
       id='intro'
-      className={`${styles.section} ${locale === 'he' ? styles.reversed : ''}`}
+      className={`${styles.section} ${isEventPage ? styles.sectionEvent : ''} ${
+        locale === 'he' ? styles.reversed : ''
+      }`}
     >
-      {/*
-      For now this element is hidden
-
-      <div className={styles.buttonBox}>
-        <ArrowButton reversed={locale === 'he' ? false : true} />
-      </div> */}
       <div className={styles.container}>
         <span>
           <span>{t('intro.subtitleP1')}</span>
@@ -32,43 +30,28 @@ const Intro: FC = () => {
           <span>{t('intro.subtitleP2')}</span>
         </span>
         <h1 className={`${styles.title} ${locale === 'ru' ? styles.ru : ''}`}>
-          {t('intro.title')}
+          {t(isEventPage ? 'intro.eventTitle' : 'intro.title')}
         </h1>
         <div className={styles.row}>
           <Button
-            text={t('buttons.contact')}
+            text={t(isEventPage ? 'buttons.seat' : 'buttons.contact')}
             style={{ marginTop: 20 }}
             contact
           />
-          <p className={styles.text}>{t('intro.text')}</p>
+          {isEventPage ? null : (
+            <p className={styles.text}>{t('intro.text')}</p>
+          )}
         </div>
       </div>
-      {/* 
-      For now this element is hidden
-
-      <div className={styles.buttonBox}>
-        <ArrowButton reversed={locale === 'he'} />
-      </div> */}
-      <Image
-        className={styles.lines}
-        src='/images/lines1.svg'
-        width={460}
-        height={460}
-        alt='lines'
-      />
-      {/*     
-      For now this element is hidden
-
-      <DotPagination
-        intro
-        count={3}
-        style={{
-          position: 'absolute',
-          left: '50%',
-          bottom: 30,
-          transform: 'translateX(-50%)',
-        }}
-      /> */}
+      {!isEventPage && (
+        <Image
+          className={styles.lines}
+          src='/images/lines1.svg'
+          width={460}
+          height={460}
+          alt='lines'
+        />
+      )}
     </section>
   );
 };

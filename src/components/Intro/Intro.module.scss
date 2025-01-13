@@ -3,12 +3,15 @@
   min-height: 578px;
   margin-top: 60px;
   display: flex;
-  // justify-content: space-between;
   justify-content: center;
   align-items: center;
   padding-inline: 20px;
   position: relative;
   z-index: 1;
+}
+
+.sectionEvent {
+  background-image: url(/images/introEventBG.png);
 }
 
 .container {
@@ -34,7 +37,7 @@
   color: var(--colorWhite);
   margin: 40px 0;
   padding: 0;
-  max-width: 640px;
+  max-width: 680px;
 }
 
 .title.ru {

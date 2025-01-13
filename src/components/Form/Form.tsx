@@ -91,7 +91,8 @@ const Form: FC = () => {
         })
         .catch(() => false),
       sendDataToCRM(formData)
-        .then(() => {
+        .then((res) => {
+          console.log(res);
           return true;
         })
         .catch(() => false),
@@ -241,7 +242,7 @@ const Form: FC = () => {
         <Image
           className={styles.desktopImage}
           width={620}
-          height={664}
+          height={760}
           src='/images/formImage.png'
           alt='background with exosome'
         />

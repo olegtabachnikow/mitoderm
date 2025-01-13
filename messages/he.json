@@ -4,7 +4,9 @@
     "results": "תוצאות",
     "about": "אודותינו",
     "info": "מידע נוסף",
-    "contact": "צור קשר"
+    "contact": "צור קשר",
+    "event": "אירוע",
+    "agenda": "Agenda"
   },
   "buttons": {
     "contact": "צור קשר",
@@ -13,7 +15,8 @@
     "contactForPrice": "לקבלת פרטים על מחירים",
     "contactForInfo": "לקבלת מידע נוסף",
     "requestCallback": "בקשה לשיחה חוזרת",
-    "contactForSolutions": "לקבלת פתרונות מותאמים אישית"
+    "contactForSolutions": "לקבלת פתרונות מותאמים אישית",
+    "seat": "Reserve Seat"
   },
   "form": {
     "titleP1": "לקבלת פתרונות",
