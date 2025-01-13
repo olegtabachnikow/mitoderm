@@ -8,12 +8,21 @@ import {
   ReviewType,
 } from './types';
 
-export const navList: NavItem[] = [
+export const navMainList: NavItem[] = [
   { text: 'navigation.product', scrollId: ScrollItems.solution },
   { text: 'navigation.results', scrollId: ScrollItems.gallery },
   { text: 'navigation.about', scrollId: ScrollItems.mission },
   { text: 'navigation.info', scrollId: ScrollItems.about },
-  { text: 'navigation.contact' },
+  { text: 'navigation.contact', form: 'main' },
+  { text: 'navigation.event', url: '/event' },
+];
+
+export const navEventList: NavItem[] = [
+  { text: 'navigation.info', scrollId: ScrollItems.about },
+  { text: 'navigation.agenda', scrollId: ScrollItems.agenda },
+  { text: 'navigation.contact', form: 'event' },
+  { text: 'navigation.results', scrollId: ScrollItems.gallery },
+  { text: 'navigation.about', scrollId: ScrollItems.mission },
 ];
 
 export const howToUseItemList: HowToUseItem[] = [

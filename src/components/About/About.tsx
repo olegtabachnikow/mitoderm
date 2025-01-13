@@ -7,6 +7,7 @@ import { aboutBulletItems } from '@/constants';
 import { AboutBulletItem } from '@/types';
 import AboutItem from './AboutItem/AboutItem';
 import Button from '../Shared/Button/Button';
+import { usePathname } from 'next/navigation';
 
 const scrollTo = () => {
   const element = document.getElementById('faq');
@@ -16,6 +17,9 @@ const scrollTo = () => {
 
 const About: FC = () => {
   const t = useTranslations();
+  const pathname = usePathname();
+  const isEventPage = pathname.includes('event');
+
   return (
     <section id='about' className={styles.section}>
       <article className={styles.article}>
@@ -43,9 +47,9 @@ const About: FC = () => {
         ))}
       </div>
       <Button
-        style={{ marginBlock: 40 }}
+        style={{ marginBlock: 40, marginBottom: isEventPage ? 80 : 40 }}
         colored
-        text={t('buttons.moreAbout')}
+        text={t(isEventPage ? 'buttons.seat' : 'buttons.moreAbout')}
         onClick={scrollTo}
       />
     </section>

@@ -4,6 +4,8 @@ export type LocaleType = 'en' | 'he' | 'ru';
 export interface NavItem {
   text: string;
   scrollId?: ScrollItems;
+  url?: string;
+  form?: 'main' | 'event';
 }
 
 export interface HowToUseItem {
@@ -39,6 +41,7 @@ export enum ScrollItems {
   solution = 'solution',
   mission = 'mission',
   about = 'about',
+  agenda = 'agenda',
 }
 
 export type ModalType = 'form' | 'privatePolicy' | 'accessibility';

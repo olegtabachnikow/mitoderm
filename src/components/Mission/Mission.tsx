@@ -1,12 +1,22 @@
+'use client';
 import { FC } from 'react';
 import styles from './Mission.module.scss';
 import { useTranslations } from 'next-intl';
 import Button from '../Shared/Button/Button';
+import { usePathname } from 'next/navigation';
 
 const Mission: FC = () => {
   const t = useTranslations();
+  const pathname = usePathname();
+  const isEventPage = pathname.includes('event');
+
   return (
-    <section id='mission' className={styles.container}>
+    <section
+      id='mission'
+      className={`${styles.container} ${
+        isEventPage ? styles.containerEvent : ''
+      }`}
+    >
       <div className={styles.bg} />
       <article className={styles.textContainer}>
         <p className={styles.title}>
@@ -26,7 +36,13 @@ const Mission: FC = () => {
           {t('dream.textP7')}
         </p>
         <div className={styles.buttonContainer}>
-          <Button contact colored text={t('buttons.contactForSolutions')} />
+          <Button
+            contact
+            colored
+            text={t(
+              isEventPage ? 'buttons.seat' : 'buttons.contactForSolutions'
+            )}
+          />
         </div>
       </article>
     </section>
