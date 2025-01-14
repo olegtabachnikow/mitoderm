@@ -1,14 +1,15 @@
 'use client';
 import { FC, useState } from 'react';
-import styles from './FaqItem.module.scss';
+import styles from './Dropdown.module.scss';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 
 interface Props {
-  item: number;
+  item: string;
+  time?: boolean;
 }
 
-const FaqItem: FC<Props> = ({ item }) => {
+const Dropdown: FC<Props> = ({ item, time }) => {
   const t = useTranslations();
   const [isShown, setIsShown] = useState<boolean>(false);
   return (
@@ -24,13 +25,16 @@ const FaqItem: FC<Props> = ({ item }) => {
           width={26}
           height={15}
         />
-        <span className={styles.title}>{t(`faq.item${item}.title`)}</span>
+        <span className={styles.title}>
+          {time ? (
+            <span className={styles.time}>{t(`${item}.time`)}</span>
+          ) : null}
+          {t(`${item}.title`)}
+        </span>
       </div>
-      {isShown ? (
-        <p className={styles.text}>{t(`faq.item${item}.text`)}</p>
-      ) : null}
+      {isShown ? <p className={styles.text}>{t(`${item}.text`)}</p> : null}
     </div>
   );
 };
 
-export default FaqItem;
+export default Dropdown;

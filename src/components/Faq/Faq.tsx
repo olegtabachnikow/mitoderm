@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import styles from './Faq.module.scss';
 import { useTranslations } from 'next-intl';
-import FaqItem from './FaqItem/FaqItem';
+import Dropdown from '../Shared/Dropdown/Dropdown';
 
 const Faq: FC = () => {
   const t = useTranslations();
@@ -10,9 +10,9 @@ const Faq: FC = () => {
       <div className={styles.containerInner}>
         <span className={styles.title}>{t('faq.title')}</span>
         <div className={styles.itemBox}>
-          <FaqItem item={1} />
-          <FaqItem item={2} />
-          <FaqItem item={3} />
+          <Dropdown item={'faq.item1'} />
+          <Dropdown item={'faq.item2'} />
+          <Dropdown item={'faq.item3'} />
         </div>
       </div>
     </section>

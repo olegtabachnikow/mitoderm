@@ -77,7 +77,7 @@ const Navigation: FC<Props> = ({ isOpen, setIsOpen }) => {
                   onClick={() => setIsOpen(false)}
                   href={
                     item.url
-                      ? `${locale + '/' + item.url}`
+                      ? `${item.url === '/' ? '/' : locale + '/' + item.url}`
                       : `#${item.scrollId}`
                   }
                   key={index + randomString()}
@@ -110,7 +110,7 @@ const Navigation: FC<Props> = ({ isOpen, setIsOpen }) => {
                 <Link
                   href={
                     item.url
-                      ? `${locale + '/' + item.url}`
+                      ? `${item.url === '/' ? '/' : locale + '/' + item.url}`
                       : `#${item.scrollId}`
                   }
                   key={index + randomString()}

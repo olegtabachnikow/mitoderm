@@ -52,28 +52,16 @@ const GalleryWrapper: FC<Props> = ({ itemList }) => {
     <div className={styles.container}>
       {isTabletOrMobile ? (
         <GalleryMobile
-          disabledLeft={
-            // galleryPage === 0
-            false
-          }
-          disabledRight={
-            // galleryPage === itemList.length - 1
-            false
-          }
+          disabledLeft={false}
+          disabledRight={false}
           onClickLeft={decrement}
           onClickRight={increment}
           items={itemList}
         />
       ) : (
         <GalleryDesktop
-          disabledLeft={
-            // galleryPage === 0
-            false
-          }
-          disabledRight={
-            // galleryPage === itemList.length - 1
-            false
-          }
+          disabledLeft={false}
+          disabledRight={false}
           onClickLeft={decrement}
           onClickRight={increment}
           items={itemList}
