@@ -7,6 +7,7 @@ import Mission from '@/components/Mission/Mission';
 import Button from '@/components/Shared/Button/Button';
 import { useTranslations } from 'next-intl';
 import Event from '@/components/Event/Event';
+import FirstLook from '@/components/FirstLook/FirstLook';
 
 export default function EventPage({ params: { lang } }: any) {
   unstable_setRequestLocale(lang);
@@ -14,6 +15,7 @@ export default function EventPage({ params: { lang } }: any) {
   return (
     <main>
       <Intro />
+      <FirstLook />
       <Event />
       <Contact />
       <Gallery />
