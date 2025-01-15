@@ -18,6 +18,7 @@ export const navMainList: NavItem[] = [
 ];
 
 export const navEventList: NavItem[] = [
+  { text: 'navigation.product', url: '/' },
   { text: 'navigation.info', scrollId: ScrollItems.about },
   { text: 'navigation.agenda', scrollId: ScrollItems.agenda },
   { text: 'navigation.contact', form: 'event' },
