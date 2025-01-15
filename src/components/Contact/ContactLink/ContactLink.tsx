@@ -7,16 +7,23 @@ import { useMediaQuery } from 'react-responsive';
 interface Props {
   imageLink: string;
   url: string;
+  size?: number;
+  iconSize?: number;
 }
 
-const ContactLink: FC<Props> = ({ imageLink, url }) => {
+const ContactLink: FC<Props> = ({ imageLink, url, size, iconSize }) => {
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
   return (
-    <a className={styles.link} target='_blank' href={url}>
+    <a
+      className={styles.link}
+      style={size ? { width: size, height: size, borderRadius: 24 } : {}}
+      target='_blank'
+      href={url}
+    >
       <Image
         src={imageLink}
-        width={isTabletOrMobile ? 35 : 25}
-        height={isTabletOrMobile ? 35 : 25}
+        width={iconSize ? iconSize : isTabletOrMobile ? 35 : 25}
+        height={iconSize ? iconSize : isTabletOrMobile ? 35 : 25}
         alt='social icon'
       />
     </a>
