@@ -1,11 +1,15 @@
+'use client';
 import { FC } from 'react';
 import styles from './FirstLook.module.scss';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import ContactLink from '../Contact/ContactLink/ContactLink';
+import { useMediaQuery } from 'react-responsive';
 
 const FirstLook: FC = () => {
   const t = useTranslations();
+  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
+
   return (
     <section id='firstlook' className={styles.container}>
       <span className={styles.title}>
@@ -19,6 +23,7 @@ const FirstLook: FC = () => {
             src='/images/aestheticsBG.png'
             width={594}
             height={397}
+            layout={isTabletOrMobile ? 'responsive' : 'auto'}
             alt='exosome bottles on rose table'
           />
         </div>

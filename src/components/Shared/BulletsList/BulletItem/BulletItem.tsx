@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import styles from './UsageItem.module.scss';
+import styles from './BulletItem.module.scss';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
@@ -8,7 +8,7 @@ interface Props {
   text: string;
 }
 
-const UsageItem: FC<Props> = ({ imageUrl, text }) => {
+const BulletItem: FC<Props> = ({ imageUrl, text }) => {
   const t = useTranslations();
   return (
     <div className={styles.container}>
@@ -18,4 +18,4 @@ const UsageItem: FC<Props> = ({ imageUrl, text }) => {
   );
 };
 
-export default UsageItem;
+export default BulletItem;

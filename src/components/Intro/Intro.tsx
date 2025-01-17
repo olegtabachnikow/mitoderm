@@ -1,10 +1,11 @@
 'use client';
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import styles from './Intro.module.scss';
 import { useTranslations, useLocale } from 'next-intl';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import useAppStore from '@/store/store';
 
 const Button = dynamic(() => import('@/components/Shared/Button/Button'), {
   ssr: false,
@@ -15,6 +16,11 @@ const Intro: FC = () => {
   const locale = useLocale();
   const pathname = usePathname();
   const isEventPage = pathname.includes('event');
+  const { formCategory, setFormCategory } = useAppStore((state) => state);
+
+  useEffect(() => {
+    isEventPage ? setFormCategory('event') : setFormCategory('main');
+  }, [isEventPage]);
 
   return (
     <section
@@ -37,6 +43,7 @@ const Intro: FC = () => {
             text={t(isEventPage ? 'buttons.seat' : 'buttons.contact')}
             style={{ marginTop: 20 }}
             contact
+            formType={formCategory}
           />
           {isEventPage ? null : (
             <p className={styles.text}>{t('intro.text')}</p>

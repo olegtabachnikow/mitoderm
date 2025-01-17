@@ -1,5 +1,5 @@
 'use client';
-import { FC, FormEvent, useState, useEffect } from 'react';
+import { FC, FormEvent, useState, useEffect, useRef } from 'react';
 import styles from './Form.module.scss';
 import Image from 'next/image';
 import Button from '../Shared/Button/Button';
@@ -11,11 +11,15 @@ import useAppStore from '@/store/store';
 import type { FormDataType } from '@/types';
 import { sendDataOnMail, sendDataToCRM } from '@/utils/sendFormData';
 import Loader from '../Shared/Loader/Loader';
+import NumberInput from './NumberInput/NumberInput';
+import RadioGroupInput from './RadioGroupInput/RadioGroupInput';
+import Price from './Price/Price';
 
 const Form: FC = () => {
-  const toggleModal = useAppStore((state) => state.toggleModal);
+  const { toggleModal, formCategory } = useAppStore((state) => state);
   const t = useTranslations();
   const locale = useLocale();
+  const formRef = useRef<HTMLDivElement>(null);
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
   const [isChecked, setIsChecked] = useState<boolean>(false);
   const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true);
@@ -25,6 +29,8 @@ const Form: FC = () => {
     phone: { value: '', isValid: false },
     profession: { value: '', isValid: false },
   });
+  const [radioGroupDataProf, setRadioGroupDataProf] = useState<1 | 2>(1);
+  const [radioGroupDataGender, setRadioGroupDataGender] = useState<1 | 2>(1);
   const [isSending, setIsSending] = useState<boolean>(false);
   const [isSent, setIsSent] = useState<boolean>(false);
 
@@ -91,8 +97,7 @@ const Form: FC = () => {
         })
         .catch(() => false),
       sendDataToCRM(formData)
-        .then((res) => {
-          console.log(res);
+        .then(() => {
           return true;
         })
         .catch(() => false),
@@ -108,12 +113,17 @@ const Form: FC = () => {
     }
   };
 
+  const getFormHeight = () => {
+    if (formRef.current) return formRef.current?.clientHeight;
+    else return 760;
+  };
+
   useEffect(() => {
     window.addEventListener('keypress', onEnterHit);
     return () => window.removeEventListener('keypress', onEnterHit);
   }, [isButtonDisabled]);
 
-  useEffect(() => {
+  const validateMainPageForm = () => {
     !formData.email.isValid ||
     !formData.name.isValid ||
     !formData.profession.isValid ||
@@ -121,6 +131,10 @@ const Form: FC = () => {
     !isChecked
       ? setIsButtonDisabled(true)
       : setIsButtonDisabled(false);
+  };
+
+  useEffect(() => {
+    validateMainPageForm();
   }, [formData, isChecked]);
 
   return (
@@ -136,7 +150,7 @@ const Form: FC = () => {
           alt='close icon'
         />
       </button>
-      <div className={styles.formContainer}>
+      <div ref={formRef} className={styles.formContainer}>
         {isSent ? (
           <>
             {isTabletOrMobile ? (
@@ -153,12 +167,16 @@ const Form: FC = () => {
           <Loader />
         ) : (
           <>
-            <h2>
-              {t('form.titleP1')}
-              <br />
-              <span>{t('form.titleP2')}</span>
-              {t('form.titleP3')}
-            </h2>
+            {formCategory === 'main' ? (
+              <h2>
+                {t('form.titleP1')}
+                <br />
+                <span>{t('form.titleP2')}</span>
+                {t('form.titleP3')}
+              </h2>
+            ) : (
+              <h2>{t('form.eventTitle')}</h2>
+            )}
             <p>{t('form.subtitle')}</p>
             <form
               noValidate
@@ -176,6 +194,26 @@ const Form: FC = () => {
                 placeholder='Aaron Smith'
                 validator={validateName}
               />
+              {formCategory === 'event' ? (
+                <>
+                  <NumberInput />
+                  <div className={styles.radioGroup}>
+                    <RadioGroupInput
+                      isProf
+                      text={'form.placeholderProfession'}
+                      value={radioGroupDataProf}
+                      setValue={setRadioGroupDataProf}
+                    />
+                    <RadioGroupInput
+                      isProf={false}
+                      text={'form.gender'}
+                      value={radioGroupDataGender}
+                      setValue={setRadioGroupDataGender}
+                    />
+                  </div>
+                </>
+              ) : null}
+
               <FormInput
                 label={t('form.placeholderEmailName')}
                 setFormData={handleData}
@@ -192,16 +230,20 @@ const Form: FC = () => {
                 placeholder='586 412 924'
                 validator={validatePhone}
               />
-              <FormInput
-                label={t('form.placeholderProfession')}
-                setFormData={handleData}
-                min={3}
-                max={20}
-                type='text'
-                name='profession'
-                placeholder={t('form.placeholderProfession')}
-                validator={validateProfession}
-              />
+              {formCategory === 'main' ? (
+                <FormInput
+                  label={t('form.placeholderProfession')}
+                  setFormData={handleData}
+                  min={3}
+                  max={20}
+                  type='text'
+                  name='profession'
+                  placeholder={t('form.placeholderProfession')}
+                  validator={validateProfession}
+                />
+              ) : (
+                <Price />
+              )}
               <label
                 className={`${styles.checkboxLabel} ${
                   locale === 'he' ? styles.he : ''
@@ -242,7 +284,7 @@ const Form: FC = () => {
         <Image
           className={styles.desktopImage}
           width={620}
-          height={760}
+          height={getFormHeight()}
           src='/images/formImage.png'
           alt='background with exosome'
         />

@@ -3,8 +3,8 @@ import { FC } from 'react';
 import styles from './HowCaBeUsed.module.scss';
 import { useTranslations } from 'next-intl';
 import { howToUseItemList } from '@/constants';
-import UsageItem from './UsageItem/UsageItem';
 import Button from '../Shared/Button/Button';
+import BulletList from '../Shared/BulletsList/BulletList';
 
 const scrollTo = () => {
   const element = document.getElementById('about');
@@ -21,15 +21,7 @@ const HowCanBeUsed: FC = () => {
         <span className={styles.titleColored}>{t('howToUse.titleP2')}</span>
         {t('howToUse.titleP3')}
       </p>
-      <div className={styles.itemList}>
-        {howToUseItemList.map((item) => (
-          <UsageItem
-            key={item.text}
-            imageUrl={item.imagePath}
-            text={item.text}
-          />
-        ))}
-      </div>
+      <BulletList data={howToUseItemList} />
       <Button colored onClick={scrollTo} text={t('buttons.learnMore')} />
     </section>
   );

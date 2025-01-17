@@ -34,6 +34,7 @@ export interface FormDataType {
   email: { value: string; isValid: boolean };
   phone: { value: string; isValid: boolean };
   profession: { value: string; isValid: boolean };
+  gender?: { value: 1 | 2 };
 }
 
 export enum ScrollItems {
@@ -51,3 +52,10 @@ export interface ReviewType {
   rating: number;
   text: string;
 }
+
+export interface EventBulletItem {
+  imagePath: string;
+  text: string;
+}
+
+export type FormType = 'event' | 'main';

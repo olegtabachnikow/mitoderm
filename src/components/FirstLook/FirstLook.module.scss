@@ -8,6 +8,7 @@
 
 .title {
   font-size: var(--fontSizeH2);
+  margin-top: 60px;
 }
 
 .title .colored {
@@ -16,6 +17,7 @@
 
 .subtitle {
   font-size: var(--fontSizeP1);
+  margin: 20px 0 60px 0;
 }
 
 .containerInner {
@@ -50,4 +52,41 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+}
+
+@media screen and (max-width: 1224px) {
+  .container {
+    width: 100%;
+    padding-inline: 20px;
+  }
+  .containerInner {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .imageBox,
+  .textContainer {
+    width: 100%;
+    max-width: 100%;
+  }
+  .textContainer {
+    padding: 25px;
+  }
+  .linkbox {
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  .title {
+    font-size: var(--fontSizeMobH2);
+  }
+  .subtitle {
+    font-size: var(--fontSizeP2);
+    margin: 20px 0 40px 0;
+  }
+  .textTitle {
+    font-size: var(--fontSizeMobH2);
+  }
+  .text {
+    font-size: var(--fontSizeMobP2);
+  }
 }

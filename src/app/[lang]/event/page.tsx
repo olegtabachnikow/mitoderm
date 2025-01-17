@@ -8,6 +8,8 @@ import Button from '@/components/Shared/Button/Button';
 import { useTranslations } from 'next-intl';
 import Event from '@/components/Event/Event';
 import FirstLook from '@/components/FirstLook/FirstLook';
+import EventBulletList from '@/components/EventBulletList/EventBulletList';
+import ToTopItOff from '@/components/ToTopItOff/ToTopItOff';
 
 export default function EventPage({ params: { lang } }: any) {
   unstable_setRequestLocale(lang);
@@ -15,8 +17,10 @@ export default function EventPage({ params: { lang } }: any) {
   return (
     <main>
       <Intro />
+      <EventBulletList />
       <FirstLook />
       <Event />
+      <ToTopItOff />
       <Contact />
       <Gallery />
       <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>

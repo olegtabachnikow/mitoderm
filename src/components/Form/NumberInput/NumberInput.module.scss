@@ -1,0 +1,73 @@
+.container span {
+  font-size: var(--fontSizeMobP2);
+}
+
+.container input,
+.container button {
+  height: 53px;
+  width: 53px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 12px;
+  outline: none;
+  border: none;
+  background-color: var(--colorBG);
+  font-size: var(--fontSizeP2);
+  margin-top: 5px;
+  border: 1px solid transparent;
+  transition: all 0.3s linear;
+}
+
+.container input {
+  color: var(--colorAccentDark);
+  font-weight: 600;
+  pointer-events: none;
+}
+
+.container input[type='number']::-webkit-inner-spin-button,
+.container input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.container input[type='number'] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+  margin: 0;
+}
+
+.inputContainer {
+  margin: 10px 0 20px 0;
+  display: flex;
+  gap: 10px;
+}
+
+.inputContainer button {
+  margin: 0;
+  cursor: pointer;
+}
+
+.inputContainer button:hover {
+  border: 1px solid var(--colorAccentLight);
+}
+
+@media screen and (max-width: 1224px) {
+  .container span {
+    font-size: var(--fontSizeMobExtra);
+  }
+  .container input {
+    height: 42px;
+    width: 100%;
+    font-size: var(--fontSizeMobExtra);
+  }
+  .container button {
+    height: 42px;
+    width: 42px;
+  }
+  .container button img {
+    width: 16px;
+    height: 16px;
+  }
+}
