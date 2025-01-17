@@ -34,7 +34,21 @@
   pointer-events: none;
   transition: all 0.3s linear;
 }
+
 .active {
   pointer-events: all;
   opacity: 70%;
+}
+
+@media screen and (max-width: 1224px) {
+  .container {
+    overflow-y: scroll;
+    padding-block: 20px;
+  }
+  .contentActive {
+    overflow-y: scroll;
+  }
+  .content {
+    height: auto;
+  }
 }
