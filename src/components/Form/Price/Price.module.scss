@@ -1,0 +1,86 @@
+.container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.totalBox,
+.promoBox {
+  display: flex;
+  flex-direction: column;
+}
+
+.promoBox {
+  flex: 1;
+  max-width: 264px;
+}
+
+.inputBox {
+  width: 100%;
+  position: relative;
+}
+
+.inputBox input {
+  height: 53px;
+  border-radius: 12px;
+  background-color: var(--colorBG);
+  outline: none;
+  border: 1px solid transparent;
+  padding: 16px 20px;
+  z-index: 1;
+  width: 100%;
+}
+
+.inputBox button {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: var(--colorAccentLight);
+  background-color: transparent;
+  cursor: pointer;
+  width: 60px;
+  height: 50px;
+  z-index: 2;
+  transition: all 0.2s linear;
+}
+
+.inputBox button:hover {
+  opacity: 0.7;
+}
+
+.total,
+.promo {
+  font-size: var(--fontSizeMobP2);
+  margin-bottom: 5px;
+}
+
+.total {
+  text-transform: uppercase;
+}
+
+.amount {
+  font-size: var(--fontSizeP1);
+  color: var(--colorAccentLight);
+  margin-right: 20px;
+  line-height: 53px;
+}
+
+.message {
+  margin-top: 5px;
+  font-size: var(--fontSizeMobP2);
+  opacity: 0;
+  height: 14px;
+}
+
+.error {
+  color: #d00043;
+  opacity: 1;
+}
+
+.success {
+  color: #409c3e;
+  opacity: 1;
+}

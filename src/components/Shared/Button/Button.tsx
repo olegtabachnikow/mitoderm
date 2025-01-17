@@ -2,6 +2,7 @@
 import { CSSProperties, FC } from 'react';
 import styles from './Button.module.scss';
 import useAppStore from '@/store/store';
+import { FormType } from '@/types';
 
 interface Props {
   text: string;
@@ -11,6 +12,7 @@ interface Props {
   disabled?: boolean;
   contact?: boolean;
   onClick?: () => any;
+  formType?: FormType;
 }
 
 const Button: FC<Props> = ({
@@ -21,11 +23,15 @@ const Button: FC<Props> = ({
   disabled = false,
   contact,
   onClick,
+  formType,
 }) => {
-  const { toggleModal, setModalContent } = useAppStore((state) => state);
+  const { toggleModal, setModalContent, setFormCategory } = useAppStore(
+    (state) => state
+  );
 
   const openForm = () => {
     setModalContent('form');
+    formType && setFormCategory(formType);
     toggleModal(true);
   };
 

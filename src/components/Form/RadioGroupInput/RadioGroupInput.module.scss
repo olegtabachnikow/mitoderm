@@ -1,0 +1,55 @@
+.container {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.buttonContainer {
+  display: flex;
+}
+
+.label {
+  font-size: var(--fontSizeMobP2);
+  color: var(--colorAccentDark);
+  margin-bottom: 5px;
+}
+
+.item {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+}
+
+.item span {
+  font-size: var(--fontSizeMobP2);
+  margin-right: 12px;
+}
+
+.buttonIcon {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 1px solid var(--colorAccentLight);
+  box-sizing: border-box;
+  transition: all 0.2s linear;
+  margin-right: 8px;
+}
+
+.buttonIcon:after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: transparent;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.buttonIcon.active:after {
+  background-color: var(--colorAccentLight);
+}

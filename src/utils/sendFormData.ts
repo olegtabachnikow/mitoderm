@@ -47,13 +47,13 @@ export async function sendDataToCRM(formData: FormDataType) {
   const account = process.env.NEXT_PUBLIC_CRM_ACCOUNT;
   const password = process.env.NEXT_PUBLIC_CRM_PASSWORD;
 
-  axios.post(
+  const response = await axios.post(
     `https://${account}.senzey.com/extapi/client/add.php?username=${username}&password=${password}`,
     {
-      x_name: formData.name,
-      x_email: formData.email,
-      x_phone: formData.phone,
-      x_comments: formData.profession,
+      x_name: formData.name.value,
+      x_email: formData.email.value,
+      x_phone: formData.phone.value,
+      x_comments: formData.profession.value,
     },
     {
       headers: {

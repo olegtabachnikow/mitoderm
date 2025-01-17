@@ -43,7 +43,19 @@
       "mobTitle": "Congratulations!",
       "text": "Your form has been submitted ",
       "textColored": "successfully"
-    }
+    },
+    "eventTitle": "Seat Reservation",
+    "numberTickets": "Tickets",
+    "gender": "Gender",
+    "prof1": "Doctor",
+    "prof2": "Nurse",
+    "gen1": "Male",
+    "gen2": "Female",
+    "total": "Total",
+    "promo": "Promo Code",
+    "apply": "Apply",
+    "success": "You get 10% discount",
+    "wrongPromo": "Wrong promo code"
   },
   "intro": {
     "subtitleP1": "Korean product",
@@ -174,7 +186,7 @@
     "obligationsText": "This declaration is made in accordance with the legal requirements of Israel and international accessibility standards. It will be updated as website functionality changes."
   },
   "event": {
-    "title": "Event",
+    "title": "Agenda",
     "item1": {
       "title": "Wine & Networking: Connect in a Cozy Atmosphere",
       "text": "some text here...",
@@ -202,5 +214,16 @@
     "subtitle": "MITODERM Invites You to an Intimate and Inspiring Conference!",
     "textTitle": "Who Are We?",
     "text": "MITODERM is a subsidiary of a global group specializing in the distribution of medical equipment and advanced aesthetic solutions in Asia, Australia, and the USA. Combining innovation, expertise, and years of experience, we are here to lead the next generation of professional aesthetics – now in Israel."
+  },
+  "eventBullets": {
+    "item1": "Innovative Technologies",
+    "item2": "Practical Skills",
+    "item3": "Networking",
+    "item4": "Certificate of Participation"
+  },
+  "toTop": {
+    "title": "To top it off",
+    "text1": "An exclusive offer: purchase the product at a special price before anyone else!",
+    "text2": "A digital course on building a winning business – strategic tools for creating differentiation and increasing profitability in a competitive market"
   }
 }

@@ -124,6 +124,11 @@
   color: var(--colorAccentLight);
 }
 
+.radioGroup {
+  display: flex;
+  margin-bottom: 20px;
+}
+
 @media screen and (max-width: 1224px) {
   .container {
     width: 92%;

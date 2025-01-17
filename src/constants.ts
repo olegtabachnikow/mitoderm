@@ -6,6 +6,7 @@ import {
   SolutionItem,
   ScrollItems,
   ReviewType,
+  EventBulletItem,
 } from './types';
 
 export const navMainList: NavItem[] = [
@@ -31,6 +32,25 @@ export const howToUseItemList: HowToUseItem[] = [
   { imagePath: '/images/howToUse/acne.png', text: 'howToUse.item2' },
   { imagePath: '/images/howToUse/hair.png', text: 'howToUse.item3' },
   { imagePath: '/images/howToUse/skin.png', text: 'howToUse.item4' },
+];
+
+export const eventBulletsItemList: EventBulletItem[] = [
+  {
+    imagePath: '/images/event-bullets/clock.png',
+    text: 'eventBullets.item1',
+  },
+  {
+    imagePath: '/images/event-bullets/practical-skills.png',
+    text: 'eventBullets.item2',
+  },
+  {
+    imagePath: '/images/event-bullets/networking.png',
+    text: 'eventBullets.item3',
+  },
+  {
+    imagePath: '/images/event-bullets/certificate.png',
+    text: 'eventBullets.item4',
+  },
 ];
 
 export const aboutBulletItems: AboutBulletItem[] = [

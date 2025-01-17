@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { ModalType } from '@/types';
+import { FormType, ModalType } from '@/types';
 
 interface RootState {
   isFirstRender: boolean;
@@ -12,6 +12,12 @@ interface RootState {
   setReviewPage: (page: number) => void;
   modalContent: ModalType;
   setModalContent: (arg: ModalType) => void;
+  formCategory: FormType;
+  setFormCategory: (arg: FormType) => void;
+  numberOfTickets: number;
+  setNumberOfTickets: (arg: number) => void;
+  isDiscounted: boolean;
+  setIsDiscounted: (arg: boolean) => void;
 }
 
 const useAppStore = create<RootState>((set) => ({
@@ -30,6 +36,15 @@ const useAppStore = create<RootState>((set) => ({
   modalContent: 'form',
   setModalContent: (arg: ModalType) =>
     set((state) => ({ modalContent: (state.modalContent = arg) })),
+  formCategory: 'main',
+  setFormCategory: (arg) =>
+    set((state) => ({ formCategory: (state.formCategory = arg) })),
+  numberOfTickets: 1,
+  setNumberOfTickets: (arg: number) =>
+    set((state) => ({ numberOfTickets: (state.numberOfTickets = arg) })),
+  isDiscounted: false,
+  setIsDiscounted: (arg: boolean) =>
+    set((state) => ({ isDiscounted: (state.isDiscounted = arg) })),
 }));
 
 export default useAppStore;
