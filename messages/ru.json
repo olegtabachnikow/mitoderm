@@ -43,13 +43,27 @@
       "mobTitle": "Поздравляем!",
       "text": "Ваша форма успешно ",
       "textColored": "отправлена"
-    }
+    },
+    "eventTitle": "Seat Reservation",
+    "numberTickets": "Tickets",
+    "gender": "Gender",
+    "prof1": "Doctor",
+    "prof2": "Nurse",
+    "gen1": "Male",
+    "gen2": "Female",
+    "total": "Total",
+    "promo": "Promo Code",
+    "apply": "Apply",
+    "success": "You get 10% discount",
+    "wrongPromo": "Wrong promo code"
   },
   "intro": {
     "subtitleP1": "Продукт из Южной Кореи",
     "subtitleP2": "Официальный дистрибьютор",
     "title": "EXOXE Экзосомы в Израиле",
-    "text": "MitoDerm сочетает передовые эстетические технологии и научный подход, предлагая инновационные решения в сфере косметологии. Вы — врач или косметолог, стремящийся улучшить свои услуги? Давайте совершенствоваться вместе!"
+    "text": "MitoDerm сочетает передовые эстетические технологии и научный подход, предлагая инновационные решения в сфере косметологии. Вы — врач или косметолог, стремящийся улучшить свои услуги? Давайте совершенствоваться вместе!",
+    "eventSubtitle": "Intimate and Inspiring Conference",
+    "eventTitle": "Join Conference by Mitoderm"
   },
   "howToUse": {
     "titleP1": "Как можно использовать ",
@@ -172,26 +186,44 @@
     "obligationsText": "This declaration is made in accordance with the legal requirements of Israel and international accessibility standards. It will be updated as website functionality changes."
   },
   "event": {
-    "title": "Event",
+    "title": "Программа:",
     "item1": {
-      "title": "Wine & Networking: Connect in a Cozy Atmosphere",
+      "title": "Сбор в уютной атмосфере с изысканными угощениями и вином. Возможность для нетворкинга с коллегами по индустрии.",
       "text": "some text here...",
       "time": "7:00 PM - "
     },
     "item2": {
-      "title": "Ilona Shpektor's Journey: Insights for Growth",
+      "title": "Илона Шпектор, генеральный директор MITODERM, медсестра и косметолог, поделится своей историей – инсайтами, вызовами и инструментами, которые помогут и вам ускорить личный и профессиональный рост.",
       "text": "some text here...",
       "time": "7:30 PM - "
     },
     "item3": {
-      "title": "Exclusive Reveal: Breakthrough Aesthetic Product",
+      "title": "Эксклюзивное открытие: разработка, которая изменит правила игры! Прорывной продукт из Кореи, продающийся в 35 странах мира, откроет для вас новые возможности в эстетике.",
       "text": "some text here...",
       "time": "8:30 PM - "
     },
     "item4": {
-      "title": "Elevate Your Business with MITODERM's Model",
+      "title": "Ознакомление с бизнес-моделью MITODERM и тем, как использовать её для вывода вашего бизнеса на новый уровень успеха, наслаждаясь процессом.",
       "text": "some text here...",
       "time": "9:15 PM - "
     }
+  },
+  "firstLook": {
+    "titleP1": "Первый взгляд на ",
+    "titleP2": "будущее мира эстетики",
+    "subtitle": "MITODERM приглашает вас на уютную и вдохновляющую конференцию!",
+    "textTitle": "Кто мы?",
+    "text": "MITODERM – дочерняя компания глобальной группы, специализирующейся на распространении медицинского оборудования и передовых решений в эстетике в Азии, Австралии и США. Объединив инновации, экспертизу и многолетний опыт, мы здесь, чтобы возглавить новое поколение профессиональной эстетики – теперь и в Израиле."
+  },
+  "eventBullets": {
+    "item1": "Innovative Technologies",
+    "item2": "Practical Skills",
+    "item3": "Networking",
+    "item4": "Certificate of Participation"
+  },
+  "toTop": {
+    "title": "И в завершение:",
+    "text1": "Эксклюзивное предложение: покупка продукта по выгодной цене до всех остальных!",
+    "text2": "Онлайн-курс «Успешный бизнес» – стратегические инструменты для создания уникального предложения и увеличения прибыли в конкурентной среде."
   }
 }

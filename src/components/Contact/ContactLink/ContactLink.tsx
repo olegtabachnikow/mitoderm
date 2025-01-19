@@ -9,13 +9,14 @@ interface Props {
   url: string;
   size?: number;
   iconSize?: number;
+  wide?: boolean;
 }
 
-const ContactLink: FC<Props> = ({ imageLink, url, size, iconSize }) => {
+const ContactLink: FC<Props> = ({ imageLink, url, size, iconSize, wide }) => {
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
   return (
     <a
-      className={styles.link}
+      className={`${styles.link} ${wide ? styles.wide : ''}`}
       style={size ? { width: size, height: size, borderRadius: 24 } : {}}
       target='_blank'
       href={url}

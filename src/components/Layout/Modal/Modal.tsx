@@ -22,8 +22,16 @@ const Modal: FC = () => {
     return () => window.removeEventListener('click', handleClose);
   }, [modalIsOpen]);
 
+  useEffect(() => {
+    const body = document.querySelector('body');
+    body && modalIsOpen
+      ? body.classList.add('modalOpened')
+      : body?.classList.remove('modalOpened');
+    return () => body?.classList.remove('modalOpened');
+  }, [modalIsOpen]);
+
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${modalIsOpen ? styles.opened : ''}`}>
       <div
         id='modal'
         className={`${styles.overlay} ${modalIsOpen ? styles.active : ''}`}

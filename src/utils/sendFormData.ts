@@ -36,6 +36,7 @@ export async function sendDataOnMail(formData: any) {
       <p>Phone number: ${phone} </p>
       `,
     });
+    return mail;
   } catch (error) {
     return new Error('Something goes wrong');
   }
@@ -47,18 +48,23 @@ export async function sendDataToCRM(formData: FormDataType) {
   const account = process.env.NEXT_PUBLIC_CRM_ACCOUNT;
   const password = process.env.NEXT_PUBLIC_CRM_PASSWORD;
 
+  const data = {
+    x_name: formData.name.value,
+    x_email: formData.email.value,
+    x_phone: formData.phone.value,
+    x_comments: formData.profession.value,
+  };
+
+  const encodedData = new URLSearchParams(data).toString();
+
   const response = await axios.post(
-    `https://${account}.senzey.com/extapi/client/add.php?username=${username}&password=${password}`,
-    {
-      x_name: formData.name.value,
-      x_email: formData.email.value,
-      x_phone: formData.phone.value,
-      x_comments: formData.profession.value,
-    },
+    `https://${account}.senzey.com/extapi/pclient/add.php?username=${username}&password=${password}`,
+    encodedData,
     {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
     }
   );
+  return response;
 }

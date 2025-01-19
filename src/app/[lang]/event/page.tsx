@@ -28,6 +28,7 @@ export default function EventPage({ params: { lang } }: any) {
           style={{ margin: '20px auto 40px auto' }}
           colored
           text={t('buttons.seat')}
+          contact
         />
       </div>
       <About />
