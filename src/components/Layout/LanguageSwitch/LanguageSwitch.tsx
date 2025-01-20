@@ -5,12 +5,16 @@ import Image from 'next/image';
 import { useLocale } from 'next-intl';
 import SwitchItem from './SwitchItem/SwitchItem';
 import { useMediaQuery } from 'react-responsive';
+import { usePathname } from 'next/navigation';
 
 const LanguageSwitch: FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
   const popupRef = useRef<HTMLDivElement>(null);
   const locale = useLocale();
+  const pathname = usePathname();
+  const isEventPage = pathname.includes('event');
+
   const handleClick = () => {
     setIsOpen(() => !isOpen);
   };
@@ -63,33 +67,33 @@ const LanguageSwitch: FC = () => {
             {locale === 'en' ? (
               <>
                 <SwitchItem
-                  url='/ru/'
+                  url={`/ru/${isEventPage ? 'event' : ''}`}
                   imageSrc='/images/languageSwitch/ru.svg'
                 />
                 <SwitchItem
-                  url='/he/'
+                  url={`/he/${isEventPage ? 'event' : ''}`}
                   imageSrc='/images/languageSwitch/he.svg'
                 />
               </>
             ) : locale === 'ru' ? (
               <>
                 <SwitchItem
-                  url='/en/'
+                  url={`/en/${isEventPage ? 'event' : ''}`}
                   imageSrc='/images/languageSwitch/en.svg'
                 />
                 <SwitchItem
-                  url='/he/'
+                  url={`/he/${isEventPage ? 'event' : ''}`}
                   imageSrc='/images/languageSwitch/he.svg'
                 />
               </>
             ) : (
               <>
                 <SwitchItem
-                  url='/en/'
+                  url={`/en/${isEventPage ? 'event' : ''}`}
                   imageSrc='/images/languageSwitch/en.svg'
                 />
                 <SwitchItem
-                  url='/ru/'
+                  url={`/ru/${isEventPage ? 'event' : ''}`}
                   imageSrc='/images/languageSwitch/ru.svg'
                 />
               </>

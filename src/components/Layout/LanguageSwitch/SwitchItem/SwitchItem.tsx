@@ -28,7 +28,9 @@ const SwitchItem: FC<Props> = ({ url, style, imageSrc }) => {
         width={isTabletOrMobile ? 16 : 20}
         height={isTabletOrMobile ? 16 : 20}
       />
-      <span className={styles.text}>{url.replaceAll('/', '')}</span>
+      <span className={styles.text}>
+        {url.replaceAll('/', '').replace('event', '')}
+      </span>
     </Link>
   );
 };

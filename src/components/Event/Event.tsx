@@ -7,7 +7,7 @@ import Button from '../Shared/Button/Button';
 const Event: FC = () => {
   const t = useTranslations();
   return (
-    <section id='event' className={styles.container}>
+    <section id='agenda' className={styles.container}>
       <div className={styles.containerInner}>
         <span className={styles.title}>{t('event.title')}</span>
         <div className={styles.itemBox}>

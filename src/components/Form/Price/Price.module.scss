@@ -30,6 +30,7 @@
   padding: 16px 20px;
   z-index: 1;
   width: 100%;
+  font-size: var(--fontSizeP2);
 }
 
 .inputBox button {
@@ -43,6 +44,7 @@
   cursor: pointer;
   width: 60px;
   height: 50px;
+  font-size: var(--fontSizeP2);
   z-index: 2;
   transition: all 0.2s linear;
 }
@@ -83,4 +85,13 @@
 .success {
   color: #409c3e;
   opacity: 1;
+}
+
+@media screen and (max-width: 1224px) {
+  .container {
+    flex-direction: column;
+  }
+  .promoBox {
+    max-width: 100%;
+  }
 }

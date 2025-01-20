@@ -91,16 +91,11 @@ const Form: FC = () => {
     setIsSending(true);
 
     Promise.all([
-      sendDataOnMail(formData)
-        .then(() => {
-          return true;
-        })
-        .catch(() => false),
+      sendDataOnMail(formData).then().catch(),
       sendDataToCRM(formData)
-        .then(() => {
-          return true;
-        })
-        .catch(() => false),
+        .then((res) => console.log(res))
+        // .catch(() =>  false),
+        .catch((err) => console.log(err)),
     ]).then((values: any) => {
       (values[0] || values[1]) && setIsSent(true);
     });

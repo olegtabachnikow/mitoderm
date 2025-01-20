@@ -4,6 +4,8 @@
   position: fixed;
   top: 0;
   left: 0;
+  right: 0;
+  bottom: 0;
   z-index: 15;
   pointer-events: none;
 }
@@ -42,13 +44,19 @@
 
 @media screen and (max-width: 1224px) {
   .container {
-    overflow-y: scroll;
     padding-block: 20px;
+    overflow-y: scroll;
+  }
+  .container.opened {
+    -webkit-overflow-scrolling: touch;
+    pointer-events: all;
   }
   .contentActive {
     overflow-y: scroll;
   }
   .content {
     height: auto;
+    max-height: auto;
+    -webkit-overflow-scrolling: touch;
   }
 }

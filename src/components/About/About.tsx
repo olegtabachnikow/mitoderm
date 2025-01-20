@@ -50,7 +50,8 @@ const About: FC = () => {
         style={{ marginBlock: 40, marginBottom: isEventPage ? 80 : 40 }}
         colored
         text={t(isEventPage ? 'buttons.seat' : 'buttons.moreAbout')}
-        onClick={scrollTo}
+        onClick={!isEventPage ? scrollTo : () => null}
+        contact={isEventPage}
       />
     </section>
   );
