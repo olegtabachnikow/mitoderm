@@ -16,7 +16,7 @@ export async function sendDataToCRM(formData: FormDataType) {
 
   return await axios.post(crmUrl, data, {
     headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
+      'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
     },
   });
 }
