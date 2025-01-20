@@ -13,8 +13,6 @@ interface Props {
   type: 'text' | 'tel' | 'email';
   label: string;
   placeholder: string;
-  min?: number;
-  max?: number;
 }
 
 const FormInput: FC<Props> = ({
@@ -23,8 +21,6 @@ const FormInput: FC<Props> = ({
   type,
   name,
   placeholder,
-  min,
-  max,
   label,
 }) => {
   const [data, setData] = useState<string>('');
@@ -37,10 +33,8 @@ const FormInput: FC<Props> = ({
   };
 
   useEffect(() => {
-    if (!error.length) {
-      setFormData(data, name, true);
-    } else setFormData(data, name, false);
-  }, [error]);
+    setFormData(data, name, !error.length ? true : false);
+  }, [error, data]);
 
   return (
     <label className={styles.inputLabel}>
@@ -51,8 +45,6 @@ const FormInput: FC<Props> = ({
         className={error ? styles.error : ''}
         value={data}
         onChange={(e) => onChange(e.target.value)}
-        min={min}
-        max={max}
         type={type}
         name={name}
         placeholder={placeholder}

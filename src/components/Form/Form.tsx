@@ -9,7 +9,8 @@ import { emailRegex } from '@/constants';
 import { useMediaQuery } from 'react-responsive';
 import useAppStore from '@/store/store';
 import type { FormDataType } from '@/types';
-import { sendDataOnMail, sendDataToCRM } from '@/utils/sendFormData';
+import { sendDataOnMail } from '@/utils/sendEmailData';
+import { sendDataToCRM } from '@/utils/sendCRMData';
 import Loader from '../Shared/Loader/Loader';
 import NumberInput from './NumberInput/NumberInput';
 import RadioGroupInput from './RadioGroupInput/RadioGroupInput';
@@ -182,8 +183,6 @@ const Form: FC = () => {
               <FormInput
                 label={t('form.placeholderInputName')}
                 setFormData={handleData}
-                min={3}
-                max={20}
                 type='text'
                 name='name'
                 placeholder='Aaron Smith'
@@ -229,8 +228,6 @@ const Form: FC = () => {
                 <FormInput
                   label={t('form.placeholderProfession')}
                   setFormData={handleData}
-                  min={3}
-                  max={20}
                   type='text'
                   name='profession'
                   placeholder={t('form.placeholderProfession')}
