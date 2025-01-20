@@ -94,7 +94,7 @@ const Form: FC = () => {
       sendDataOnMail(formData).then().catch(),
       sendDataToCRM(formData)
         .then((res) => console.log(res))
-        // .catch(() => false),
+        // .catch(() =>  false),
         .catch((err) => console.log(err)),
     ]).then((values: any) => {
       (values[0] || values[1]) && setIsSent(true);
