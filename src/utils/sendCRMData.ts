@@ -1,3 +1,4 @@
+'use server';
 import axios from 'axios';
 import type { FormDataType } from '@/types';
 
@@ -14,9 +15,16 @@ export async function sendDataToCRM(formData: FormDataType) {
     x_comments: formData.profession.value,
   };
 
-  return await axios.post(crmUrl, data, {
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-    },
-  });
+  try {
+    const response = await axios.post(crmUrl, data, {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+      },
+    });
+
+    return response.data;
+  } catch (err: any) {
+    console.log(err);
+    return err.response.data || 'Error';
+  }
 }
