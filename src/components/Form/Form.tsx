@@ -138,7 +138,7 @@ const Form: FC = () => {
           isValid: true,
         },
       });
-  }, [radioGroupDataProf]);
+  }, [radioGroupDataProf, isEventPage]);
 
   useEffect(() => {
     isEventPage &&

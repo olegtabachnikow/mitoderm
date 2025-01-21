@@ -31,9 +31,15 @@ const Intro: FC = () => {
     >
       <div className={styles.container}>
         <span>
-          <span>{t('intro.subtitleP1')}</span>
-          <span className={styles.dot}>&#x2022;</span>
-          <span>{t('intro.subtitleP2')}</span>
+          {isEventPage ? (
+            <span>{t('intro.eventSubtitle')}</span>
+          ) : (
+            <>
+              <span>{t('intro.subtitleP1')}</span>
+              <span className={styles.dot}>&#x2022;</span>
+              <span>{t('intro.subtitleP2')}</span>
+            </>
+          )}
         </span>
         <h1 className={`${styles.title} ${locale === 'ru' ? styles.ru : ''}`}>
           {t(isEventPage ? 'intro.eventTitle' : 'intro.title')}
