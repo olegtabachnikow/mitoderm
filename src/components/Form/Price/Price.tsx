@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { Dispatch, FC, SetStateAction, useEffect, useState } from 'react';
 import styles from './Price.module.scss';
 import { useTranslations } from 'next-intl';
 import useAppStore from '@/store/store';
@@ -7,7 +7,12 @@ type ErrorMessageType = 'default' | 'error' | 'success';
 
 const initialErrorStatus: ErrorMessageType = 'default';
 
-const Price: FC = () => {
+interface Props {
+  total: string;
+  setTotal: Dispatch<SetStateAction<string>>;
+}
+
+const Price: FC<Props> = ({ total, setTotal }) => {
   const [value, setValue] = useState<string>('');
   const [errorMessage, setErrorMessage] =
     useState<ErrorMessageType>(initialErrorStatus);
@@ -38,15 +43,19 @@ const Price: FC = () => {
     }
   }, [errorMessage]);
 
+  useEffect(() => {
+    const result =
+      parseInt(currentPrice || '1500') *
+      numberOfTickets *
+      (isDiscounted ? 0.9 : 1);
+    setTotal(result.toString());
+  }, [numberOfTickets, isDiscounted]);
+
   return (
     <div className={styles.container}>
       <div className={styles.totalBox}>
         <span className={styles.total}>{t('form.total')}</span>
-        <span className={styles.amount}>{`$${(
-          parseInt(currentPrice || '1500') *
-          numberOfTickets *
-          (isDiscounted ? 0.9 : 1)
-        )
+        <span className={styles.amount}>{`$${parseInt(total)
           .toFixed(2)
           .replace('.', ',')}`}</span>
       </div>

@@ -1,4 +1,5 @@
-import { FC } from 'react';
+'use client';
+import { FC, useEffect } from 'react';
 import styles from './NumberInput.module.scss';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
@@ -16,6 +17,10 @@ const NumberInput: FC = () => {
       setNumberOfTickets(numberOfTickets + 1);
     }
   };
+
+  useEffect(() => {
+    setNumberOfTickets(1);
+  }, []);
 
   return (
     <div className={styles.container}>

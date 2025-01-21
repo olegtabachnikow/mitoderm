@@ -34,7 +34,8 @@ export interface FormDataType {
   email: { value: string; isValid: boolean };
   phone: { value: string; isValid: boolean };
   profession: { value: string; isValid: boolean };
-  gender?: { value: 1 | 2 };
+  gender?: { value: 'male' | 'female' };
+  totalPrice?: string;
 }
 
 export enum ScrollItems {

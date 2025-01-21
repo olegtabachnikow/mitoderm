@@ -15,10 +15,14 @@ import Loader from '../Shared/Loader/Loader';
 import NumberInput from './NumberInput/NumberInput';
 import RadioGroupInput from './RadioGroupInput/RadioGroupInput';
 import Price from './Price/Price';
+import { usePathname } from 'next/navigation';
+import { sendPaymentDataToCRM } from '@/utils/sendPayment';
 
 const Form: FC = () => {
   const { toggleModal, formCategory } = useAppStore((state) => state);
   const t = useTranslations();
+  const pathname = usePathname();
+  const isEventPage = pathname.includes('event');
   const locale = useLocale();
   const formRef = useRef<HTMLDivElement>(null);
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
@@ -28,10 +32,11 @@ const Form: FC = () => {
     name: { value: '', isValid: false },
     email: { value: '', isValid: false },
     phone: { value: '', isValid: false },
-    profession: { value: '', isValid: false },
+    profession: { value: isEventPage ? 'Doctor' : '', isValid: isEventPage },
   });
   const [radioGroupDataProf, setRadioGroupDataProf] = useState<1 | 2>(1);
   const [radioGroupDataGender, setRadioGroupDataGender] = useState<1 | 2>(1);
+  const [totalPrice, setTotalPrice] = useState<string>('');
   const [isSending, setIsSending] = useState<boolean>(false);
   const [isSent, setIsSent] = useState<boolean>(false);
 
@@ -92,15 +97,25 @@ const Form: FC = () => {
     setIsSending(true);
 
     Promise.all([
-      sendDataOnMail(formData).then().catch(),
+      sendDataOnMail(formData)
+        .then()
+        .catch((err) => console.log(err)),
       sendDataToCRM(formData)
-        .then((res) => console.log(res))
-        // .catch(() =>  false),
+        .then()
         .catch((err) => console.log(err)),
     ]).then((values: any) => {
       (values[0] || values[1]) && setIsSent(true);
     });
     return;
+  };
+
+  const onEventSubmit = async (e?: FormEvent) => {
+    e?.preventDefault();
+    // setIsSending(true);
+    const data = { ...formData, totalPrice };
+    sendPaymentDataToCRM(data)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   };
 
   const onEnterHit = (e: KeyboardEvent) => {
@@ -113,6 +128,25 @@ const Form: FC = () => {
     if (formRef.current) return formRef.current?.clientHeight;
     else return 760;
   };
+
+  useEffect(() => {
+    isEventPage &&
+      setFormData({
+        ...formData,
+        profession: {
+          value: radioGroupDataProf === 1 ? 'Doctor' : 'Nurse',
+          isValid: true,
+        },
+      });
+  }, [radioGroupDataProf]);
+
+  useEffect(() => {
+    isEventPage &&
+      setFormData({
+        ...formData,
+        gender: { value: radioGroupDataGender === 1 ? 'male' : 'female' },
+      });
+  }, [radioGroupDataGender]);
 
   useEffect(() => {
     window.addEventListener('keypress', onEnterHit);
@@ -177,7 +211,7 @@ const Form: FC = () => {
             <form
               noValidate
               className={styles.form}
-              onSubmit={onSubmit}
+              onSubmit={isEventPage ? onEventSubmit : onSubmit}
               action='submit'
             >
               <FormInput
@@ -234,7 +268,7 @@ const Form: FC = () => {
                   validator={validateProfession}
                 />
               ) : (
-                <Price />
+                <Price total={totalPrice} setTotal={setTotalPrice} />
               )}
               <label
                 className={`${styles.checkboxLabel} ${
