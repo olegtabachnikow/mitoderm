@@ -36,6 +36,9 @@ export interface FormDataType {
   profession: { value: string; isValid: boolean };
   gender?: { value: 'male' | 'female' };
   totalPrice?: string;
+  discount?: boolean;
+  quantity?: string | number;
+  lang?: string;
 }
 
 export enum ScrollItems {

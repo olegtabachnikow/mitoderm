@@ -19,7 +19,8 @@ import { usePathname } from 'next/navigation';
 import { sendPaymentDataToCRM } from '@/utils/sendPayment';
 
 const Form: FC = () => {
-  const { toggleModal, formCategory } = useAppStore((state) => state);
+  const { toggleModal, formCategory, numberOfTickets, isDiscounted } =
+    useAppStore((state) => state);
   const t = useTranslations();
   const pathname = usePathname();
   const isEventPage = pathname.includes('event');
@@ -111,10 +112,23 @@ const Form: FC = () => {
 
   const onEventSubmit = async (e?: FormEvent) => {
     e?.preventDefault();
-    // setIsSending(true);
-    const data = { ...formData, totalPrice };
+    setIsSending(true);
+    const data = {
+      ...formData,
+      totalPrice,
+      quantity: numberOfTickets,
+      discount: isDiscounted,
+      lang: locale,
+    };
+
     sendPaymentDataToCRM(data)
-      .then((res) => console.log(res))
+      .then((res) => {
+        // console.log(res);
+        setIsSending(false);
+        setIsSent(true);
+        const url = res.pay_url;
+        url && window.open(url, '_blank');
+      })
       .catch((err) => console.log(err));
   };
 

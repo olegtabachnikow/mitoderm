@@ -2,17 +2,32 @@ import { unstable_setRequestLocale } from 'next-intl/server';
 import dynamic from 'next/dynamic';
 import Intro from '@/components/Intro/Intro';
 import HowCanBeUsed from '@/components/HowCanBeUsed/HowCanBeUsed';
-import About from '@/components/About/About';
-import Mission from '@/components/Mission/Mission';
-import Faq from '@/components/Faq/Faq';
-import Contact from '@/components/Contact/Contact';
-import Gallery from '@/components/Gallery/Gallery';
 
 const Solution = dynamic(() => import('@/components/Solution/Solution'), {
   ssr: false,
 });
 
 const Reviews = dynamic(() => import('@/components/Reviews/Reviews'), {
+  ssr: false,
+});
+
+const About = dynamic(() => import('@/components/About/About'), {
+  ssr: false,
+});
+
+const Gallery = dynamic(() => import('@/components/Gallery/Gallery'), {
+  ssr: false,
+});
+
+const Mission = dynamic(() => import('@/components/Mission/Mission'), {
+  ssr: false,
+});
+
+const Faq = dynamic(() => import('@/components/Faq/Faq'), {
+  ssr: false,
+});
+
+const Contact = dynamic(() => import('@/components/Contact/Contact'), {
   ssr: false,
 });
 

@@ -1,6 +1,6 @@
 import { Dispatch, FC, SetStateAction, useEffect, useState } from 'react';
 import styles from './Price.module.scss';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import useAppStore from '@/store/store';
 
 type ErrorMessageType = 'default' | 'error' | 'success';
@@ -17,6 +17,7 @@ const Price: FC<Props> = ({ total, setTotal }) => {
   const [errorMessage, setErrorMessage] =
     useState<ErrorMessageType>(initialErrorStatus);
   const t = useTranslations();
+  const locale = useLocale();
   const currentPrice = process.env.NEXT_PUBLIC_EVENT_PRICE;
   const { numberOfTickets, isDiscounted, setIsDiscounted } = useAppStore(
     (state) => state
@@ -44,24 +45,24 @@ const Price: FC<Props> = ({ total, setTotal }) => {
   }, [errorMessage]);
 
   useEffect(() => {
-    const result =
-      parseInt(currentPrice || '1500') *
-      numberOfTickets *
-      (isDiscounted ? 0.9 : 1);
+    const result = parseInt(currentPrice || '1500');
     setTotal(result.toString());
-  }, [numberOfTickets, isDiscounted]);
+  }, [numberOfTickets]);
 
   return (
     <div className={styles.container}>
       <div className={styles.totalBox}>
         <span className={styles.total}>{t('form.total')}</span>
-        <span className={styles.amount}>{`$${parseInt(total)
-          .toFixed(2)
-          .replace('.', ',')}`}</span>
+        <span className={styles.amount}>
+          <span>&#8362; </span>
+          {`${(parseInt(total) * numberOfTickets * (isDiscounted ? 0.9 : 1))
+            .toFixed(2)
+            .replace('.', ',')}`}
+        </span>
       </div>
       <div className={styles.promoBox}>
         <span className={styles.promo}>{t('form.promo')}</span>
-        <div className={styles.inputBox}>
+        <div className={`${styles.inputBox} ${locale === 'he' && styles.he}`}>
           <input
             placeholder='Promo432'
             type='text'

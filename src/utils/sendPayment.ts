@@ -2,19 +2,50 @@
 import axios from 'axios';
 import type { FormDataType } from '@/types';
 
-const crmUserName = process.env.NEXT_PUBLIC_CRM_USERNAME;
-const crmAccount = process.env.NEXT_PUBLIC_CRM_ACCOUNT;
-const crmPassword = process.env.NEXT_PUBLIC_CRM_PASSWORD;
+const env = process.env.NODE_ENV;
+
+let crmUserName;
+let crmAccount;
+let crmPassword;
+
+if (env === 'production') {
+  crmUserName = process.env.NEXT_PUBLIC_CRM_USERNAME;
+  crmAccount = process.env.NEXT_PUBLIC_CRM_ACCOUNT;
+  crmPassword = process.env.NEXT_PUBLIC_CRM_PASSWORD;
+} else if (env === 'development') {
+  crmUserName = process.env.NEXT_PUBLIC_CRM_USERNAME_TEST;
+  crmAccount = process.env.NEXT_PUBLIC_CRM_ACCOUNT_TEST;
+  crmPassword = process.env.NEXT_PUBLIC_CRM_PASSWORD_TEST;
+}
+
 const crmUrl = `https://${crmAccount}.senzey.com/extapi/work_order/add.php?username=${crmUserName}&password=${crmPassword}`;
 
 export async function sendPaymentDataToCRM(formData: FormDataType) {
+  const finalPrice = formData.discount
+    ? (parseInt(formData.totalPrice as string) * 0.9).toString()
+    : formData.totalPrice;
+  const totalPaymentValue =
+    parseInt(formData.quantity as string) * parseInt(finalPrice as string);
+
   const data = {
     client_name: formData.name.value,
     client_email: formData.email.value,
     client_phone: formData.phone.value,
-    total_payment: formData.totalPrice,
-    currency: 'USD',
+    client_lang: formData.lang === 'he' ? 'he' : 'en',
+    total_payment: totalPaymentValue,
+    currency: 'NULL',
     pay_url: true,
+    send_invoice: true,
+    pay_success_send_invoice: true,
+    items: [
+      {
+        name: 'ticket',
+        code: '1',
+        price: finalPrice,
+        quantity: formData.quantity,
+      },
+    ],
+    pay_success_callback_url: 'https://www.mitoderm.com/en/event',
   };
 
   try {
@@ -23,10 +54,10 @@ export async function sendPaymentDataToCRM(formData: FormDataType) {
         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
       },
     });
-
+    console.log(response.data);
     return response.data;
   } catch (err: any) {
-    console.log(err);
+    console.log(err.response.data);
     return err.response.data || 'Error';
   }
 }

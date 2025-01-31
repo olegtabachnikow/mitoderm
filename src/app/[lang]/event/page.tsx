@@ -1,15 +1,37 @@
 import { unstable_setRequestLocale } from 'next-intl/server';
+import dynamic from 'next/dynamic';
 import Intro from '@/components/Intro/Intro';
-import Gallery from '@/components/Gallery/Gallery';
-import Contact from '@/components/Contact/Contact';
-import About from '@/components/About/About';
-import Mission from '@/components/Mission/Mission';
 import Button from '@/components/Shared/Button/Button';
 import { useTranslations } from 'next-intl';
-import Event from '@/components/Event/Event';
-import FirstLook from '@/components/FirstLook/FirstLook';
 import EventBulletList from '@/components/EventBulletList/EventBulletList';
-import ToTopItOff from '@/components/ToTopItOff/ToTopItOff';
+
+const FirstLook = dynamic(() => import('@/components/FirstLook/FirstLook'), {
+  ssr: false,
+});
+
+const Event = dynamic(() => import('@/components/Event/Event'), {
+  ssr: false,
+});
+
+const ToTopItOff = dynamic(() => import('@/components/ToTopItOff/ToTopItOff'), {
+  ssr: false,
+});
+
+const Contact = dynamic(() => import('@/components/Contact/Contact'), {
+  ssr: false,
+});
+
+const Gallery = dynamic(() => import('@/components/Gallery/Gallery'), {
+  ssr: false,
+});
+
+const About = dynamic(() => import('@/components/About/About'), {
+  ssr: false,
+});
+
+const Mission = dynamic(() => import('@/components/Mission/Mission'), {
+  ssr: false,
+});
 
 export default function EventPage({ params: { lang } }: any) {
   unstable_setRequestLocale(lang);
