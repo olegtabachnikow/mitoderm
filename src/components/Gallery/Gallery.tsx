@@ -23,7 +23,7 @@ const Gallery: FC = async () => {
   const t = await getTranslations('gallery');
   const imageDirectory = path.join(
     process.cwd(),
-    '/public/images/beforeAfterExamples'
+    '/public/images/beforeAfterExamples/'
   );
   const imageFilenames = await fs.readdir(imageDirectory);
   const itemList: Array<[string, string]> = [];
