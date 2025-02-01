@@ -13,9 +13,6 @@ const nextConfig = {
       },
     ];
   },
-  experimental: {
-    nftTracing: true,
-  },
 };
 
 export default withNextIntl(nextConfig);
