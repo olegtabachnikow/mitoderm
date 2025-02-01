@@ -4,6 +4,7 @@ import Intro from '@/components/Intro/Intro';
 import Button from '@/components/Shared/Button/Button';
 import { useTranslations } from 'next-intl';
 import EventBulletList from '@/components/EventBulletList/EventBulletList';
+import Gallery from '@/components/Gallery/Gallery';
 
 const FirstLook = dynamic(() => import('@/components/FirstLook/FirstLook'), {
   ssr: false,
@@ -18,10 +19,6 @@ const ToTopItOff = dynamic(() => import('@/components/ToTopItOff/ToTopItOff'), {
 });
 
 const Contact = dynamic(() => import('@/components/Contact/Contact'), {
-  ssr: false,
-});
-
-const Gallery = dynamic(() => import('@/components/Gallery/Gallery'), {
   ssr: false,
 });
 
