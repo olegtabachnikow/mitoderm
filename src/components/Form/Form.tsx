@@ -303,7 +303,11 @@ const Form: FC = () => {
                 disabled={isButtonDisabled}
                 submit
                 colored
-                text={t('buttons.requestCallback')}
+                text={t(
+                  isEventPage
+                    ? 'buttons.reserveSeat'
+                    : 'buttons.requestCallback'
+                )}
               />
               <div
                 className={`${styles.row} ${locale === 'he' ? styles.he : ''}`}
