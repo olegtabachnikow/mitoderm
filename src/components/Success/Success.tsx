@@ -9,9 +9,15 @@ const Success: FC = () => {
   const phone = params.get('phone');
   return (
     <div>
-      <span>{name}</span>
-      <span>{email}</span>
-      <span>{phone}</span>
+      {name && email && phone ? (
+        <>
+          <span>{name}</span>
+          <span>{email}</span>
+          <span>{phone}</span>
+        </>
+      ) : (
+        'nifiga'
+      )}
     </div>
   );
 };
