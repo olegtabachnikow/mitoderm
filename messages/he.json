@@ -16,7 +16,8 @@
     "contactForInfo": "לקבלת מידע נוסף",
     "requestCallback": "בקשה לשיחה חוזרת",
     "contactForSolutions": "לקבלת פתרונות מותאמים אישית",
-    "seat": "Reserve Seat"
+    "seat": "הזמנת מקום",
+    "reserveSeat": "הזמנת מקום"
   },
   "form": {
     "titleP1": "לקבלת פתרונות",

@@ -16,7 +16,8 @@
     "contactForInfo": "Contact for More Info",
     "requestCallback": "Request A Callback",
     "contactForSolutions": "Contact for personal solutions",
-    "seat": "Reserve Seat"
+    "seat": "Reserve Seat",
+    "reserveSeat": "Reserve"
   },
   "form": {
     "titleP1": "Get Personalized",

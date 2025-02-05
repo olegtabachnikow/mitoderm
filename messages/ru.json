@@ -16,7 +16,8 @@
     "contactForInfo": "Получить дополнительную информацию",
     "requestCallback": "Заказать обратный звонок",
     "contactForSolutions": "Индивидуальные решения",
-    "seat": "Reserve Seat"
+    "seat": "Забронировать место",
+    "reserveSeat": "Зарезериваровать"
   },
   "form": {
     "titleP1": "Получите персонализированные",
@@ -44,16 +45,16 @@
       "text": "Ваша форма успешно ",
       "textColored": "отправлена"
     },
-    "eventTitle": "Seat Reservation",
-    "numberTickets": "Tickets",
-    "gender": "Gender",
-    "prof1": "Doctor",
-    "prof2": "Nurse",
-    "gen1": "Male",
-    "gen2": "Female",
-    "total": "Total",
-    "promo": "Promo Code",
-    "apply": "Apply",
+    "eventTitle": "Бронирование места",
+    "numberTickets": "Билеты",
+    "gender": "Пол",
+    "prof1": "Врач",
+    "prof2": "Медсестра",
+    "gen1": "Мужской",
+    "gen2": "Женский",
+    "total": "Итого",
+    "promo": "Промокод",
+    "apply": "Применить",
     "success": "You get 10% discount",
     "wrongPromo": "Wrong promo code"
   },

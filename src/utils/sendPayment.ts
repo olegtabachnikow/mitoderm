@@ -36,6 +36,7 @@ export async function sendPaymentDataToCRM(formData: FormDataType) {
     currency: 'NULL',
     pay_url: true,
     send_invoice: true,
+    pay_success_redirect_url: `https://mitoderm.com/${formData.lang}/event/success?username=${formData.name}&phone=${formData.phone}&email=${formData.email}`,
     pay_success_send_invoice: true,
     items: [
       {
