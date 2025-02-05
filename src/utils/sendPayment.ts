@@ -46,7 +46,7 @@ export async function sendPaymentDataToCRM(formData: FormDataType) {
         quantity: formData.quantity,
       },
     ],
-    pay_success_callback_url: 'https://www.mitoderm.com/en/event',
+    // pay_success_callback_url: 'https://www.mitoderm.com/en/event',
   };
 
   try {
