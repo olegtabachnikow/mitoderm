@@ -1,4 +1,3 @@
-import { unstable_setRequestLocale } from 'next-intl/server';
 import dynamic from 'next/dynamic';
 import Intro from '@/components/Intro/Intro';
 import Button from '@/components/Shared/Button/Button';
@@ -30,8 +29,7 @@ const Mission = dynamic(() => import('@/components/Mission/Mission'), {
   ssr: false,
 });
 
-export default function EventPage({ params: { lang } }: any) {
-  unstable_setRequestLocale(lang);
+export default function EventPage() {
   const t = useTranslations();
   return (
     <main>
