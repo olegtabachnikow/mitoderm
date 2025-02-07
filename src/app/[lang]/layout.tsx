@@ -27,7 +27,7 @@ const rubik = Rubik({
 });
 
 export async function generateStaticParams() {
-  return [{ lang: 'en-US' }, { lang: 'he-IL' }, { lang: 'ru-RU' }];
+  return [{ lang: 'en' }, { lang: 'he' }, { lang: 'ru' }];
 }
 
 export const metadata: Metadata = {
