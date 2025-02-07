@@ -27,10 +27,6 @@ export async function sendPaymentDataToCRM(formData: FormDataType) {
   const totalPaymentValue =
     parseInt(formData.quantity as string) * parseInt(finalPrice as string);
 
-  console.log(
-    `https://mitoderm.com/${formData.lang}/event/success?username=${formData.name}&phone=${formData.phone}&email=${formData.email}`
-  );
-
   const data = {
     client_name: formData.name.value,
     client_email: formData.email.value,
@@ -39,8 +35,8 @@ export async function sendPaymentDataToCRM(formData: FormDataType) {
     total_payment: totalPaymentValue,
     currency: 'NULL',
     pay_url: true,
-    // send_invoice: true,
-    pay_success_callback_url: `https://mitoderm.com/${formData.lang}/event/success?username=${formData.name.value}&phone=${formData.phone.value}&email=${formData.email.value}`,
+    pay_success_send_invoice: true,
+    pay_success_redirect_url: `https://mitoderm.com/${formData.lang}/event/success?username=${formData.name.value}&phone=${formData.phone.value}&email=${formData.email.value}`,
     items: [
       {
         name: 'ticket',
