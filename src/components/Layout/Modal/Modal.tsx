@@ -31,7 +31,7 @@ const Modal: FC = () => {
   }, [modalIsOpen]);
 
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${modalIsOpen ? styles.opened : ''}`}>
       <div
         id='modal'
         className={`${styles.overlay} ${modalIsOpen ? styles.active : ''}`}
