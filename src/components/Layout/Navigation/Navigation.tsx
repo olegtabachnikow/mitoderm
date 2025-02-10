@@ -7,7 +7,6 @@ import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { useMediaQuery } from 'react-responsive';
 import { usePathname, Link } from '@/i18n/routing';
-import useAppStore from '@/store/store';
 
 interface Props {
   isOpen: boolean;
@@ -17,7 +16,6 @@ interface Props {
 const Navigation: FC<Props> = ({ isOpen, setIsOpen }) => {
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
   const pathName = usePathname();
-  const setIsFirstRender = useAppStore((state) => state.setIsFirstRender);
   const isFormPage = pathName.includes('form');
   const isSuccessPage = pathName.includes('success');
 
@@ -34,7 +32,6 @@ const Navigation: FC<Props> = ({ isOpen, setIsOpen }) => {
   const locale = useLocale();
 
   const handleClick = () => {
-    setIsFirstRender(true);
     setIsOpen(false);
   };
 

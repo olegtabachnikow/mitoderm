@@ -5,30 +5,37 @@ import useAppStore from '@/store/store';
 import { useMediaQuery } from 'react-responsive';
 import GalleryDesktop from '../GalleryDesktop/GalleryDesktop';
 import GalleryMobile from '../GalleryMobile/GalleryMobile';
+import { useLocale } from 'next-intl';
 
 interface Props {
   itemList: Array<[string, string]>;
 }
 
 const GalleryWrapper: FC<Props> = ({ itemList }) => {
+  const locale = useLocale();
   const isTabletOrMobile = useMediaQuery({
     query: '(max-width: 1224px)',
   });
-  const { galleryPage, setGalleryPage, isFirstRender, setIsFirstRender } =
-    useAppStore((state) => state);
+  const { galleryPage, setGalleryPage } = useAppStore((state) => state);
 
   const scrollTo = () => {
-    if (isFirstRender) {
-      return;
-    }
-    const element = document.getElementById(`item${galleryPage}`);
+    const container = document.getElementById('galleryItemBox');
     if (galleryPage >= itemList.length) setGalleryPage(0);
     if (galleryPage < 0) setGalleryPage(itemList.length - 1);
-    element?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'nearest',
-      inline: 'center',
-    });
+    if (container) {
+      const scrollPosition = galleryPage * container?.clientWidth;
+      if (locale === 'he') {
+        container?.scrollTo({
+          left: -scrollPosition,
+          behavior: 'smooth',
+        });
+      } else {
+        container?.scrollTo({
+          left: scrollPosition,
+          behavior: 'smooth',
+        });
+      }
+    }
   };
 
   useEffect(() => {
@@ -36,13 +43,11 @@ const GalleryWrapper: FC<Props> = ({ itemList }) => {
   }, [galleryPage]);
 
   const increment = () => {
-    setIsFirstRender(false);
     itemList.length >= galleryPage
       ? setGalleryPage(galleryPage + 1)
       : setGalleryPage(0);
   };
   const decrement = () => {
-    setIsFirstRender(false);
     galleryPage <= 0
       ? setGalleryPage(itemList.length - 1)
       : setGalleryPage(galleryPage - 1);

@@ -57,6 +57,13 @@ const Intro: FC = () => {
       },
       { passive: false }
     );
+    container?.addEventListener(
+      'scroll',
+      (event) => {
+        event.preventDefault();
+      },
+      { passive: false }
+    );
   }, []);
 
   useEffect(() => {

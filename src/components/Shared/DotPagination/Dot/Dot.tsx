@@ -12,11 +12,11 @@ type DotProps = {
 };
 
 const Dot: FC<DotProps> = ({ colored, index, active, gallery, intro }) => {
-  const { galleryPage, setGalleryPage, setIntroPage, setIsFirstRender } =
-    useAppStore((state) => state);
+  const { galleryPage, setGalleryPage, setIntroPage } = useAppStore(
+    (state) => state
+  );
 
   const handleClick = () => {
-    setIsFirstRender(false);
     intro && setIntroPage(index);
     gallery && setGalleryPage(index);
   };
