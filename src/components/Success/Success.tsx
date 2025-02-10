@@ -1,24 +1,28 @@
 'use client';
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import styles from './Success.module.scss';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
+import { useRouter } from '@/i18n/routing';
+import { sendPaymentEmail } from '@/utils/sendPaymentEmail';
 
 const Success: FC = () => {
   const t = useTranslations();
-  // const params = useSearchParams();
-  // const name = params.get('name');
-  // const email = params.get('email');
-  // const phone = params.get('phone');
-  // const amount = params.get('amount');
-  // const idNumber = params.get('idNumber');
+  const router = useRouter();
 
-  const name = 'Vasyliy Zalupkin';
-  const email = 'VasyliyZalupkin@gmail.com';
-  const phone = '+972539240665';
-  const amount = 100;
-  const idNumber = 1231231233;
+  const params = useSearchParams();
+  const name = params.get('name');
+  const email = params.get('email');
+  const phone = params.get('phone');
+  const amount = params.get('amount');
+  const idNumber = params.get('idNumber');
+
+  useEffect(() => {
+    if (!name || !email || !phone || !amount || !idNumber) {
+      router.push('/');
+    } else sendPaymentEmail({ name, email, phone, amount, idNumber });
+  }, []);
 
   return (
     <div className={styles.container}>

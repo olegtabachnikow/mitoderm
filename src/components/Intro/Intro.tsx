@@ -22,11 +22,24 @@ const Intro: FC = () => {
   const scrollToNextChild = () => {
     const container = document.getElementById('scroller');
     const scrollPosition = introPage * window.innerWidth;
-    container?.scrollTo({
-      left: scrollPosition,
-      behavior: 'smooth',
-    });
+    if (locale === 'he') {
+      container?.scrollTo({
+        left: -scrollPosition,
+        behavior: 'smooth',
+      });
+    } else {
+      container?.scrollTo({
+        left: scrollPosition,
+        behavior: 'smooth',
+      });
+    }
   };
+
+  useEffect(() => {
+    if (isEventPage) {
+      setIntroPage(1);
+    } else setIntroPage(0);
+  }, []);
 
   useEffect(() => {
     const container = document.getElementById('scroller');

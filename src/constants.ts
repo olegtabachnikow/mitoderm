@@ -14,7 +14,7 @@ export const navMainList: NavItem[] = [
   { text: 'navigation.results', scrollId: ScrollItems.gallery },
   { text: 'navigation.about', scrollId: ScrollItems.mission },
   { text: 'navigation.info', scrollId: ScrollItems.about },
-  { text: 'navigation.contact', form: 'main' },
+  { text: 'navigation.contact', url: '/form' },
   { text: 'navigation.event', url: '/event' },
 ];
 
@@ -22,7 +22,7 @@ export const navEventList: NavItem[] = [
   { text: 'navigation.product', url: '/' },
   { text: 'navigation.info', scrollId: ScrollItems.about },
   { text: 'navigation.agenda', scrollId: ScrollItems.agenda },
-  { text: 'navigation.contact', form: 'event' },
+  { text: 'navigation.contact', url: '/form' },
   { text: 'navigation.results', scrollId: ScrollItems.gallery },
   { text: 'navigation.about', scrollId: ScrollItems.mission },
 ];
