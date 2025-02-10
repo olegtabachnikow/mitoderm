@@ -8,18 +8,18 @@ type DotProps = {
   active?: boolean;
   colored?: boolean;
   gallery?: boolean;
+  intro?: boolean;
 };
 
-const Dot: FC<DotProps> = ({ colored, index, active, gallery }) => {
-  const { galleryPage, setGalleryPage, setIsFirstRender } = useAppStore(
-    (state) => state
-  );
+const Dot: FC<DotProps> = ({ colored, index, active, gallery, intro }) => {
+  const { galleryPage, setGalleryPage, setIntroPage, setIsFirstRender } =
+    useAppStore((state) => state);
 
   const handleClick = () => {
     setIsFirstRender(false);
+    intro && setIntroPage(index);
     gallery && setGalleryPage(index);
   };
-
   return (
     <button
       name='pagination dot'

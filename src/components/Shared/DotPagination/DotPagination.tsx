@@ -19,7 +19,7 @@ const DotPagination: FC<Props> = ({
   gallery,
   intro,
 }) => {
-  const galleryPage = useAppStore((state) => state.galleryPage);
+  const { galleryPage, introPage } = useAppStore((state) => state);
   const arr = Array.from(Array(count).keys());
   return (
     <div style={style} className={styles.container}>
@@ -29,7 +29,8 @@ const DotPagination: FC<Props> = ({
           colored={colored}
           key={i}
           index={i}
-          active={intro ? i === 0 : galleryPage === i}
+          active={intro ? introPage === i : galleryPage === i}
+          intro={intro}
         />
       ))}
     </div>

@@ -8,6 +8,8 @@ interface RootState {
   toggleModal: (value: boolean) => void;
   galleryPage: number;
   setGalleryPage: (page: number) => void;
+  introPage: number;
+  setIntroPage: (page: number) => void;
   reviewPage: number;
   setReviewPage: (page: number) => void;
   modalContent: ModalType;
@@ -28,6 +30,9 @@ const useAppStore = create<RootState>((set) => ({
   galleryPage: 0,
   setGalleryPage: (page: number) =>
     set((state) => ({ galleryPage: (state.galleryPage = page) })),
+  introPage: 0,
+  setIntroPage: (page: number) =>
+    set((state) => ({ introPage: (state.introPage = page) })),
   reviewPage: 0,
   setReviewPage: (page: number) =>
     set((state) => ({ reviewPage: (state.reviewPage = page) })),
