@@ -11,8 +11,7 @@ import { useMediaQuery } from 'react-responsive';
 import MobileButtons from '../Shared/MobileButtons/MobileButtons';
 
 const Reviews: FC = () => {
-  const { reviewPage, setReviewPage, isFirstRender, setIsFirstRender } =
-    useAppStore((state) => state);
+  const { reviewPage, setReviewPage } = useAppStore((state) => state);
   const t = useTranslations();
   const locale = useLocale();
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
@@ -28,17 +27,23 @@ const Reviews: FC = () => {
   const itemList = isTabletOrMobile ? items : reviews();
 
   const scrollTo = () => {
-    if (isFirstRender) {
-      return;
-    }
-    const element = document.getElementById(`review${reviewPage}`);
+    const container = document.getElementById('reviewBox');
     if (reviewPage >= itemList.length) setReviewPage(0);
     if (reviewPage < 0) setReviewPage(itemList.length - 1);
-    element?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'nearest',
-      inline: 'center',
-    });
+    if (container) {
+      const scrollPosition = reviewPage * container?.clientWidth;
+      if (locale === 'he') {
+        container?.scrollTo({
+          left: -scrollPosition,
+          behavior: 'smooth',
+        });
+      } else {
+        container?.scrollTo({
+          left: scrollPosition,
+          behavior: 'smooth',
+        });
+      }
+    }
   };
 
   useEffect(() => {
@@ -46,11 +51,9 @@ const Reviews: FC = () => {
   }, [reviewPage]);
 
   const increment = () => {
-    setIsFirstRender(false);
     setReviewPage(reviewPage + 1);
   };
   const decrement = () => {
-    setIsFirstRender(false);
     setReviewPage(reviewPage - 1);
   };
 
@@ -82,6 +85,7 @@ const Reviews: FC = () => {
             </div>
           )}
           <div
+            id='reviewBox'
             className={`${styles.reviewBox} ${
               locale === 'he' ? styles.he : ''
             }`}

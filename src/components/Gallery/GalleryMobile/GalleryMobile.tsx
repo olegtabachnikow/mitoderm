@@ -23,7 +23,7 @@ const GalleryMobile: FC<Props> = ({
   return (
     <>
       <div className={styles.itemWrapper}>
-        <div className={styles.imageBox}>
+        <div id='galleryItemBox' className={styles.imageBox}>
           {items.map((item, i) => (
             <div id={`item${i}`} className={styles.item} key={`key${i}`}>
               <div className={styles.imageContainer}>
