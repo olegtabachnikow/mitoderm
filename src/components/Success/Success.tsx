@@ -19,6 +19,7 @@ const Success: FC = () => {
   const idNumber = params.get('idNumber');
 
   useEffect(() => {
+    console.log(name, email, phone, amount, idNumber);
     if (!name || !email || !phone || !amount || !idNumber) {
       router.push('/');
     } else sendPaymentEmail({ name, email, phone, amount, idNumber });
@@ -35,32 +36,28 @@ const Success: FC = () => {
           alt='success icon'
           style={{ marginBlock: 30 }}
         />
-        {name && email && phone && amount && idNumber ? (
-          <>
-            <span>
-              <span className={styles.text}>{t('success.client')}</span>
-              {name}
-            </span>
-            <span>
-              <span className={styles.text}>{t('success.id')}</span>
-              {idNumber}
-            </span>
-            <span>
-              <span className={styles.text}>{t('success.email')}</span>
-              {email}
-            </span>
-            <span dir='ltr'>
-              <span className={styles.text}>{t('success.phone')}</span>
-              {phone}
-            </span>
-            <span>
-              <span className={styles.text}>{t('success.amount')}</span>{' '}
-              <span>&#8362; </span> {amount}
-            </span>
-          </>
-        ) : (
-          'nifiga'
-        )}
+        <>
+          <span>
+            <span className={styles.text}>{t('success.client')}</span>
+            {name}
+          </span>
+          <span>
+            <span className={styles.text}>{t('success.id')}</span>
+            {idNumber}
+          </span>
+          <span>
+            <span className={styles.text}>{t('success.email')}</span>
+            {email}
+          </span>
+          <span dir='ltr'>
+            <span className={styles.text}>{t('success.phone')}</span>
+            {phone}
+          </span>
+          <span>
+            <span className={styles.text}>{t('success.amount')}</span>{' '}
+            <span>&#8362; </span> {amount}
+          </span>
+        </>
       </div>
     </div>
   );

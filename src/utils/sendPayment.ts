@@ -36,8 +36,8 @@ export async function sendPaymentDataToCRM(formData: EventFormDataType) {
     currency: 'NULL',
     pay_url: true,
     client_idn: formData.idNumber.value,
-    pay_success_redirect_url: `https://mitoderm.com/${formData.lang}/event/success?name=${formData.name.value}&phone=${formData.phone.value}&email=${formData.email.value}&amount=${totalPaymentValue}`,
-    pay_success_callback_url: `https://mitoderm.com/${formData.lang}/event/success?name=${formData.name.value}&phone=${formData.phone.value}&email=${formData.email.value}&amount=${totalPaymentValue}`,
+    pay_success_redirect_url: `https://mitoderm.com/${formData.lang}/event/success?name=${formData.name.value}&phone=${formData.phone.value}&email=${formData.email.value}&amount=${totalPaymentValue}&idNumber=${formData.idNumber.value}`,
+    pay_success_callback_url: `https://mitoderm.com/${formData.lang}/event/success?name=${formData.name.value}&phone=${formData.phone.value}&email=${formData.email.value}&amount=${totalPaymentValue}&idNumber=${formData.idNumber.value}`,
     items: [
       {
         name: 'ticket',
@@ -47,7 +47,7 @@ export async function sendPaymentDataToCRM(formData: EventFormDataType) {
       },
     ],
   };
-  // console.log(data);
+  console.log(data);
   try {
     const response = await axios.post(crmUrl, data, {
       headers: {

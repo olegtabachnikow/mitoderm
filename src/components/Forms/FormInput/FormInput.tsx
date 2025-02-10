@@ -48,11 +48,11 @@ const FormInput: FC<Props> = ({
     const input: HTMLInputElement | null =
       document.querySelector('input[type="tel"]');
     const handlePhoneNumber = () => {
-      if (input?.value.startsWith('+')) {
+      if (locale === 'he' && input?.value.startsWith('+')) {
         input.setSelectionRange(0, 0);
       }
     };
-    if (type === 'tel') {
+    if (locale === 'he' && type === 'tel') {
       input?.addEventListener('input', handlePhoneNumber);
     }
     return () => input?.removeEventListener('input', handlePhoneNumber);
