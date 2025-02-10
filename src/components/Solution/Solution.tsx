@@ -94,7 +94,7 @@ const Solution: FC = () => {
         style={{ margin: '40px auto' }}
         colored
         text={t('buttons.contactForPrice')}
-        contact
+        formPage='main'
       />
     </section>
   );

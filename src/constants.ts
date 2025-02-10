@@ -27,6 +27,11 @@ export const navEventList: NavItem[] = [
   { text: 'navigation.about', scrollId: ScrollItems.mission },
 ];
 
+export const navFormList: NavItem[] = [
+  { text: 'navigation.product', url: '/' },
+  { text: 'navigation.event', url: '/event' },
+];
+
 export const howToUseItemList: HowToUseItem[] = [
   { imagePath: '/images/howToUse/surgery.png', text: 'howToUse.item1' },
   { imagePath: '/images/howToUse/acne.png', text: 'howToUse.item2' },

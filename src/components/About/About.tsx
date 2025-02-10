@@ -51,7 +51,7 @@ const About: FC = () => {
         colored
         text={t(isEventPage ? 'buttons.seat' : 'buttons.moreAbout')}
         onClick={!isEventPage ? scrollTo : () => null}
-        contact={isEventPage}
+        formPage={isEventPage ? 'event' : 'main'}
       />
     </section>
   );

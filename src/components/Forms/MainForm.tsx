@@ -5,22 +5,20 @@ import Image from 'next/image';
 import Button from '../Shared/Button/Button';
 import { useLocale, useTranslations } from 'next-intl';
 import FormInput from './FormInput/FormInput';
-import { emailRegex } from '@/constants';
 import { useMediaQuery } from 'react-responsive';
-import useAppStore from '@/store/store';
-import type { FormDataType } from '@/types';
+import type { MainFormDataType, NameTypeEvent, NameTypeMain } from '@/types';
 import { sendDataOnMail } from '@/utils/sendEmailData';
 import { sendDataToCRM } from '@/utils/sendCRMData';
 import Loader from '../Shared/Loader/Loader';
-import NumberInput from './NumberInput/NumberInput';
-import RadioGroupInput from './RadioGroupInput/RadioGroupInput';
-import Price from './Price/Price';
 import { usePathname } from 'next/navigation';
-import { sendPaymentDataToCRM } from '@/utils/sendPayment';
+import {
+  validateName,
+  validateEmail,
+  validatePhone,
+  validateProfession,
+} from '@/utils/validateFormFields';
 
-const Form: FC = () => {
-  const { toggleModal, formCategory, numberOfTickets, isDiscounted } =
-    useAppStore((state) => state);
+const MainForm: FC = () => {
   const t = useTranslations();
   const pathname = usePathname();
   const isEventPage = pathname.includes('event');
@@ -29,65 +27,18 @@ const Form: FC = () => {
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
   const [isChecked, setIsChecked] = useState<boolean>(false);
   const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true);
-  const [formData, setFormData] = useState<FormDataType>({
+  const [formData, setFormData] = useState<MainFormDataType>({
     name: { value: '', isValid: false },
     email: { value: '', isValid: false },
     phone: { value: '', isValid: false },
-    profession: { value: isEventPage ? 'Doctor' : '', isValid: isEventPage },
+    profession: { value: '', isValid: false },
   });
-  const [radioGroupDataProf, setRadioGroupDataProf] = useState<1 | 2>(1);
-  const [radioGroupDataGender, setRadioGroupDataGender] = useState<1 | 2>(1);
-  const [totalPrice, setTotalPrice] = useState<string>('');
   const [isSending, setIsSending] = useState<boolean>(false);
   const [isSent, setIsSent] = useState<boolean>(false);
 
-  const validateName = (data: string) => {
-    let error: string = '';
-    if (data.trim().length < 3) {
-      error = t('form.errors.name_length');
-    }
-    if (!data.length) {
-      error = t('form.errors.name_required');
-    }
-    return error;
-  };
-
-  const validateEmail = (data: string) => {
-    let error: string = '';
-    if (!data.match(emailRegex)) {
-      error = t('form.errors.email_invalid');
-    }
-    if (!data.length) {
-      error = t('form.errors.email_required');
-    }
-    return error;
-  };
-
-  const validatePhone = (data: string) => {
-    let error: string = '';
-    if (data.trim().length < 9) {
-      error = t('form.errors.phone_length');
-    }
-    if (!data.length) {
-      error = t('form.errors.phone_required');
-    }
-    return error;
-  };
-
-  const validateProfession = (data: string) => {
-    let error: string = '';
-    if (data.trim().length < 3) {
-      error = t('form.errors.profession_length');
-    }
-    if (!data.length) {
-      error = t('form.errors.profession_required');
-    }
-    return error;
-  };
-
   const handleData = (
     data: string,
-    name: 'name' | 'email' | 'phone' | 'profession',
+    name: NameTypeMain | NameTypeEvent,
     isValid: boolean
   ) => {
     setFormData({ ...formData, [name]: { value: data, isValid } });
@@ -110,57 +61,11 @@ const Form: FC = () => {
     return;
   };
 
-  const onEventSubmit = async (e?: FormEvent) => {
-    e?.preventDefault();
-    setIsSending(true);
-    const data = {
-      ...formData,
-      totalPrice,
-      quantity: numberOfTickets,
-      discount: isDiscounted,
-      lang: locale,
-    };
-
-    sendPaymentDataToCRM(data)
-      .then((res) => {
-        // console.log(res);
-        setIsSending(false);
-        setIsSent(true);
-        const url = res.pay_url;
-        url && window.open(url, '_blank');
-      })
-      .catch((err) => console.log(err));
-  };
-
   const onEnterHit = (e: KeyboardEvent) => {
     if (e.key === 'Enter') {
       isButtonDisabled ? null : onSubmit();
     }
   };
-
-  const getFormHeight = () => {
-    if (formRef.current) return formRef.current?.clientHeight;
-    else return 760;
-  };
-
-  useEffect(() => {
-    isEventPage &&
-      setFormData({
-        ...formData,
-        profession: {
-          value: radioGroupDataProf === 1 ? 'Doctor' : 'Nurse',
-          isValid: true,
-        },
-      });
-  }, [radioGroupDataProf, isEventPage]);
-
-  useEffect(() => {
-    isEventPage &&
-      setFormData({
-        ...formData,
-        gender: { value: radioGroupDataGender === 1 ? 'male' : 'female' },
-      });
-  }, [radioGroupDataGender]);
 
   useEffect(() => {
     window.addEventListener('keypress', onEnterHit);
@@ -183,17 +88,6 @@ const Form: FC = () => {
 
   return (
     <div className={styles.container}>
-      <button
-        className={`${styles.closeButton} ${locale === 'he' ? styles.he : ''} `}
-        onClick={() => toggleModal(false)}
-      >
-        <Image
-          src='/images/formCloseButton.svg'
-          width={20}
-          height={20}
-          alt='close icon'
-        />
-      </button>
       <div ref={formRef} className={styles.formContainer}>
         {isSent ? (
           <>
@@ -211,21 +105,17 @@ const Form: FC = () => {
           <Loader />
         ) : (
           <>
-            {formCategory === 'main' ? (
-              <h2>
-                {t('form.titleP1')}
-                <br />
-                <span>{t('form.titleP2')}</span>
-                {t('form.titleP3')}
-              </h2>
-            ) : (
-              <h2>{t('form.eventTitle')}</h2>
-            )}
+            <h2>
+              {t('form.titleP1')}
+              <br />
+              <span>{t('form.titleP2')}</span>
+              {t('form.titleP3')}
+            </h2>
             <p>{t('form.subtitle')}</p>
             <form
               noValidate
               className={styles.form}
-              onSubmit={isEventPage ? onEventSubmit : onSubmit}
+              onSubmit={onSubmit}
               action='submit'
             >
               <FormInput
@@ -236,26 +126,6 @@ const Form: FC = () => {
                 placeholder='Aaron Smith'
                 validator={validateName}
               />
-              {formCategory === 'event' ? (
-                <>
-                  <NumberInput />
-                  <div className={styles.radioGroup}>
-                    <RadioGroupInput
-                      isProf
-                      text={'form.placeholderProfession'}
-                      value={radioGroupDataProf}
-                      setValue={setRadioGroupDataProf}
-                    />
-                    <RadioGroupInput
-                      isProf={false}
-                      text={'form.gender'}
-                      value={radioGroupDataGender}
-                      setValue={setRadioGroupDataGender}
-                    />
-                  </div>
-                </>
-              ) : null}
-
               <FormInput
                 label={t('form.placeholderEmailName')}
                 setFormData={handleData}
@@ -272,18 +142,14 @@ const Form: FC = () => {
                 placeholder='586 412 924'
                 validator={validatePhone}
               />
-              {formCategory === 'main' ? (
-                <FormInput
-                  label={t('form.placeholderProfession')}
-                  setFormData={handleData}
-                  type='text'
-                  name='profession'
-                  placeholder={t('form.placeholderProfession')}
-                  validator={validateProfession}
-                />
-              ) : (
-                <Price total={totalPrice} setTotal={setTotalPrice} />
-              )}
+              <FormInput
+                label={t('form.placeholderProfession')}
+                setFormData={handleData}
+                type='text'
+                name='profession'
+                placeholder={t('form.placeholderProfession')}
+                validator={validateProfession}
+              />
               <label
                 className={`${styles.checkboxLabel} ${
                   locale === 'he' ? styles.he : ''
@@ -324,17 +190,18 @@ const Form: FC = () => {
           </>
         )}
       </div>
-      {isTabletOrMobile ? null : (
-        <Image
-          className={styles.desktopImage}
-          width={620}
-          height={getFormHeight()}
-          src='/images/formImage.png'
-          alt='background with exosome'
-        />
+      {isTabletOrMobile ? null : isSent ? null : (
+        <div className={styles.formImageContainer}>
+          <Image
+            className={styles.desktopImage}
+            fill
+            src='/images/formImage.png'
+            alt='background with exosome'
+          />
+        </div>
       )}
     </div>
   );
 };
 
-export default Form;
+export default MainForm;

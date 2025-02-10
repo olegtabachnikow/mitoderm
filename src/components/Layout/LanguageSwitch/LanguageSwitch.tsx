@@ -2,10 +2,10 @@
 import { FC, useState, useRef, useEffect } from 'react';
 import styles from './LanguageSwitch.module.scss';
 import Image from 'next/image';
-import { useLocale } from 'next-intl';
 import SwitchItem from './SwitchItem/SwitchItem';
 import { useMediaQuery } from 'react-responsive';
 import { usePathname } from 'next/navigation';
+import { useLocale } from 'next-intl';
 
 const LanguageSwitch: FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -13,7 +13,9 @@ const LanguageSwitch: FC = () => {
   const popupRef = useRef<HTMLDivElement>(null);
   const locale = useLocale();
   const pathname = usePathname();
+  const isEventFormPage = pathname.includes('event/form');
   const isEventPage = pathname.includes('event');
+  const isFormPage = pathname.includes('form');
 
   const handleClick = () => {
     setIsOpen(() => !isOpen);
@@ -31,6 +33,14 @@ const LanguageSwitch: FC = () => {
     if (isOpen) window.addEventListener('click', closeOpenMenu);
     return () => window.removeEventListener('click', closeOpenMenu);
   }, [isOpen]);
+
+  const currentUrl = isEventFormPage
+    ? '/event/form'
+    : isFormPage
+    ? '/form'
+    : isEventPage
+    ? '/event'
+    : '/';
 
   return (
     <div
@@ -67,34 +77,46 @@ const LanguageSwitch: FC = () => {
             {locale === 'en' ? (
               <>
                 <SwitchItem
-                  url={`/ru/${isEventPage ? 'event' : ''}`}
+                  url={currentUrl}
                   imageSrc='/images/languageSwitch/ru.svg'
+                  text='RU'
+                  locale='ru'
                 />
                 <SwitchItem
-                  url={`/he/${isEventPage ? 'event' : ''}`}
+                  url={currentUrl}
                   imageSrc='/images/languageSwitch/he.svg'
+                  text='HE'
+                  locale='he'
                 />
               </>
             ) : locale === 'ru' ? (
               <>
                 <SwitchItem
-                  url={`/en/${isEventPage ? 'event' : ''}`}
+                  url={currentUrl}
                   imageSrc='/images/languageSwitch/en.svg'
+                  text='EN'
+                  locale='en'
                 />
                 <SwitchItem
-                  url={`/he/${isEventPage ? 'event' : ''}`}
+                  url={currentUrl}
                   imageSrc='/images/languageSwitch/he.svg'
+                  text='HE'
+                  locale='he'
                 />
               </>
             ) : (
               <>
                 <SwitchItem
-                  url={`/en/${isEventPage ? 'event' : ''}`}
+                  url={currentUrl}
                   imageSrc='/images/languageSwitch/en.svg'
+                  text='EN'
+                  locale='en'
                 />
                 <SwitchItem
-                  url={`/ru/${isEventPage ? 'event' : ''}`}
+                  url={currentUrl}
                   imageSrc='/images/languageSwitch/ru.svg'
+                  text='RU'
+                  locale='ru'
                 />
               </>
             )}

@@ -1,14 +1,12 @@
 'use client';
 import { FC } from 'react';
 import styles from './Navigation.module.scss';
-import { navMainList, navEventList } from '@/constants';
+import { navMainList, navEventList, navFormList } from '@/constants';
 import { NavItem } from '@/types';
 import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { useMediaQuery } from 'react-responsive';
-import Link from 'next/link';
-import useAppStore from '@/store/store';
-import { usePathname } from 'next/navigation';
+import { usePathname, Link } from '@/i18n/routing';
 
 interface Props {
   isOpen: boolean;
@@ -17,18 +15,20 @@ interface Props {
 
 const Navigation: FC<Props> = ({ isOpen, setIsOpen }) => {
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
-  const { toggleModal, setModalContent } = useAppStore((state) => state);
-
   const pathName = usePathname();
 
-  const navList = pathName.includes('event') ? navEventList : navMainList;
+  const isFormPage = pathName.includes('form');
+  const isSuccessPage = pathName.includes('success');
+
+  const navList =
+    isFormPage || isSuccessPage
+      ? navFormList
+      : pathName.includes('event')
+      ? navEventList
+      : navMainList;
 
   const randomString = () => (Math.random() + 1).toString(36).substring(7);
 
-  const openForm = () => {
-    setModalContent('form');
-    toggleModal(true);
-  };
   const t = useTranslations();
   const locale = useLocale();
 
@@ -47,11 +47,6 @@ const Navigation: FC<Props> = ({ isOpen, setIsOpen }) => {
       );
   };
 
-  const handleClick = () => {
-    setIsOpen(false);
-    openForm();
-  };
-
   return (
     <>
       {isTabletOrMobile ? (
@@ -65,7 +60,7 @@ const Navigation: FC<Props> = ({ isOpen, setIsOpen }) => {
             >
               {!item.scrollId && !item.url ? (
                 <button
-                  onClick={handleClick}
+                  onClick={() => setIsOpen(false)}
                   key={index + randomString()}
                   className={styles.buttonMobile}
                 >
@@ -75,11 +70,7 @@ const Navigation: FC<Props> = ({ isOpen, setIsOpen }) => {
               ) : (
                 <Link
                   onClick={() => setIsOpen(false)}
-                  href={
-                    item.url
-                      ? `${item.url === '/' ? '/' : locale + '/' + item.url}`
-                      : `#${item.scrollId}`
-                  }
+                  href={item.url ? item.url : `#${item.scrollId}`}
                   key={index + randomString()}
                   className={styles.buttonMobile}
                 >
@@ -91,7 +82,11 @@ const Navigation: FC<Props> = ({ isOpen, setIsOpen }) => {
           ))}
         </nav>
       ) : (
-        <nav className={styles.navigation}>
+        <nav
+          className={`${styles.navigation} ${
+            isFormPage || isSuccessPage ? styles.formPage : ''
+          }`}
+        >
           {navList.map((item: NavItem, index: number) => (
             <div
               className={styles.linkContainer}
@@ -99,7 +94,7 @@ const Navigation: FC<Props> = ({ isOpen, setIsOpen }) => {
             >
               {!item.scrollId && !item.url ? (
                 <button
-                  onClick={handleClick}
+                  onClick={() => setIsOpen(false)}
                   key={index + randomString()}
                   className={styles.button}
                 >
@@ -108,11 +103,7 @@ const Navigation: FC<Props> = ({ isOpen, setIsOpen }) => {
                 </button>
               ) : (
                 <Link
-                  href={
-                    item.url
-                      ? `${item.url === '/' ? '/' : locale + '/' + item.url}`
-                      : `#${item.scrollId}`
-                  }
+                  href={item.url ? item.url : `#${item.scrollId}`}
                   key={index + randomString()}
                   className={styles.button}
                 >

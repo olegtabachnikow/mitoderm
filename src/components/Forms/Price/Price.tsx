@@ -53,7 +53,9 @@ const Price: FC<Props> = ({ total, setTotal }) => {
     <div className={styles.container}>
       <div className={styles.totalBox}>
         <span className={styles.total}>{t('form.total')}</span>
-        <span className={styles.amount}>
+        <span
+          className={`${styles.amount} ${locale === 'he' ? styles.he : ''}`}
+        >
           <span>&#8362; </span>
           {`${(parseInt(total) * numberOfTickets * (isDiscounted ? 0.9 : 1))
             .toFixed(2)

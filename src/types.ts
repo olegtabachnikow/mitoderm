@@ -29,12 +29,21 @@ export interface SolutionItem {
   text: string[];
 }
 
+export type NameTypeMain = 'name' | 'email' | 'phone' | 'profession';
+export type NameTypeEvent = 'name' | 'email' | 'phone' | 'idNumber';
+
 export interface FormDataType {
   name: { value: string; isValid: boolean };
   email: { value: string; isValid: boolean };
   phone: { value: string; isValid: boolean };
+}
+
+export interface MainFormDataType extends FormDataType {
   profession: { value: string; isValid: boolean };
-  gender?: { value: 'male' | 'female' };
+}
+
+export interface EventFormDataType extends FormDataType {
+  idNumber: { value: string; isValid: boolean };
   totalPrice?: string;
   discount?: boolean;
   quantity?: string | number;
@@ -49,7 +58,7 @@ export enum ScrollItems {
   agenda = 'agenda',
 }
 
-export type ModalType = 'form' | 'privatePolicy' | 'accessibility';
+export type ModalType = 'privatePolicy' | 'accessibility';
 
 export interface ReviewType {
   name: string;
@@ -61,5 +70,3 @@ export interface EventBulletItem {
   imagePath: string;
   text: string;
 }
-
-export type FormType = 'event' | 'main';

@@ -1,23 +1,63 @@
 'use client';
 import { FC } from 'react';
+import styles from './Success.module.scss';
+import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 
 const Success: FC = () => {
-  const params = useSearchParams();
-  const name = params.get('name');
-  const email = params.get('email');
-  const phone = params.get('phone');
+  const t = useTranslations();
+  // const params = useSearchParams();
+  // const name = params.get('name');
+  // const email = params.get('email');
+  // const phone = params.get('phone');
+  // const amount = params.get('amount');
+  // const idNumber = params.get('idNumber');
+
+  const name = 'Vasyliy Zalupkin';
+  const email = 'VasyliyZalupkin@gmail.com';
+  const phone = '+972539240665';
+  const amount = 100;
+  const idNumber = 1231231233;
+
   return (
-    <div>
-      {name && email && phone ? (
-        <>
-          <span>{name}</span>
-          <span>{email}</span>
-          <span>{phone}</span>
-        </>
-      ) : (
-        'nifiga'
-      )}
+    <div className={styles.container}>
+      <div className={styles.containerInner}>
+        <h1 className={styles.title}>{t('success.title')}</h1>
+        <Image
+          src='/images/success.svg'
+          width={150}
+          height={150}
+          alt='success icon'
+          style={{ marginBlock: 30 }}
+        />
+        {name && email && phone && amount && idNumber ? (
+          <>
+            <span>
+              <span className={styles.text}>{t('success.client')}</span>
+              {name}
+            </span>
+            <span>
+              <span className={styles.text}>{t('success.id')}</span>
+              {idNumber}
+            </span>
+            <span>
+              <span className={styles.text}>{t('success.email')}</span>
+              {email}
+            </span>
+            <span dir='ltr'>
+              <span className={styles.text}>{t('success.phone')}</span>
+              {phone}
+            </span>
+            <span>
+              <span className={styles.text}>{t('success.amount')}</span>{' '}
+              <span>&#8362; </span> {amount}
+            </span>
+          </>
+        ) : (
+          'nifiga'
+        )}
+      </div>
     </div>
   );
 };

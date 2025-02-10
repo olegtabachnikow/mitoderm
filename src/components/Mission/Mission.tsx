@@ -37,7 +37,7 @@ const Mission: FC = () => {
         </p>
         <div className={styles.buttonContainer}>
           <Button
-            contact
+            formPage={isEventPage ? 'event' : 'main'}
             colored
             text={t(
               isEventPage ? 'buttons.seat' : 'buttons.contactForSolutions'

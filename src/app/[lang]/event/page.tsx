@@ -42,12 +42,19 @@ export default function EventPage({ params: { lang } }: any) {
       <ToTopItOff />
       <Contact />
       <Gallery />
-      <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+      <div
+        style={{
+          width: '100%',
+          display: 'flex',
+          justifyContent: 'center',
+          padding: '0px 20px',
+        }}
+      >
         <Button
           style={{ margin: '20px auto 40px auto' }}
           colored
           text={t('buttons.seat')}
-          contact
+          formPage='event'
         />
       </div>
       <About />
