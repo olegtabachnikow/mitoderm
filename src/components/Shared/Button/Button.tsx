@@ -1,8 +1,7 @@
 'use client';
 import { CSSProperties, FC } from 'react';
 import styles from './Button.module.scss';
-import useAppStore from '@/store/store';
-import { FormType } from '@/types';
+import { useRouter } from '@/i18n/routing';
 
 interface Props {
   text: string;
@@ -10,9 +9,8 @@ interface Props {
   colored?: boolean;
   submit?: boolean;
   disabled?: boolean;
-  contact?: boolean;
   onClick?: () => any;
-  formType?: FormType;
+  formPage?: 'main' | 'event';
 }
 
 const Button: FC<Props> = ({
@@ -21,22 +19,18 @@ const Button: FC<Props> = ({
   colored,
   submit,
   disabled = false,
-  contact,
   onClick,
-  formType,
+  formPage,
 }) => {
-  const { toggleModal, setModalContent, setFormCategory } = useAppStore(
-    (state) => state
-  );
+  const router = useRouter();
 
-  const openForm = () => {
-    setModalContent('form');
-    formType && setFormCategory(formType);
-    toggleModal(true);
+  const openForm = (page: 'event' | 'main') => {
+    if (page === 'event') router.push(`/event/form`);
+    if (page === 'main') router.push(`/form`);
   };
 
   const handleClick = () => {
-    contact ? openForm() : onClick ? onClick() : null;
+    formPage ? openForm(formPage) : onClick ? onClick() : null;
   };
 
   return (

@@ -5,6 +5,10 @@
   min-width: 536px;
 }
 
+.navigation.formPage {
+  min-width: unset;
+}
+
 .button {
   background-color: transparent;
   color: var(--colorAccentDark);

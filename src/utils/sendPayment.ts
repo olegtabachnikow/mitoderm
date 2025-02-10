@@ -1,6 +1,6 @@
 'use server';
 import axios from 'axios';
-import type { FormDataType } from '@/types';
+import type { EventFormDataType } from '@/types';
 
 const env = process.env.NODE_ENV;
 
@@ -20,7 +20,7 @@ if (env === 'production') {
 
 const crmUrl = `https://${crmAccount}.senzey.com/extapi/work_order/add.php?username=${crmUserName}&password=${crmPassword}`;
 
-export async function sendPaymentDataToCRM(formData: FormDataType) {
+export async function sendPaymentDataToCRM(formData: EventFormDataType) {
   const finalPrice = formData.discount
     ? (parseInt(formData.totalPrice as string) * 0.9).toString()
     : formData.totalPrice;
@@ -35,7 +35,9 @@ export async function sendPaymentDataToCRM(formData: FormDataType) {
     total_payment: totalPaymentValue,
     currency: 'NULL',
     pay_url: true,
-    pay_success_redirect_url: `https://www.mitoderm.com/${formData.lang}/event/success?username=${formData.name.value}&phone=${formData.phone.value}&email=${formData.email.value}`,
+    client_idn: formData.idNumber.value,
+    pay_success_redirect_url: `https://mitoderm.com/${formData.lang}/event/success?name=${formData.name.value}&phone=${formData.phone.value}&email=${formData.email.value}&amount=${totalPaymentValue}`,
+    pay_success_callback_url: `https://mitoderm.com/${formData.lang}/event/success?name=${formData.name.value}&phone=${formData.phone.value}&email=${formData.email.value}&amount=${totalPaymentValue}`,
     items: [
       {
         name: 'ticket',
@@ -45,7 +47,7 @@ export async function sendPaymentDataToCRM(formData: FormDataType) {
       },
     ],
   };
-
+  // console.log(data);
   try {
     const response = await axios.post(crmUrl, data, {
       headers: {

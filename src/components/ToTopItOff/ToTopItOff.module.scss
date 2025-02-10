@@ -57,6 +57,8 @@
   .containerInner {
     flex-direction: column-reverse;
     gap: 20px;
+    max-width: 100%;
+    width: 100%;
   }
   .titleMob {
     font-size: var(--fontSizeMobH2);

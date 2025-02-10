@@ -17,7 +17,7 @@ const Event: FC = () => {
           <Dropdown item={'event.item4'} time />
         </div>
       </div>
-      <Button contact colored text={t('buttons.seat')} />
+      <Button formPage='event' colored text={t('buttons.seat')} />
     </section>
   );
 };

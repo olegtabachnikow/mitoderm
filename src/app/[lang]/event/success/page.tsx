@@ -5,7 +5,7 @@ import Success from '@/components/Success/Success';
 export default function SuccessPage({ params: { lang } }: any) {
   unstable_setRequestLocale(lang);
   return (
-    <main>
+    <main className='successPage'>
       <Suspense>
         <Success />
       </Suspense>

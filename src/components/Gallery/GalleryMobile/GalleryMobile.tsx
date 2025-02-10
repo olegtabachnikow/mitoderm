@@ -2,6 +2,7 @@ import { FC } from 'react';
 import styles from './GalleryMobile.module.scss';
 import MobileButtons from '@/components/Shared/MobileButtons/MobileButtons';
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 
 interface Props {
   disabledLeft: boolean;
@@ -26,8 +27,10 @@ const GalleryMobile: FC<Props> = ({
           {items.map((item, i) => (
             <div id={`item${i}`} className={styles.item} key={`key${i}`}>
               <div className={styles.imageContainer}>
-                <img
+                <Image
+                  quality={100}
                   className={styles.image}
+                  fill
                   src={`/images/beforeAfterExamples/${item[0]}`}
                   alt='before usage exoxo'
                 />
@@ -35,7 +38,9 @@ const GalleryMobile: FC<Props> = ({
               </div>
               <span className={styles.roundLabel}>&</span>
               <div className={styles.imageContainer}>
-                <img
+                <Image
+                  quality={100}
+                  fill
                   className={styles.image}
                   src={`/images/beforeAfterExamples/${item[1]}`}
                   alt='result after usage exoxo'

@@ -1,17 +1,46 @@
 .section {
-  background-image: url(/images/introBG.png);
   min-height: 578px;
   margin-top: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-inline: 20px;
   position: relative;
   z-index: 1;
+  height: 100%;
+  width: 100vw;
 }
 
-.sectionEvent {
+.scrollBox {
+  width: 100vw;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  height: 578px;
+  display: flex;
+  flex-wrap: nowrap;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  scroll-snap-type: x mandatory;
+}
+
+.introMain,
+.introEvent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: start;
+}
+
+.introMain {
+  background-image: url(/images/introBG.png);
+  background-size: cover;
+  min-width: 100vw;
+  width: 100%;
+  height: 100%;
+}
+
+.introEvent {
   background-image: url(/images/introEventBG.png);
+  min-width: 100vw;
+  width: 100%;
+  height: 100%;
 }
 
 .container {
@@ -19,6 +48,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   flex: 1;
 }
 
@@ -67,14 +97,27 @@
   pointer-events: none;
 }
 
+.paginationBox {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 @media screen and (max-width: 1224px) {
   .section {
     height: 100%;
+    margin-top: 30px;
+  }
+  .container {
+    padding-inline: 20px;
+  }
+  .introEvent,
+  .introMain {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-position: center;
-    margin-top: 30px;
   }
   .buttonBox {
     display: none;

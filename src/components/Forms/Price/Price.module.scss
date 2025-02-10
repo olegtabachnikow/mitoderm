@@ -51,7 +51,7 @@
 
 .inputBox.he button {
   right: auto;
-  left: 20px;
+  left: 0px;
 }
 
 .inputBox button:hover {
@@ -60,7 +60,7 @@
 
 .total,
 .promo {
-  font-size: var(--fontSizeMobP2);
+  font-size: var(--fontSizeMobExtra);
   margin-bottom: 5px;
 }
 
@@ -73,6 +73,10 @@
   color: var(--colorAccentLight);
   margin-right: 20px;
   line-height: 53px;
+}
+
+.amount.he {
+  margin-right: 0px;
 }
 
 .message {

@@ -62,11 +62,33 @@ section {
   scroll-margin-top: 60px;
 }
 
+.formPage {
+  width: 100%;
+  padding-top: 80px;
+  display: flex;
+  justify-content: center;
+  min-height: calc(100vh - 195px);
+  height: 100%;
+}
+
+.successPage {
+  padding-top: 60px;
+  height: calc(100vh - 195px);
+}
+
 @media screen and (max-width: 1224px) {
   body.modalOpened {
     touch-action: none;
     -webkit-overflow-scrolling: none;
     overflow: hidden;
     overscroll-behavior: none;
+  }
+  .formPage {
+    min-height: unset;
+    height: auto;
+  }
+  .successPage {
+    padding-top: 72px;
+    height: calc(100vh - 284px);
   }
 }

@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { FormType, ModalType } from '@/types';
+import { ModalType } from '@/types';
 
 interface RootState {
   isFirstRender: boolean;
@@ -8,12 +8,12 @@ interface RootState {
   toggleModal: (value: boolean) => void;
   galleryPage: number;
   setGalleryPage: (page: number) => void;
+  introPage: number;
+  setIntroPage: (page: number) => void;
   reviewPage: number;
   setReviewPage: (page: number) => void;
   modalContent: ModalType;
   setModalContent: (arg: ModalType) => void;
-  formCategory: FormType;
-  setFormCategory: (arg: FormType) => void;
   numberOfTickets: number;
   setNumberOfTickets: (arg: number) => void;
   isDiscounted: boolean;
@@ -30,15 +30,15 @@ const useAppStore = create<RootState>((set) => ({
   galleryPage: 0,
   setGalleryPage: (page: number) =>
     set((state) => ({ galleryPage: (state.galleryPage = page) })),
+  introPage: 0,
+  setIntroPage: (page: number) =>
+    set((state) => ({ introPage: (state.introPage = page) })),
   reviewPage: 0,
   setReviewPage: (page: number) =>
     set((state) => ({ reviewPage: (state.reviewPage = page) })),
-  modalContent: 'form',
+  modalContent: 'privatePolicy',
   setModalContent: (arg: ModalType) =>
     set((state) => ({ modalContent: (state.modalContent = arg) })),
-  formCategory: 'main',
-  setFormCategory: (arg) =>
-    set((state) => ({ formCategory: (state.formCategory = arg) })),
   numberOfTickets: 1,
   setNumberOfTickets: (arg: number) =>
     set((state) => ({ numberOfTickets: (state.numberOfTickets = arg) })),
