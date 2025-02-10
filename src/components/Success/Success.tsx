@@ -39,7 +39,7 @@ const Success: FC = () => {
         <>
           <span>
             <span className={styles.text}>{t('success.client')}</span>
-            {name}
+            {name?.replace('_', ' ')}
           </span>
           <span>
             <span className={styles.text}>{t('success.id')}</span>
