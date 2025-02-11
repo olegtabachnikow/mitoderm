@@ -3,10 +3,13 @@ import { FC } from 'react';
 import styles from './Footer.module.scss';
 import { useTranslations } from 'next-intl';
 import useAppStore from '@/store/store';
+import { usePathname } from '@/i18n/routing';
 
 const Footer: FC = () => {
   const { setModalContent, toggleModal } = useAppStore((state) => state);
   const t = useTranslations();
+  const pathname = usePathname();
+  const isFormPage = pathname.includes('form');
 
   const handlePrivacyClick = () => {
     toggleModal(true);
@@ -19,7 +22,10 @@ const Footer: FC = () => {
   };
 
   return (
-    <footer className={styles.footer}>
+    <footer
+      style={isFormPage ? { padding: '30px 0' } : {}}
+      className={styles.footer}
+    >
       <div className={styles.content}>
         <span className={styles.copyright}>{t('footer.copyright')}</span>
         <div className={styles.textContainer}>

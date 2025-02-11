@@ -32,9 +32,10 @@ const Contact: FC = () => {
                 <a
                   style={{ marginRight: locale === 'he' ? 5 : 0 }}
                   dir='ltr'
-                  href='tel:+972547621889'
+                  href='https://wa.me/+972547621889'
+                  target='_blank'
                 >
-                  +972-54-326-21-82
+                  {' +972-54-326-21-82 '}
                 </a>
               </span>
             </p>
