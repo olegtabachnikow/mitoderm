@@ -54,7 +54,7 @@
 
 .section span {
   color: var(--colorWhite);
-  font-size: var(--fontSizeP2);
+  font-size: var(--fontSizeP1);
 }
 
 .dot {
@@ -121,9 +121,6 @@
   }
   .buttonBox {
     display: none;
-  }
-  .section span {
-    font-size: var(--fontSizeMobExtra);
   }
   .title {
     font-size: var(--fontSizeMobH1);

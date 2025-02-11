@@ -7,11 +7,13 @@ import Navigation from '../Navigation/Navigation';
 import { useMediaQuery } from 'react-responsive';
 import BurgerButton from '@/components/Shared/BurgerButton/BurgerButton';
 import Link from 'next/link';
+import { usePathname } from '@/i18n/routing';
 
 const Header: FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
-
+  const pathname = usePathname();
+  const isSuccessPage = pathname.includes('success');
   const handleClose = (e: MouseEvent) => {
     const { target } = e;
     if ((target as HTMLDivElement).id === 'overlay') setIsOpen(false);
@@ -41,7 +43,7 @@ const Header: FC = () => {
           />
         </Link>
         <Navigation setIsOpen={setIsOpen} isOpen={isOpen} />
-        <LanguageSwitch />
+        {!isSuccessPage ? <LanguageSwitch /> : <div style={{ width: 120 }} />}
         {isTabletOrMobile && (
           <BurgerButton isOpen={isOpen} setIsOpen={setIsOpen} />
         )}
