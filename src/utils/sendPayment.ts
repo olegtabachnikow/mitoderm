@@ -46,33 +46,21 @@ export async function sendPaymentDataToCRM(formData: EventFormDataType) {
     }`,
     items: [
       {
-        name: 'ticket',
+        name: formData.lang === 'he' ? 'כנס השתלמות' : 'Ticket',
         code: '1',
         price: finalPrice,
         quantity: formData.quantity,
       },
     ],
   };
-  console.log(
-    `https://mitoderm.com/${
-      formData.lang
-    }/event/success?name=${formData.name.value.replace(' ', '_')}&phone=${
-      formData.phone.value
-    }&email=${formData.email.value}&amount=${totalPaymentValue}&idNumber=${
-      formData.idNumber.value
-    }`
-  );
-  console.log(data);
   try {
     const response = await axios.post(crmUrl, data, {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
       },
     });
-    console.log(response.data);
     return response.data;
   } catch (err: any) {
-    console.log(err.response.data);
     return err.response.data || 'Error';
   }
 }
