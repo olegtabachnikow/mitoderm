@@ -2,7 +2,6 @@ import { FC } from 'react';
 import styles from './GalleryMobile.module.scss';
 import MobileButtons from '@/components/Shared/MobileButtons/MobileButtons';
 import { useTranslations } from 'next-intl';
-import Image from 'next/image';
 
 interface Props {
   disabledLeft: boolean;
