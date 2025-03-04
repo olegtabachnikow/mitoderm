@@ -10,6 +10,7 @@
 .imageBox {
   display: flex;
   width: 100%;
+  gap: 20px;
   flex-wrap: nowrap;
   overflow-x: scroll;
   -ms-overflow-style: none;
@@ -31,6 +32,10 @@
 
 .image {
   min-width: 320px;
+  object-fit: cover;
+  width: 474px;
+  max-height: 320px;
+  border-radius: 48px;
 }
 
 .itemLabel {
