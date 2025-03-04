@@ -27,24 +27,22 @@ const GalleryMobile: FC<Props> = ({
           {items.map((item, i) => (
             <div id={`item${i}`} className={styles.item} key={`key${i}`}>
               <div className={styles.imageContainer}>
-                <Image
-                  quality={100}
-                  className={styles.image}
-                  fill
-                  src={`/images/beforeAfterExamples/${item[0]}`}
-                  alt='before usage exoxo'
-                />
+                <div className={styles.image}>
+                  <img
+                    src={`/images/beforeAfterExamples/${item[0]}`}
+                    alt='before usage exoxo'
+                  />
+                </div>
                 <span className={styles.label}>{t('gallery.before')}</span>
               </div>
               <span className={styles.roundLabel}>&</span>
               <div className={styles.imageContainer}>
-                <Image
-                  quality={100}
-                  fill
-                  className={styles.image}
-                  src={`/images/beforeAfterExamples/${item[1]}`}
-                  alt='result after usage exoxo'
-                />
+                <div className={styles.image}>
+                  <img
+                    src={`/images/beforeAfterExamples/${item[1]}`}
+                    alt='result after usage exoxo'
+                  />
+                </div>
                 <span className={`${styles.label} ${styles.bottom}`}>
                   {t('gallery.after')}
                 </span>
