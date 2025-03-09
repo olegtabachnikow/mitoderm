@@ -9,7 +9,7 @@ const Contact: FC = () => {
   return (
     <section className={styles.section}>
       <div className={styles.content}>
-        <div className={styles.cardContainer}>
+        {/* <div className={styles.cardContainer}>
           <iframe
             title='map'
             className={styles.iframe}
@@ -19,7 +19,7 @@ const Contact: FC = () => {
             loading='lazy'
             referrerPolicy='no-referrer-when-downgrade'
           />
-        </div>
+        </div> */}
         <div className={styles.contacts}>
           <div className={styles.contactsItem}>
             <span className={styles.contactsItemTitle}>
@@ -28,14 +28,14 @@ const Contact: FC = () => {
             <p>
               <span className={styles.text}>{t('contactUs.phone')}</span>
               <span className={styles.text}>
-                {t('contactUs.phoneText')}{' '}
+                {t('contactUs.phoneText')}
                 <a
-                  style={{ marginRight: locale === 'he' ? 5 : 0 }}
+                  style={{ margin: 5 }}
                   dir='ltr'
-                  href='https://wa.me/+972547621889'
+                  href=' https://wa.me/972547621889'
                   target='_blank'
                 >
-                  {' +972-54-326-21-82 '}
+                  {' 0547621889 '}
                 </a>
               </span>
             </p>

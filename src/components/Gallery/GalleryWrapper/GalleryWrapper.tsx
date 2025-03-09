@@ -8,7 +8,8 @@ import GalleryMobile from '../GalleryMobile/GalleryMobile';
 import { useLocale } from 'next-intl';
 
 interface Props {
-  itemList: Array<[string, string]>;
+  // itemList: Array<[string, string]>;
+  itemList: string[];
 }
 
 const GalleryWrapper: FC<Props> = ({ itemList }) => {
@@ -39,7 +40,7 @@ const GalleryWrapper: FC<Props> = ({ itemList }) => {
   };
 
   useEffect(() => {
-    scrollTo();
+    isTabletOrMobile ? null : scrollTo();
   }, [galleryPage]);
 
   const increment = () => {
@@ -56,13 +57,7 @@ const GalleryWrapper: FC<Props> = ({ itemList }) => {
   return (
     <div className={styles.container}>
       {isTabletOrMobile ? (
-        <GalleryMobile
-          disabledLeft={false}
-          disabledRight={false}
-          onClickLeft={decrement}
-          onClickRight={increment}
-          items={itemList}
-        />
+        <GalleryMobile items={itemList} />
       ) : (
         <GalleryDesktop
           disabledLeft={false}
