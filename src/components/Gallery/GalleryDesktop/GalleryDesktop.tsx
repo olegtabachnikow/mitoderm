@@ -8,7 +8,7 @@ interface Props {
   disabledRight: boolean;
   onClickLeft: () => void;
   onClickRight: () => void;
-  items: Array<[string, string]>;
+  items: string[];
 }
 
 const GalleryDesktop: FC<Props> = ({
@@ -31,25 +31,20 @@ const GalleryDesktop: FC<Props> = ({
       <div className={styles.itemWrapper}>
         <div id='galleryItemBox' className={styles.imageBox}>
           {items.map((item, i) => (
-            <div id={`item${i}`} className={styles.item} key={`key${i}`}>
+            <div className={styles.item} key={i}>
               <img
                 className={styles.image}
-                src={`/images/beforeAfterExamples/${item[0]}`}
-                alt='before usage exoxo'
-              />
-              <img
-                className={styles.image}
-                src={`/images/beforeAfterExamples/${item[1]}`}
-                alt='result after usage exoxo'
+                src={`/images/beforeAfter/${item}`}
+                alt='Example of Exosomes effect'
               />
             </div>
           ))}
         </div>
-        <div className={styles.itemLabel}>
+        {/* <div className={styles.itemLabel}>
           <span className={styles.roundLabel}>&</span>
           <span className={styles.label}>{t('gallery.before')}</span>
           <span className={styles.label}>{t('gallery.after')}</span>
-        </div>
+        </div> */}
       </div>
       <ArrowButton
         reversed={locale === 'he'}

@@ -27,15 +27,14 @@
   display: flex;
   gap: 20px;
   width: 100%;
+  max-height: 400px;
+  max-width: 954px;
   scroll-snap-align: start;
 }
 
 .image {
-  min-width: 320px;
-  object-fit: cover;
-  width: 474px;
-  max-height: 320px;
   border-radius: 48px;
+  min-width: 100%;
 }
 
 .itemLabel {
