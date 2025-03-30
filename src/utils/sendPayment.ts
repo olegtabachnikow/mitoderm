@@ -46,7 +46,7 @@ export async function sendPaymentDataToCRM(formData: EventFormDataType) {
     }`,
     items: [
       {
-        name: formData.lang === 'he' ? 'כנס השתלמות' : 'Ticket',
+        name: formData.lang === 'he' ? 'יום עיון' : 'Seminar',
         code: '1',
         price: finalPrice,
         quantity: formData.quantity,
