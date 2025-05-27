@@ -11,10 +11,15 @@
 
 .button {
   background-color: transparent;
-  color: var(--colorAccentDark);
-  font-size: var(--fontSizeP2);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 16px;
   line-height: 24px;
   padding-inline: 10px;
+  transition: color 0.3s linear;
+}
+
+.button:hover {
+  color: rgba(255, 255, 255, 1);
 }
 
 .arrowIcon {
@@ -33,7 +38,6 @@
   display: flex;
   flex-direction: column;
   border-radius: 0 0 50px 50px;
-  background-color: var(--colorBG);
   transition: all 1s linear;
   height: 0;
   overflow: hidden;
@@ -50,7 +54,7 @@
   user-select: none;
   width: 100%;
   padding: 20px 40px;
-  color: var(--colorAccentDark);
+  color: var(--colorLightBG);
   background-color: transparent;
   font-size: var(--fontSizeP2);
   text-align: end;

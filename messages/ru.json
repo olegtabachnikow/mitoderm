@@ -6,9 +6,11 @@
     "info": "Доп. информация",
     "contact": "Связаться с нами",
     "event": "Ивент",
-    "agenda": "Программа"
+    "agenda": "Программа",
+    "clinic": "Местная клиника"
   },
   "buttons": {
+    "intro": "Узнать больше",
     "contact": "Связаться с нами",
     "learnMore": "Узнать больше",
     "moreAbout": "Подробнее о продукте",
@@ -57,17 +59,22 @@
     "wrongPromo": "Wrong promo code"
   },
   "intro": {
-    "subtitleP1": "Продукт из Южной Кореи",
-    "subtitleP2": "Официальный дистрибьютор",
-    "title": "EXOXE Экзосомы в Израиле",
-    "text": "MitoDerm сочетает передовые эстетические технологии и научный подход, предлагая инновационные решения в сфере косметологии. Вы — врач или косметолог, стремящийся улучшить свои услуги? Давайте совершенствоваться вместе!",
+    "title": "V-Tech System",
+    "text": "Новое поколение в космецевтике - прорыв в уходе за кожей для косметологов",
     "eventSubtitle": "Интимная и вдохновляющая конференция",
     "eventTitle": "Присоединяйтесь к конференции от MITODERM"
   },
+  "chevron": {
+    "text1": "V Tech System ",
+    "text2": "an innovative concept based on synthetic exosomes enriched with biomimetic peptides, combined with PDRN polynucleotides, encouraging intensive skin renewal from the very first treatment.",
+    "title1": "Unique",
+    "title2": "Effective",
+    "title3": "Safe",
+    "subtitle": "Mitoderm presents an advanced technology based on a unique combination from Italy, developed by vm corporation experts, designed to provide results of firming, renewal, and biological skin rejuvenation.",
+    "button": "More information about the products"
+  },
   "howToUse": {
-    "titleP1": "Как можно использовать ",
-    "titleP2": "экзосомы",
-    "titleP3": " EXOXE",
+    "title": "Показания",
     "item1": "Восстановление рубцов после операций",
     "item2": "Лечение акне и постакне, рубцов",
     "item3": "Терапия выпадения волос",

@@ -1,6 +1,5 @@
 .section {
   min-height: 578px;
-  margin-top: 60px;
   position: relative;
   z-index: 1;
   height: 100%;
@@ -24,16 +23,28 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   scroll-snap-align: start;
 }
 
 .introMain {
-  background-image: url(/images/introBG.png);
-  background-size: cover;
   min-width: 100vw;
   width: 100%;
   height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.introMain::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+  background-image: url(/images/introBG.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .introEvent {
@@ -43,12 +54,30 @@
   height: 100%;
 }
 
+.introMainContent {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+  max-width: 1200px;
+  width: 100%;
+  position: relative;
+}
+
+.leaves {
+  position: absolute;
+  bottom: 80px;
+  right: 0;
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
 .container {
-  max-width: var(--contentWidthDesktop);
+  max-width: 620px;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   flex: 1;
 }
 
@@ -57,15 +86,11 @@
   font-size: var(--fontSizeP1);
 }
 
-.dot {
-  margin-inline: 10px;
-}
-
 .title {
   font-size: var(--fontSizeH1);
   font-weight: 400;
   color: var(--colorWhite);
-  margin: 40px 0;
+  margin: 40px 0 30px 0;
   padding: 0;
   max-width: 680px;
 }
@@ -74,27 +99,12 @@
   font-size: 70px;
 }
 
-.row {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  width: 100%;
-}
-
 .text {
   color: var(--colorWhite);
   font-size: var(--fontSizeP2);
-  max-width: 380px;
-  letter-spacing: 2px;
   font-weight: 500;
-}
-
-.lines {
-  position: absolute;
-  right: -90px;
-  bottom: -290px;
-  -webkit-user-drag: none;
-  pointer-events: none;
+  margin: 0 auto 58px auto;
+  text-align: center;
 }
 
 .paginationBox {
@@ -107,7 +117,6 @@
 @media screen and (max-width: 1224px) {
   .section {
     height: 100%;
-    margin-top: 30px;
   }
   .container {
     padding-inline: 20px;
@@ -128,16 +137,6 @@
   }
   .title.ru {
     font-size: 36px;
-  }
-  .row {
-    flex-direction: column-reverse;
-    gap: 40px;
-  }
-  .lines {
-    scale: 0.6;
-    right: -150px;
-    z-index: 1;
-    pointer-events: none;
   }
   .text {
     font-size: var(--fontSizeMobP2);

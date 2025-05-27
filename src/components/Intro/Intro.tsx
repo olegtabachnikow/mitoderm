@@ -2,8 +2,8 @@
 import { FC, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import styles from './Intro.module.scss';
-import { useTranslations, useLocale } from 'next-intl';
 import Image from 'next/image';
+import { useTranslations, useLocale } from 'next-intl';
 import { usePathname } from '@/i18n/routing';
 import DotPagination from '../Shared/DotPagination/DotPagination';
 import useAppStore from '@/store/store';
@@ -70,14 +70,14 @@ const Intro: FC = () => {
     scrollToNextChild();
   }, [introPage]);
 
-  useEffect(() => {
-    const currentValue = introPage === 0 ? 1 : 0;
-    const interval = setInterval(() => {
-      setIntroPage(currentValue);
-    }, 15000);
+  // useEffect(() => {
+  //   const currentValue = introPage === 0 ? 1 : 0;
+  //   const interval = setInterval(() => {
+  //     setIntroPage(currentValue);
+  //   }, 15000);
 
-    return () => clearInterval(interval);
-  }, [introPage]);
+  //   return () => clearInterval(interval);
+  // }, [introPage]);
 
   return (
     <section id='intro' className={styles.section}>
@@ -87,24 +87,28 @@ const Intro: FC = () => {
             locale === 'he' ? styles.reversed : ''
           }`}
         >
-          <div className={styles.container}>
-            <span>
-              <span>{t('intro.subtitleP1')}</span>
-              <span className={styles.dot}>&#x2022;</span>
-              <span>{t('intro.subtitleP2')}</span>
-            </span>
-            <h1
-              className={`${styles.title} ${locale === 'ru' ? styles.ru : ''}`}
-            >
-              {t('intro.title')}
-            </h1>
-            <div className={styles.row}>
+          <div dir='ltr' className={styles.introMainContent}>
+            <div className={styles.container}>
+              <h1
+                className={`${styles.title} ${
+                  locale === 'ru' ? styles.ru : ''
+                }`}
+              >
+                {t('intro.title')}
+              </h1>
+              <p className={styles.text}>{t('intro.text')}</p>
               <Button
-                text={t('buttons.contact')}
-                style={{ marginTop: 20 }}
+                text={t('buttons.intro')}
+                style={{ marginTop: 20, maxWidth: 218, width: '100%' }}
                 formPage={'main'}
               />
-              <p className={styles.text}>{t('intro.text')}</p>
+              <Image
+                className={styles.leaves}
+                src='/images/leaves.svg'
+                width={90}
+                height={100}
+                alt='leavest pattern'
+              />
             </div>
           </div>
         </div>
@@ -122,25 +126,14 @@ const Intro: FC = () => {
             >
               {t('intro.eventTitle')}
             </h1>
-            <div className={styles.row}>
-              <Button
-                text={t('buttons.seat')}
-                style={{ marginTop: 20 }}
-                formPage={'event'}
-              />
-            </div>
+            <Button
+              text={t('buttons.seat')}
+              style={{ marginTop: 20 }}
+              formPage={'event'}
+            />
           </div>
         </div>
       </div>
-      {!isEventPage && (
-        <Image
-          className={styles.lines}
-          src='/images/lines1.svg'
-          width={460}
-          height={460}
-          alt='lines'
-        />
-      )}
       <div className={styles.paginationBox}>
         <DotPagination count={2} intro />
       </div>

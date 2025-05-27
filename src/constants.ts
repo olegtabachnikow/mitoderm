@@ -16,6 +16,7 @@ export const navMainList: NavItem[] = [
   { text: 'navigation.info', scrollId: ScrollItems.about },
   { text: 'navigation.contact', url: '/form' },
   { text: 'navigation.event', url: '/event' },
+  { text: 'navigation.clinic', url: '#' },
 ];
 
 export const navEventList: NavItem[] = [
@@ -33,10 +34,12 @@ export const navFormList: NavItem[] = [
 ];
 
 export const howToUseItemList: HowToUseItem[] = [
-  { imagePath: '/images/howToUse/surgery.png', text: 'howToUse.item1' },
+  { imagePath: '/images/howToUse/skin.png', text: 'howToUse.item1' },
   { imagePath: '/images/howToUse/acne.png', text: 'howToUse.item2' },
-  { imagePath: '/images/howToUse/hair.png', text: 'howToUse.item3' },
-  { imagePath: '/images/howToUse/skin.png', text: 'howToUse.item4' },
+  { imagePath: '/images/howToUse/butt.png', text: 'howToUse.item3' },
+  { imagePath: '/images/howToUse/acne2.png', text: 'howToUse.item4' },
+  { imagePath: '/images/howToUse/surgery.png', text: 'howToUse.item5' },
+  { imagePath: '/images/howToUse/blood.png', text: 'howToUse.item6' },
 ];
 
 export const eventBulletsItemList: EventBulletItem[] = [

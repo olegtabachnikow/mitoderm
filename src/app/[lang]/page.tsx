@@ -28,15 +28,21 @@ const Contact = dynamic(() => import('@/components/Contact/Contact'), {
   ssr: false,
 });
 
+const Chevron = dynamic(() => import('@/components/Chevron/Chevron'));
+
+const Synergy = dynamic(() => import('@/components/Synergy/Synergy'));
+
 export default function HomePage({ params: { lang } }: any) {
   unstable_setRequestLocale(lang);
   return (
-    <main>
+    <main id='mainpage'>
       <Intro />
+      <Chevron />
+      <Synergy />
       <HowCanBeUsed />
-      <About />
+      {/* <About /> */}
       <Solution />
-      <Reviews />
+      {/* <Reviews /> */}
       <Gallery />
       <Mission />
       <Faq />

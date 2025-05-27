@@ -16,13 +16,8 @@ const HowCanBeUsed: FC = () => {
   const t = useTranslations();
   return (
     <section className={styles.section}>
-      <p className={styles.title}>
-        {t('howToUse.titleP1')}
-        <span className={styles.titleColored}>{t('howToUse.titleP2')}</span>
-        {t('howToUse.titleP3')}
-      </p>
+      <p className={styles.title}>{t('howToUse.title')}</p>
       <BulletList data={howToUseItemList} />
-      <Button colored onClick={scrollTo} text={t('buttons.learnMore')} />
     </section>
   );
 };

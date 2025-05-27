@@ -6,9 +6,11 @@
     "info": "More info",
     "contact": "Contact us",
     "event": "Event",
-    "agenda": "Event program"
+    "agenda": "Event program",
+    "clinic": "Local clinic"
   },
   "buttons": {
+    "intro": "Learn More",
     "contact": "Contact us",
     "learnMore": "Learn More",
     "moreAbout": "More About",
@@ -57,21 +59,45 @@
     "wrongPromo": "Wrong promo code"
   },
   "intro": {
-    "subtitleP1": "Korean product",
-    "subtitleP2": "Official distributor",
-    "title": "Exoxe Exosome in Israel",
-    "text": "MitoDerm combines advanced aesthetic technology with science to bring innovative solutions to the field of aesthetics. Are you a doctor or cosmetologist looking to enhance your services? Let's innovate together!",
+    "title": "V-Tech System",
+    "text": "A new generation in cosmeceuticals - a breakthrough in skincare for cosmeticians",
     "eventSubtitle": "Intimate and Inspiring Conference",
     "eventTitle": "Join Conference by Mitoderm"
   },
+  "chevron": {
+    "text1": "V Tech System ",
+    "text2": "an innovative concept based on synthetic exosomes enriched with biomimetic peptides, combined with PDRN polynucleotides, encouraging intensive skin renewal from the very first treatment.",
+    "title1": "Unique",
+    "title2": "Effective",
+    "title3": "Safe",
+    "subtitle": "Mitoderm presents an advanced technology based on a unique combination from Italy, developed by vm corporation experts, designed to provide results of firming, renewal, and biological skin rejuvenation.",
+    "button": "More information about the products"
+  },
+  "synergy": {
+    "title": "Combination of active ingredients for synergistic action",
+    "item1": {
+      "title": "Polynucleotides",
+      "text1": "Skin cell renewal",
+      "text2": "Anti-oxidant effect",
+      "text3": "Intensive deep skin hydration action"
+    },
+    "item2": {
+      "title": "Synthetic Exosomes",
+      "text": "Focused stimulating effect"
+    },
+    "item3": {
+      "title": "Soothing and moisturizing ingredients",
+      "text": "Epidermal barrier restoration, nourishment and hydration, protection against external irritants."
+    }
+  },
   "howToUse": {
-    "titleP1": "How ",
-    "titleP2": "Exosome",
-    "titleP3": " can be used",
-    "item1": "Post-Surgery scars Recovery",
-    "item2": "Acne and post-acne Scars",
-    "item3": "Hair Loss treatment",
-    "item4": "Facial Skin Rejuvenation"
+    "title": "Indications",
+    "item1": "Bio-stimulation and firming for the face, neck, décolleté, hands",
+    "item2": "Post-acne scars",
+    "item3": "Stretch marks",
+    "item4": "Post-inflammatory pigmentation",
+    "item5": "Post-surgical scars",
+    "item6": "Powerful stimulation of blood vessels and nourishment"
   },
   "about": {
     "titleP1": "What is ",

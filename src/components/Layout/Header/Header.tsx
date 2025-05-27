@@ -8,6 +8,7 @@ import { useMediaQuery } from 'react-responsive';
 import BurgerButton from '@/components/Shared/BurgerButton/BurgerButton';
 import Link from 'next/link';
 import { usePathname } from '@/i18n/routing';
+import useAppStore from '@/store/store';
 
 const Header: FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
