@@ -1,5 +1,5 @@
 'use client';
-import { FC, useEffect } from 'react';
+import { FC, useEffect, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import styles from './Intro.module.scss';
 import Image from 'next/image';
@@ -16,6 +16,7 @@ const Intro: FC = () => {
   const t = useTranslations();
   const locale = useLocale();
   const pathname = usePathname();
+  const ref = useRef<HTMLDivElement>(null);
   const isEventPage = pathname.includes('event');
   const { introPage, setIntroPage } = useAppStore((state) => state);
 
@@ -42,46 +43,42 @@ const Intro: FC = () => {
   }, []);
 
   useEffect(() => {
-    const container = document.getElementById('scroller');
-    container?.addEventListener(
-      'wheel',
-      (event) => {
-        event.preventDefault();
-      },
-      { passive: false }
-    );
-    container?.addEventListener(
-      'touch',
-      (event) => {
-        event.preventDefault();
-      },
-      { passive: false }
-    );
-    container?.addEventListener(
-      'scroll',
-      (event) => {
-        event.preventDefault();
-      },
-      { passive: false }
-    );
+    const container = ref.current;
+
+    const handleScroll = () => {
+      const containerWidth = ref.current?.clientWidth;
+      if (locale === 'he' && container?.scrollLeft && containerWidth) {
+        if (container?.scrollLeft === -containerWidth) setIntroPage(1);
+      } else if (container?.scrollLeft === 0) {
+        setIntroPage(0);
+      }
+      if (locale !== 'he' && container?.scrollLeft && containerWidth) {
+        if (container?.scrollLeft === containerWidth) setIntroPage(1);
+      } else if (container?.scrollLeft === 0) {
+        setIntroPage(0);
+      }
+    };
+
+    container?.addEventListener('scroll', handleScroll);
+    return () => container?.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
     scrollToNextChild();
   }, [introPage]);
 
-  // useEffect(() => {
-  //   const currentValue = introPage === 0 ? 1 : 0;
-  //   const interval = setInterval(() => {
-  //     setIntroPage(currentValue);
-  //   }, 15000);
+  useEffect(() => {
+    const currentValue = introPage === 0 ? 1 : 0;
+    const interval = setInterval(() => {
+      setIntroPage(currentValue);
+    }, 15000);
 
-  //   return () => clearInterval(interval);
-  // }, [introPage]);
+    return () => clearInterval(interval);
+  }, [introPage]);
 
   return (
     <section id='intro' className={styles.section}>
-      <div id='scroller' className={styles.scrollBox}>
+      <div ref={ref} id='scroller' className={styles.scrollBox}>
         <div
           className={`${styles.introMain} ${
             locale === 'he' ? styles.reversed : ''

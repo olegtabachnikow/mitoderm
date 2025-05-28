@@ -66,19 +66,38 @@
   },
   "chevron": {
     "text1": "V Tech System ",
-    "text2": "an innovative concept based on synthetic exosomes enriched with biomimetic peptides, combined with PDRN polynucleotides, encouraging intensive skin renewal from the very first treatment.",
-    "title1": "Unique",
-    "title2": "Effective",
-    "title3": "Safe",
-    "subtitle": "Mitoderm presents an advanced technology based on a unique combination from Italy, developed by vm corporation experts, designed to provide results of firming, renewal, and biological skin rejuvenation.",
-    "button": "More information about the products"
+    "text2": "инновационная концепция на основе синтетических экзосом, обогащенных биомиметическими пептидами, в сочетании с полинуклеотидами PDRN, способствующая интенсивному обновлению кожи уже после первой процедуры.",
+    "title1": "Уникальный",
+    "title2": "Эффективный",
+    "title3": "Безопасный",
+    "subtitle": "Mitoderm представляет передовую технологию, основанную на уникальной разработке из Италии от экспертов vm corporation, предназначенную для достижения результатов упругости, обновления и биологического восстановления кожи.",
+    "button": "Подробнее о продуктах"
+  },
+  "synergy": {
+    "title": "Сочетание активных компонентов для синергетического действия",
+    "item1": {
+      "title": "Полинуклеотиды",
+      "text1": "Обновление клеток кожи",
+      "text2": "Антиоксидантный эффект",
+      "text3": "Интенсивное глубокое увлажнение кожи"
+    },
+    "item2": {
+      "title": "Синтетические экзосомы",
+      "text": "Целенаправленный стимулирующий эффект"
+    },
+    "item3": {
+      "title": "Успокаивающие и увлажняющие компоненты",
+      "text": "Восстановление эпидермального барьера, питание и увлажнение, защита от внешних раздражителей."
+    }
   },
   "howToUse": {
     "title": "Показания",
-    "item1": "Восстановление рубцов после операций",
-    "item2": "Лечение акне и постакне, рубцов",
-    "item3": "Терапия выпадения волос",
-    "item4": "Омоложение кожи лица"
+    "item1": "Биостимуляция и лифтинг кожи лица, шеи, декольте, кистей рук",
+    "item2": "Постакне рубцы",
+    "item3": "Растяжки",
+    "item4": "Поствоспалительная пигментация",
+    "item5": "Послеоперационные рубцы",
+    "item6": "Мощная стимуляция кровеносных сосудов и питания"
   },
   "about": {
     "titleP1": "Что такое ",
