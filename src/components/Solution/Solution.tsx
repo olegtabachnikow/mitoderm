@@ -29,22 +29,16 @@ const Solution: FC = () => {
 
   const solutionBlocks = combinedArray(solutionItems);
   return (
-    <section id='solution' className={styles.section}>
-      {locale === 'ru' ? (
-        <p className={styles.title}>
-          {t('solution.titleP1') + ' ' + t('solution.titleP3')}
-          <span>{t('solution.titleP2')}</span>
-        </p>
-      ) : (
-        <p className={styles.title}>
-          {t('solution.titleP1')}
-          <span>{t('solution.titleP2')}</span>
-          {t('solution.titleP3')}
-        </p>
-      )}
-      <span className={styles.subtitle}>{t('solution.subtitle')}</span>
-      <div className={styles.sliderContainer}>
-        {/*
+    <>
+      <section id='solution' className={styles.section}>
+        {locale === 'ru' ? (
+          <p className={styles.title}>{t('solution.titleP1')}</p>
+        ) : (
+          <p className={styles.title}>{t('solution.title')}</p>
+        )}
+        <span className={styles.subtitle}>{t('solution.subtitle')}</span>
+        <div className={styles.sliderContainer}>
+          {/*
         For now this element is hidden
 
         {!isTabletOrMobile ? (
@@ -55,19 +49,19 @@ const Solution: FC = () => {
             onClick={() => handleScroll(1)}
           />
         ) : null} */}
-        <div className={styles.slider}>
-          {solutionBlocks.map((block: SolutionItemType[], index: number) => (
-            <div
-              id={`block${index + 1}`}
-              className={styles.solutionBlock}
-              key={index}
-            >
-              <SolutionItem item={block[0]} withLabel />
-              <SolutionItem item={block[1]} />
-            </div>
-          ))}
-        </div>
-        {/* 
+          <div className={styles.slider}>
+            {solutionBlocks.map((block: SolutionItemType[], index: number) => (
+              <div
+                id={`block${index + 1}`}
+                className={styles.solutionBlock}
+                key={index}
+              >
+                <SolutionItem item={block[0]} withLabel />
+                <SolutionItem item={block[1]} />
+              </div>
+            ))}
+          </div>
+          {/* 
         For now this element is hidden
         
         {!isTabletOrMobile ? (
@@ -78,8 +72,8 @@ const Solution: FC = () => {
             reversed={locale === 'he'}
           />
         ) : null} */}
-      </div>
-      {/* 
+        </div>
+        {/* 
       For now this element is hidden
 
       {isTabletOrMobile ? (
@@ -90,13 +84,43 @@ const Solution: FC = () => {
           onClickRight={() => handleScroll(2)}
         />
       ) : null} */}
-      <Button
-        style={{ margin: '40px auto' }}
-        colored
-        text={t('buttons.contactForPrice')}
-        formPage='main'
-      />
-    </section>
+        <Button
+          style={{ margin: '40px auto' }}
+          colored
+          text={t('buttons.contactForPrice')}
+          formPage='main'
+        />
+      </section>
+      <section className={styles.solutionLabelsContainer}>
+        <div className={styles.discrontLabel}>
+          <span className={styles.discountLabelTitle}>1 + 1 = 3</span>
+          <span>{t('solution.discountLabelText')}</span>
+        </div>
+        <div className={styles.bundleContainer}>
+          <div className={styles.bundleTextContainer}>
+            <span className={styles.bundleTitle}>
+              {t('solution.bundleTitle')}
+            </span>
+            <span className={styles.bundleText}>
+              {t('solution.bundleText1')}
+            </span>
+            <span className={styles.bundleText}>
+              {t('solution.bundleText2')}
+            </span>
+          </div>
+          <img
+            src='/images/solution/solutionVTech.png'
+            alt='bundle explanation'
+          />
+        </div>
+        <Button
+          style={{ margin: '40px auto' }}
+          colored
+          text={t('buttons.contactForPrice')}
+          formPage='main'
+        />
+      </section>
+    </>
   );
 };
 

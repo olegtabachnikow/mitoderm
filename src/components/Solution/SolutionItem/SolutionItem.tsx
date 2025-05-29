@@ -1,9 +1,7 @@
 import { FC } from 'react';
 import styles from './SolutionItem.module.scss';
-import Image from 'next/image';
 import { SolutionItem as SolutionItemType } from '@/types';
 import { useLocale, useTranslations } from 'next-intl';
-import { useMediaQuery } from 'react-responsive';
 import RoundLabel from '@/components/Shared/RoundLabel/RoundLabel';
 
 interface Props {
@@ -13,25 +11,19 @@ interface Props {
 
 function splitArray<T>(arr: T[]): [T[], T[]] {
   const mid = Math.ceil(arr.length / 2);
-  const firstHalf = arr.slice(0, mid);
-  const secondHalf = arr.slice(mid);
+  const firstHalf = arr.slice(0, mid + 1);
+  const secondHalf = arr.slice(mid + 1);
   return [firstHalf, secondHalf];
 }
 
 const SolutionItem: FC<Props> = ({ item, withLabel }) => {
   const t = useTranslations();
   const locale = useLocale();
-  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
   const { imageUrl, title, text } = item;
   const bulletsArray = splitArray(text);
   return (
     <div className={styles.container}>
-      <Image
-        src={imageUrl}
-        width={isTabletOrMobile ? 56 : 86}
-        height={isTabletOrMobile ? 113 : 174}
-        alt='medicine image'
-      />
+      <img src={imageUrl} alt='medicine image' />
       <p className={styles.title}>{t(title)}</p>
       {text.length > 2 ? (
         <div className={styles.textContainer}>

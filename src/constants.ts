@@ -84,12 +84,14 @@ export const solutionItems: SolutionItem[] = [
       'solution.item1textP2',
       'solution.item1textP3',
       'solution.item1textP4',
+      'solution.item1textP5',
+      'solution.item1textP6',
     ],
   },
   {
     imageUrl: '/images/solution/item2.png',
     title: 'solution.item2title',
-    text: ['solution.item2textP1', 'solution.item2textP2'],
+    text: ['solution.item2textP1'],
   },
   {
     imageUrl: '/images/solution/item1.png',
@@ -99,12 +101,14 @@ export const solutionItems: SolutionItem[] = [
       'solution.item1textP2',
       'solution.item1textP3',
       'solution.item1textP4',
+      'solution.item1textP5',
+      'solution.item1textP6',
     ],
   },
   {
     imageUrl: '/images/solution/item2.png',
     title: 'solution.item2title',
-    text: ['solution.item2textP1', 'solution.item2textP2'],
+    text: ['solution.item2textP1'],
   },
 ];
 
