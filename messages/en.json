@@ -113,33 +113,60 @@
     "itemExp5": "Nanometers"
   },
   "solution": {
-    "titleP1": "Our Solution - ",
-    "titleP2": "Exoxe",
-    "titleP3": " Exosome",
+    "title": "The V-Tech system is a technology for cellular biological renewal composed of 2 products:",
     "subtitle": "Only for professional usage",
-    "item1title": "Pure exo - lyophilized powder 50mg",
-    "item1textP1": "Hydrolyzed Collagen - 886,000PPM",
-    "item1textP2": "Collagen - 100,000PPM",
-    "item1textP3": "Sodium Hyaluronate",
-    "item1textP4": "Trehalose",
-    "item2title": "Sterilized solution 5ml",
-    "item2textP1": "Aqua",
-    "item2textP2": "Sodium Hyaluronate",
-    "usage": "Only for professional usage."
+    "item1title": "V-Tech Serum",
+    "item1textP1": "Advanced biomimetic peptides (20 mg)",
+    "item1textP2": "• Oligopeptide-20",
+    "item1textP3": "• Acetyl Decapeptide-3",
+    "item1textP4": "Plant stem cells – to encourage cell renewal",
+    "item1textP5": "Synthetic exosomes. In a powerful formula that includes:",
+    "item1textP6": "High molecular weight PDRN polynucleotides – 2% (20 mg/ml)",
+    "item2title": "V-Tech Гель-маска 5 мл",
+    "item2textP1": "Low molecular weight polynucleotides – 1%",
+    "item2textP2": "Acetyl Heptapeptide-9 with gold carrier",
+    "item2textP3": "Copper Tripeptide-1",
+    "item2textP4": "Purified polysaccharides from snail mucin",
+    "item2textP5": "Low molecular weight hyaluronic acid, aloe vera",
+    "usage": "Only for professional usage",
+    "discountLabelText": "When combining synthetic exosomes with equipment, the synergistic effect makes the result much stronger. Exosomes don't just ''add'' but ''triple'' the result! After a controlled injury, the material is dripped onto the skin, effectively giving the skin a reservoir of growth factors, peptides, proteins, and plant stem cells, so the skin uses new reserves and rebuilds itself.",
+    "bundleTitle": "Each kit contains:",
+    "bundleText1": "5 ampoules of V-Tech Serum, 5 ml each",
+    "bundleText2": "5 V-Tech Gel Masks, 5 ml each"
   },
   "faq": {
+    "centerTitle": "List of certified cosmeticians and clinics",
+    "center": "Center",
+    "name": "Name",
+    "city": "City",
+    "contact": "Contact",
+    "ilona": "Ilona Shpekor",
+    "TA": "Tel-Aviv",
+    "contactNumber": "055-555-55-55",
     "title": "FAQs",
     "item1": {
-      "title": "What are exosomes?",
-      "text": "Exosomes are tiny vesicles, rich in growth factors, proteins, and regenerative signals. These powerful messengers interact with your body’s cells, stimulating healing and rejuvenation."
+      "title": "What are exosomes, and why are they revolutionary in skin treatments?",
+      "text": "Exosomes are nanoscale vesicles (60–150 nm) that act as biological messengers, transferring growth factors, proteins, and RNA from one cell to another. In aesthetic medicine, they “communicate” with skin cells, triggering processes of repair, renewal, and inflammation reduction—naturally and precisely. Since their clinical introduction in 2011, exosomes have transformed skin rejuvenation by promoting not just external improvements, but deep cellular activation."
     },
     "item2": {
-      "title": "How do exosomes work?",
-      "text": "Exosomes deliver growth factors, proteins, and regenerative signals directly to your body's target cells. When applied to a treatment area, they communicate with these cells to promote repair, regeneration, and rejuvenation. By harnessing your body's natural healing processes, exosome therapy stimulates tissue renewal, boosts collagen production, and enhances overall cellular health. The result is significant improvement in the treated area—whether it's skin, hair or other specific regions."
+      "title": "How do synthetic exosomes work compared to natural ones?",
+      "text": "VM's synthetic exosomes are lab-engineered to mimic the biological effects of natural exosomes, but with significant advantages: controlled composition, greater stability, and reduced risk of irritation or immune response. They act as “smart carriers” for active ingredients such as biomimetic peptides and PDRN, allowing these actives to reach the target cells intact and exert maximal biological efficacy."
     },
     "item3": {
-      "title": "What conditions are helped by exosomes?",
-      "text": "At Mitoderm, our exosome therapy offers transformative solutions—including skin rejuvenation to enhance texture and reduce signs of aging; hair restoration to promote growth and address thinning hair; reduction of acne scars for smoother skin and post-procedure healing to accelerate recovery—all by unlocking your body’s natural ability to renew."
+      "title": "Who are synthetic exosome treatments suitable for?",
+      "text": "For anyone seeking skin regeneration, tissue repair, improved texture, wrinkle reduction, acne scar fading, pigmentation correction, and sun damage repair. These treatments are ideal for mature, thin, or damaged skin, as well as skin suffering from chronic low-grade inflammation. Exosomes can be combined with microneedling, RF, CO₂ laser, or other devices to accelerate healing and enhance clinical results."
+    },
+    "item4": {
+      "title": "What makes V-Tech synthetic exosomes unique?",
+      "text": "Each ampoule contains 20 billion synthetic exosomes, in a potent and targeted concentration. Combined with PDRN — organic DNA fragments that promote cell repair, collagen synthesis, and anti-inflammatory action. Enriched with biomimetic peptides, such as Acetyl Decapeptide-3 and Oligopeptide-20, which mimic the function of natural growth factors. Deliver active ingredients directly into target cells via controlled release—for rapid, focused, and efficient skin response. Developed under strict scientific supervision with a clinically tested protocol from Italy."
+    },
+    "item5": {
+      "title": "What is the advantage of combining PDRN and biomimetic peptides inside exosomes?",
+      "text": "This combination offers precise regenerative activity: PDRN promotes angiogenesis (formation of new blood vessels), DNA repair, and extracellular matrix (ECM) enhancement—improving skin elasticity, tone, and pigmentation. Biomimetic peptides mimic growth factors like FGF and Somatomedin, regulate collagen, elastin, and fibronectin production, and provide a natural lifting effect. By encapsulating them inside synthetic exosomes, the actives remain stable, reach their target precisely, and are absorbed several times more efficiently due to controlled, targeted delivery. What is unique about combining synthetic exosomes with PDRN? The combination of synthetic exosomes and PDRN is a scientific breakthrough in tissue regeneration: The synthetic exosome acts as an “intelligent envelope” that protects active ingredients, controls their release, and delivers them precisely to target cells—preventing premature degradation. PDRN is an organic DNA fragment (from salmon) that serves as “genetic spare parts,” helping rebuild damaged cells, promote angiogenesis, and reduce inflammation. When PDRN is encapsulated inside an exosome, it reaches the cell membrane directly and is absorbed with high biological efficiency. The result: a precise, targeted regenerative action that visibly improves skin elasticity, texture, and appearance—starting from the first session."
+    },
+    "item6": {
+      "title": "What is unique about combining synthetic exosomes with biomimetic peptides?",
+      "text": "Biomimetic peptides are lab-designed chains of amino acids that mimic natural growth factors in the body. However, when applied alone, many of them degrade quickly or fail to reach cellular receptors. Encapsulating them in synthetic exosomes changes everything: The exosome protects the peptide from early breakdown. It enables controlled, targeted delivery directly to the skin cells. It significantly enhances bioavailability—so a smaller dose delivers visible clinical effects. The result: increased collagen, elastin, and ECM production, reduced wrinkles, dermal repair, and a firmer, more youthful appearance—with maximum precision and minimal product."
     }
   },
   "reviews": {

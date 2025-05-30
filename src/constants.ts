@@ -7,6 +7,7 @@ import {
   ScrollItems,
   ReviewType,
   EventBulletItem,
+  CenterItemData,
 } from './types';
 
 export const navMainList: NavItem[] = [
@@ -91,7 +92,14 @@ export const solutionItems: SolutionItem[] = [
   {
     imageUrl: '/images/solution/item2.png',
     title: 'solution.item2title',
-    text: ['solution.item2textP1'],
+    column: true,
+    text: [
+      'solution.item2textP1',
+      'solution.item2textP2',
+      'solution.item2textP3',
+      'solution.item2textP4',
+      'solution.item2textP5',
+    ],
   },
   {
     imageUrl: '/images/solution/item1.png',
@@ -108,7 +116,14 @@ export const solutionItems: SolutionItem[] = [
   {
     imageUrl: '/images/solution/item2.png',
     title: 'solution.item2title',
-    text: ['solution.item2textP1'],
+    column: true,
+    text: [
+      'solution.item2textP1',
+      'solution.item2textP2',
+      'solution.item2textP3',
+      'solution.item2textP4',
+      'solution.item2textP5',
+    ],
   },
 ];
 
@@ -126,3 +141,9 @@ export const reviews: ReviewType[] = [
     text: 'reviews.item2.text',
   },
 ];
+
+export const centerItemData: CenterItemData = {
+  name: 'faq.ilona',
+  city: 'faq.TA',
+  contact: 'faq.contactNumber',
+};

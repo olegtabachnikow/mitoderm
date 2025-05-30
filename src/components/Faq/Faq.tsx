@@ -10,9 +10,12 @@ const Faq: FC = () => {
       <div className={styles.containerInner}>
         <span className={styles.title}>{t('faq.title')}</span>
         <div className={styles.itemBox}>
-          <Dropdown item={'faq.item1'} />
-          <Dropdown item={'faq.item2'} />
-          <Dropdown item={'faq.item3'} />
+          <Dropdown data={{ item: 'faq.item1' }} />
+          <Dropdown data={{ item: 'faq.item2' }} />
+          <Dropdown data={{ item: 'faq.item3' }} />
+          <Dropdown data={{ item: 'faq.item4' }} />
+          <Dropdown data={{ item: 'faq.item5' }} />
+          <Dropdown data={{ item: 'faq.item6' }} />
         </div>
       </div>
     </section>

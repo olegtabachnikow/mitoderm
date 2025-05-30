@@ -3,18 +3,19 @@ import dynamic from 'next/dynamic';
 import Intro from '@/components/Intro/Intro';
 import HowCanBeUsed from '@/components/HowCanBeUsed/HowCanBeUsed';
 import Gallery from '@/components/Gallery/Gallery';
+import CenterList from '@/components/CenterList/CenterList';
 
 const Solution = dynamic(() => import('@/components/Solution/Solution'), {
   ssr: false,
 });
 
-const Reviews = dynamic(() => import('@/components/Reviews/Reviews'), {
-  ssr: false,
-});
+// const Reviews = dynamic(() => import('@/components/Reviews/Reviews'), {
+//   ssr: false,
+// });
 
-const About = dynamic(() => import('@/components/About/About'), {
-  ssr: false,
-});
+// const About = dynamic(() => import('@/components/About/About'), {
+//   ssr: false,
+// });
 
 const Mission = dynamic(() => import('@/components/Mission/Mission'), {
   ssr: false,
@@ -45,6 +46,7 @@ export default function HomePage({ params: { lang } }: any) {
       {/* <Reviews /> */}
       <Gallery />
       <Mission />
+      <CenterList />
       <Faq />
       <Contact />
     </main>

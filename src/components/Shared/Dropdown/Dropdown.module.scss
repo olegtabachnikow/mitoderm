@@ -37,6 +37,19 @@
   transform: rotate(180deg);
 }
 
+.centerDataRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.centerDataColumn {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  width: 25%;
+}
+
 @media screen and (max-width: 1224px) {
   .container {
     padding: 24px;

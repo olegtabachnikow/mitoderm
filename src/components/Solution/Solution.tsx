@@ -1,5 +1,5 @@
 'use client';
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import styles from './Solution.module.scss';
 import { useLocale, useTranslations } from 'next-intl';
 import Button from '../Shared/Button/Button';
@@ -8,7 +8,6 @@ import { combinedArray } from '@/utils/helpers';
 import { SolutionItem as SolutionItemType } from '@/types';
 import SolutionItem from './SolutionItem/SolutionItem';
 // import ArrowButton from '../Shared/ArrowButton/ArrowButton';
-import { useMediaQuery } from 'react-responsive';
 // import MobileButtons from '../Shared/MobileButtons/MobileButtons';
 
 const Solution: FC = () => {
@@ -31,11 +30,7 @@ const Solution: FC = () => {
   return (
     <>
       <section id='solution' className={styles.section}>
-        {locale === 'ru' ? (
-          <p className={styles.title}>{t('solution.titleP1')}</p>
-        ) : (
-          <p className={styles.title}>{t('solution.title')}</p>
-        )}
+        <p className={styles.title}>{t('solution.title')}</p>
         <span className={styles.subtitle}>{t('solution.subtitle')}</span>
         <div className={styles.sliderContainer}>
           {/*

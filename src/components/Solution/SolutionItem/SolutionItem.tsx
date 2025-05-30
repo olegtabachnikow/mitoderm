@@ -19,13 +19,13 @@ function splitArray<T>(arr: T[]): [T[], T[]] {
 const SolutionItem: FC<Props> = ({ item, withLabel }) => {
   const t = useTranslations();
   const locale = useLocale();
-  const { imageUrl, title, text } = item;
+  const { column, imageUrl, title, text } = item;
   const bulletsArray = splitArray(text);
   return (
     <div className={styles.container}>
       <img src={imageUrl} alt='medicine image' />
       <p className={styles.title}>{t(title)}</p>
-      {text.length > 2 ? (
+      {!column ? (
         <div className={styles.textContainer}>
           {
             <>
