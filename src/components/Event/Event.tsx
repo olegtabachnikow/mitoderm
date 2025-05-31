@@ -11,10 +11,10 @@ const Event: FC = () => {
       <div className={styles.containerInner}>
         <span className={styles.title}>{t('event.title')}</span>
         <div className={styles.itemBox}>
-          <Dropdown item={'event.item1'} time />
-          <Dropdown item={'event.item2'} time />
-          <Dropdown item={'event.item3'} time />
-          <Dropdown item={'event.item4'} time />
+          <Dropdown data={{ item: 'event.item1', time: true }} />
+          <Dropdown data={{ item: 'event.item2', time: true }} />
+          <Dropdown data={{ item: 'event.item3', time: true }} />
+          <Dropdown data={{ item: 'event.item4', time: true }} />
         </div>
       </div>
       <Button formPage='event' colored text={t('buttons.seat')} />
