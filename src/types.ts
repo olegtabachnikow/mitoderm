@@ -27,6 +27,7 @@ export interface SolutionItem {
   imageUrl: string;
   title: string;
   text: string[];
+  column?: boolean;
 }
 
 export type NameTypeMain = 'name' | 'email' | 'phone' | 'profession';
@@ -69,4 +70,15 @@ export interface ReviewType {
 export interface EventBulletItem {
   imagePath: string;
   text: string;
+}
+
+export interface FaqItemProps {
+  item: string;
+  time?: boolean;
+}
+
+export interface CenterItemData {
+  name: string;
+  city: string;
+  contact: string;
 }

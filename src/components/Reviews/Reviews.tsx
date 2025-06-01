@@ -63,7 +63,6 @@ const Reviews: FC = () => {
         {isTabletOrMobile ? (
           <h2 className={styles.title}>{t('reviews.title')}</h2>
         ) : null}
-        <img className={styles.lines} src='/images/lines3.svg' alt='lines' />
         <div className={styles.containerInner}>
           {isTabletOrMobile ? null : (
             <div className={styles.row}>

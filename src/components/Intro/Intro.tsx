@@ -1,12 +1,13 @@
 'use client';
-import { FC, useEffect } from 'react';
+import { FC, useEffect, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import styles from './Intro.module.scss';
-import { useTranslations, useLocale } from 'next-intl';
 import Image from 'next/image';
+import { useTranslations, useLocale } from 'next-intl';
 import { usePathname } from '@/i18n/routing';
 import DotPagination from '../Shared/DotPagination/DotPagination';
 import useAppStore from '@/store/store';
+import { useMediaQuery } from 'react-responsive';
 
 const Button = dynamic(() => import('@/components/Shared/Button/Button'), {
   ssr: false,
@@ -16,8 +17,10 @@ const Intro: FC = () => {
   const t = useTranslations();
   const locale = useLocale();
   const pathname = usePathname();
+  const ref = useRef<HTMLDivElement>(null);
   const isEventPage = pathname.includes('event');
   const { introPage, setIntroPage } = useAppStore((state) => state);
+  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 779px)' });
 
   const scrollToNextChild = () => {
     const container = document.getElementById('scroller');
@@ -42,28 +45,24 @@ const Intro: FC = () => {
   }, []);
 
   useEffect(() => {
-    const container = document.getElementById('scroller');
-    container?.addEventListener(
-      'wheel',
-      (event) => {
-        event.preventDefault();
-      },
-      { passive: false }
-    );
-    container?.addEventListener(
-      'touch',
-      (event) => {
-        event.preventDefault();
-      },
-      { passive: false }
-    );
-    container?.addEventListener(
-      'scroll',
-      (event) => {
-        event.preventDefault();
-      },
-      { passive: false }
-    );
+    const container = ref.current;
+
+    const handleScroll = () => {
+      const containerWidth = ref.current?.clientWidth;
+      if (locale === 'he' && container?.scrollLeft && containerWidth) {
+        if (container?.scrollLeft === -containerWidth) setIntroPage(1);
+      } else if (container?.scrollLeft === 0) {
+        setIntroPage(0);
+      }
+      if (locale !== 'he' && container?.scrollLeft && containerWidth) {
+        if (container?.scrollLeft === containerWidth) setIntroPage(1);
+      } else if (container?.scrollLeft === 0) {
+        setIntroPage(0);
+      }
+    };
+
+    container?.addEventListener('scroll', handleScroll);
+    return () => container?.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
@@ -81,30 +80,38 @@ const Intro: FC = () => {
 
   return (
     <section id='intro' className={styles.section}>
-      <div id='scroller' className={styles.scrollBox}>
+      <div ref={ref} id='scroller' className={styles.scrollBox}>
         <div
           className={`${styles.introMain} ${
             locale === 'he' ? styles.reversed : ''
           }`}
         >
-          <div className={styles.container}>
-            <span>
-              <span>{t('intro.subtitleP1')}</span>
-              <span className={styles.dot}>&#x2022;</span>
-              <span>{t('intro.subtitleP2')}</span>
-            </span>
-            <h1
-              className={`${styles.title} ${locale === 'ru' ? styles.ru : ''}`}
-            >
-              {t('intro.title')}
-            </h1>
-            <div className={styles.row}>
+          <div dir='ltr' className={styles.introMainContent}>
+            <div className={styles.container}>
+              <h1
+                className={`${styles.title} ${
+                  locale === 'ru' ? styles.ru : ''
+                }`}
+              >
+                {t('intro.title')}
+              </h1>
+              <p className={styles.text}>{t('intro.text')}</p>
               <Button
-                text={t('buttons.contact')}
-                style={{ marginTop: 20 }}
+                text={t('buttons.intro')}
+                style={{
+                  marginTop: 20,
+                  maxWidth: isTabletOrMobile ? 'auto' : 218,
+                  width: '100%',
+                }}
                 formPage={'main'}
               />
-              <p className={styles.text}>{t('intro.text')}</p>
+              <Image
+                className={styles.leaves}
+                src='/images/leaves.svg'
+                width={90}
+                height={100}
+                alt='leavest pattern'
+              />
             </div>
           </div>
         </div>
@@ -122,25 +129,14 @@ const Intro: FC = () => {
             >
               {t('intro.eventTitle')}
             </h1>
-            <div className={styles.row}>
-              <Button
-                text={t('buttons.seat')}
-                style={{ marginTop: 20 }}
-                formPage={'event'}
-              />
-            </div>
+            <Button
+              text={t('buttons.seat')}
+              style={{ marginTop: 20 }}
+              formPage={'event'}
+            />
           </div>
         </div>
       </div>
-      {!isEventPage && (
-        <Image
-          className={styles.lines}
-          src='/images/lines1.svg'
-          width={460}
-          height={460}
-          alt='lines'
-        />
-      )}
       <div className={styles.paginationBox}>
         <DotPagination count={2} intro />
       </div>

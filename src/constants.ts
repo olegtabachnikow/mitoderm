@@ -7,6 +7,7 @@ import {
   ScrollItems,
   ReviewType,
   EventBulletItem,
+  CenterItemData,
 } from './types';
 
 export const navMainList: NavItem[] = [
@@ -16,6 +17,7 @@ export const navMainList: NavItem[] = [
   { text: 'navigation.info', scrollId: ScrollItems.about },
   { text: 'navigation.contact', url: '/form' },
   { text: 'navigation.event', url: '/event' },
+  { text: 'navigation.clinic', url: '#' },
 ];
 
 export const navEventList: NavItem[] = [
@@ -33,10 +35,12 @@ export const navFormList: NavItem[] = [
 ];
 
 export const howToUseItemList: HowToUseItem[] = [
-  { imagePath: '/images/howToUse/surgery.png', text: 'howToUse.item1' },
+  { imagePath: '/images/howToUse/skin.png', text: 'howToUse.item1' },
   { imagePath: '/images/howToUse/acne.png', text: 'howToUse.item2' },
-  { imagePath: '/images/howToUse/hair.png', text: 'howToUse.item3' },
-  { imagePath: '/images/howToUse/skin.png', text: 'howToUse.item4' },
+  { imagePath: '/images/howToUse/butt.png', text: 'howToUse.item3' },
+  { imagePath: '/images/howToUse/acne2.png', text: 'howToUse.item4' },
+  { imagePath: '/images/howToUse/surgery.png', text: 'howToUse.item5' },
+  { imagePath: '/images/howToUse/blood.png', text: 'howToUse.item6' },
 ];
 
 export const eventBulletsItemList: EventBulletItem[] = [
@@ -81,12 +85,21 @@ export const solutionItems: SolutionItem[] = [
       'solution.item1textP2',
       'solution.item1textP3',
       'solution.item1textP4',
+      'solution.item1textP5',
+      'solution.item1textP6',
     ],
   },
   {
     imageUrl: '/images/solution/item2.png',
     title: 'solution.item2title',
-    text: ['solution.item2textP1', 'solution.item2textP2'],
+    column: true,
+    text: [
+      'solution.item2textP1',
+      'solution.item2textP2',
+      'solution.item2textP3',
+      'solution.item2textP4',
+      'solution.item2textP5',
+    ],
   },
   {
     imageUrl: '/images/solution/item1.png',
@@ -96,12 +109,21 @@ export const solutionItems: SolutionItem[] = [
       'solution.item1textP2',
       'solution.item1textP3',
       'solution.item1textP4',
+      'solution.item1textP5',
+      'solution.item1textP6',
     ],
   },
   {
     imageUrl: '/images/solution/item2.png',
     title: 'solution.item2title',
-    text: ['solution.item2textP1', 'solution.item2textP2'],
+    column: true,
+    text: [
+      'solution.item2textP1',
+      'solution.item2textP2',
+      'solution.item2textP3',
+      'solution.item2textP4',
+      'solution.item2textP5',
+    ],
   },
 ];
 
@@ -119,3 +141,9 @@ export const reviews: ReviewType[] = [
     text: 'reviews.item2.text',
   },
 ];
+
+export const centerItemData: CenterItemData = {
+  name: 'faq.ilona',
+  city: 'faq.TA',
+  contact: 'faq.contactNumber',
+};

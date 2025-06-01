@@ -1,6 +1,6 @@
 .container {
   padding: 24px 40px;
-  background-color: var(--colorWhite);
+  background-color: var(--colorLightBG);
   border-radius: 28px;
   cursor: pointer;
 }
@@ -27,14 +27,27 @@
 }
 
 .image {
-  filter: brightness(0) saturate(100%) invert(32%) sepia(10%) saturate(3278%)
-    hue-rotate(290deg) brightness(96%) contrast(91%);
+  filter: brightness(0) saturate(100%) invert(48%) sepia(16%) saturate(4288%)
+    hue-rotate(15deg) brightness(98%) contrast(91%);
   transform: none;
   transition: all 0.2s linear;
 }
 
 .image.active {
   transform: rotate(180deg);
+}
+
+.centerDataRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.centerDataColumn {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  width: 25%;
 }
 
 @media screen and (max-width: 1224px) {
