@@ -3,7 +3,6 @@ import { FC } from 'react';
 import styles from './HowCaBeUsed.module.scss';
 import { useTranslations } from 'next-intl';
 import { howToUseItemList } from '@/constants';
-import Button from '../Shared/Button/Button';
 import BulletList from '../Shared/BulletsList/BulletList';
 
 const scrollTo = () => {

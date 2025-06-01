@@ -134,6 +134,7 @@
   .title {
     font-size: var(--fontSizeMobH1);
     margin-block: 25px;
+    font-weight: 500;
   }
   .title.ru {
     font-size: 36px;
@@ -141,5 +142,16 @@
   .text {
     font-size: var(--fontSizeMobP2);
     max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 799px) {
+  .introMain::before {
+    content: '';
+    background-position: 40%;
+  }
+  .leaves {
+    bottom: 20px;
+    right: 20px;
   }
 }

@@ -131,3 +131,18 @@
     flex-direction: column;
   }
 }
+
+@media screen and (max-width: 799px) {
+  .solutionLabelsContainer {
+    padding-inline: 20px;
+  }
+  .bundleContainer {
+    padding: 10px;
+  }
+  .bundleContainer img {
+    width: 100%;
+  }
+  .bundleTextContainer {
+    display: none;
+  }
+}

@@ -7,6 +7,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import { usePathname } from '@/i18n/routing';
 import DotPagination from '../Shared/DotPagination/DotPagination';
 import useAppStore from '@/store/store';
+import { useMediaQuery } from 'react-responsive';
 
 const Button = dynamic(() => import('@/components/Shared/Button/Button'), {
   ssr: false,
@@ -19,6 +20,7 @@ const Intro: FC = () => {
   const ref = useRef<HTMLDivElement>(null);
   const isEventPage = pathname.includes('event');
   const { introPage, setIntroPage } = useAppStore((state) => state);
+  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 779px)' });
 
   const scrollToNextChild = () => {
     const container = document.getElementById('scroller');
@@ -96,7 +98,11 @@ const Intro: FC = () => {
               <p className={styles.text}>{t('intro.text')}</p>
               <Button
                 text={t('buttons.intro')}
-                style={{ marginTop: 20, maxWidth: 218, width: '100%' }}
+                style={{
+                  marginTop: 20,
+                  maxWidth: isTabletOrMobile ? 'auto' : 218,
+                  width: '100%',
+                }}
                 formPage={'main'}
               />
               <Image

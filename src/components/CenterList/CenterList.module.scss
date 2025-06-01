@@ -16,3 +16,9 @@
   font-size: var(--fontSizeH2);
   margin-bottom: 40px;
 }
+
+@media screen and (max-width: 799px) {
+  .container {
+    padding-inline: 20px;
+  }
+}

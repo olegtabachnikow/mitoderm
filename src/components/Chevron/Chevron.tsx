@@ -1,11 +1,14 @@
+'use client';
 import { FC } from 'react';
 import styles from './Chevron.module.scss';
 import { useTranslations, useLocale } from 'next-intl';
 import Button from '../Shared/Button/Button';
+import { useMediaQuery } from 'react-responsive';
 
 const Chevron: FC = () => {
   const t = useTranslations();
   const locale = useLocale();
+  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 779px)' });
   return (
     <div className={styles.container}>
       <div className={styles.row}>
@@ -28,12 +31,14 @@ const Chevron: FC = () => {
           alt='item preview'
         />
         <div className={styles.description}>
-          <span className={styles.title}>{t('chevron.title1')}</span>
-          <span className={styles.title}>{t('chevron.title2')}</span>
-          <span className={styles.title}>{t('chevron.title3')}</span>
+          <div className={styles.titleBox}>
+            <span className={styles.title}>{t('chevron.title1')}</span>
+            <span className={styles.title}>{t('chevron.title2')}</span>
+            <span className={styles.title}>{t('chevron.title3')}</span>
+          </div>
           <span className={styles.subtitle}>{t('chevron.subtitle')}</span>
           <Button
-            style={{ width: 256, height: 72 }}
+            style={{ maxWidth: isTabletOrMobile ? '100%' : 256, height: 72 }}
             text={t('chevron.button')}
             formPage={'main'}
           />

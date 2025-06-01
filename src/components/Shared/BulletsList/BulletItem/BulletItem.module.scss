@@ -32,3 +32,15 @@
     text-align: center;
   }
 }
+
+@media screen and (max-width: 799px) {
+  .container {
+    min-width: auto;
+    width: 100%;
+    justify-content: center;
+    gap: 10px;
+  }
+  .container span {
+    margin: 0;
+  }
+}
