@@ -88,7 +88,9 @@ const Solution: FC = () => {
       </section>
       <section className={styles.solutionLabelsContainer}>
         <div className={styles.discrontLabel}>
-          <span className={styles.discountLabelTitle}>1 + 1 = 3</span>
+          <span dir='ltr' className={styles.discountLabelTitle}>
+            1 + 1 = 3
+          </span>
           <span>{t('solution.discountLabelText')}</span>
         </div>
         <div className={styles.bundleContainer}>
