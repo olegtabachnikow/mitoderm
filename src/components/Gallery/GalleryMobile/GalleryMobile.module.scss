@@ -60,8 +60,8 @@
   flex: 1;
 }
 
-.image img {
-  max-height: 193px;
+.image {
+  max-height: 400px;
   height: 100%;
   object-fit: cover;
   object-position: center;
@@ -97,10 +97,4 @@
 .mobileButtonContainer {
   width: 100%;
   padding-inline: 20px;
-}
-
-@media screen and (max-width: 768px) {
-  .itemWrapper {
-    max-height: 560px;
-  }
 }
