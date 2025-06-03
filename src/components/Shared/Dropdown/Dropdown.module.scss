@@ -61,3 +61,13 @@
     font-size: var(--fontSizeMobP2);
   }
 }
+
+@media screen and (max-width: 768px) {
+  .centerDataRow {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .centerDataColumn {
+    width: 100%;
+  }
+}
