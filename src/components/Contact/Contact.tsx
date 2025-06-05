@@ -7,7 +7,7 @@ const Contact: FC = () => {
   const t = useTranslations();
   const locale = useLocale();
   return (
-    <section className={styles.section}>
+    <section id='contact' className={styles.section}>
       <div className={styles.content}>
         {/* <div className={styles.cardContainer}>
           <iframe

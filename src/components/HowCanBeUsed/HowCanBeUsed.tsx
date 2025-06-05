@@ -5,12 +5,6 @@ import { useTranslations } from 'next-intl';
 import { howToUseItemList } from '@/constants';
 import BulletList from '../Shared/BulletsList/BulletList';
 
-const scrollTo = () => {
-  const element = document.getElementById('about');
-  if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  return;
-};
-
 const HowCanBeUsed: FC = () => {
   const t = useTranslations();
   return (
