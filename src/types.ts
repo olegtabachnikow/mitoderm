@@ -56,7 +56,10 @@ export enum ScrollItems {
   solution = 'solution',
   mission = 'mission',
   about = 'about',
+  moreInfo = 'faq',
+  contactUs = 'contact',
   agenda = 'agenda',
+  clinic = 'clinic',
 }
 
 export type ModalType = 'privatePolicy' | 'accessibility';

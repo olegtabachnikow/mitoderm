@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl';
 const CenterList: FC = () => {
   const t = useTranslations();
   return (
-    <section className={styles.container}>
+    <section id='clinic' className={styles.container}>
       <span className={styles.title}>{t('faq.centerTitle')}</span>
       <div className={styles.containerInner}>
         <Dropdown data={centerItemData} />

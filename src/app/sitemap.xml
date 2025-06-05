@@ -3,9 +3,9 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
-  <!-- Главная страница (EN) -->
+  <!-- Главная страница (HE) -->
   <url>
-    <loc>https://www.mitoderm.com/en</loc>
+    <loc>https://www.mitoderm.com/he</loc>
     <lastmod>2025-01-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -17,7 +17,7 @@
 
   <!-- Якорь #solution (товар, product) -->
   <url>
-    <loc>https://www.mitoderm.com/en#solution</loc>
+    <loc>https://www.mitoderm.com/he#solution</loc>
     <lastmod>2025-01-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -25,7 +25,7 @@
 
   <!-- Якорь #gallery (результаты) -->
   <url>
-    <loc>https://www.mitoderm.com/en#gallery</loc>
+    <loc>https://www.mitoderm.com/he#gallery</loc>
     <lastmod>2025-01-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -33,7 +33,31 @@
 
   <!-- Якорь #mission (о нас) -->
   <url>
-    <loc>https://www.mitoderm.com/en#mission</loc>
+    <loc>https://www.mitoderm.com/he#mission</loc>
+    <lastmod>2025-01-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Якорь #clinic (о нас) -->
+  <url>
+    <loc>https://www.mitoderm.com/he#clinic</loc>
+    <lastmod>2025-01-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+ <!-- Якорь #faq (о нас) -->
+  <url>
+    <loc>https://www.mitoderm.com/he#faq</loc>
+    <lastmod>2025-01-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+ <!-- Якорь #contact (о нас) -->
+  <url>
+    <loc>https://www.mitoderm.com/he#contact</loc>
     <lastmod>2025-01-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -41,7 +65,7 @@
 
   <!-- Страница Event -->
   <url>
-    <loc>https://www.mitoderm.com/en/event</loc>
+    <loc>https://www.mitoderm.com/he/event</loc>
     <lastmod>2025-01-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>

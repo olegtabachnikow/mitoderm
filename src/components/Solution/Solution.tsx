@@ -91,7 +91,8 @@ const Solution: FC = () => {
           <span dir='ltr' className={styles.discountLabelTitle}>
             1 + 1 = 3
           </span>
-          <span>{t('solution.discountLabelText')}</span>
+          <span>{t('solution.discountLabelText1')}</span>
+          <span>{t('solution.discountLabelText2')}</span>
         </div>
         <div className={styles.bundleContainer}>
           <div className={styles.bundleTextContainer}>

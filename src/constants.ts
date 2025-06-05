@@ -14,10 +14,10 @@ export const navMainList: NavItem[] = [
   { text: 'navigation.product', scrollId: ScrollItems.solution },
   { text: 'navigation.results', scrollId: ScrollItems.gallery },
   { text: 'navigation.about', scrollId: ScrollItems.mission },
-  { text: 'navigation.info', scrollId: ScrollItems.about },
-  { text: 'navigation.contact', url: '/form' },
+  { text: 'navigation.info', scrollId: ScrollItems.moreInfo },
+  { text: 'navigation.contact', scrollId: ScrollItems.contactUs },
   { text: 'navigation.event', url: '/event' },
-  { text: 'navigation.clinic', url: '#' },
+  { text: 'navigation.clinic', scrollId: ScrollItems.clinic },
 ];
 
 export const navEventList: NavItem[] = [

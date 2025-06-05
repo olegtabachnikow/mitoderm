@@ -10,9 +10,10 @@ interface Props {
 }
 
 function splitArray<T>(arr: T[]): [T[], T[]] {
-  const mid = Math.ceil(arr.length / 2);
-  const firstHalf = arr.slice(0, mid + 1);
-  const secondHalf = arr.slice(mid + 1);
+  const firstHalf = arr.slice(0, 2);
+  const secondHalf = arr.slice(2);
+  console.log('fitst', firstHalf);
+  console.log('second', secondHalf);
   return [firstHalf, secondHalf];
 }
 
