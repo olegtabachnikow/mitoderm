@@ -3,7 +3,6 @@ import dynamic from 'next/dynamic';
 import Intro from '@/components/Intro/Intro';
 import HowCanBeUsed from '@/components/HowCanBeUsed/HowCanBeUsed';
 import Gallery from '@/components/Gallery/Gallery';
-import CenterList from '@/components/CenterList/CenterList';
 
 const Solution = dynamic(() => import('@/components/Solution/Solution'), {
   ssr: false,
@@ -18,6 +17,10 @@ const Solution = dynamic(() => import('@/components/Solution/Solution'), {
 // });
 
 const Mission = dynamic(() => import('@/components/Mission/Mission'), {
+  ssr: false,
+});
+
+const CenterList = dynamic(() => import('@/components/CenterList/CenterList'), {
   ssr: false,
 });
 
@@ -41,14 +44,15 @@ export default function HomePage({ params: { lang } }: any) {
       <Chevron />
       <Synergy />
       <HowCanBeUsed />
-      {/* <About /> */}
       <Solution />
-      {/* <Reviews /> */}
       <Gallery />
       <Mission />
       <CenterList />
       <Faq />
       <Contact />
+      {/** Unused section in current version  */}
+      {/* <About /> */}
+      {/* <Reviews /> */}
     </main>
   );
 }
