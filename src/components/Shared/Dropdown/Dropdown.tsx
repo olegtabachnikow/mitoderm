@@ -6,11 +6,11 @@ import Image from 'next/image';
 import { FaqItemProps, CenterItemData } from '@/types';
 
 interface Props {
-  data: FaqItemProps | CenterItemData;
+  data: FaqItemProps | CenterItemData[];
 }
 
 const isFaqItem = (
-  data: FaqItemProps | CenterItemData
+  data: FaqItemProps | CenterItemData[]
 ): data is FaqItemProps => {
   return (data as FaqItemProps).item !== undefined;
 };
@@ -45,22 +45,24 @@ const Dropdown: FC<Props> = ({ data }) => {
       {isShown && isFaqItem(data) ? (
         <p className={styles.text}>{t(`${data.item}.text`)}</p>
       ) : null}
-      {isShown && !isFaqItem(data) ? (
-        <div className={styles.centerDataRow}>
-          <div className={styles.centerDataColumn}>
-            <span>{t('faq.name')}</span>
-            <span>{t(`${data.name}`)}</span>
-          </div>
-          <div className={styles.centerDataColumn}>
-            <span>{t('faq.city')}</span>
-            <span>{t(`${data.city}`)}</span>
-          </div>
-          <div className={styles.centerDataColumn}>
-            <span>{t('faq.contact')}</span>
-            <span>{t(`${data.contact}`)}</span>
-          </div>
-        </div>
-      ) : null}
+      {isShown && !isFaqItem(data)
+        ? data.map((item: CenterItemData) => (
+            <div className={styles.centerDataRow}>
+              <div className={styles.centerDataColumn}>
+                <span>{t('faq.name')}</span>
+                <span>{t(`${item.name}`)}</span>
+              </div>
+              <div className={styles.centerDataColumn}>
+                <span>{t('faq.city')}</span>
+                <span>{t(`${item.city}`)}</span>
+              </div>
+              <div className={styles.centerDataColumn}>
+                <span>{t('faq.contact')}</span>
+                <span>{t(`${item.contact}`)}</span>
+              </div>
+            </div>
+          ))
+        : null}
     </div>
   );
 };

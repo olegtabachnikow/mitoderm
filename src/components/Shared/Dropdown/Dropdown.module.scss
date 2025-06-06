@@ -66,6 +66,12 @@
   .centerDataRow {
     flex-direction: column;
     gap: 10px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  .centerDataRow:last-of-type {
+    border-bottom: none;
+    padding-bottom: 0;
   }
   .centerDataColumn {
     width: 100%;
