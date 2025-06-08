@@ -13,6 +13,7 @@ interface Props {
 const GalleryMobile: FC<Props> = ({ items }) => {
   const setGalleryPage = useAppStore((state) => state.setGalleryPage);
   const locale = useLocale();
+  const t = useTranslations();
 
   // const handleScroll = () => {
   //   const container = document.getElementById('galleryItemBox');
@@ -67,6 +68,7 @@ const GalleryMobile: FC<Props> = ({ items }) => {
   return (
     <>
       <div className={styles.itemWrapper}>
+        <span className={styles.zoomLabel}>{t('gallery.zoom')}</span>
         <div id='galleryItemBox' className={styles.imageBox}>
           <PhotoProvider>
             {items.map((item, i) => (

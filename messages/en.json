@@ -184,7 +184,8 @@
   "gallery": {
     "title": "Gallery",
     "before": "Before",
-    "after": "After"
+    "after": "After",
+    "zoom": "Tap to zoom"
   },
   "dream": {
     "titleP1": "Where Science",
