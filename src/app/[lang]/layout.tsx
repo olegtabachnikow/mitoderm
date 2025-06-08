@@ -31,8 +31,11 @@ export async function generateStaticParams() {
 }
 
 export const metadata: Metadata = {
-  title: 'MitoDerm',
-  description: 'Something will be here',
+  title: 'אקסוזומים V-Tech | מיטודרם - מערכת מתקדמת לקוסמטיקאיות בישראל',
+  description:
+    'מערכת V-Tech - אקסוזומים סינתטיים + PDRN פולינוקלאוטידים לקוסמטיקאיות. תוצאות מהטיפול הראשון | הכשרות מקצועיות | מיטודרם ישראל 054-762-1889',
+  keywords:
+    'אקסוזומים לקוסמטיקאיות, V-Tech System, מיטודרם, PDRN פולינוקלאוטידים, אקסוזומים סינתטיים, טיפולי אקסוזומים, צלקות פוסט אקנה',
   icons: [
     {
       rel: 'icon',
@@ -71,6 +74,52 @@ export const metadata: Metadata = {
       url: '/favicon/apple-touch-icon.png',
     },
   ],
+  alternates: {
+    canonical: '/he',
+    languages: {
+      he: '/he',
+      en: '/en',
+      ru: '/ru',
+    },
+  },
+  openGraph: {
+    images: 'https://mitoderm.com/images/v-tech-social.jpg',
+    url: 'https://mitoderm.com/he',
+    type: 'website',
+  },
+};
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalBusiness',
+  name: 'מיטודרם - Mitoderm',
+  description:
+    'מומחים בטכנולוגיית אקסוזומים מתקדמת למקצועות האסתטיקה. מערכת V-Tech - אקסוזומים סינתטיים ו-PDRN פולינוקלאוטידים',
+  url: 'https://mitoderm.com',
+  telephone: '+972-54-762-1889',
+  email: 'info@mitoderm.com',
+  address: {
+    '@type': 'PostalAddress',
+    addressCountry: 'IL',
+  },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'V-Tech System Professional Products',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Product',
+          name: 'V-Tech System',
+          description: 'אקסוזומים סינתטיים עם PDRN פולינוקלאוטידים',
+          brand: {
+            '@type': 'Brand',
+            name: 'VM Corporation',
+          },
+        },
+      },
+    ],
+  },
 };
 
 export default async function RootLayout({
@@ -99,6 +148,10 @@ export default async function RootLayout({
           <Modal />
           {children}
           <Footer />
+          <script
+            type='application/ld+json'
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+          />
         </body>
       </NextIntlClientProvider>
       <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ID as string} />

@@ -184,7 +184,8 @@
   "gallery": {
     "title": "גלריה",
     "before": "לפני",
-    "after": "אחרי"
+    "after": "אחרי",
+    "zoom": "להגדלה"
   },
   "dream": {
     "titleP1": "כשהמדע",
