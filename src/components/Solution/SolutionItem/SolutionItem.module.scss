@@ -47,8 +47,12 @@
   .container {
     padding: 30px;
   }
+  .container img {
+    align-self: center;
+  }
   .title {
     max-width: 100%;
+    width: 100%;
     font-size: var(--fontSizeMobP1);
   }
   .textContainer {
