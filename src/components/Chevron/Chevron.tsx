@@ -31,7 +31,11 @@ const Chevron: FC = () => {
           alt='item preview'
         />
         <div className={styles.description}>
-          <div className={styles.titleBox}>
+          <div
+            className={`${styles.titleBox} ${
+              isTabletOrMobile && locale != 'he' ? styles.titleBoxColumn : ''
+            }`}
+          >
             <span className={styles.title}>{t('chevron.title1')}</span>
             <span className={styles.title}>{t('chevron.title2')}</span>
             <span className={styles.title}>{t('chevron.title3')}</span>
