@@ -2,13 +2,13 @@
 import { FC, useEffect } from 'react';
 import styles from './Reviews.module.scss';
 import { useLocale, useTranslations } from 'next-intl';
-import ArrowButton from '../Shared/ArrowButton/ArrowButton';
+import ArrowButton from '../../sharedUI/ArrowButton/ArrowButton';
 import { reviews as items } from '@/constants';
 import { ReviewType } from '@/types';
 import Review from './Review/Review';
 import useAppStore from '@/store/store';
 import { useMediaQuery } from 'react-responsive';
-import MobileButtons from '../Shared/MobileButtons/MobileButtons';
+import MobileButtons from '../../sharedUI/MobileButtons/MobileButtons';
 
 const Reviews: FC = () => {
   const { reviewPage, setReviewPage } = useAppStore((state) => state);
