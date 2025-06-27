@@ -11,7 +11,7 @@ const ModalContentWrapper: FC<Props> = ({ children }) => {
   const toggleModal = useAppStore((state) => state.toggleModal);
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} role='dialog' aria-modal='true'>
       <button onClick={() => toggleModal(false)} className={styles.closeButton}>
         <Image
           src='/images/formCloseButton.svg'

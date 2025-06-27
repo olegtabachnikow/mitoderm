@@ -54,6 +54,7 @@ const Navigation: FC<Props> = ({ isOpen, setIsOpen }) => {
     <>
       {isTabletOrMobile ? (
         <nav
+          aria-label='Main Navigation'
           className={`${styles.mobileNavigation} ${isOpen && styles.active}`}
         >
           {navList.map((item: NavItem, index: number) => (

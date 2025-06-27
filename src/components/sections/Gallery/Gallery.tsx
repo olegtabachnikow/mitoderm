@@ -8,10 +8,6 @@ import GalleryPagination from './GalleryPagination/GalleryPagination';
 
 const env = process.env.NODE_ENV;
 
-// const extractNumber = (item: string): number => {
-//   return parseInt(item.match(/\d+/)?.[0] || '0', 10);
-// };
-
 const GalleryWrapper = dynamic(
   () => import('@/components/sections/Gallery/GalleryWrapper/GalleryWrapper'),
   {
@@ -21,14 +17,8 @@ const GalleryWrapper = dynamic(
 
 const Gallery: FC = async () => {
   const t = await getTranslations('gallery');
-  const imageDirectory = path.join(
-    process.cwd(),
-    '/public/images/beforeAfter'
-    // '/public/images/beforeAfterExamples'
-  );
+  const imageDirectory = path.join(process.cwd(), '/public/images/beforeAfter');
   const imageFilenames = await fs.readdir(imageDirectory);
-  // const itemList: Array<[string, string]> = [];
-  // const itemList: Array<[string]> = [];
   let sliderItemsArray: string[] = [];
 
   let itemList: string[] = [];
@@ -38,14 +28,6 @@ const Gallery: FC = async () => {
   } else sliderItemsArray = imageFilenames;
 
   if (sliderItemsArray) itemList = sliderItemsArray;
-
-  // if (sliderItemsArray)
-  //   sliderItemsArray.sort((a, b) => {
-  //     return extractNumber(a) - extractNumber(b);
-  //   });
-  // for (let i = 0; i < sliderItemsArray.length; i += 2) {
-  //   itemList.push(sliderItemsArray.slice(i, i + 2) as any);
-  // }
 
   return (
     <section id='gallery' className={styles.container}>

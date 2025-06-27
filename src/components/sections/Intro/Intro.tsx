@@ -7,7 +7,6 @@ import { useTranslations, useLocale } from 'next-intl';
 import { usePathname } from '@/i18n/routing';
 import DotPagination from '../../sharedUI/DotPagination/DotPagination';
 import useAppStore from '@/store/store';
-import { useMediaQuery } from 'react-responsive';
 
 const Button = dynamic(() => import('@/components/sharedUI/Button/Button'), {
   ssr: false,
@@ -20,7 +19,6 @@ const Intro: FC = () => {
   const ref = useRef<HTMLDivElement>(null);
   const isEventPage = pathname.includes('event');
   const { introPage, setIntroPage } = useAppStore((state) => state);
-  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 779px)' });
 
   const scrollToNextChild = () => {
     const container = document.getElementById('scroller');
@@ -80,7 +78,12 @@ const Intro: FC = () => {
 
   return (
     <section id='intro' className={styles.section}>
-      <div ref={ref} id='scroller' className={styles.scrollBox}>
+      <div
+        aria-live='polite'
+        ref={ref}
+        id='scroller'
+        className={styles.scrollBox}
+      >
         <div
           className={`${styles.introMain} ${
             locale === 'he' ? styles.reversed : ''
@@ -100,7 +103,6 @@ const Intro: FC = () => {
                 text={t('buttons.intro')}
                 style={{
                   marginTop: 20,
-                  maxWidth: isTabletOrMobile ? 'auto' : 218,
                   width: '100%',
                 }}
                 formPage={'main'}
@@ -132,11 +134,7 @@ const Intro: FC = () => {
             <span className={styles.subtitleEvent}>
               {t('intro.eventSubtitle2')}
             </span>
-            <Button
-              text={t('buttons.seat')}
-              style={{ marginTop: 20, width: isTabletOrMobile ? '100%' : 300 }}
-              formPage={'event'}
-            />
+            <Button text={t('buttons.seat')} formPage={'event'} />
           </div>
         </div>
       </div>

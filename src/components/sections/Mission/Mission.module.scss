@@ -84,13 +84,19 @@
     flex-direction: column;
     align-items: center;
   }
-  .bg,
   .eventBg {
     max-width: 96%;
     width: 96%;
-    background-position: 60%;
+    background-position: 90%;
     min-height: 325px;
     border-radius: 32px 32px 0 0;
+  }
+  .bg {
+    max-width: 96%;
+    width: 96%;
+    min-height: 325px;
+    border-radius: 32px;
+    background-position: top;
   }
   .textContainer {
     width: 96%;
