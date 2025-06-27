@@ -113,6 +113,7 @@ const MainForm: FC = () => {
             </h2>
             <p>{t('form.subtitle')}</p>
             <form
+              aria-label='Main Form'
               noValidate
               className={styles.form}
               onSubmit={onSubmit}

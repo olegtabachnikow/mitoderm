@@ -11,14 +11,6 @@ const Solution = dynamic(
   }
 );
 
-// const Reviews = dynamic(() => import('@/components/Reviews/Reviews'), {
-//   ssr: false,
-// });
-
-// const About = dynamic(() => import('@/components/About/About'), {
-//   ssr: false,
-// });
-
 const Mission = dynamic(() => import('@/components/sections/Mission/Mission'), {
   ssr: false,
 });
@@ -56,9 +48,6 @@ export default function HomePage({ params: { lang } }: any) {
       <CenterList />
       <Faq />
       <Contact />
-      {/** Unused section in current version  */}
-      {/* <About /> */}
-      {/* <Reviews /> */}
     </main>
   );
 }

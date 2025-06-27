@@ -49,8 +49,8 @@ const Dropdown: FC<Props> = ({ data }) => {
         <p className={styles.text}>{t(`${data.item}.text`)}</p>
       ) : null}
       {isShown && !isFaqItem(data)
-        ? data.map((item: CenterItemData) => (
-            <div className={styles.centerDataRow}>
+        ? data.map((item: CenterItemData, i: number) => (
+            <div key={i} className={styles.centerDataRow}>
               <div className={styles.centerDataColumn}>
                 <span>{t('faq.name')}</span>
                 <span>{t(`${item.name}`)}</span>

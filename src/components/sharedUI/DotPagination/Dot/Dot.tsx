@@ -22,7 +22,10 @@ const Dot: FC<DotProps> = ({ colored, index, active, gallery, intro }) => {
   };
   return (
     <button
+      aria-current={active}
+      type='button'
       name='pagination dot'
+      aria-label='pagination dot'
       onClick={handleClick}
       className={`${colored ? styles.colored : ''} ${
         active ? styles.dotActive : styles.dot

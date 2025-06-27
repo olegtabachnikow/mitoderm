@@ -1,5 +1,5 @@
 'use client';
-import { FC, useEffect, useRef } from 'react';
+import { FC, useEffect } from 'react';
 import 'react-photo-view/dist/react-photo-view.css';
 import styles from './GalleryMobile.module.scss';
 import { useTranslations, useLocale } from 'next-intl';
@@ -14,17 +14,6 @@ const GalleryMobile: FC<Props> = ({ items }) => {
   const setGalleryPage = useAppStore((state) => state.setGalleryPage);
   const locale = useLocale();
   const t = useTranslations();
-
-  // const handleScroll = () => {
-  //   const container = document.getElementById('galleryItemBox');
-  //   if (!container) return;
-
-  //   const scrollLeft = container.scrollLeft;
-  //   const itemWidth = container.clientWidth;
-  //   const newPage = Math.round(scrollLeft / itemWidth);
-
-  //   setGalleryPage(newPage);
-  // };
 
   const handleScroll = () => {
     const container = document.getElementById('galleryItemBox');
