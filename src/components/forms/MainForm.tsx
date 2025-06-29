@@ -2,14 +2,14 @@
 import { FC, FormEvent, useState, useEffect, useRef } from 'react';
 import styles from './Form.module.scss';
 import Image from 'next/image';
-import Button from '../sharedUI/Button/Button';
+import Button from '../Shared/Button/Button';
 import { useLocale, useTranslations } from 'next-intl';
 import FormInput from './FormInput/FormInput';
 import { useMediaQuery } from 'react-responsive';
 import type { MainFormDataType, NameTypeEvent, NameTypeMain } from '@/types';
 import { sendDataOnMail } from '@/utils/sendEmailData';
 import { sendDataToCRM } from '@/utils/sendCRMData';
-import Loader from '../sharedUI/Loader/Loader';
+import Loader from '../Shared/Loader/Loader';
 import { usePathname } from 'next/navigation';
 import {
   validateName,
@@ -113,7 +113,6 @@ const MainForm: FC = () => {
             </h2>
             <p>{t('form.subtitle')}</p>
             <form
-              aria-label='Main Form'
               noValidate
               className={styles.form}
               onSubmit={onSubmit}

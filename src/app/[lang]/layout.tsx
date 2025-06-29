@@ -7,14 +7,18 @@ import '../globals.scss';
 import { Rubik } from 'next/font/google';
 import { routing } from '@/i18n/routing';
 import { notFound } from 'next/navigation';
-import Footer from '@/components/layout/Footer/Footer';
+import Footer from '@/components/Layout/Footer/Footer';
 import { GoogleAnalytics } from '@next/third-parties/google';
 
-const Header = dynamic(() => import('@/components/layout/Header/Header'), {
+const Header = dynamic(() => import('@/components/Layout/Header/Header'), {
   ssr: false,
 });
 
-const Modal = dynamic(() => import('@/components/layout/Modal/Modal'), {
+const Modal = dynamic(() => import('@/components/Layout/Modal/Modal'), {
+  ssr: false,
+});
+
+const Chatbot = dynamic(() => import('@/components/Chatbot/Chatbot'), {
   ssr: false,
 });
 
@@ -148,6 +152,7 @@ export default async function RootLayout({
           <Modal />
           {children}
           <Footer />
+          {params.lang === 'he' && <Chatbot locale={params.lang} />}
           <script
             type='application/ld+json'
             dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}

@@ -24,7 +24,7 @@ export const navEventList: NavItem[] = [
   { text: 'navigation.product', url: '/' },
   { text: 'navigation.info', scrollId: ScrollItems.about },
   { text: 'navigation.agenda', scrollId: ScrollItems.agenda },
-  { text: 'navigation.contact', scrollId: ScrollItems.contactUs },
+  { text: 'navigation.contact', url: '/form' },
   { text: 'navigation.results', scrollId: ScrollItems.gallery },
   { text: 'navigation.about', scrollId: ScrollItems.mission },
 ];
@@ -45,24 +45,20 @@ export const howToUseItemList: HowToUseItem[] = [
 
 export const eventBulletsItemList: EventBulletItem[] = [
   {
-    imagePath: '/images/event-bullets/bulb.svg',
+    imagePath: '/images/event-bullets/clock.png',
     text: 'eventBullets.item1',
   },
   {
-    imagePath: '/images/event-bullets/lightning.svg',
+    imagePath: '/images/event-bullets/practical-skills.png',
     text: 'eventBullets.item2',
   },
   {
-    imagePath: '/images/event-bullets/messages.svg',
+    imagePath: '/images/event-bullets/networking.png',
     text: 'eventBullets.item3',
   },
   {
-    imagePath: '/images/event-bullets/stairs.svg',
+    imagePath: '/images/event-bullets/certificate.png',
     text: 'eventBullets.item4',
-  },
-  {
-    imagePath: '/images/event-bullets/distributor.svg',
-    text: 'eventBullets.item5',
   },
 ];
 
@@ -203,10 +199,4 @@ export const centerItemData: CenterItemData[] = [
   { name: 'דר ניר גלאור', city: 'זכרון יעקב', contact: '054-5454636' },
   { name: 'אסתר איליזרוב', city: 'פתח תקווה', contact: '054-5320240' },
   { name: 'סופי אביב', city: 'פתח תקווה', contact: '054-7547111' },
-  { name: 'הלנה קלצקין', city: 'כפר סבא', contact: '050-4413135' },
-  { name: 'יפעת רבה', city: 'יבנה', contact: '052-5230499' },
-  { name: 'אילנית גבאי', city: 'אשדוד', contact: '052-5756724' },
-  { name: 'שני אברהם', city: 'קריית גת', contact: '050-7700234' },
-  { name: 'סימה פייר', city: 'צפון', contact: '050-8333654' },
-  { name: 'שרי לוי', city: 'יבנה', contact: '050-6667891' },
 ];
