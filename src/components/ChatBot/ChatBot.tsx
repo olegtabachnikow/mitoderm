@@ -16,7 +16,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
-import styles from './Chatbot.module.scss';
+import styles from './ChatBot.module.scss';
 
 interface Message {
   role: 'user' | 'assistant';
