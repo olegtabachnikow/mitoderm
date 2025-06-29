@@ -44,8 +44,6 @@ const LanguageSwitch: FC = () => {
 
   return (
     <div
-      aria-label='language switch'
-      role='button'
       ref={popupRef}
       className={`${styles.container} ${
         isTabletOrMobile && styles.containerMobile
