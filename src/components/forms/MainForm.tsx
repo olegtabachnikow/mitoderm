@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Button from '../sharedUI/Button/Button';
 import { useLocale, useTranslations } from 'next-intl';
 import FormInput from './FormInput/FormInput';
+import FormCloseButton from './FormCloseButton/FormCloseButton';
 import { useMediaQuery } from 'react-responsive';
 import type { MainFormDataType, NameTypeEvent, NameTypeMain } from '@/types';
 import { sendDataOnMail } from '@/utils/sendEmailData';
@@ -169,7 +170,6 @@ const MainForm: FC = () => {
               <Button
                 disabled={isButtonDisabled}
                 submit
-                colored
                 text={t(
                   isEventPage
                     ? 'buttons.reserveSeat'
@@ -199,6 +199,7 @@ const MainForm: FC = () => {
             src='/images/formImage.png'
             alt='background with exosome'
           />
+          <FormCloseButton />
         </div>
       )}
     </div>

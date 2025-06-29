@@ -18,6 +18,10 @@ const Modal = dynamic(() => import('@/components/layout/Modal/Modal'), {
   ssr: false,
 });
 
+const Chatbot = dynamic(() => import('@/components/ChatBot/ChatBot'), {
+  ssr: false,
+});
+
 const rubik = Rubik({
   weight: ['300', '400', '500', '900'],
   style: 'normal',
@@ -148,6 +152,7 @@ export default async function RootLayout({
           <Modal />
           {children}
           <Footer />
+          {params.lang === 'he' && <Chatbot locale={params.lang} />}
           <script
             type='application/ld+json'
             dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}

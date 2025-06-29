@@ -2,7 +2,6 @@
 import { FC, useEffect } from 'react';
 import styles from './NumberInput.module.scss';
 import { useTranslations } from 'next-intl';
-import Image from 'next/image';
 import useAppStore from '@/store/store';
 
 const NumberInput: FC = () => {

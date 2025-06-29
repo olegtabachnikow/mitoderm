@@ -6,7 +6,6 @@ import { useRouter } from '@/i18n/routing';
 interface Props {
   text: string;
   style?: CSSProperties;
-  colored?: boolean;
   submit?: boolean;
   disabled?: boolean;
   onClick?: () => any;
@@ -16,7 +15,6 @@ interface Props {
 const Button: FC<Props> = ({
   text,
   style,
-  colored,
   submit,
   disabled = false,
   onClick,
@@ -39,9 +37,7 @@ const Button: FC<Props> = ({
       style={style}
       onClick={handleClick}
       disabled={disabled}
-      className={`${colored ? styles.buttonColored : styles.button} ${
-        disabled ? styles.disabled : ''
-      }`}
+      className={`${styles.button} ${disabled ? styles.disabled : ''}`}
     >
       {text}
     </button>

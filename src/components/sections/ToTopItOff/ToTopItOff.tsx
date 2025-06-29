@@ -37,7 +37,7 @@ const ToTopItOff: FC = () => {
         />
       </div>
       <div className={styles.buttonBox}>
-        <Button text={t('buttons.seat')} colored formPage='event' />
+        <Button text={t('buttons.seat')} formPage='event' />
       </div>
     </section>
   );

@@ -40,11 +40,6 @@ const GalleryDesktop: FC<Props> = ({
             </div>
           ))}
         </div>
-        {/* <div className={styles.itemLabel}>
-          <span className={styles.roundLabel}>&</span>
-          <span className={styles.label}>{t('gallery.before')}</span>
-          <span className={styles.label}>{t('gallery.after')}</span>
-        </div> */}
       </div>
       <ArrowButton
         reversed={locale === 'he'}

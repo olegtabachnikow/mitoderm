@@ -17,7 +17,7 @@ const Event: FC = () => {
           <Dropdown data={{ item: 'event.item4', time: true }} />
         </div>
       </div>
-      <Button formPage='event' colored text={t('buttons.seat')} />
+      <Button formPage='event' text={t('buttons.seat')} />
     </section>
   );
 };

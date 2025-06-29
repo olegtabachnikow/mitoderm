@@ -76,7 +76,6 @@ export default function EventPage({ params: { lang } }: any) {
       >
         <Button
           style={{ margin: '20px auto 40px auto' }}
-          colored
           text={t('buttons.seat')}
           formPage='event'
         />
