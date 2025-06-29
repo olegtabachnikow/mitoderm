@@ -19,7 +19,6 @@ const Success: FC = () => {
   const idNumber = params.get('idNumber');
 
   useEffect(() => {
-    console.log(name, email, phone, amount, idNumber);
     if (!name || !email || !phone || !amount || !idNumber) {
       router.push('/');
     } else sendPaymentEmail({ name, email, phone, amount, idNumber });

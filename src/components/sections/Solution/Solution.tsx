@@ -33,7 +33,6 @@ const Solution: FC = () => {
         </div>
         <Button
           style={{ margin: '40px auto' }}
-          colored
           text={t('buttons.contactForPrice')}
           formPage='main'
         />
@@ -65,7 +64,6 @@ const Solution: FC = () => {
         </div>
         <Button
           style={{ margin: '40px auto' }}
-          colored
           text={t('buttons.contactForPrice')}
           formPage='main'
         />

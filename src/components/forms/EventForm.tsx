@@ -17,6 +17,7 @@ import type { EventFormDataType } from '@/types';
 import Loader from '../sharedUI/Loader/Loader';
 import NumberInput from './NumberInput/NumberInput';
 import Price from './Price/Price';
+import FormCloseButton from './FormCloseButton/FormCloseButton';
 import { usePathname } from 'next/navigation';
 import { sendPaymentDataToCRM } from '@/utils/sendPayment';
 import type { NameTypeMain, NameTypeEvent } from '@/types';
@@ -83,10 +84,12 @@ const EventForm: FC = () => {
 
   const validatePageForm = () => {
     !formData.email.isValid ||
-      !formData.name.isValid ||
-      !formData.phone.isValid ||
-      !formData.idNumber.isValid;
-    !isChecked ? setIsButtonDisabled(true) : setIsButtonDisabled(false);
+    !formData.name.isValid ||
+    !formData.phone.isValid ||
+    !formData.idNumber.isValid ||
+    !isChecked
+      ? setIsButtonDisabled(true)
+      : setIsButtonDisabled(false);
   };
 
   useEffect(() => {
@@ -113,6 +116,24 @@ const EventForm: FC = () => {
         ) : (
           <>
             <h2 style={{ marginBottom: 20 }}>{t('form.eventTitle')}</h2>
+            {locale === 'he' && (
+              <p
+                style={{
+                  marginBottom: 25,
+                  fontSize: '16px',
+                  lineHeight: '1.6',
+                  color: '#555',
+                  textAlign: 'right',
+                }}
+              >
+                🌟 הצטרפי למפגש אינטימי ומעורר השראה! בואי לגלות את הטכנולוגיה
+                החדשנית שהייתה עד עכשיו רק בידי רופאים, ולהכיר קוסמטיקאיות
+                מקצועיות מדהימות כמוך ותקבלי הכשרה מעשית וידע חדשני שישנה את
+                הקליניקה שלך.
+                <br />☕ אווירה מפנקת עם ארוחת בוקר מיוחדת, מתנות מפתיעות והרבה
+                השראה! את מגיעה לאירוע הזה! 💕
+              </p>
+            )}
             <form
               noValidate
               className={styles.form}
@@ -171,7 +192,6 @@ const EventForm: FC = () => {
               <Button
                 disabled={isButtonDisabled}
                 submit
-                colored
                 text={t(
                   isEventPage
                     ? 'buttons.reserveSeat'
@@ -195,12 +215,22 @@ const EventForm: FC = () => {
       </div>
       {isTabletOrMobile ? null : (
         <div className={styles.formImageContainer}>
-          <Image
-            className={styles.desktopImage}
-            fill
-            src='/images/formEventImage.png'
-            alt='background with exosome'
-          />
+          <video
+            className={styles.desktopVideo}
+            autoPlay
+            loop
+            muted
+            playsInline
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+            }}
+          >
+            <source src='/videos/mitovideomobile.mp4' type='video/mp4' />
+            Your browser does not support the video tag.
+          </video>
+          <FormCloseButton />
         </div>
       )}
     </div>

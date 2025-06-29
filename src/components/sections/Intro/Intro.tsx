@@ -119,22 +119,34 @@ const Intro: FC = () => {
         </div>
         <div className={styles.introEvent}>
           <div className={`${styles.container} ${styles.eventPageContainer}`}>
-            <span className={styles.subtitleEvent}>
-              {t('intro.eventSubtitle1')}
-            </span>
-            <h1
-              className={`${styles.eventTitle} ${
-                locale === 'ru' ? styles.ru : ''
-              }`}
+            <video
+              className={`${styles.eventVideo} ${locale === 'he' && styles.he}`}
+              autoPlay
+              loop
+              muted
+              playsInline
             >
-              {t('intro.eventTitleP1')}
-              <span>{t('intro.eventTitleP2')}</span>
-              {t('intro.eventTitleP3')}
-            </h1>
-            <span className={styles.subtitleEvent}>
-              {t('intro.eventSubtitle2')}
-            </span>
-            <Button text={t('buttons.seat')} formPage={'event'} />
+              <source src='/videos/eventIntroVideo.webm' type='video/webm' />
+              Your browser does not support the video tag.
+            </video>
+            <div className={styles.textContainer}>
+              <span className={styles.subtitleEvent}>
+                {t('intro.eventSubtitle1')}
+              </span>
+              <h1
+                className={`${styles.eventTitle} ${
+                  locale === 'ru' ? styles.ru : ''
+                }`}
+              >
+                {t('intro.eventTitleP1')}
+                <span>{t('intro.eventTitleP2')}</span>
+                {t('intro.eventTitleP3')}
+              </h1>
+              <span className={styles.subtitleEvent}>
+                {t('intro.eventSubtitle2')}
+              </span>
+              <Button text={t('buttons.seat')} formPage={'event'} />
+            </div>
           </div>
         </div>
       </div>

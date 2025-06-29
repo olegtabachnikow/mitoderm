@@ -38,14 +38,8 @@ const About: FC = () => {
           <Image src='/images/whatIsExosome.svg' fill alt='exosome examples' />
         </div>
       </article>
-      {/* <div className={styles.itemContainer}>
-        {aboutBulletItems.map((item: AboutBulletItem) => (
-          <AboutItem key={item.text} data={item.data} text={t(item.text)} />
-        ))}
-      </div> */}
       <Button
         style={{ marginBlock: 40, marginBottom: isEventPage ? 80 : 40 }}
-        colored
         text={t(isEventPage ? 'buttons.seat' : 'buttons.moreAbout')}
         onClick={!isEventPage ? scrollTo : () => null}
         formPage={isEventPage ? 'event' : 'main'}

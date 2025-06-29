@@ -1,0 +1,21 @@
+.button {
+  width: 52px;
+  height: 52px;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 2;
+  border-radius: 15px;
+  overflow: hidden;
+  opacity: 0.5;
+  transition: all 0.2s linear;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.button.he {
+  right: auto;
+  left: 20px;
+}
