@@ -1,6 +1,6 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import nodemailer from 'nodemailer';
-import type { LeadData, ExtractedInfo } from '../types/shared';
+import type { LeadData, ExtractedInfo } from '../types';
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || '');
 
@@ -25,8 +25,8 @@ export class LeadService {
         },
         tls: {
           rejectUnauthorized: false, // לפתרון בעיות SSL
-          servername: 'smtp.gmail.com'
-        }
+          servername: 'smtp.gmail.com',
+        },
       });
       this.isEmailConfigured = true;
     }
@@ -44,7 +44,9 @@ export class LeadService {
   }
 
   // חילוץ מידע מהשיחה
-  async extractInfoFromConversation(conversationHistory: any[]): Promise<ExtractedInfo> {
+  async extractInfoFromConversation(
+    conversationHistory: any[]
+  ): Promise<ExtractedInfo> {
     try {
       const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
 
@@ -69,7 +71,10 @@ export class LeadService {
 • זהה רק פרטים ברורים וחד-משמעיים`;
 
       const conversationText = conversationHistory
-        .map((msg: any) => `${msg.role === 'user' ? 'לקוח' : 'מיטודרם'}: ${msg.content}`)
+        .map(
+          (msg: any) =>
+            `${msg.role === 'user' ? 'לקוח' : 'מיטודרם'}: ${msg.content}`
+        )
         .join('\n');
 
       const prompt = `${extractPrompt}
@@ -81,7 +86,11 @@ ${conversationText}
 
       const result = await model.generateContent(prompt);
       const response = await result.response;
-      let text = response.text().replace(/```json/g, '').replace(/```/g, '').trim();
+      let text = response
+        .text()
+        .replace(/```json/g, '')
+        .replace(/```/g, '')
+        .trim();
 
       const extractedInfo = JSON.parse(text);
       return {
@@ -89,9 +98,8 @@ ${conversationText}
         phone: extractedInfo.phone || '',
         email: extractedInfo.email || '',
         subject: extractedInfo.subject || 'פנייה כללית',
-        confidence: extractedInfo.confidence || 'medium'
+        confidence: extractedInfo.confidence || 'medium',
       };
-
     } catch (error) {
       console.error('Error extracting info:', error);
       return {
@@ -99,7 +107,7 @@ ${conversationText}
         phone: '',
         email: '',
         subject: 'פנייה כללית',
-        confidence: 'low'
+        confidence: 'low',
       };
     }
   }
@@ -110,21 +118,21 @@ ${conversationText}
       name: leadData.name || '',
       phone: leadData.phone || '',
       email: leadData.email || '',
-      source: leadData.source || 'צ\'אטבוט אתר',
-      timestamp: new Date().toLocaleString('he-IL', { 
+      source: leadData.source || "צ'אטבוט אתר",
+      timestamp: new Date().toLocaleString('he-IL', {
         timeZone: 'Asia/Jerusalem',
         year: 'numeric',
         month: '2-digit',
         day: '2-digit',
         hour: '2-digit',
-        minute: '2-digit'
+        minute: '2-digit',
       }),
-      conversationSummary: leadData.conversationSummary || ''
+      conversationSummary: leadData.conversationSummary || '',
     };
 
     const [emailSent, sheetUpdated] = await Promise.all([
       this.sendNotificationEmail(fullLeadData),
-      this.saveToGoogleSheets(fullLeadData)
+      this.saveToGoogleSheets(fullLeadData),
     ]);
 
     return emailSent || sheetUpdated;
@@ -148,28 +156,48 @@ ${conversationText}
             
             <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0; direction: rtl; text-align: right;">
               <h3 style="color: #495057; text-align: right;">פרטי הליד:</h3>
-              <p style="text-align: right;"><strong>📱 טלפון:</strong> <a href="tel:${leadData.phone}">${leadData.phone}</a></p>
-              ${leadData.name ? `<p style="text-align: right;"><strong>👤 שם:</strong> ${leadData.name}</p>` : ''}
-              ${leadData.email ? `<p style="text-align: right;"><strong>📧 אימייל:</strong> <a href="mailto:${leadData.email}">${leadData.email}</a></p>` : ''}
-              <p style="text-align: right;"><strong>🌐 מקור:</strong> ${leadData.source}</p>
-              <p style="text-align: right;"><strong>🕐 תאריך:</strong> ${leadData.timestamp}</p>
+              <p style="text-align: right;"><strong>📱 טלפון:</strong> <a href="tel:${
+                leadData.phone
+              }">${leadData.phone}</a></p>
+              ${
+                leadData.name
+                  ? `<p style="text-align: right;"><strong>👤 שם:</strong> ${leadData.name}</p>`
+                  : ''
+              }
+              ${
+                leadData.email
+                  ? `<p style="text-align: right;"><strong>📧 אימייל:</strong> <a href="mailto:${leadData.email}">${leadData.email}</a></p>`
+                  : ''
+              }
+              <p style="text-align: right;"><strong>🌐 מקור:</strong> ${
+                leadData.source
+              }</p>
+              <p style="text-align: right;"><strong>🕐 תאריך:</strong> ${
+                leadData.timestamp
+              }</p>
             </div>
 
-            ${leadData.conversationSummary ? `
+            ${
+              leadData.conversationSummary
+                ? `
               <div style="background: #e3f2fd; padding: 20px; border-radius: 8px; margin: 20px 0; direction: rtl; text-align: right;">
                 <h3 style="color: #1976d2; text-align: right;">סיכום השיחה:</h3>
                 <p style="white-space: pre-wrap; text-align: right;">${leadData.conversationSummary}</p>
               </div>
-            ` : ''}
+            `
+                : ''
+            }
 
             <div style="text-align: center; margin: 30px 0;">
-              <a href="https://wa.me/972${leadData.phone.replace(/[^0-9]/g, '').substring(1)}" 
+              <a href="https://wa.me/972${leadData.phone
+                .replace(/[^0-9]/g, '')
+                .substring(1)}" 
                  style="background: #25d366; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; display: inline-block;">
                 💬 שלח הודעה בוואטסאפ
               </a>
             </div>
           </div>
-        `
+        `,
       };
 
       await this.emailTransporter.sendMail(mailOptions);
@@ -219,7 +247,7 @@ ${conversationText}
               <a href="https://wa.me/972547621889">054-762-1889</a>
             </p>
           </div>
-        `
+        `,
       };
 
       await this.emailTransporter.sendMail(mailOptions);
@@ -250,7 +278,7 @@ ${conversationText}
           name: leadData.name || '',
           email: leadData.email || '',
           source: leadData.source,
-          conversationSummary: leadData.conversationSummary || ''
+          conversationSummary: leadData.conversationSummary || '',
         }),
       });
 
@@ -258,7 +286,10 @@ ${conversationText}
         console.log('Lead added to Google Sheets successfully');
         return true;
       } else {
-        console.error('Error adding lead to Google Sheets:', response.statusText);
+        console.error(
+          'Error adding lead to Google Sheets:',
+          response.statusText
+        );
         return false;
       }
     } catch (error) {
@@ -266,4 +297,4 @@ ${conversationText}
       return false;
     }
   }
-} 
+}
