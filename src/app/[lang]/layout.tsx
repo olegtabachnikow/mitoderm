@@ -7,19 +7,19 @@ import '../globals.scss';
 import { Rubik } from 'next/font/google';
 import { routing } from '@/i18n/routing';
 import { notFound } from 'next/navigation';
-import Footer from '@/components/Layout/Footer/Footer';
+import Footer from '@/components/layout/Footer/Footer';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import Script from 'next/script';
 
-const Header = dynamic(() => import('@/components/Layout/Header/Header'), {
+const Header = dynamic(() => import('@/components/layout/Header/Header'), {
   ssr: false,
 });
 
-const Modal = dynamic(() => import('@/components/Layout/Modal/Modal'), {
+const Modal = dynamic(() => import('@/components/layout/Modal/Modal'), {
   ssr: false,
 });
 
-const Chatbot = dynamic(() => import('@/components/Chatbot/Chatbot'), {
+const Chatbot = dynamic(() => import('@/components/ChatBot/ChatBot'), {
   ssr: false,
 });
 
@@ -146,8 +146,8 @@ export default async function RootLayout({
     <html lang={params.lang}>
       {/* Google Tag Manager */}
       <Script
-        id="gtm-script"
-        strategy="afterInteractive"
+        id='gtm-script'
+        strategy='afterInteractive'
         dangerouslySetInnerHTML={{
           __html: `
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -158,7 +158,7 @@ export default async function RootLayout({
           `,
         }}
       />
-      
+
       <NextIntlClientProvider messages={messages}>
         <body
           className={rubik.className}
@@ -166,14 +166,14 @@ export default async function RootLayout({
         >
           {/* Google Tag Manager (noscript) */}
           <noscript>
-            <iframe 
-              src="https://www.googletagmanager.com/ns.html?id=GTM-W7HBVJPC"
-              height="0" 
-              width="0" 
-              style={{display: 'none', visibility: 'hidden'}}
+            <iframe
+              src='https://www.googletagmanager.com/ns.html?id=GTM-W7HBVJPC'
+              height='0'
+              width='0'
+              style={{ display: 'none', visibility: 'hidden' }}
             />
           </noscript>
-          
+
           <Header />
           <Modal />
           {children}

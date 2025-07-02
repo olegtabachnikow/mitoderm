@@ -1,7 +1,6 @@
 import {
   NavItem,
   HowToUseItem,
-  AboutBulletItem,
   LanguageSwitchItem,
   SolutionItem,
   ScrollItems,
@@ -49,7 +48,7 @@ export const eventBulletsItemList: EventBulletItem[] = [
     text: 'eventBullets.item1',
   },
   {
-    imagePath: '/images/event-bullets/lightning.svg',
+    imagePath: '/images/event-bullets/stairs.svg',
     text: 'eventBullets.item2',
   },
   {
@@ -57,21 +56,9 @@ export const eventBulletsItemList: EventBulletItem[] = [
     text: 'eventBullets.item3',
   },
   {
-    imagePath: '/images/event-bullets/stairs.svg',
+    imagePath: '/images/event-bullets/distributor.svg',
     text: 'eventBullets.item4',
   },
-  {
-    imagePath: '/images/event-bullets/distributor.svg',
-    text: 'eventBullets.item5',
-  },
-];
-
-export const aboutBulletItems: AboutBulletItem[] = [
-  { data: '6', text: 'about.itemExp1' },
-  { data: '150%', text: 'about.itemExp4' },
-  { data: '70+', text: 'about.itemExp3' },
-  { data: '50%', text: 'about.itemExp2' },
-  { data: '60-150', text: 'about.itemExp5' },
 ];
 
 export const languageSwitchItemList: LanguageSwitchItem[] = [
