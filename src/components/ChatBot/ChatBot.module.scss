@@ -123,7 +123,7 @@
     font-size: 16px;
     font-weight: 600;
   }
-
+  
   p {
     margin: 0;
     font-size: 12px;
@@ -249,12 +249,12 @@
   color: #a0aec0;
   margin-top: 4px;
   direction: rtl;
-
+  
   .assistantMessage & {
     margin-left: 40px;
     text-align: right;
   }
-
+  
   .userMessage & {
     margin-right: 8px;
     text-align: left;
@@ -367,8 +367,7 @@
 }
 
 @keyframes pulse {
-  0%,
-  100% {
+  0%, 100% {
     transform: scale(1);
     opacity: 1;
   }
@@ -379,9 +378,7 @@
 }
 
 @keyframes typing {
-  0%,
-  60%,
-  100% {
+  0%, 60%, 100% {
     transform: translateY(0);
     opacity: 0.4;
   }
@@ -409,7 +406,7 @@
   display: block;
   width: 100%;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-
+  
   &:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 16px rgba(218, 165, 32, 0.4);
@@ -419,3 +416,246 @@
     transform: translateY(-1px);
   }
 }
+
+// טופס אישור פרטי הקשר
+.contactForm {
+  background: var(--colorLightBG);
+  border-top: 1px solid #e2e8f0;
+  padding: 16px;
+  margin: 0;
+  animation: slideDown 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.formHeader {
+  text-align: center;
+  margin-bottom: 16px;
+  
+  h4 {
+    margin: 0;
+    color: #2d3748;
+    font-size: 16px;
+    font-weight: 600;
+  }
+}
+
+.formField {
+  margin-bottom: 12px;
+  
+  label {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #4a5568;
+    text-align: right;
+  }
+}
+
+.formInput, .formTextarea {
+  width: 100%;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 14px;
+  font-family: inherit;
+  direction: rtl;
+  text-align: right;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  
+  &:focus {
+    outline: none;
+    border-color: var(--colorGold);
+    box-shadow: 0 0 0 3px rgba(218, 165, 32, 0.1);
+  }
+  
+  &::placeholder {
+    color: #a0aec0;
+    direction: rtl;
+    text-align: right;
+  }
+  
+  &[required] {
+    border-left: 3px solid var(--colorGold);
+  }
+}
+
+.formTextarea {
+  min-height: 60px;
+  resize: vertical;
+}
+
+.formActions {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+  justify-content: stretch;
+}
+
+.submitButton {
+  flex: 2;
+  background: linear-gradient(135deg, var(--colorGold) 0%, #000 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(218, 165, 32, 0.4);
+  }
+  
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+}
+
+.cancelButton {
+  flex: 1;
+  background: #f7fafc;
+  color: #4a5568;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    background: #edf2f7;
+    border-color: #cbd5e0;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+// טופס בתוך ההודעה
+.contactFormInMessage {
+  margin-top: 16px;
+  padding: 16px;
+  background: #f8f9fa;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  .formField {
+    margin-bottom: 12px;
+    
+    label {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #4a5568;
+      text-align: right;
+    }
+  }
+
+  .formInput, .formTextarea {
+    width: 100%;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-family: inherit;
+    direction: rtl;
+    text-align: right;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    
+    &:focus {
+      outline: none;
+      border-color: var(--colorGold);
+      box-shadow: 0 0 0 2px rgba(218, 165, 32, 0.1);
+    }
+    
+    &::placeholder {
+      color: #a0aec0;
+      direction: rtl;
+      text-align: right;
+    }
+    
+    &[required] {
+      border-left: 3px solid var(--colorGold);
+    }
+  }
+
+  .formTextarea {
+    min-height: 50px;
+    resize: vertical;
+  }
+
+  .formActions {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+    justify-content: stretch;
+  }
+
+  .submitButton {
+    flex: 2;
+    background: linear-gradient(135deg, var(--colorGold) 0%, #000 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    &:hover:not(:disabled) {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(218, 165, 32, 0.4);
+    }
+    
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+  }
+
+  .cancelButton {
+    flex: 1;
+    background: #f7fafc;
+    color: #4a5568;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    
+    &:hover {
+      background: #edf2f7;
+      border-color: #cbd5e0;
+    }
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+} 

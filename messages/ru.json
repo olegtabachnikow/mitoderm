@@ -61,11 +61,11 @@
   "intro": {
     "title": "V-Tech System",
     "text": "Новое поколение в космецевтике - прорыв в уходе за кожей для косметологов",
-    "eventSubtitle1": "Cosmetologist? Aesthetician? Working with equipment?",
-    "eventSubtitle2": "The company that brings the next generation of aesthetics.",
-    "eventTitleP1": "This ",
-    "eventTitleP2": "conference ",
-    "eventTitleP3": "is exactly for you!"
+    "eventSubtitle1": "Косметолог? Эстетист? Работаете с профессиональным оборудованием?",
+    "eventSubtitle2": "Компания, которая приносит новое поколение эстетики.",
+    "eventTitleP1": "Эта ",
+    "eventTitleP2": "встреча ",
+    "eventTitleP3": "именно для вас!"
   },
   "chevron": {
     "text1": "V Tech System ",
@@ -77,24 +77,24 @@
     "button": "Подробнее о продуктах"
   },
   "fastResult": {
-    "titleP1": "Have you heard about",
-    "titleP2": " exosomes?",
-    "subtitle": "Faster results are here!",
-    "text": "This is a product that until now was only available to doctors, and now also for cosmetologists!"
+    "titleP1": "Слышали ли вы об?",
+    "titleP2": " экзосомах?",
+    "subtitle": "Более быстрые результаты уже  здесь!",
+    "text": "Это продукт, который до сих пор был доступен только врачам, а теперь и косметологам!"
   },
   "unique": {
-    "titleP1": "What",
-    "titleP2": " makes you unique ",
-    "titleP3": "compared to competitors?",
-    "textP1": "MitoDerm company is the",
-    "textP2": " only company in Israel working with exosomes ",
-    "textP3": "that can connect and trigger a chain reaction of natural cell actions, allowing the skin to enjoy great benefits"
+    "titleP1": "Что",
+    "titleP2": " делает вас уникальными ",
+    "titleP3": "по сравнению с конкурентами?",
+    "textP1": "Компания MitoDerm -",
+    "textP2": "  единственная компания в Израиле, работающая  с  синтетическими  экзосомами, ",
+    "textP3": "которые могут соединяться и запускать цепную реакцию естественных клеточных процессов"
   },
   "invite": {
-    "titleP1": "MitoDerm company invites you to a",
-    "titleP2": " boutique conference for leaders ",
-    "titleP3": "in the field of aesthetics in Israel",
-    "text": "At the conference, you'll be introduced to this breakthrough technology! This conference will open the door for you to the world of innovative treatments, which are what clients really want and look for,along with a significant reduction in working time, corresponding increase in profits, and faster recovery time compared to traditional and simpler treatments"
+    "titleP1": "Компания Mitoderm приглашает вас на",
+    "titleP2": "  эксклюзивную бутиковую встречу для лидеров ",
+    "titleP3": "в сфере эстетики в Израиле.",
+    "text": "На конференции вы познакомитесь с этой революционной технологией! Эта конференция откроет для вас дверь в мир инновационных методов лечения, которых действительно хотят и ищут клиенты, а также позволит значительно сократить время работы, увеличить прибыль и ускорить восстановление по сравнению с традиционными и более простыми процедурами."
   },
   "synergy": {
     "title": "Сочетание активных компонентов для синергетического действия",
@@ -267,22 +267,22 @@
     "item1": {
       "title": "Начало и нетворкинг",
       "text": "Вкусные угощения, хорошее вино и знакомство с коллегами из индустрии.",
-      "time": "19:00 - "
+      "time": "10:00 - "
     },
     "item2": {
       "title": "Личная история за кулисами успеха",
       "text": "Илона Шпектор, CEO MitoDerm, расскажет, как прошла путь от медицины и косметологии до управления инновационной компанией. Поделится полезными советами для роста в профессии.",
-      "time": "19:30 - "
+      "time": "10:30 - "
     },
     "item3": {
       "title": "Эксклюзивная презентация инновационного продукта",
       "text": "Мы покажем новый корейский продукт, который уже продается в 35 странах и меняет правила игры в эстетике.",
-      "time": "20:30 - "
+      "time": "12:30 - "
     },
     "item4": {
       "title": "Как развивать бизнес с MitoDerm",
       "text": "Поговорим о том, как использовать нашу бизнес-модель для роста и успеха.",
-      "time": "21:15 - "
+      "time": "13:15 - "
     }
   },
   "firstLook": {
@@ -296,8 +296,7 @@
     "item1": "Инновационные технологии",
     "item2": "Практические навыки",
     "item3": "Нетворкинг",
-    "item4": "Сертификат об участии",
-    "item5": "Official Italian Distributor in Israel"
+    "item5": "Эксклюзивно из Италии"
   },
   "toTop": {
     "title": "И в завершение:",

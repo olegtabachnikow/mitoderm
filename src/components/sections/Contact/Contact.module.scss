@@ -85,7 +85,6 @@
   }
   .contacts {
     flex-direction: column;
-    // margin-top: -140px;
     z-index: 8;
   }
   .contactsItem {
@@ -110,6 +109,10 @@
     left: 0;
     display: flex;
     justify-content: space-between;
+  }
+  .linkBox.he {
+    right: 0;
+    left: auto;
   }
   .contactsItem {
     border-radius: 32px;

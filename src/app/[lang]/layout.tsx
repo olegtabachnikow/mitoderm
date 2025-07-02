@@ -9,6 +9,7 @@ import { routing } from '@/i18n/routing';
 import { notFound } from 'next/navigation';
 import Footer from '@/components/layout/Footer/Footer';
 import { GoogleAnalytics } from '@next/third-parties/google';
+import Script from 'next/script';
 
 const Header = dynamic(() => import('@/components/layout/Header/Header'), {
   ssr: false,
@@ -143,11 +144,36 @@ export default async function RootLayout({
 
   return (
     <html lang={params.lang}>
+      {/* Google Tag Manager */}
+      <Script
+        id='gtm-script'
+        strategy='afterInteractive'
+        dangerouslySetInnerHTML={{
+          __html: `
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-W7HBVJPC');
+          `,
+        }}
+      />
+
       <NextIntlClientProvider messages={messages}>
         <body
           className={rubik.className}
           dir={params.lang === 'he' ? 'rtl' : 'ltr'}
         >
+          {/* Google Tag Manager (noscript) */}
+          <noscript>
+            <iframe
+              src='https://www.googletagmanager.com/ns.html?id=GTM-W7HBVJPC'
+              height='0'
+              width='0'
+              style={{ display: 'none', visibility: 'hidden' }}
+            />
+          </noscript>
+
           <Header />
           <Modal />
           {children}
