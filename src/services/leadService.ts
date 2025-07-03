@@ -2,7 +2,9 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 import nodemailer from 'nodemailer';
 import type { LeadData, ExtractedInfo } from '../types';
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || '');
+const genAI = new GoogleGenerativeAI(
+  process.env.NEXT_PUBLIC_GEMINI_API_KEY || ''
+);
 
 export class LeadService {
   private static instance: LeadService;
@@ -13,7 +15,7 @@ export class LeadService {
 
   constructor() {
     // הגדרת מייל
-    const gmailAppPassword = process.env.GMAIL_APP_PASSWORD;
+    const gmailAppPassword = process.env.NEXT_PUBLIC_GMAIL_APP_PASSWORD;
     if (gmailAppPassword) {
       this.emailTransporter = nodemailer.createTransport({
         host: 'smtp.gmail.com',
@@ -32,7 +34,7 @@ export class LeadService {
     }
 
     // הגדרת Google Sheets
-    this.webhookUrl = process.env.GOOGLE_SHEETS_WEBHOOK_URL || '';
+    this.webhookUrl = process.env.NEXT_PUBLIC_GOOGLE_SHEETS_WEBHOOK_URL || '';
     this.isGoogleSheetsConfigured = !!this.webhookUrl;
   }
 
