@@ -23,6 +23,13 @@ const Chatbot = dynamic(() => import('@/components/ChatBot/ChatBot'), {
   ssr: false,
 });
 
+const WhatsappLink = dynamic(
+  () => import('@/components/layout/WhatsappLink/WhatsappLink'),
+  {
+    ssr: false,
+  }
+);
+
 const rubik = Rubik({
   weight: ['300', '400', '500', '900'],
   style: 'normal',
@@ -179,6 +186,7 @@ export default async function RootLayout({
           {children}
           <Footer />
           {params.lang === 'he' && <Chatbot locale={params.lang} />}
+          <WhatsappLink />
           <script
             type='application/ld+json'
             dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
