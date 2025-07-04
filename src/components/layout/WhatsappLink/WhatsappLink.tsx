@@ -8,9 +8,9 @@ const WhatsappLink: FC = () => {
   const phone = '972547621889';
 
   const messages: Record<string, string> = {
-    en: 'Hello, I’m interested in your services!',
-    he: 'שלום, אני מעוניין בשירותים שלך!',
-    ru: 'Здравствуйте, я заинтересован в ваших услугах!',
+    en: 'Hello, can I get information about exosomes?',
+    he: 'שלום, אפשר לקבל מידע לגבי אקסוזומים?',
+    ru: 'Здравствуйте, можно получить информацию об экзосомах?',
   };
 
   const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(
