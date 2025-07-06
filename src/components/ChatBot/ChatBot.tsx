@@ -121,6 +121,12 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
     null
   );
   const [hasAskedForContact, setHasAskedForContact] = useState(false);
+  
+  // הוספה: state עבור כפתורים מוכנים
+  const [showPredefinedButtons, setShowPredefinedButtons] = useState(false);
+  const [usedQuestions, setUsedQuestions] = useState<string[]>([]);
+  const [buttonsTimer, setButtonsTimer] = useState<NodeJS.Timeout | null>(null);
+  
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
@@ -167,6 +173,42 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
     if (inactivityTimer) {
       clearTimeout(inactivityTimer);
       setInactivityTimer(null);
+    }
+  };
+
+  // תחילת טיימר להצגת כפתורים
+  const startButtonsTimer = () => {
+    if (buttonsTimer) {
+      clearTimeout(buttonsTimer);
+    }
+    
+    // כל השאלות הזמינות
+    const allQuestions = [
+      'מהם אקסוזומים?',
+      'מה התועלות העיקריות של המוצרים?',
+      'כמה עולים המוצרים?',
+      'איך נרשמים למפגש ההדרכה?',
+      'במה המוצר שונה וטוב יותר ממוצרים אחרים דומים?',
+      'אני רוצה שיחזרו אליי!'
+    ];
+    
+    // אל תציג כפתורים אם כבר נשלחו כל השאלות
+    if (usedQuestions.length >= allQuestions.length) {
+      return;
+    }
+    
+    const timer = setTimeout(() => {
+      setShowPredefinedButtons(true);
+    }, 3000); // 3 שניות דיליי
+    
+    setButtonsTimer(timer);
+  };
+
+  // עצירת טיימר כפתורים
+  const stopButtonsTimer = () => {
+    if (buttonsTimer) {
+      clearTimeout(buttonsTimer);
+      setButtonsTimer(null);
     }
   };
 
@@ -294,19 +336,39 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
     if (messages.length === 0) {
       const welcomeMessage: Message = {
         role: 'assistant',
-        content: `היי! 😊 אני מומחית האקסוזומים של מיטודרם!
-
-אקסוזומים הם מהפכה אמיתית בעולם הקוסמטיקה! זה בועיות ננו טבעיות שמעבירות מידע חיוני בין תאים - כמו מערכת דואר חכמה של הגוף. האקסוזומים הסינתטיים שלנו מכילים 73 פקטורי גדילה ויודעים לדבר ישירות עם התאים לגרום להם להתחדש באופן מדהים!
-
-מה הכי מעניין אותך?`,
+        content: `היי יקירה! 😊 אני כאן מטעם מיטודרם - מומחית האקסוזומים שלכם!
+השירותים שלנו מיועדים במיוחד לקוסמטיקאיות מוסמכות. יש לי דברים מדהימים לשתף!
+תרצי לשמוע על הטכנולוגיה המהפכנית שלנו?`,
         timestamp: new Date(),
       };
       setMessages([welcomeMessage]);
 
       // התחלת טיימר ראשוני
-      setTimeout(() => startInactivityTimer(), 1000);
+      setTimeout(() => {
+        startInactivityTimer();
+      }, 1000);
     }
   }, []);
+  
+  // useEffect שמעקב אחרי הודעות ועוצר טיימר כפתורים כשמגיעה הודעה חדשה מהמשתמש
+  useEffect(() => {
+    if (messages.length > 0) {
+      const lastMessage = messages[messages.length - 1];
+      if (lastMessage.role === 'user') {
+        // אם ההודעה האחרונה היא מהמשתמש, עצור את הטיימר של הכפתורים
+        stopButtonsTimer();
+        setShowPredefinedButtons(false);
+      }
+    }
+  }, [messages]);
+  
+  // useEffect שמוודא שהכפתורים מוצגים בפעם הראשונה
+  useEffect(() => {
+    if (messages.length === 1 && messages[0].role === 'assistant') {
+      // הודעה ראשונה - אל תציג כפתורים יד מיד
+      setShowPredefinedButtons(true);
+    }
+  }, [messages]);
 
   // ניקוי טיימר בעת סגירת הרכיב
   useEffect(() => {
@@ -314,8 +376,11 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
       if (inactivityTimer) {
         clearTimeout(inactivityTimer);
       }
+      if (buttonsTimer) {
+        clearTimeout(buttonsTimer);
+      }
     };
-  }, [inactivityTimer]);
+  }, [inactivityTimer, buttonsTimer]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInputMessage(e.target.value);
@@ -331,6 +396,12 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
 
     // עצירת טיימר חוסר פעילות
     stopInactivityTimer();
+    
+    // עצירת טיימר כפתורים
+    stopButtonsTimer();
+    
+    // הסתרת כפתורים כשמישהו כותב הודעה באופן ידני
+    setShowPredefinedButtons(false);
 
     const userMessage: Message = {
       role: 'user',
@@ -630,6 +701,9 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
       ) {
         startInactivityTimer();
       }
+      
+      // הוספה: התחל טיימר כפתורים אחרי התשובה
+      startButtonsTimer();
     } catch (error) {
       console.error('Error sending message:', error);
       const errorMessage: Message = {
@@ -639,6 +713,9 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
         timestamp: new Date(),
       };
       setMessages((prev) => [...prev, errorMessage]);
+      
+      // הוספה: התחל טיימר כפתורים גם במקרה של שגיאה
+      startButtonsTimer();
     } finally {
       setIsLoading(false);
     }
@@ -654,6 +731,13 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
   // פונקציה לשליחת שאלות מוכנות
   const sendPredefinedMessage = async (message: string) => {
     stopInactivityTimer();
+    stopButtonsTimer();
+    
+    // הוספה לרשימת שאלות שכבר נשלחו
+    setUsedQuestions(prev => [...prev, message]);
+    
+    // הסתרת כפתורים
+    setShowPredefinedButtons(false);
 
     const userMessage: Message = {
       role: 'user',
@@ -874,6 +958,9 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
       ) {
         startInactivityTimer();
       }
+      
+      // הוספה: התחל טיימר כפתורים אחרי התשובה
+      startButtonsTimer();
     } catch (error) {
       console.error('Error sending predefined message:', error);
       const errorMessage: Message = {
@@ -883,6 +970,9 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
         timestamp: new Date(),
       };
       setMessages((prev) => [...prev, errorMessage]);
+      
+      // הוספה: התחל טיימר כפתורים גם במקרה של שגיאה
+      startButtonsTimer();
     } finally {
       setIsLoading(false);
     }
@@ -1013,18 +1103,19 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
                   </div>
                 </div>
 
-                {/* הצגת כפתורי השאלות רק להודעת הפתיחה הראשונה */}
-                {index === 0 &&
-                  message.role === 'assistant' &&
-                  messages.length === 1 && (
-                    <div style={{ marginTop: '10px', marginRight: '40px' }}>
-                      <div
-                        style={{
-                          display: 'flex',
-                          flexDirection: 'column',
-                          gap: '8px',
-                        }}
-                      >
+                {/* הצגת כפתורי השאלות */}
+                {((index === 0 && message.role === 'assistant' && messages.length === 1) || 
+                  (index === messages.length - 1 && message.role === 'assistant' && showPredefinedButtons && !isLoading)) && (
+                  <div style={{ marginTop: '10px', marginRight: '40px' }}>
+                    <div
+                      style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '8px',
+                      }}
+                    >
+                      {/* כפתור אקסוזומים */}
+                      {!usedQuestions.includes('מהם אקסוזומים?') && (
                         <button
                           className={styles.predefinedQuestionBtn}
                           onClick={() =>
@@ -1033,16 +1124,22 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
                         >
                           🧬 מהם אקסוזומים ולמה הם מהפכה?
                         </button>
+                      )}
+                      
+                      {/* כפתור התועלות */}
+                      {!usedQuestions.includes('מה התועלות העיקריות של המוצרים?') && (
                         <button
                           className={styles.predefinedQuestionBtn}
                           onClick={() =>
-                            sendPredefinedMessage(
-                              'מה התועלות העיקריות של המוצרים?'
-                            )
+                            sendPredefinedMessage('מה התועלות העיקריות של המוצרים?')
                           }
                         >
                           ✨ מה התועלות העיקריות של המוצרים?
                         </button>
+                      )}
+                      
+                      {/* כפתור מחירים */}
+                      {!usedQuestions.includes('כמה עולים המוצרים?') && (
                         <button
                           className={styles.predefinedQuestionBtn}
                           onClick={() =>
@@ -1051,6 +1148,10 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
                         >
                           💰 כמה עולים המוצרים וכמה הרווח?
                         </button>
+                      )}
+                      
+                      {/* כפתור הרשמה */}
+                      {!usedQuestions.includes('איך נרשמים למפגש ההדרכה?') && (
                         <button
                           className={styles.predefinedQuestionBtn}
                           onClick={() =>
@@ -1059,16 +1160,22 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
                         >
                           📚 איך נרשמים למפגש ההדרכה?
                         </button>
+                      )}
+                      
+                      {/* כפתור ההבדלים */}
+                      {!usedQuestions.includes('במה המוצר שונה וטוב יותר ממוצרים אחרים דומים?') && (
                         <button
                           className={styles.predefinedQuestionBtn}
                           onClick={() =>
-                            sendPredefinedMessage(
-                              'במה המוצר שונה וטוב יותר ממוצרים אחרים דומים?'
-                            )
+                            sendPredefinedMessage('במה המוצר שונה וטוב יותר ממוצרים אחרים דומים?')
                           }
                         >
                           🏆 במה המוצרים שלנו שונים וטובים יותר?
                         </button>
+                      )}
+                      
+                      {/* כפתור קשר */}
+                      {!usedQuestions.includes('אני רוצה שיחזרו אליי!') && (
                         <button
                           className={styles.predefinedQuestionBtn}
                           onClick={() =>
@@ -1077,9 +1184,10 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
                         >
                           📞 אני רוצה שיחזרו אליי!
                         </button>
-                      </div>
+                      )}
                     </div>
-                  )}
+                  </div>
+                )}
               </div>
             ))}
             {isLoading && (
