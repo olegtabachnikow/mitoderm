@@ -191,7 +191,7 @@ const MainForm: FC = () => {
           </>
         )}
       </div>
-      {isTabletOrMobile ? null : isSent ? null : (
+      {isTabletOrMobile && isSending ? null : isSent ? null : (
         <div className={styles.formImageContainer}>
           <Image
             className={styles.desktopImage}
