@@ -46,7 +46,7 @@ export interface EventFormDataType extends FormDataType {
   lang?: string;
 }
 
-export type DiscountModifier = 0.9 | 1 | 0.1;
+export type DiscountModifier = 0.9 | 1 | 0.01;
 
 export enum ScrollItems {
   gallery = 'gallery',
