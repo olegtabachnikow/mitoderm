@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { ModalType } from '@/types';
+import { ModalType, DiscountModifier } from '@/types';
 
 interface RootState {
   modalIsOpen: boolean;
@@ -16,8 +16,8 @@ interface RootState {
   setModalContent: (arg: ModalType) => void;
   numberOfTickets: number;
   setNumberOfTickets: (arg: number) => void;
-  isDiscounted: boolean;
-  setIsDiscounted: (arg: boolean) => void;
+  discountModifier: DiscountModifier;
+  setDiscountModifier: (arg: DiscountModifier) => void;
 }
 
 const useAppStore = create<RootState>((set) => ({
@@ -42,9 +42,9 @@ const useAppStore = create<RootState>((set) => ({
   numberOfTickets: 1,
   setNumberOfTickets: (arg: number) =>
     set((state) => ({ numberOfTickets: (state.numberOfTickets = arg) })),
-  isDiscounted: false,
-  setIsDiscounted: (arg: boolean) =>
-    set((state) => ({ isDiscounted: (state.isDiscounted = arg) })),
+  discountModifier: 1,
+  setDiscountModifier: (arg: DiscountModifier) =>
+    set((state) => ({ discountModifier: (state.discountModifier = arg) })),
 }));
 
 export default useAppStore;

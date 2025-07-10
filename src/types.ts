@@ -41,10 +41,12 @@ export interface MainFormDataType extends FormDataType {
 export interface EventFormDataType extends FormDataType {
   idNumber: { value: string; isValid: boolean };
   totalPrice?: string;
-  discount?: boolean;
+  discount?: number;
   quantity?: string | number;
   lang?: string;
 }
+
+export type DiscountModifier = 0.9 | 1 | 0.1;
 
 export enum ScrollItems {
   gallery = 'gallery',

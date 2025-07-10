@@ -19,26 +19,30 @@ const Price: FC<Props> = ({ total, setTotal }) => {
   const t = useTranslations();
   const locale = useLocale();
   const currentPrice = process.env.NEXT_PUBLIC_EVENT_PRICE;
-  const { numberOfTickets, isDiscounted, setIsDiscounted } = useAppStore(
-    (state) => state
-  );
+  const { numberOfTickets, discountModifier, setDiscountModifier } =
+    useAppStore((state) => state);
 
   useEffect(() => {
     setValue('');
-    setIsDiscounted(false);
+    setDiscountModifier(1);
     setErrorMessage(initialErrorStatus);
   }, []);
 
   const handleClick = () => {
-    value === process.env.NEXT_PUBLIC_EVENT_PROMOCODE
-      ? setErrorMessage('success')
-      : setErrorMessage('error');
+    if (value === process.env.NEXT_PUBLIC_EVENT_PROMOCODE) {
+      setErrorMessage('success');
+      setDiscountModifier(0.9);
+    } else if (value === process.env.NEXT_PUBLIC_EVENT_PROMOCODE_TEST) {
+      setErrorMessage('success');
+      setDiscountModifier(0.1);
+    } else {
+      setErrorMessage('error');
+      setDiscountModifier(1);
+    }
   };
 
   useEffect(() => {
     if (errorMessage !== 'default') {
-      errorMessage === 'error' && setIsDiscounted(false);
-      errorMessage === 'success' && setIsDiscounted(true);
       const timer = setTimeout(() => setErrorMessage(initialErrorStatus), 5000);
       return () => clearTimeout(timer);
     }
@@ -57,7 +61,7 @@ const Price: FC<Props> = ({ total, setTotal }) => {
           className={`${styles.amount} ${locale === 'he' ? styles.he : ''}`}
         >
           <span>&#8362; </span>
-          {`${(parseInt(total) * numberOfTickets * (isDiscounted ? 0.9 : 1))
+          {`${(parseInt(total) * numberOfTickets * discountModifier)
             .toFixed(2)
             .replace('.', ',')}`}
         </span>
@@ -83,7 +87,9 @@ const Price: FC<Props> = ({ total, setTotal }) => {
           </button>
         </div>
         <span
-          className={`${styles.message} ${isDiscounted ? styles.success : ''} ${
+          className={`${styles.message} ${
+            discountModifier === 0.9 || 0.1 ? styles.success : ''
+          } ${
             errorMessage === 'default'
               ? ''
               : errorMessage === 'error'
@@ -92,7 +98,7 @@ const Price: FC<Props> = ({ total, setTotal }) => {
           }`}
         >
           {errorMessage === 'default'
-            ? isDiscounted && t('form.success')
+            ? discountModifier === 0.9 && t('form.success')
             : errorMessage === 'error'
             ? t('form.wrongPromo')
             : t('form.success')}
