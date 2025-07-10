@@ -34,7 +34,7 @@ const Price: FC<Props> = ({ total, setTotal }) => {
       setDiscountModifier(0.9);
     } else if (value === process.env.NEXT_PUBLIC_EVENT_PROMOCODE_TEST) {
       setErrorMessage('success');
-      setDiscountModifier(0.1);
+      setDiscountModifier(0.01);
     } else {
       setErrorMessage('error');
       setDiscountModifier(1);
