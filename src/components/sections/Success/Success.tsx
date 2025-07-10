@@ -17,11 +17,13 @@ const Success: FC = () => {
   const phone = params.get('phone');
   const amount = params.get('amount');
   const idNumber = params.get('idNumber');
-
+  console.log(name, email, phone, amount, idNumber);
   useEffect(() => {
     if (!name || !email || !phone || !amount || !idNumber) {
       router.push('/');
-    } else sendPaymentEmail({ name, email, phone, amount, idNumber });
+    } else {
+      sendPaymentEmail({ name, email, phone, amount, idNumber });
+    }
   }, []);
 
   return (

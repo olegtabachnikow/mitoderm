@@ -7,7 +7,7 @@ const myEmail = process.env.NEXT_PUBLIC_ILONA_EMAIL;
 
 export async function sendPaymentEmail(formData: any) {
   const { name, email, phone, amount, idNumber } = formData;
-
+  console.log(formData);
   const transporter = nodemailer.createTransport({
     service: 'Gmail',
     host: 'smtp.gmail.com',

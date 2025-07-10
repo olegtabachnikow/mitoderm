@@ -22,7 +22,7 @@ const crmUrl = `https://${crmAccount}.senzey.com/extapi/work_order/add.php?usern
 
 export async function sendPaymentDataToCRM(formData: EventFormDataType) {
   const finalPrice = formData.discount
-    ? (parseInt(formData.totalPrice as string) * 0.9).toString()
+    ? (parseInt(formData.totalPrice as string) * formData.discount).toString()
     : formData.totalPrice;
   const totalPaymentValue =
     parseInt(formData.quantity as string) * parseInt(finalPrice as string);

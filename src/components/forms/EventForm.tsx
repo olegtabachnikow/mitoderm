@@ -23,7 +23,7 @@ import { sendPaymentDataToCRM } from '@/utils/sendPayment';
 import type { NameTypeMain, NameTypeEvent } from '@/types';
 
 const EventForm: FC = () => {
-  const { numberOfTickets, isDiscounted } = useAppStore((state) => state);
+  const { numberOfTickets, discountModifier } = useAppStore((state) => state);
   const t = useTranslations();
   const pathname = usePathname();
   const isEventPage = pathname.includes('event');
@@ -57,7 +57,7 @@ const EventForm: FC = () => {
       ...formData,
       totalPrice,
       quantity: numberOfTickets,
-      discount: isDiscounted,
+      discount: discountModifier,
       lang: locale,
     };
 
