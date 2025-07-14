@@ -481,6 +481,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
           content:
             'מעולה! עדכנתי את הפרטים בטופס. תוכלי לעדכן את שאר הפרטים ולשלוח 😊',
           timestamp: new Date(),
+          showForm: true,
         };
 
         setMessages((prev) => [...prev, updateMessage]);
