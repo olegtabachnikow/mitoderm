@@ -421,6 +421,38 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
     setIsLoading(true);
 
     try {
+      // בדיקה אם זו שאלה על מחירים - טיפול מקומי לפני שליחה ל-API
+      const isPriceQuestion = 
+        currentInput.includes('מחיר') ||
+        currentInput.includes('כמה עול') ||
+        currentInput.includes('עלות') ||
+        currentInput.includes('תמחור') ||
+        currentInput.includes('כמה עולים המוצרים');
+
+      if (isPriceQuestion) {
+        const priceMessage: Message = {
+          role: 'assistant',
+          content: 'נשמח לחזור אליך עם המחירים לנייד! תרצי להשאיר פרטים?',
+          timestamp: new Date(),
+          showForm: true,
+        };
+
+        setMessages((prev) => [...prev, priceMessage]);
+        setHasAskedForContact(true);
+        setShowContactForm(true);
+        
+        // עדכון היסטוריית השיחה מקומית
+        setConversationHistory((prev) => [
+          ...prev,
+          { role: 'user', content: currentInput },
+          { role: 'assistant', content: 'נשמח לחזור אליך עם המחירים לנייד! תרצי להשאיר פרטים?' },
+        ]);
+
+        await extractContactInfoForForm();
+        setIsLoading(false);
+        return;
+      }
+
       // בדיקה אם יש מספר טלפון בהודעה (זיהוי אוטומטי לטופס)
       const phoneMatch = currentInput.match(/05\d-?\d{7}|05\d{8}/);
       const hasPhoneNumber = phoneMatch !== null;
@@ -635,7 +667,8 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
         currentInput.includes('מחיר') ||
         currentInput.includes('כמה עול') ||
         currentInput.includes('עלות') ||
-        currentInput.includes('תמחור');
+        currentInput.includes('תמחור') ||
+        currentInput.includes('כמה עולים המוצרים');
 
       console.log('=== CONTACT FORM LOGIC DEBUG ===');
       console.log('hasContactFormShortcode:', hasContactFormShortcode);
@@ -749,6 +782,38 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
     setIsLoading(true);
 
     try {
+      // בדיקה אם זו שאלה על מחירים - טיפול מקומי לפני שליחה ל-API
+      const isPriceQuestion = 
+        message.includes('מחיר') ||
+        message.includes('כמה עול') ||
+        message.includes('עלות') ||
+        message.includes('תמחור') ||
+        message.includes('כמה עולים המוצרים');
+
+      if (isPriceQuestion) {
+        const priceMessage: Message = {
+          role: 'assistant',
+          content: 'נשמח לחזור אליך עם המחירים לנייד! תרצי להשאיר פרטים?',
+          timestamp: new Date(),
+          showForm: true,
+        };
+
+        setMessages((prev) => [...prev, priceMessage]);
+        setHasAskedForContact(true);
+        setShowContactForm(true);
+        
+        // עדכון היסטוריית השיחה מקומית
+        setConversationHistory((prev) => [
+          ...prev,
+          { role: 'user', content: message },
+          { role: 'assistant', content: 'נשמח לחזור אליך עם המחירים לנייד! תרצי להשאיר פרטים?' },
+        ]);
+
+        await extractContactInfoForForm();
+        setIsLoading(false);
+        return;
+      }
+
       // בדיקה אם יש מספר טלפון בהודעה
       const phoneMatch = message.match(/05\d-?\d{7}|05\d{8}/);
       const hasPhoneNumber = phoneMatch !== null;
@@ -893,7 +958,8 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
         message.includes('מחיר') ||
         message.includes('כמה עול') ||
         message.includes('עלות') ||
-        message.includes('תמחור');
+        message.includes('תמחור') ||
+        message.includes('כמה עולים המוצרים');
 
       console.log('=== CONTACT FORM LOGIC DEBUG ===');
       console.log('hasContactFormShortcode:', hasContactFormShortcode);

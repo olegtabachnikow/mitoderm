@@ -25,7 +25,7 @@ const genAI = new GoogleGenerativeAI(
 // קריאת המדריך המלא מקובץ AssistantGuide
 const getFullGuide = () => {
   try {
-    const guidePath = join(process.cwd(), 'AssistantGuide');
+    const guidePath = join(process.cwd(), 'AssistantGuide.txt');
     return readFileSync(guidePath, 'utf-8');
   } catch (error) {
     console.error('Failed to read AssistantGuide file:', error);
