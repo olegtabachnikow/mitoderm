@@ -421,38 +421,6 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
     setIsLoading(true);
 
     try {
-      // בדיקה אם זו שאלה על מחירים - טיפול מקומי לפני שליחה ל-API
-      const isPriceQuestion = 
-        currentInput.includes('מחיר') ||
-        currentInput.includes('כמה עול') ||
-        currentInput.includes('עלות') ||
-        currentInput.includes('תמחור') ||
-        currentInput.includes('כמה עולים המוצרים');
-
-      if (isPriceQuestion) {
-        const priceMessage: Message = {
-          role: 'assistant',
-          content: 'נשמח לחזור אליך עם המחירים לנייד! תרצי להשאיר פרטים? [SHOW_CONTACT_FORM]',
-          timestamp: new Date(),
-          showForm: true,
-        };
-
-        setMessages((prev) => [...prev, priceMessage]);
-        setHasAskedForContact(true);
-        setShowContactForm(true);
-        
-        // עדכון היסטוריית השיחה מקומית
-        setConversationHistory((prev) => [
-          ...prev,
-          { role: 'user', content: currentInput },
-          { role: 'assistant', content: 'נשמח לחזור אליך עם המחירים לנייד! תרצי להשאיר פרטים? [SHOW_CONTACT_FORM]' },
-        ]);
-
-        await extractContactInfoForForm();
-        setIsLoading(false);
-        return;
-      }
-
       // בדיקה אם יש מספר טלפון בהודעה (זיהוי אוטומטי לטופס)
       const phoneMatch = currentInput.match(/05\d-?\d{7}|05\d{8}/);
       const hasPhoneNumber = phoneMatch !== null;
@@ -662,13 +630,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
             currentInput.includes('בוודאי') ||
             currentInput.includes('נהדר') ||
             currentInput.includes('OK') ||
-            currentInput.toLowerCase().includes('yes'))) ||
-        // או אם שואלים על מחירים
-        currentInput.includes('מחיר') ||
-        currentInput.includes('כמה עול') ||
-        currentInput.includes('עלות') ||
-        currentInput.includes('תמחור') ||
-        currentInput.includes('כמה עולים המוצרים');
+            currentInput.toLowerCase().includes('yes')));
 
       console.log('=== CONTACT FORM LOGIC DEBUG ===');
       console.log('hasContactFormShortcode:', hasContactFormShortcode);
@@ -782,38 +744,6 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
     setIsLoading(true);
 
     try {
-      // בדיקה אם זו שאלה על מחירים - טיפול מקומי לפני שליחה ל-API
-      const isPriceQuestion = 
-        message.includes('מחיר') ||
-        message.includes('כמה עול') ||
-        message.includes('עלות') ||
-        message.includes('תמחור') ||
-        message.includes('כמה עולים המוצרים');
-
-      if (isPriceQuestion) {
-        const priceMessage: Message = {
-          role: 'assistant',
-          content: 'נשמח לחזור אליך עם המחירים לנייד! תרצי להשאיר פרטים? [SHOW_CONTACT_FORM]',
-          timestamp: new Date(),
-          showForm: true,
-        };
-
-        setMessages((prev) => [...prev, priceMessage]);
-        setHasAskedForContact(true);
-        setShowContactForm(true);
-        
-        // עדכון היסטוריית השיחה מקומית
-        setConversationHistory((prev) => [
-          ...prev,
-          { role: 'user', content: message },
-          { role: 'assistant', content: 'נשמח לחזור אליך עם המחירים לנייד! תרצי להשאיר פרטים? [SHOW_CONTACT_FORM]' },
-        ]);
-
-        await extractContactInfoForForm();
-        setIsLoading(false);
-        return;
-      }
-
       // בדיקה אם יש מספר טלפון בהודעה
       const phoneMatch = message.match(/05\d-?\d{7}|05\d{8}/);
       const hasPhoneNumber = phoneMatch !== null;
@@ -953,13 +883,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
             message.includes('בוודאי') ||
             message.includes('נהדר') ||
             message.includes('OK') ||
-            message.toLowerCase().includes('yes'))) ||
-        // או אם שואלים על מחירים
-        message.includes('מחיר') ||
-        message.includes('כמה עול') ||
-        message.includes('עלות') ||
-        message.includes('תמחור') ||
-        message.includes('כמה עולים המוצרים');
+            message.toLowerCase().includes('yes')));
 
       console.log('=== CONTACT FORM LOGIC DEBUG ===');
       console.log('hasContactFormShortcode:', hasContactFormShortcode);
