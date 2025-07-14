@@ -32,11 +32,21 @@ interface ChatbotProps {
 // רכיב טופס חכם עם local state - מחוץ לפונקציה הראשית למניעת re-renders
 const ContactFormInMessage = React.memo(
   ({ initialData, onSubmit, onCancel, onUpdate, isLoading, styles }: any) => {
-    const [localData, setLocalData] = useState(initialData);
+    const [localData, setLocalData] = useState(initialData || {
+      name: '',
+      phone: '',
+      email: '',
+      subject: 'פנייה כללית מהצ\'אטבוט'
+    });
 
     // עדכון local state כשמגיע מידע חדש
     useEffect(() => {
-      setLocalData(initialData);
+      setLocalData(initialData || {
+        name: '',
+        phone: '',
+        email: '',
+        subject: 'פנייה כללית מהצ\'אטבוט'
+      });
     }, [initialData]);
 
     const handleFieldChange = (field: string, value: string) => {
@@ -214,6 +224,14 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
 
   // חילוץ מידע באמצעות Gemini לטופס (ללא הוספת הודעות)
   const extractContactInfoForForm = async () => {
+    // יצירת ערך ברירת מחדל תמיד
+    const defaultInfo = {
+      name: '',
+      phone: '',
+      email: '',
+      subject: "פנייה כללית מהצ'אטבוט",
+    };
+
     try {
       const response = await fetch('/api/extract-info', {
         method: 'POST',
@@ -233,34 +251,43 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
         ) {
           // שמירה על פרטים קיימים ועדכון רק נתונים חדשים
           setExtractedInfo((prevInfo: any) => ({
-            name: result.data.name || prevInfo?.name || '',
-            phone: result.data.phone || prevInfo?.phone || '',
-            email: result.data.email || prevInfo?.email || '',
+            name: result.data.name || prevInfo?.name || defaultInfo.name,
+            phone: result.data.phone || prevInfo?.phone || defaultInfo.phone,
+            email: result.data.email || prevInfo?.email || defaultInfo.email,
             subject:
               result.data.subject ||
               prevInfo?.subject ||
-              "פנייה כללית מהצ'אטבוט",
+              defaultInfo.subject,
           }));
           setShowContactForm(true);
         } else {
           // אם אין מידע מספיק אבל יש פרטים קיימים, תשמור עליהם
           setExtractedInfo((prevInfo: any) => ({
-            name: prevInfo?.name || '',
-            phone: prevInfo?.phone || '',
-            email: prevInfo?.email || '',
-            subject: prevInfo?.subject || "פנייה כללית מהצ'אטבוט",
+            name: prevInfo?.name || defaultInfo.name,
+            phone: prevInfo?.phone || defaultInfo.phone,
+            email: prevInfo?.email || defaultInfo.email,
+            subject: prevInfo?.subject || defaultInfo.subject,
           }));
           setShowContactForm(true);
         }
+      } else {
+        // שגיאת HTTP - צור ערך ברירת מחדל
+        setExtractedInfo((prevInfo: any) => ({
+          name: prevInfo?.name || defaultInfo.name,
+          phone: prevInfo?.phone || defaultInfo.phone,
+          email: prevInfo?.email || defaultInfo.email,
+          subject: prevInfo?.subject || defaultInfo.subject,
+        }));
+        setShowContactForm(true);
       }
     } catch (error) {
       console.error('Error extracting contact info:', error);
-      // במקרה של שגיאה - שמור על פרטים קיימים
+      // במקרה של שגיאה - צור ערך ברירת מחדל
       setExtractedInfo((prevInfo: any) => ({
-        name: prevInfo?.name || '',
-        phone: prevInfo?.phone || '',
-        email: prevInfo?.email || '',
-        subject: prevInfo?.subject || "פנייה כללית מהצ'אטבוט",
+        name: prevInfo?.name || defaultInfo.name,
+        phone: prevInfo?.phone || defaultInfo.phone,
+        email: prevInfo?.email || defaultInfo.email,
+        subject: prevInfo?.subject || defaultInfo.subject,
       }));
       setShowContactForm(true);
     }
@@ -268,17 +295,20 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
 
   // שליחת הטופס המאושר
   const submitConfirmedLead = async () => {
-    if (!extractedInfo) return;
+    if (!extractedInfo || !extractedInfo?.phone) {
+      console.error('No contact info to submit');
+      return;
+    }
 
     setIsLoading(true);
 
     try {
       const leadData = {
-        name: extractedInfo.name || 'לא צוין',
-        phone: extractedInfo.phone || 'לא צוין',
-        email: extractedInfo.email || 'לא צוין',
+        name: extractedInfo?.name || 'לא צוין',
+        phone: extractedInfo?.phone || 'לא צוין',
+        email: extractedInfo?.email || 'לא צוין',
         source: "אתר מיטודרם - צ'אטבוט",
-        conversationSummary: extractedInfo.subject || 'פנייה כללית',
+        conversationSummary: extractedInfo?.subject || 'פנייה כללית',
       };
 
       const response = await fetch('/api/leads', {
@@ -1070,13 +1100,17 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
                       {message.role === 'assistant' &&
                         message.showForm &&
                         showContactForm &&
-                        extractedInfo &&
                         // הצג את הטופס רק בהודעה האחרונה שיש לה showForm=true
                         index ===
                           messages.findLastIndex((msg) => msg.showForm) && (
                           <ContactFormInMessage
                             key={`contact-form-${index}`}
-                            initialData={extractedInfo}
+                            initialData={extractedInfo || {
+                              name: '',
+                              phone: '',
+                              email: '',
+                              subject: 'פנייה כללית מהצ\'אטבוט'
+                            }}
                             onSubmit={submitConfirmedLead}
                             onCancel={handleFormCancel}
                             onUpdate={updateExtractedInfo}
