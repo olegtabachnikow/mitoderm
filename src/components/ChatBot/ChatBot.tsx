@@ -432,7 +432,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
       if (isPriceQuestion) {
         const priceMessage: Message = {
           role: 'assistant',
-          content: 'נשמח לחזור אליך עם המחירים לנייד! תרצי להשאיר פרטים?',
+          content: 'נשמח לחזור אליך עם המחירים לנייד! תרצי להשאיר פרטים? [SHOW_CONTACT_FORM]',
           timestamp: new Date(),
           showForm: true,
         };
@@ -445,7 +445,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
         setConversationHistory((prev) => [
           ...prev,
           { role: 'user', content: currentInput },
-          { role: 'assistant', content: 'נשמח לחזור אליך עם המחירים לנייד! תרצי להשאיר פרטים?' },
+          { role: 'assistant', content: 'נשמח לחזור אליך עם המחירים לנייד! תרצי להשאיר פרטים? [SHOW_CONTACT_FORM]' },
         ]);
 
         await extractContactInfoForForm();
@@ -793,7 +793,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
       if (isPriceQuestion) {
         const priceMessage: Message = {
           role: 'assistant',
-          content: 'נשמח לחזור אליך עם המחירים לנייד! תרצי להשאיר פרטים?',
+          content: 'נשמח לחזור אליך עם המחירים לנייד! תרצי להשאיר פרטים? [SHOW_CONTACT_FORM]',
           timestamp: new Date(),
           showForm: true,
         };
@@ -806,7 +806,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
         setConversationHistory((prev) => [
           ...prev,
           { role: 'user', content: message },
-          { role: 'assistant', content: 'נשמח לחזור אליך עם המחירים לנייד! תרצי להשאיר פרטים?' },
+          { role: 'assistant', content: 'נשמח לחזור אליך עם המחירים לנייד! תרצי להשאיר פרטים? [SHOW_CONTACT_FORM]' },
         ]);
 
         await extractContactInfoForForm();
