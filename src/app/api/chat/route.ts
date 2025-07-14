@@ -50,7 +50,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-pro' });
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
 
     // הכנת הקשר עם 8 ההודעות האחרונות בלבד (4 של המשתמש + 4 של הצ'אטבוט)
     const systemPrompt = buildSystemPrompt();
