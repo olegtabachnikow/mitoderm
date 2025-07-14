@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { LeadService } from '../../../services/leadService';
 
+// הגדרת timeout ארוך יותר עבור Gemini 2.5
+export const maxDuration = 30;
+
 export async function POST(request: NextRequest) {
   try {
     const { conversationHistory } = await request.json();

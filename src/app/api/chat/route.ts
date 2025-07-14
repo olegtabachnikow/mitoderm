@@ -17,6 +17,9 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 import { readFileSync } from 'fs';
 import { join } from 'path';
 
+// הגדרת timeout ארוך יותר עבור Gemini 2.5
+export const maxDuration = 30;
+
 const genAI = new GoogleGenerativeAI(
   process.env.NEXT_PUBLIC_GEMINI_API_KEY ||
     'AIzaSyB47Zt8wAKT3b3fAm_IbI9xbrbhgJcnfFA'
@@ -50,7 +53,14 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
+    // נסה עם Gemini 2.5 Flash ואם לא עובד, נחזור ל-1.5 Flash
+    let model;
+    try {
+      model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
+    } catch {
+      console.log('Falling back to gemini-1.5-flash');
+      model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+    }
 
     // הכנת הקשר עם 8 ההודעות האחרונות בלבד (4 של המשתמש + 4 של הצ'אטבוט)
     const systemPrompt = buildSystemPrompt();
