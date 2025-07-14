@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { LeadService } from '../../../services/leadService';
 
-// הגדרת timeout ארוך יותר עבור Gemini 2.5
-export const maxDuration = 30;
+// הגדרת timeout מורחב למודל מתקדם
+export const maxDuration = 60; // 60 שניות
 
 export async function POST(request: NextRequest) {
   try {

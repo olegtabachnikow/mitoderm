@@ -50,14 +50,7 @@ export class LeadService {
     conversationHistory: any[]
   ): Promise<ExtractedInfo> {
     try {
-      // נסה עם Gemini 2.5 Flash ואם לא עובד, נחזור ל-1.5 Flash
-      let model;
-      try {
-        model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
-      } catch {
-        console.log('Falling back to gemini-1.5-flash in leadService');
-        model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
-      }
+      const model = genAI.getGenerativeModel({ model: 'gemini-2.5-pro-preview-06-05' });
 
       const extractPrompt = `אתה מומחה בחילוץ מידע ממשתמשים. תפקידך לנתח שיחות צ'אט ולחלץ פרטי קשר ונושא הפנייה.
 
