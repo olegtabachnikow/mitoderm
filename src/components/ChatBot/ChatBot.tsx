@@ -160,15 +160,36 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
     }
 
     if (!hasAskedForContact && messages.length > 1 && !showContactForm) {
-      const timer = setTimeout(() => {
+      const timer = setTimeout(async () => {
         // בדיקה נוספת שאין טופס פתוח ולא ביקשנו פרטים
         if (!hasAskedForContact && !showContactForm) {
-          const autoMessage: Message = {
-            role: 'assistant',
-            content: 'האם תרצי שנחזור אליך? 😊',
-            timestamp: new Date(),
-          };
-          setMessages((prev) => [...prev, autoMessage]);
+          // שליחת הודעה דרך AI במקום תשובה קבועה
+          try {
+            const response = await fetch('/api/chat', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                message: "לא הייתה פעילות במשך זמן - שאל אם תרצה שיחזרו אליה",
+                conversationHistory: conversationHistory,
+                isInactivityTimeout: true
+              }),
+            });
+
+            if (response.ok) {
+              const data = await response.json();
+              const autoMessage: Message = {
+                role: 'assistant',
+                content: data.message,
+                timestamp: new Date(),
+              };
+              setMessages((prev) => [...prev, autoMessage]);
+              setConversationHistory(data.conversationHistory || []);
+            }
+          } catch (error) {
+            console.error('Error sending inactivity message:', error);
+          }
           setHasAskedForContact(true);
         }
       }, 8000); // 8 שניות
@@ -295,25 +316,80 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
         setShowContactForm(false);
         setExtractedInfo(null);
 
-        const successMessage: Message = {
-          role: 'assistant',
-          content:
-            '🎉 נהדר! הפרטים נשלחו אלינו בהצלחה!\nמישהו מהצוות יצור איתך קשר בהקדם.\n\nיש לך עוד שאלות בינתיים?',
-          timestamp: new Date(),
-        };
-        setMessages((prev) => [...prev, successMessage]);
+        // שליחת הודעת הצלחה דרך AI
+        try {
+          const response = await fetch('/api/chat', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              message: "הטופס נשלח בהצלחה - תודה ועידוד",
+              conversationHistory: conversationHistory,
+              isSuccessMessage: true
+            }),
+          });
+
+          if (response.ok) {
+            const data = await response.json();
+            const successMessage: Message = {
+              role: 'assistant',
+              content: data.message,
+              timestamp: new Date(),
+            };
+            setMessages((prev) => [...prev, successMessage]);
+            setConversationHistory(data.conversationHistory || []);
+          }
+        } catch (error) {
+          console.error('Error sending success message:', error);
+          // fallback message
+          const successMessage: Message = {
+            role: 'assistant',
+            content: '🎉 נהדר! הפרטים נשלחו בהצלחה!',
+            timestamp: new Date(),
+          };
+          setMessages((prev) => [...prev, successMessage]);
+        }
       } else {
         throw new Error('Failed to submit lead');
       }
     } catch (error) {
       console.error('Error submitting lead:', error);
-      const errorMessage: Message = {
-        role: 'assistant',
-        content:
-          'מצטערת, הייתה שגיאה בשליחת הפרטים. אפשר לנסות שוב או לכתוב לנו בוואטסאפ ישירות 😊',
-        timestamp: new Date(),
-      };
-      setMessages((prev) => [...prev, errorMessage]);
+      // שליחת הודעת שגיאה דרך AI
+      try {
+        const response = await fetch('/api/chat', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            message: "שגיאה בשליחת טופס - הצע פתרונות חלופיים",
+            conversationHistory: conversationHistory,
+            isErrorMessage: true,
+            errorType: 'form_submission'
+          }),
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          const errorMessage: Message = {
+            role: 'assistant',
+            content: data.message,
+            timestamp: new Date(),
+          };
+          setMessages((prev) => [...prev, errorMessage]);
+          setConversationHistory(data.conversationHistory || []);
+        }
+      } catch (fetchError) {
+        console.error('Error sending error message:', fetchError);
+        // fallback message
+        const errorMessage: Message = {
+          role: 'assistant',
+          content: 'מצטערת, הייתה שגיאה. אפשר לנסות שוב 😊',
+          timestamp: new Date(),
+        };
+        setMessages((prev) => [...prev, errorMessage]);
+      }
     } finally {
       setIsLoading(false);
     }
@@ -333,24 +409,58 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
     setExtractedInfo(null);
   }, []);
 
-  // הודעת פתיחה עם שאלות בחירה
+  // הודעת פתיחה - יגיע מהמדריך דרך AI
   useEffect(() => {
     if (messages.length === 0) {
-      const welcomeMessage: Message = {
-        role: 'assistant',
-        content: `היי יקירה! 😊 אני כאן מטעם מיטודרם - מומחית האקסוזומים שלכם!
-השירותים שלנו מיועדים במיוחד לקוסמטיקאיות מוסמכות. יש לי דברים מדהימים לשתף!
-תרצי לשמוע על הטכנולוגיה המהפכנית שלנו?`,
-        timestamp: new Date(),
-      };
-      setMessages([welcomeMessage]);
-
-      // התחלת טיימר ראשוני
-      setTimeout(() => {
-        startInactivityTimer();
-      }, 1000);
+      // שליחת הודעה ראשונה דרך AI
+      sendInitialMessage();
     }
   }, []);
+
+  // פונקציה לשליחת הודעה ראשונה דרך AI
+  const sendInitialMessage = async () => {
+    setIsLoading(true);
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message: "התחל שיחה עם קוסמטיקאית חדשה",
+          conversationHistory: [],
+          isInitial: true
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        const welcomeMessage: Message = {
+          role: 'assistant',
+          content: data.message,
+          timestamp: new Date(),
+        };
+        setMessages([welcomeMessage]);
+        setConversationHistory(data.conversationHistory || []);
+        
+        // התחלת טיימר ראשוני
+        setTimeout(() => {
+          startInactivityTimer();
+        }, 1000);
+      }
+    } catch (error) {
+      console.error('Error sending initial message:', error);
+      // fallback - אם יש שגיאה, נציג הודעה פשוטה
+      const fallbackMessage: Message = {
+        role: 'assistant',
+        content: 'היי! אני כאן לעזור לך 😊',
+        timestamp: new Date(),
+      };
+      setMessages([fallbackMessage]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
   
   // useEffect שמוודא שהכפתורים מוצגים בפעם הראשונה בלבד
   useEffect(() => {
@@ -532,23 +642,63 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
             }
           }
 
-          // אם יש מספר טלפון, הראה טופס עם המספר והשם
-          contactMessage =
-            'מצוין! קיבלתי את מספר הטלפון שלך. בואי נמלא את שאר הפרטים ומישהו מהצוות יחזור אליך בהקדם! 😊';
-          shouldShowForm = true;
+          // זיהוי מספר טלפון - שליחה דרך AI
+          try {
+            const response = await fetch('/api/chat', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                message: currentInput,
+                conversationHistory: conversationHistory,
+                hasPhoneNumber: true,
+                phoneNumber: phoneMatch[0]
+              }),
+            });
 
-          setExtractedInfo({
-            name: extractedName || '',
-            phone: phoneMatch[0].replace(/-/g, ''),
-            email: extractedEmail || '',
-            subject: "בקשה ליצירת קשר מהצ'אטבוט",
-            confidence: 90,
-          });
-          setShowContactForm(true);
+            if (response.ok) {
+              const data = await response.json();
+              contactMessage = data.message;
+              shouldShowForm = true;
+
+              setExtractedInfo({
+                name: extractedName || '',
+                phone: phoneMatch[0].replace(/-/g, ''),
+                email: extractedEmail || '',
+                subject: "בקשה ליצירת קשר מהצ'אטבוט",
+                confidence: 90,
+              });
+              setShowContactForm(true);
+            }
+          } catch (error) {
+            console.error('Error processing phone number:', error);
+            contactMessage = 'קיבלתי את הפרטים שלך, בואי נמלא את שאר הפרטים 😊';
+            shouldShowForm = true;
+          }
         } else if (isExplicitContactRequest) {
-          // בקשה מפורשת ליצירת קשר
-          contactMessage =
-            'נהדר! כדי שמישהו מהצוות יוכל לחזור אליך, אני צריכה כמה פרטים קטנים 😊\n\nאפשר לכתוב לי את השם ומספר הטלפון שלך?';
+          // בקשה מפורשת ליצירת קשר - שליחה דרך AI
+          try {
+            const response = await fetch('/api/chat', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                message: currentInput,
+                conversationHistory: conversationHistory,
+                isContactRequest: true
+              }),
+            });
+
+            if (response.ok) {
+              const data = await response.json();
+              contactMessage = data.message;
+            }
+          } catch (error) {
+            console.error('Error processing contact request:', error);
+            contactMessage = 'נהדר! בואי נמלא כמה פרטים 😊';
+          }
         }
 
         const directContactMessage: Message = {
@@ -680,13 +830,39 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
       }
     } catch (error) {
       console.error('Error sending message:', error);
-      const errorMessage: Message = {
-        role: 'assistant',
-        content:
-          'מצטערת, הייתה שגיאה בחיבור. אנא נסי שוב או צרי קשר ישירות בוואטסאפ 😊',
-        timestamp: new Date(),
-      };
-      setMessages((prev) => [...prev, errorMessage]);
+      // שליחת הודעת שגיאה דרך AI
+      try {
+        const errorResponse = await fetch('/api/chat', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            message: "שגיאה בחיבור - הצע פתרונות",
+            conversationHistory: conversationHistory,
+            isErrorMessage: true,
+            errorType: 'connection'
+          }),
+        });
+
+        if (errorResponse.ok) {
+          const data = await errorResponse.json();
+          const errorMessage: Message = {
+            role: 'assistant',
+            content: data.message,
+            timestamp: new Date(),
+          };
+          setMessages((prev) => [...prev, errorMessage]);
+        }
+      } catch (fetchError) {
+        // fallback message אם גם שליחת הודעת השגיאה נכשלת
+        const errorMessage: Message = {
+          role: 'assistant',
+          content: 'מצטערת, הייתה שגיאה. אנא נסי שוב 😊',
+          timestamp: new Date(),
+        };
+        setMessages((prev) => [...prev, errorMessage]);
+      }
     } finally {
       setIsLoading(false);
     }
@@ -779,21 +955,63 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
             }
           }
 
-          contactMessage =
-            'מצוין! קיבלתי את מספר הטלפון שלך. בואי נמלא את שאר הפרטים ומישהו מהצוות יחזור אליך בהקדם! 😊';
-          shouldShowForm = true;
+          // זיהוי מספר טלפון - שליחה דרך AI
+          try {
+            const response = await fetch('/api/chat', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                message: message,
+                conversationHistory: conversationHistory,
+                hasPhoneNumber: true,
+                phoneNumber: phoneMatch[0]
+              }),
+            });
 
-          setExtractedInfo({
-            name: extractedName || '',
-            phone: phoneMatch[0].replace(/-/g, ''),
-            email: extractedEmail || '',
-            subject: "בקשה ליצירת קשר מהצ'אטבוט",
-            confidence: 90,
-          });
-          setShowContactForm(true);
+            if (response.ok) {
+              const data = await response.json();
+              contactMessage = data.message;
+              shouldShowForm = true;
+
+              setExtractedInfo({
+                name: extractedName || '',
+                phone: phoneMatch[0].replace(/-/g, ''),
+                email: extractedEmail || '',
+                subject: "בקשה ליצירת קשר מהצ'אטבוט",
+                confidence: 90,
+              });
+              setShowContactForm(true);
+            }
+          } catch (error) {
+            console.error('Error processing phone number:', error);
+            contactMessage = 'קיבלתי את הפרטים שלך, בואי נמלא את שאר הפרטים 😊';
+            shouldShowForm = true;
+          }
         } else if (isExplicitContactRequest) {
-          contactMessage =
-            'נהדר! כדי שמישהו מהצוות יוכל לחזור אליך, אני צריכה כמה פרטים קטנים 😊\n\nאפשר לכתוב לי את השם ומספר הטלפון שלך?';
+          // בקשה מפורשת ליצירת קשר - שליחה דרך AI
+          try {
+            const response = await fetch('/api/chat', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                message: message,
+                conversationHistory: conversationHistory,
+                isContactRequest: true
+              }),
+            });
+
+            if (response.ok) {
+              const data = await response.json();
+              contactMessage = data.message;
+            }
+          } catch (error) {
+            console.error('Error processing contact request:', error);
+            contactMessage = 'נהדר! בואי נמלא כמה פרטים 😊';
+          }
         }
 
         const directContactMessage: Message = {
@@ -922,13 +1140,39 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
       }
     } catch (error) {
       console.error('Error sending predefined message:', error);
-      const errorMessage: Message = {
-        role: 'assistant',
-        content:
-          'מצטערת, הייתה שגיאה בחיבור. אנא נסי שוב או צרי קשר ישירות בוואטסאפ 😊',
-        timestamp: new Date(),
-      };
-      setMessages((prev) => [...prev, errorMessage]);
+      // שליחת הודעת שגיאה דרך AI
+      try {
+        const errorResponse = await fetch('/api/chat', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            message: "שגיאה בחיבור - הצע פתרונות",
+            conversationHistory: conversationHistory,
+            isErrorMessage: true,
+            errorType: 'connection'
+          }),
+        });
+
+        if (errorResponse.ok) {
+          const data = await errorResponse.json();
+          const errorMessage: Message = {
+            role: 'assistant',
+            content: data.message,
+            timestamp: new Date(),
+          };
+          setMessages((prev) => [...prev, errorMessage]);
+        }
+      } catch (fetchError) {
+        // fallback message אם גם שליחת הודעת השגיאה נכשלת
+        const errorMessage: Message = {
+          role: 'assistant',
+          content: 'מצטערת, הייתה שגיאה. אנא נסי שוב 😊',
+          timestamp: new Date(),
+        };
+        setMessages((prev) => [...prev, errorMessage]);
+      }
     } finally {
       setIsLoading(false);
     }
