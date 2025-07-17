@@ -27,12 +27,12 @@ const openai = new OpenAI({
 const ASSISTANT_ID = 'asst_iLuuoGjP8ljZJDcRSus2819a';
 
 // הגדרת timeout מורחב לעמוד עם מודל מתקדם
-export const maxDuration = 60; // 60 שניות
+export const maxDuration = 120; // 120 שניות - הארכה לשיפור ביצועים
 
-// Helper function to wait for run completion with polling
+// Helper function to wait for run completion with better timeout handling
 async function waitForRunCompletion(threadId: string, runId: string): Promise<any> {
   let attempts = 0;
-  const maxAttempts = 30; // 30 seconds max
+  const maxAttempts = 60; // 60 seconds max (reduced polling frequency)
   
   while (attempts < maxAttempts) {
     try {
@@ -60,8 +60,12 @@ async function waitForRunCompletion(threadId: string, runId: string): Promise<an
         throw new Error('Assistant run expired');
       }
       
-      // Wait before next check
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Adaptive wait - longer waits for better performance
+      if (attempts < 10) {
+        await new Promise(resolve => setTimeout(resolve, 500)); // 0.5s for first 10 attempts
+      } else {
+        await new Promise(resolve => setTimeout(resolve, 1000)); // 1s for later attempts
+      }
       attempts++;
     } catch (error) {
       console.error('Error checking run status:', error);
@@ -77,6 +81,7 @@ export async function POST(request: NextRequest) {
     const { 
       message, 
       conversationHistory = [], 
+      threadId = null, // קבלת thread ID קיים
       isInitial = false,
       isInactivityTimeout = false,
       hasPhoneNumber = false,
@@ -97,18 +102,19 @@ export async function POST(request: NextRequest) {
     console.log('=== OPENAI ASSISTANT REQUEST ===');
     console.log('Message:', message);
     console.log('Conversation history length:', conversationHistory.length);
+    console.log('Thread ID:', threadId);
     console.log('Special flags:', { isInitial, isInactivityTimeout, hasPhoneNumber, isContactRequest, isSuccessMessage, isErrorMessage });
 
-    // Create a new thread for each conversation
-    const thread = await openai.beta.threads.create();
+    let currentThreadId = threadId;
 
-    // Add conversation history to thread (last 8 messages only for performance)
-    const recentHistory = conversationHistory.slice(-8);
-    for (const msg of recentHistory) {
-      await openai.beta.threads.messages.create(thread.id, {
-        role: msg.role === 'assistant' ? 'assistant' : 'user',
-        content: msg.content
-      });
+    // Create a new thread only if none exists (first message)
+    if (!currentThreadId) {
+      console.log('Creating new thread...');
+      const thread = await openai.beta.threads.create();
+      currentThreadId = thread.id;
+      console.log('New thread created:', currentThreadId);
+    } else {
+      console.log('Using existing thread:', currentThreadId);
     }
 
     // Prepare the current message with context
@@ -135,26 +141,30 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Add the current message to thread
-    await openai.beta.threads.messages.create(thread.id, {
+    // Add the current message to existing thread
+    console.log('Adding message to thread...');
+    await openai.beta.threads.messages.create(currentThreadId, {
       role: 'user',
       content: currentMessage
     });
 
     // Run the assistant
-    const run = await openai.beta.threads.runs.create(thread.id, {
+    console.log('Creating run...');
+    const run = await openai.beta.threads.runs.create(currentThreadId, {
       assistant_id: ASSISTANT_ID
     });
 
+    console.log('Waiting for run completion...');
     // Wait for completion
-    const completedRun = await waitForRunCompletion(thread.id, run.id);
+    const completedRun = await waitForRunCompletion(currentThreadId, run.id);
 
     if (completedRun.status !== 'completed') {
       throw new Error(`Assistant run ended with status: ${completedRun.status}`);
     }
 
+    console.log('Getting messages from thread...');
     // Get the messages from the thread
-    const messages = await openai.beta.threads.messages.list(thread.id);
+    const messages = await openai.beta.threads.messages.list(currentThreadId);
     
     // Get the latest assistant message
     const latestMessage = messages.data.find((msg: any) => msg.role === 'assistant');
@@ -176,7 +186,7 @@ export async function POST(request: NextRequest) {
     console.log('Contains SHOW_CONTACT_FORM?', responseText.includes('[SHOW_CONTACT_FORM]'));
     console.log('=== END DEBUG ===');
 
-    // Update conversation history
+    // Update conversation history - keeping it for backward compatibility
     const updatedHistory = [
       ...conversationHistory,
       { role: 'user', content: message },
@@ -186,6 +196,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       message: responseText,
       conversationHistory: updatedHistory,
+      threadId: currentThreadId, // החזרת thread ID לשימוש עתידי
     });
 
   } catch (error) {
@@ -200,6 +211,8 @@ export async function POST(request: NextRequest) {
       // Provide more specific fallback based on error type
       if (error.message.includes('API key')) {
         fallbackMessage = 'מצטערת, יש בעיה עם הגדרות המערכת. אנא צרי קשר ישירות בוואטסאפ 😊';
+      } else if (error.message.includes('timeout') || error.message.includes('Gateway Timeout')) {
+        fallbackMessage = 'מצטערת, התגובה לוקחת יותר זמן מהצפוי. אנא נסי שוב 😊';
       }
     }
     
@@ -213,6 +226,7 @@ export async function POST(request: NextRequest) {
         { role: 'user', content: requestBody.message || '' },
         { role: 'assistant', content: fallbackMessage },
       ],
+      threadId: requestBody.threadId || null,
     });
   }
 }

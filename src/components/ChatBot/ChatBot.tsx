@@ -124,6 +124,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
   const [inputMessage, setInputMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [conversationHistory, setConversationHistory] = useState<any[]>([]);
+  const [threadId, setThreadId] = useState<string | null>(null); // הוספה: שמירת thread ID
 
   const [showContactForm, setShowContactForm] = useState(false);
   const [extractedInfo, setExtractedInfo] = useState<any>(null);
@@ -173,6 +174,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
               body: JSON.stringify({
                 message: "לא הייתה פעילות במשך זמן - שאל אם תרצה שיחזרו אליה",
                 conversationHistory: conversationHistory,
+                threadId: threadId, // העברת thread ID
                 isInactivityTimeout: true
               }),
             });
@@ -186,6 +188,11 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
               };
               setMessages((prev) => [...prev, autoMessage]);
               setConversationHistory(data.conversationHistory || []);
+              
+              // עדכון thread ID אם חזר חדש
+              if (data.threadId) {
+                setThreadId(data.threadId);
+              }
             }
           } catch (error) {
             console.error('Error sending inactivity message:', error);
@@ -326,6 +333,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
             body: JSON.stringify({
               message: "הטופס נשלח בהצלחה - תודה ועידוד",
               conversationHistory: conversationHistory,
+              threadId: threadId, // העברת thread ID
               isSuccessMessage: true
             }),
           });
@@ -362,12 +370,13 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({
-            message: "שגיאה בשליחת טופס - הצע פתרונות חלופיים",
-            conversationHistory: conversationHistory,
-            isErrorMessage: true,
-            errorType: 'form_submission'
-          }),
+                      body: JSON.stringify({
+              message: "שגיאה בשליחת טופס - הצע פתרונות חלופיים",
+              conversationHistory: conversationHistory,
+              threadId: threadId, // העברת thread ID
+              isErrorMessage: true,
+              errorType: 'form_submission'
+            }),
         });
 
         if (response.ok) {
@@ -429,6 +438,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
         body: JSON.stringify({
           message: "התחל שיחה עם קוסמטיקאית חדשה",
           conversationHistory: [],
+          threadId: threadId, // העברת thread ID (null בפעם הראשונה)
           isInitial: true
         }),
       });
@@ -442,6 +452,12 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
         };
         setMessages([welcomeMessage]);
         setConversationHistory(data.conversationHistory || []);
+        
+        // שמירת thread ID החדש
+        if (data.threadId) {
+          setThreadId(data.threadId);
+          console.log('Thread ID saved:', data.threadId);
+        }
         
         // התחלת טיימר ראשוני
         setTimeout(() => {
@@ -652,6 +668,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
               body: JSON.stringify({
                 message: currentInput,
                 conversationHistory: conversationHistory,
+                threadId: threadId, // העברת thread ID
                 hasPhoneNumber: true,
                 phoneNumber: phoneMatch[0]
               }),
@@ -661,6 +678,11 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
               const data = await response.json();
               contactMessage = data.message;
               shouldShowForm = true;
+
+              // עדכון thread ID אם חזר חדש (בהודעות רגילות)
+              if (data.threadId) {
+                setThreadId(data.threadId);
+              }
 
               setExtractedInfo({
                 name: extractedName || '',
@@ -687,6 +709,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
               body: JSON.stringify({
                 message: currentInput,
                 conversationHistory: conversationHistory,
+                threadId: threadId, // העברת thread ID
                 isContactRequest: true
               }),
             });
@@ -733,6 +756,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
         body: JSON.stringify({
           message: currentInput,
           conversationHistory: conversationHistory,
+          threadId: threadId, // העברת thread ID
         }),
       });
 
@@ -819,6 +843,11 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
 
       // עדכון היסטוריית השיחה עם מה שהAPI החזיר (כולל ההודעה שלנו והתשובה)
       setConversationHistory(data.conversationHistory || []);
+      
+      // עדכון thread ID אם חזר חדש
+      if (data.threadId) {
+        setThreadId(data.threadId);
+      }
 
       // התחלת טיימר חוסר פעילות רק אם עדיין לא ביקשנו פרטים
       if (
@@ -965,6 +994,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
               body: JSON.stringify({
                 message: message,
                 conversationHistory: conversationHistory,
+                threadId: threadId, // העברת thread ID (בשאלות מוכנות)
                 hasPhoneNumber: true,
                 phoneNumber: phoneMatch[0]
               }),
@@ -974,6 +1004,11 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
               const data = await response.json();
               contactMessage = data.message;
               shouldShowForm = true;
+
+              // עדכון thread ID אם חזר חדש (בשאלות מוכנות)
+              if (data.threadId) {
+                setThreadId(data.threadId);
+              }
 
               setExtractedInfo({
                 name: extractedName || '',
