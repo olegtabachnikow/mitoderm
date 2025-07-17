@@ -197,6 +197,13 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
       subject: "פנייה כללית מהצ'אטבוט",
     };
 
+    // אם אין שיחה, פשוט החזר ברירת מחדל
+    if (!conversationHistory || conversationHistory.length === 0) {
+      setExtractedInfo(defaultInfo);
+      setShowContactForm(true);
+      return;
+    }
+
     try {
       const response = await fetch('/api/extract-info', {
         method: 'POST',
@@ -1057,7 +1064,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
                 </div>
 
                 {/* הצגת כפתורי השאלות - רק בהודעה הראשונה */}
-                {(index === 0 && message.role === 'assistant' && messages.length === 1) && (
+                {(index === 0 && message.role === 'assistant') && (
                   <div style={{ marginTop: '10px', marginRight: '40px' }}>
                     <div
                       style={{
