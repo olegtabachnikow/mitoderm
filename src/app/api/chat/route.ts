@@ -26,8 +26,8 @@ const openai = new OpenAI({
 // Assistant ID from user
 const ASSISTANT_ID = 'asst_iLuuoGjP8ljZJDcRSus2819a';
 
-// הגדרת timeout מורחב לעמוד עם מודל מתקדם
-export const maxDuration = 120; // 120 שניות - הארכה לשיפור ביצועים
+// הגדרת timeout מותאם לתוכנית Vercel hobby
+export const maxDuration = 60; // 60 שניות - המקסימום בתוכנית hobby
 
 // Helper function to wait for run completion with better timeout handling
 async function waitForRunCompletion(threadId: string, runId: string): Promise<any> {
