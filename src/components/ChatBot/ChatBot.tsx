@@ -946,6 +946,10 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
 
   // פונקציה לשליחת שאלות מוכנות
   const sendPredefinedMessage = async (message: string) => {
+    console.log('=== SEND PREDEFINED MESSAGE CALLED ===');
+    console.log('Message:', message);
+    console.log('isLoading:', isLoading);
+    
     stopInactivityTimer();
     
     // הוספה לרשימת שאלות שכבר נשלחו
@@ -977,6 +981,13 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
         message.toLowerCase().includes('callback') ||
         (message.includes('בבקשה') &&
           (message.includes('חזור') || message.includes('קשר')));
+
+      console.log('=== PREDEFINED MESSAGE TYPE CHECK ===');
+      console.log('hasPhoneNumber:', hasPhoneNumber);
+      console.log('phoneMatch:', phoneMatch);
+      console.log('isExplicitContactRequest:', isExplicitContactRequest);
+      console.log('Will handle as explicit contact request:', isExplicitContactRequest);
+      console.log('=== END PREDEFINED MESSAGE TYPE CHECK ===');
 
       // אם יש מספר טלפון או בקשה מפורשת ליצירת קשר
       if (hasPhoneNumber || isExplicitContactRequest) {
@@ -1066,7 +1077,9 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
           }
         } else if (isExplicitContactRequest) {
           // בקשה מפורשת ליצירת קשר - שליחה דרך AI
+          console.log('=== HANDLING EXPLICIT CONTACT REQUEST ===');
           try {
+            console.log('Sending to API with isContactRequest: true');
             const response = await fetch('/api/chat', {
               method: 'POST',
               headers: {
@@ -1075,6 +1088,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
                           body: JSON.stringify({
               message: message,
               conversationHistory: conversationHistory.slice(-5), // רק 5 הודעות אחרונות
+              threadId: threadId, // העברת thread ID
               isContactRequest: true
             }),
             });
@@ -1082,11 +1096,13 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
             if (response.ok) {
               const data = await response.json();
               contactMessage = data.message;
+              console.log('Got response from API:', contactMessage);
             }
           } catch (error) {
             console.error('Error processing contact request:', error);
             contactMessage = 'נהדר! בואי נמלא כמה פרטים 😊';
           }
+          console.log('=== END HANDLING EXPLICIT CONTACT REQUEST ===');
         }
 
         const directContactMessage: Message = {
@@ -1095,6 +1111,12 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
           timestamp: new Date(),
           showForm: shouldShowForm,
         };
+
+        console.log('=== ADDING DIRECT CONTACT MESSAGE (PREDEFINED) ===');
+        console.log('contactMessage:', contactMessage);
+        console.log('shouldShowForm:', shouldShowForm);
+        console.log('Final directContactMessage:', directContactMessage);
+        console.log('=== END DIRECT CONTACT MESSAGE DEBUG ===');
 
         setMessages((prev) => [...prev, directContactMessage]);
 
@@ -1384,7 +1406,6 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
                       {/* טופס אישור פרטים בתוך ההודעה */}
                       {message.role === 'assistant' &&
                         message.showForm &&
-                        showContactForm &&
                         // הצג את הטופס רק בהודעה האחרונה שיש לה showForm=true
                         index ===
                           messages.findLastIndex((msg) => msg.showForm) && (
@@ -1487,9 +1508,11 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
                       {!usedQuestions.includes('אני רוצה שיחזרו אליי!') && (
                         <button
                           className={styles.predefinedQuestionBtn}
-                          onClick={() =>
+                          onClick={() => {
+                            console.log('=== CONTACT BUTTON CLICKED ===');
+                            console.log('Sending message: אני רוצה שיחזרו אליי!');
                             sendPredefinedMessage('אני רוצה שיחזרו אליי!')
-                          }
+                          }}
                         >
                           📞 אני רוצה שיחזרו אליי!
                         </button>
