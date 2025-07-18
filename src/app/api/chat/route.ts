@@ -80,7 +80,6 @@ export async function POST(request: NextRequest) {
   try {
     const { 
       message, 
-      conversationHistory = [], 
       threadId = null, // קבלת thread ID קיים
       isInitial = false,
       isInactivityTimeout = false,
@@ -101,7 +100,6 @@ export async function POST(request: NextRequest) {
 
     console.log('=== OPENAI ASSISTANT REQUEST ===');
     console.log('Message:', message);
-    console.log('Conversation history length:', conversationHistory.length);
     console.log('Thread ID:', threadId);
     console.log('Special flags:', { isInitial, isInactivityTimeout, hasPhoneNumber, isContactRequest, isSuccessMessage, isErrorMessage });
 
@@ -186,17 +184,9 @@ export async function POST(request: NextRequest) {
     console.log('Contains SHOW_CONTACT_FORM?', responseText.includes('[SHOW_CONTACT_FORM]'));
     console.log('=== END DEBUG ===');
 
-    // Update conversation history - keeping it for backward compatibility
-    const updatedHistory = [
-      ...conversationHistory,
-      { role: 'user', content: message },
-      { role: 'assistant', content: responseText },
-    ];
-
     return NextResponse.json({
       message: responseText,
-      conversationHistory: updatedHistory,
-      threadId: currentThreadId, // החזרת thread ID לשימוש עתידי
+      threadId: currentThreadId, // החזרת thread ID - הוא שומר הכל!
     });
 
   } catch (error) {
@@ -221,11 +211,6 @@ export async function POST(request: NextRequest) {
     
     return NextResponse.json({
       message: fallbackMessage,
-      conversationHistory: [
-        ...(requestBody.conversationHistory || []),
-        { role: 'user', content: requestBody.message || '' },
-        { role: 'assistant', content: fallbackMessage },
-      ],
       threadId: requestBody.threadId || null,
     });
   }

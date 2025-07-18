@@ -173,7 +173,6 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
               },
               body: JSON.stringify({
                 message: "לא הייתה פעילות במשך זמן - שאל אם תרצה שיחזרו אליה",
-                conversationHistory: conversationHistory.slice(-5), // רק 5 הודעות אחרונות
                 threadId: threadId, // העברת thread ID
                 isInactivityTimeout: true
               }),
@@ -187,7 +186,11 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
                 timestamp: new Date(),
               };
               setMessages((prev) => [...prev, autoMessage]);
-              setConversationHistory(data.conversationHistory || []);
+              // עדכון היסטוריה מקומית
+              setConversationHistory((prev) => [
+                ...prev,
+                { role: 'assistant', content: data.message },
+              ].slice(-20));
               
               // עדכון thread ID אם חזר חדש
               if (data.threadId) {
@@ -332,7 +335,6 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
             },
             body: JSON.stringify({
               message: "הטופס נשלח בהצלחה - תודה ועידוד",
-              conversationHistory: conversationHistory.slice(-5), // רק 5 הודעות אחרונות
               threadId: threadId, // העברת thread ID
               isSuccessMessage: true
             }),
@@ -346,7 +348,11 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
               timestamp: new Date(),
             };
             setMessages((prev) => [...prev, successMessage]);
-            setConversationHistory(data.conversationHistory || []);
+            // עדכון היסטוריה מקומית
+            setConversationHistory((prev) => [
+              ...prev,
+              { role: 'assistant', content: data.message },
+            ].slice(-20));
           }
         } catch (error) {
           console.error('Error sending success message:', error);
@@ -755,8 +761,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
         },
         body: JSON.stringify({
           message: currentInput,
-          conversationHistory: conversationHistory.slice(-5), // רק 5 הודעות אחרונות לbackward compatibility
-          threadId: threadId, // העברת thread ID
+          threadId: threadId, // העברת thread ID - OpenAI Assistant שומר הכל!
         }),
       });
 
@@ -841,10 +846,12 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
 
       setMessages((prev) => [...prev, assistantMessage]);
 
-      // עדכון היסטוריית השיחה עם מה שהAPI החזיר (כולל ההודעה שלנו והתשובה)
-      // הגבלה ל-20 הודעות אחרונות לביצועים טובים יותר
-      const newHistory = data.conversationHistory || [];
-      setConversationHistory(newHistory.slice(-20));
+      // עדכון היסטוריית השיחה מקומית (רק לצרכים פנימיים כמו extract-info)
+      setConversationHistory((prev) => [
+        ...prev,
+        { role: 'user', content: currentInput },
+        { role: 'assistant', content: messageContent },
+      ].slice(-20)); // הגבלה ל-20 הודעות
       
       // עדכון thread ID אם חזר חדש
       if (data.threadId) {
