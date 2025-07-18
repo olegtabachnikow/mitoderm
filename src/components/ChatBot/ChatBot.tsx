@@ -771,10 +771,18 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
 
       const data = await response.json();
 
-      // בדיקה אם הודעה מכילה shortcode לטופס
+      // בדיקה אם הודעה מכילה shortcode לטופס - מספר גישות
       const contactFormRegex = /\[SHOW_CONTACT_FORM(?::([^\]]+))?\]/;
       const shortcodeMatch = data.message.match(contactFormRegex);
       const hasContactFormShortcode = shortcodeMatch !== null;
+      
+      // גישה נוספת - בדיקה פשוטה באמצעות includes
+      const hasSimpleShortcode = data.message.includes('[SHOW_CONTACT_FORM]');
+      
+      // בדיקה גלובלית לכל סוגי השורטקודים
+      const hasAnyContactShortcode = data.message.includes('SHOW_CONTACT_FORM') || 
+                                    data.message.includes('show_contact_form') || 
+                                    data.message.includes('ShowContactForm');
 
       // בדיקה אם צריך להציג טופס גם בלי שורטקוד (backup לגמיני)
       const needsContactFormBackup =
@@ -794,17 +802,32 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
             currentInput.toLowerCase().includes('yes')));
 
       console.log('=== CONTACT FORM LOGIC DEBUG ===');
+      console.log('Original message from API:', data.message);
+      console.log('Message length:', data.message.length);
+      console.log('Regex pattern:', contactFormRegex);
+      console.log('Shortcode match result:', shortcodeMatch);
       console.log('hasContactFormShortcode:', hasContactFormShortcode);
+      console.log('hasSimpleShortcode:', hasSimpleShortcode);
+      console.log('hasAnyContactShortcode:', hasAnyContactShortcode);
       console.log('needsContactFormBackup:', needsContactFormBackup);
       console.log('currentInput:', currentInput);
+      console.log('Raw message includes [SHOW_CONTACT_FORM]:', data.message.includes('[SHOW_CONTACT_FORM]'));
       console.log('=== END CONTACT FORM DEBUG ===');
 
       let messageContent = data.message;
       let showForm = false;
       let shortcodeParams: any = {};
 
-      if (hasContactFormShortcode || needsContactFormBackup) {
-        messageContent = data.message.replace(contactFormRegex, '').trim();
+      // שימוש בכל האפשרויות לזיהוי שורטקוד
+      const shouldShowContactForm = hasContactFormShortcode || hasSimpleShortcode || hasAnyContactShortcode || needsContactFormBackup;
+
+      if (shouldShowContactForm) {
+        // ניקוי השורטקוד מההודעה בכל הדרכים האפשריות
+        messageContent = data.message
+          .replace(contactFormRegex, '')
+          .replace('[SHOW_CONTACT_FORM]', '')
+          .replace(/\[SHOW_CONTACT_FORM[^\]]*\]/g, '')
+          .trim();
         showForm = true;
         setHasAskedForContact(true);
         setShowContactForm(true);
@@ -843,6 +866,14 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
         timestamp: new Date(),
         showForm: showForm,
       };
+
+      console.log('=== ADDING REGULAR MESSAGE TO UI ===');
+      console.log('Final messageContent:', messageContent);
+      console.log('Original message from API:', data.message);
+      console.log('showForm flag:', showForm);
+      console.log('showContactForm state:', showContactForm);
+      console.log('shouldShowContactForm:', shouldShowContactForm);
+      console.log('=== END REGULAR MESSAGE UI DEBUG ===');
 
       setMessages((prev) => [...prev, assistantMessage]);
 
@@ -1097,10 +1128,18 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
 
       const data = await response.json();
 
-      // בדיקה אם הודעה מכילה shortcode לטופס
+      // בדיקה אם הודעה מכילה shortcode לטופס - מספר גישות
       const contactFormRegex = /\[SHOW_CONTACT_FORM(?::([^\]]+))?\]/;
       const shortcodeMatch = data.message.match(contactFormRegex);
       const hasContactFormShortcode = shortcodeMatch !== null;
+      
+      // גישה נוספת - בדיקה פשוטה באמצעות includes
+      const hasSimpleShortcode = data.message.includes('[SHOW_CONTACT_FORM]');
+      
+      // בדיקה גלובלית לכל סוגי השורטקודים
+      const hasAnyContactShortcode = data.message.includes('SHOW_CONTACT_FORM') || 
+                                    data.message.includes('show_contact_form') || 
+                                    data.message.includes('ShowContactForm');
 
       // בדיקה אם צריך להציג טופס גם בלי שורטקוד (backup לגמיני)
       const needsContactFormBackup =
@@ -1119,18 +1158,33 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
             message.includes('OK') ||
             message.toLowerCase().includes('yes')));
 
-      console.log('=== CONTACT FORM LOGIC DEBUG ===');
+      console.log('=== PREDEFINED CONTACT FORM LOGIC DEBUG ===');
+      console.log('Original message from API:', data.message);
+      console.log('Message length:', data.message.length);
+      console.log('Regex pattern:', contactFormRegex);
+      console.log('Shortcode match result:', shortcodeMatch);
       console.log('hasContactFormShortcode:', hasContactFormShortcode);
+      console.log('hasSimpleShortcode:', hasSimpleShortcode);
+      console.log('hasAnyContactShortcode:', hasAnyContactShortcode);
       console.log('needsContactFormBackup:', needsContactFormBackup);
       console.log('message:', message);
-      console.log('=== END CONTACT FORM DEBUG ===');
+      console.log('Raw message includes [SHOW_CONTACT_FORM]:', data.message.includes('[SHOW_CONTACT_FORM]'));
+      console.log('=== END PREDEFINED CONTACT FORM DEBUG ===');
 
       let messageContent = data.message;
       let showForm = false;
       let shortcodeParams: any = {};
 
-      if (hasContactFormShortcode || needsContactFormBackup) {
-        messageContent = data.message.replace(contactFormRegex, '').trim();
+      // שימוש בכל האפשרויות לזיהוי שורטקוד
+      const shouldShowContactForm = hasContactFormShortcode || hasSimpleShortcode || hasAnyContactShortcode || needsContactFormBackup;
+
+      if (shouldShowContactForm) {
+        // ניקוי השורטקוד מההודעה בכל הדרכים האפשריות
+        messageContent = data.message
+          .replace(contactFormRegex, '')
+          .replace('[SHOW_CONTACT_FORM]', '')
+          .replace(/\[SHOW_CONTACT_FORM[^\]]*\]/g, '')
+          .trim();
         showForm = true;
         setHasAskedForContact(true);
         setShowContactForm(true);
@@ -1169,6 +1223,14 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
         timestamp: new Date(),
         showForm: showForm,
       };
+
+      console.log('=== ADDING PREDEFINED MESSAGE TO UI ===');
+      console.log('Final messageContent:', messageContent);
+      console.log('Original message from API:', data.message);
+      console.log('showForm flag:', showForm);
+      console.log('showContactForm state:', showContactForm);
+      console.log('shouldShowContactForm:', shouldShowContactForm);
+      console.log('=== END PREDEFINED MESSAGE UI DEBUG ===');
 
       setMessages((prev) => [...prev, assistantMessage]);
 

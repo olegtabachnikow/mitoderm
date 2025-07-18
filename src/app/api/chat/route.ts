@@ -181,7 +181,11 @@ export async function POST(request: NextRequest) {
 
     console.log('=== OPENAI ASSISTANT RESPONSE ===');
     console.log('Response:', responseText);
-    console.log('Contains SHOW_CONTACT_FORM?', responseText.includes('[SHOW_CONTACT_FORM]'));
+    console.log('Response length:', responseText.length);
+    console.log('Contains [SHOW_CONTACT_FORM]?', responseText.includes('[SHOW_CONTACT_FORM]'));
+    console.log('Contains SHOW_CONTACT_FORM (any case)?', responseText.toLowerCase().includes('show_contact_form'));
+    console.log('First 100 chars:', responseText.substring(0, 100));
+    console.log('Last 100 chars:', responseText.substring(Math.max(0, responseText.length - 100)));
     console.log('=== END DEBUG ===');
 
     return NextResponse.json({
