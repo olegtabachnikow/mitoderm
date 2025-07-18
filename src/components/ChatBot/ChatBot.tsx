@@ -173,7 +173,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
               },
               body: JSON.stringify({
                 message: "לא הייתה פעילות במשך זמן - שאל אם תרצה שיחזרו אליה",
-                conversationHistory: conversationHistory,
+                conversationHistory: conversationHistory.slice(-5), // רק 5 הודעות אחרונות
                 threadId: threadId, // העברת thread ID
                 isInactivityTimeout: true
               }),
@@ -239,7 +239,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          conversationHistory: conversationHistory,
+          conversationHistory: conversationHistory.slice(-10), // רק 10 הודעות אחרונות
         }),
       });
 
@@ -332,7 +332,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
             },
             body: JSON.stringify({
               message: "הטופס נשלח בהצלחה - תודה ועידוד",
-              conversationHistory: conversationHistory,
+              conversationHistory: conversationHistory.slice(-5), // רק 5 הודעות אחרונות
               threadId: threadId, // העברת thread ID
               isSuccessMessage: true
             }),
@@ -372,9 +372,9 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
           },
                       body: JSON.stringify({
               message: "שגיאה בשליחת טופס - הצע פתרונות חלופיים",
-              conversationHistory: conversationHistory,
-              threadId: threadId, // העברת thread ID
-              isErrorMessage: true,
+                          conversationHistory: conversationHistory.slice(-5), // רק 5 הודעות אחרונות
+            threadId: threadId, // העברת thread ID
+            isErrorMessage: true,
               errorType: 'form_submission'
             }),
         });
@@ -667,7 +667,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
               },
               body: JSON.stringify({
                 message: currentInput,
-                conversationHistory: conversationHistory,
+                conversationHistory: conversationHistory.slice(-5), // רק 5 הודעות אחרונות
                 threadId: threadId, // העברת thread ID
                 hasPhoneNumber: true,
                 phoneNumber: phoneMatch[0]
@@ -706,12 +706,12 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
               headers: {
                 'Content-Type': 'application/json',
               },
-              body: JSON.stringify({
-                message: currentInput,
-                conversationHistory: conversationHistory,
-                threadId: threadId, // העברת thread ID
-                isContactRequest: true
-              }),
+                          body: JSON.stringify({
+              message: currentInput,
+              conversationHistory: conversationHistory.slice(-5), // רק 5 הודעות אחרונות
+              threadId: threadId, // העברת thread ID
+              isContactRequest: true
+            }),
             });
 
             if (response.ok) {
@@ -738,7 +738,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
           ...prev,
           { role: 'user', content: currentInput },
           { role: 'assistant', content: contactMessage },
-        ]);
+        ].slice(-20)); // הגבלה ל-20 הודעות
 
         setHasAskedForContact(true);
         setIsLoading(false);
@@ -755,7 +755,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
         },
         body: JSON.stringify({
           message: currentInput,
-          conversationHistory: conversationHistory,
+          conversationHistory: conversationHistory.slice(-5), // רק 5 הודעות אחרונות לbackward compatibility
           threadId: threadId, // העברת thread ID
         }),
       });
@@ -842,7 +842,9 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
       setMessages((prev) => [...prev, assistantMessage]);
 
       // עדכון היסטוריית השיחה עם מה שהAPI החזיר (כולל ההודעה שלנו והתשובה)
-      setConversationHistory(data.conversationHistory || []);
+      // הגבלה ל-20 הודעות אחרונות לביצועים טובים יותר
+      const newHistory = data.conversationHistory || [];
+      setConversationHistory(newHistory.slice(-20));
       
       // עדכון thread ID אם חזר חדש
       if (data.threadId) {
@@ -868,7 +870,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
           },
           body: JSON.stringify({
             message: "שגיאה בחיבור - הצע פתרונות",
-            conversationHistory: conversationHistory,
+            conversationHistory: conversationHistory.slice(-5), // רק 5 הודעות אחרונות
             isErrorMessage: true,
             errorType: 'connection'
           }),
@@ -993,7 +995,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
               },
               body: JSON.stringify({
                 message: message,
-                conversationHistory: conversationHistory,
+                conversationHistory: conversationHistory.slice(-5), // רק 5 הודעות אחרונות
                 threadId: threadId, // העברת thread ID (בשאלות מוכנות)
                 hasPhoneNumber: true,
                 phoneNumber: phoneMatch[0]
@@ -1032,11 +1034,11 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
               headers: {
                 'Content-Type': 'application/json',
               },
-              body: JSON.stringify({
-                message: message,
-                conversationHistory: conversationHistory,
-                isContactRequest: true
-              }),
+                          body: JSON.stringify({
+              message: message,
+              conversationHistory: conversationHistory.slice(-5), // רק 5 הודעות אחרונות
+              isContactRequest: true
+            }),
             });
 
             if (response.ok) {
@@ -1063,7 +1065,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
           ...prev,
           { role: 'user', content: message },
           { role: 'assistant', content: contactMessage },
-        ]);
+        ].slice(-20)); // הגבלה ל-20 הודעות
 
         setHasAskedForContact(true);
         setIsLoading(false);
@@ -1078,7 +1080,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
         },
         body: JSON.stringify({
           message: message,
-          conversationHistory: conversationHistory,
+          conversationHistory: conversationHistory.slice(-5), // רק 5 הודעות אחרונות
         }),
       });
 
@@ -1184,7 +1186,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
           },
           body: JSON.stringify({
             message: "שגיאה בחיבור - הצע פתרונות",
-            conversationHistory: conversationHistory,
+            conversationHistory: conversationHistory.slice(-5), // רק 5 הודעות אחרונות
             isErrorMessage: true,
             errorType: 'connection'
           }),
