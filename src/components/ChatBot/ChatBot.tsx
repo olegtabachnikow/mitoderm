@@ -723,11 +723,35 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
             if (response.ok) {
               const data = await response.json();
               contactMessage = data.message;
+              shouldShowForm = true; // ⭐ הוספת השורה החסרה!
             }
           } catch (error) {
             console.error('Error processing contact request:', error);
             contactMessage = 'נהדר! בואי נמלא כמה פרטים 😊';
+            shouldShowForm = true; // ⭐ גם במקרה של שגיאה
           }
+        }
+
+        // עיבוד שורטקודים בהודעה שמגיעה מה-API (למקרה הרגיל)
+        const contactFormRegexForDirectRegular = /\[SHOW_CONTACT_FORM(?::([^\]]+))?\]/;
+        const shortcodeMatchDirectRegular = contactMessage.match(contactFormRegexForDirectRegular);
+        const hasContactFormShortcodeDirectRegular = shortcodeMatchDirectRegular !== null;
+        
+        if (hasContactFormShortcodeDirectRegular) {
+          // ניקוי השורטקוד מההודעה
+          contactMessage = contactMessage
+            .replace(contactFormRegexForDirectRegular, '')
+            .replace('[SHOW_CONTACT_FORM]', '')
+            .replace(/\[SHOW_CONTACT_FORM[^\]]*\]/g, '')
+            .trim();
+          shouldShowForm = true;
+          setShowContactForm(true);
+          setHasAskedForContact(true);
+          
+          console.log('=== PROCESSED SHORTCODE IN DIRECT MESSAGE (REGULAR) ===');
+          console.log('Original contactMessage had shortcode, cleaned to:', contactMessage);
+          console.log('shouldShowForm set to:', shouldShowForm);
+          console.log('=== END SHORTCODE PROCESSING (REGULAR) ===');
         }
 
         const directContactMessage: Message = {
@@ -736,6 +760,12 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
           timestamp: new Date(),
           showForm: shouldShowForm,
         };
+
+        console.log('=== ADDING DIRECT CONTACT MESSAGE (REGULAR) ===');
+        console.log('contactMessage:', contactMessage);
+        console.log('shouldShowForm:', shouldShowForm);
+        console.log('Final directContactMessage:', directContactMessage);
+        console.log('=== END DIRECT CONTACT MESSAGE DEBUG (REGULAR) ===');
 
         setMessages((prev) => [...prev, directContactMessage]);
 
@@ -1096,6 +1126,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
             if (response.ok) {
               const data = await response.json();
               contactMessage = data.message;
+              shouldShowForm = true; // ⭐ הוספת השורה החסרה!
               console.log('Got response from API:', contactMessage);
             }
           } catch (error) {
@@ -1103,6 +1134,28 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
             contactMessage = 'נהדר! בואי נמלא כמה פרטים 😊';
           }
           console.log('=== END HANDLING EXPLICIT CONTACT REQUEST ===');
+        }
+
+        // עיבוד שורטקודים בהודעה שמגיעה מה-API
+        const contactFormRegexForDirect = /\[SHOW_CONTACT_FORM(?::([^\]]+))?\]/;
+        const shortcodeMatchDirect = contactMessage.match(contactFormRegexForDirect);
+        const hasContactFormShortcodeDirect = shortcodeMatchDirect !== null;
+        
+        if (hasContactFormShortcodeDirect) {
+          // ניקוי השורטקוד מההודעה
+          contactMessage = contactMessage
+            .replace(contactFormRegexForDirect, '')
+            .replace('[SHOW_CONTACT_FORM]', '')
+            .replace(/\[SHOW_CONTACT_FORM[^\]]*\]/g, '')
+            .trim();
+          shouldShowForm = true;
+          setShowContactForm(true);
+          setHasAskedForContact(true);
+          
+          console.log('=== PROCESSED SHORTCODE IN DIRECT MESSAGE ===');
+          console.log('Original contactMessage had shortcode, cleaned to:', contactMessage);
+          console.log('shouldShowForm set to:', shouldShowForm);
+          console.log('=== END SHORTCODE PROCESSING ===');
         }
 
         const directContactMessage: Message = {
