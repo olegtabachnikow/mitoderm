@@ -140,6 +140,21 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
+  // פונקציה להמרת markdown לHTML
+  const convertMarkdownToHtml = (text: string): string => {
+    if (!text) return text;
+    
+    // המרת כוכביות כפולות לבולד **טקסט** -> <strong>טקסט</strong>
+    // הפונקציה מזהה כוכביות ומחליפה אותן בתגיות HTML לבולד
+    let convertedText = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    
+    // המרת כוכביות בודדות לבולד *טקסט* -> <strong>טקסט</strong>
+    // (רק אם לא נמצאות בתוך תגיות strong כבר)
+    convertedText = convertedText.replace(/\*([^*\<\>]+?)\*/g, '<strong>$1</strong>');
+    
+    return convertedText;
+  };
+
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -1453,7 +1468,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
                     <div className={styles.messageText}>
                       {/* תוכן ההודעה */}
                       <div
-                        dangerouslySetInnerHTML={{ __html: message.content }}
+                        dangerouslySetInnerHTML={{ __html: convertMarkdownToHtml(message.content) }}
                       />
 
                       {/* טופס אישור פרטים בתוך ההודעה */}
