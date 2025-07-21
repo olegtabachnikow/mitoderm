@@ -679,21 +679,8 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
         return;
       }
 
-      // בדיקה אם זו בקשה מפורשת ליצירת קשר
-      const isExplicitContactRequest =
-        currentInput.includes('רוצה שיחזרו אליי') ||
-        currentInput.includes('אני רוצה שיחזרו אליי') ||
-        currentInput.includes('אשמח שיחזרו אלי') ||
-        currentInput.includes('אשמח שיחזרו אליי') ||
-        currentInput.includes('תחזרו אליי') ||
-        currentInput.includes('יוכלו לחזור אלי') ||
-        currentInput.includes('שיחזרו אליי') ||
-        currentInput.toLowerCase().includes('callback') ||
-        (currentInput.includes('בבקשה') &&
-          (currentInput.includes('חזור') || currentInput.includes('קשר')));
-
-      // אם יש מספר טלפון או בקשה מפורשת ליצירת קשר
-      if (hasPhoneNumber || isExplicitContactRequest) {
+      // אם יש מספר טלפון
+      if (hasPhoneNumber) {
         let contactMessage = '';
         let shouldShowForm = false;
 
@@ -780,32 +767,6 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
             console.error('Error processing phone number:', error);
             contactMessage = 'קיבלתי את הפרטים שלך, בואי נמלא את שאר הפרטים 😊';
             shouldShowForm = true;
-          }
-        } else if (isExplicitContactRequest) {
-          // בקשה מפורשת ליצירת קשר - שליחה דרך AI
-          try {
-            const response = await fetch('/api/chat', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-                          body: JSON.stringify({
-              message: currentInput,
-              conversationHistory: conversationHistory.slice(-5), // רק 5 הודעות אחרונות
-              threadId: threadId, // העברת thread ID
-              isContactRequest: true
-            }),
-            });
-
-            if (response.ok) {
-              const data = await response.json();
-              contactMessage = data.message;
-              shouldShowForm = true; // ⭐ הוספת השורה החסרה!
-            }
-          } catch (error) {
-            console.error('Error processing contact request:', error);
-            contactMessage = 'נהדר! בואי נמלא כמה פרטים 😊';
-            shouldShowForm = true; // ⭐ גם במקרה של שגיאה
           }
         }
 
@@ -1076,28 +1037,13 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
       const phoneMatch = message.match(/05\d-?\d{7}|05\d{8}/);
       const hasPhoneNumber = phoneMatch !== null;
 
-      // בדיקה אם זו בקשה מפורשת ליצירת קשר
-      const isExplicitContactRequest =
-        message.includes('רוצה שיחזרו אליי') ||
-        message.includes('אני רוצה שיחזרו אליי') ||
-        message.includes('אשמח שיחזרו אלי') ||
-        message.includes('אשמח שיחזרו אליי') ||
-        message.includes('תחזרו אליי') ||
-        message.includes('יוכלו לחזור אלי') ||
-        message.includes('שיחזרו אליי') ||
-        message.toLowerCase().includes('callback') ||
-        (message.includes('בבקשה') &&
-          (message.includes('חזור') || message.includes('קשר')));
-
       console.log('=== PREDEFINED MESSAGE TYPE CHECK ===');
       console.log('hasPhoneNumber:', hasPhoneNumber);
       console.log('phoneMatch:', phoneMatch);
-      console.log('isExplicitContactRequest:', isExplicitContactRequest);
-      console.log('Will handle as explicit contact request:', isExplicitContactRequest);
       console.log('=== END PREDEFINED MESSAGE TYPE CHECK ===');
 
-      // אם יש מספר טלפון או בקשה מפורשת ליצירת קשר
-      if (hasPhoneNumber || isExplicitContactRequest) {
+      // אם יש מספר טלפון
+      if (hasPhoneNumber) {
         let contactMessage = '';
         let shouldShowForm = false;
 
@@ -1182,35 +1128,6 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
             contactMessage = 'קיבלתי את הפרטים שלך, בואי נמלא את שאר הפרטים 😊';
             shouldShowForm = true;
           }
-        } else if (isExplicitContactRequest) {
-          // בקשה מפורשת ליצירת קשר - שליחה דרך AI
-          console.log('=== HANDLING EXPLICIT CONTACT REQUEST ===');
-          try {
-            console.log('Sending to API with isContactRequest: true');
-            const response = await fetch('/api/chat', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-                          body: JSON.stringify({
-              message: message,
-              conversationHistory: conversationHistory.slice(-5), // רק 5 הודעות אחרונות
-              threadId: threadId, // העברת thread ID
-              isContactRequest: true
-            }),
-            });
-
-            if (response.ok) {
-              const data = await response.json();
-              contactMessage = data.message;
-              shouldShowForm = true; // ⭐ הוספת השורה החסרה!
-              console.log('Got response from API:', contactMessage);
-            }
-          } catch (error) {
-            console.error('Error processing contact request:', error);
-            contactMessage = 'נהדר! בואי נמלא כמה פרטים 😊';
-          }
-          console.log('=== END HANDLING EXPLICIT CONTACT REQUEST ===');
         }
 
         // עיבוד שורטקודים בהודעה שמגיעה מה-API
