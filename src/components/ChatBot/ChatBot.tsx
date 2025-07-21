@@ -195,16 +195,78 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
 
             if (response.ok) {
               const data = await response.json();
+              
+              // עיבוד שורטקודים בהודעת timeout (כמו בהודעות רגילות)
+              const contactFormRegex = /\[SHOW_CONTACT_FORM(?::([^\]]+))?\]/;
+              const shortcodeMatch = data.message.match(contactFormRegex);
+              const hasContactFormShortcode = shortcodeMatch !== null;
+              
+              // גישה נוספת - בדיקה פשוטה באמצעות includes
+              const hasSimpleShortcode = data.message.includes('[SHOW_CONTACT_FORM]');
+              
+              // בדיקה גלובלית לכל סוגי השורטקודים
+              const hasAnyContactShortcode = data.message.includes('SHOW_CONTACT_FORM') || 
+                                            data.message.includes('show_contact_form') || 
+                                            data.message.includes('ShowContactForm');
+
+              let messageContent = data.message;
+              let showForm = false;
+              let shortcodeParams: any = {};
+
+              // שימוש בכל האפשרויות לזיהוי שורטקוד
+              const shouldShowContactForm = hasContactFormShortcode || hasSimpleShortcode || hasAnyContactShortcode;
+
+              if (shouldShowContactForm) {
+                // ניקוי השורטקוד מההודעה בכל הדרכים האפשריות
+                messageContent = data.message
+                  .replace(contactFormRegex, '')
+                  .replace('[SHOW_CONTACT_FORM]', '')
+                  .replace(/\[SHOW_CONTACT_FORM[^\]]*\]/g, '')
+                  .trim();
+                showForm = true;
+                setHasAskedForContact(true);
+                setShowContactForm(true);
+
+                // עיבוד פרמטרים אם קיימים
+                if (shortcodeMatch && shortcodeMatch[1]) {
+                  const paramsString = shortcodeMatch[1];
+                  const paramPairs = paramsString
+                    .split(',')
+                    .map((p: string) => p.trim());
+
+                  paramPairs.forEach((pair: string) => {
+                    const [key, value] = pair.split('=').map((s: string) => s.trim());
+                    if (key && value) {
+                      shortcodeParams[key] = value;
+                    }
+                  });
+                }
+
+                if (Object.keys(shortcodeParams).length > 0) {
+                  setExtractedInfo({
+                    name: shortcodeParams.name || '',
+                    phone: shortcodeParams.phone || '',
+                    email: shortcodeParams.email || '',
+                    subject: shortcodeParams.subject || 'בקשה ליצירת קשר',
+                    confidence: 95,
+                  });
+                } else {
+                  await extractContactInfoForForm();
+                }
+              }
+
               const autoMessage: Message = {
                 role: 'assistant',
-                content: data.message,
+                content: messageContent,
                 timestamp: new Date(),
+                showForm: showForm,
               };
+              
               setMessages((prev) => [...prev, autoMessage]);
               // עדכון היסטוריה מקומית
               setConversationHistory((prev) => [
                 ...prev,
-                { role: 'assistant', content: data.message },
+                { role: 'assistant', content: messageContent },
               ].slice(-20));
               
               // עדכון thread ID אם חזר חדש
