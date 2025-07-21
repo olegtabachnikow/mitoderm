@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { LeadService } from '../../../services/leadService';
 
+// הגדרת timeout מורחב למודל מתקדם
+export const maxDuration = 60; // 60 שניות
+
 export async function POST(request: NextRequest) {
   try {
     const { conversationHistory } = await request.json();
