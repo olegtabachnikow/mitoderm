@@ -967,39 +967,12 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
       }
     } catch (error) {
       console.error('Error sending message:', error);
-      // שליחת הודעת שגיאה דרך AI
-      try {
-        const errorResponse = await fetch('/api/chat', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            message: "שגיאה בחיבור - הצע פתרונות",
-            conversationHistory: conversationHistory.slice(-5), // רק 5 הודעות אחרונות
-            isErrorMessage: true,
-            errorType: 'connection'
-          }),
-        });
-
-        if (errorResponse.ok) {
-          const data = await errorResponse.json();
-          const errorMessage: Message = {
-            role: 'assistant',
-            content: data.message,
-            timestamp: new Date(),
-          };
-          setMessages((prev) => [...prev, errorMessage]);
-        }
-      } catch (fetchError) {
-        // fallback message אם גם שליחת הודעת השגיאה נכשלת
-        const errorMessage: Message = {
-          role: 'assistant',
-          content: 'מצטערת, הייתה שגיאה. אנא נסי שוב 😊',
-          timestamp: new Date(),
-        };
-        setMessages((prev) => [...prev, errorMessage]);
-      }
+      const errorMessage: Message = {
+        role: 'assistant',
+        content: 'מצטערת, הייתה שגיאה. אנא נסי שוב 😊',
+        timestamp: new Date(),
+      };
+      setMessages((prev) => [...prev, errorMessage]);
     } finally {
       setIsLoading(false);
     }
@@ -1315,39 +1288,12 @@ const Chatbot: React.FC<ChatbotProps> = ({ locale }) => {
       }
     } catch (error) {
       console.error('Error sending predefined message:', error);
-      // שליחת הודעת שגיאה דרך AI
-      try {
-        const errorResponse = await fetch('/api/chat', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            message: "שגיאה בחיבור - הצע פתרונות",
-            conversationHistory: conversationHistory.slice(-5), // רק 5 הודעות אחרונות
-            isErrorMessage: true,
-            errorType: 'connection'
-          }),
-        });
-
-        if (errorResponse.ok) {
-          const data = await errorResponse.json();
-          const errorMessage: Message = {
-            role: 'assistant',
-            content: data.message,
-            timestamp: new Date(),
-          };
-          setMessages((prev) => [...prev, errorMessage]);
-        }
-      } catch (fetchError) {
-        // fallback message אם גם שליחת הודעת השגיאה נכשלת
-        const errorMessage: Message = {
-          role: 'assistant',
-          content: 'מצטערת, הייתה שגיאה. אנא נסי שוב 😊',
-          timestamp: new Date(),
-        };
-        setMessages((prev) => [...prev, errorMessage]);
-      }
+      const errorMessage: Message = {
+        role: 'assistant',
+        content: 'מצטערת, הייתה שגיאה. אנא נסי שוב 😊',
+        timestamp: new Date(),
+      };
+      setMessages((prev) => [...prev, errorMessage]);
     } finally {
       setIsLoading(false);
     }
