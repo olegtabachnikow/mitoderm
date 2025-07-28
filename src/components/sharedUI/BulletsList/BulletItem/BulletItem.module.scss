@@ -56,6 +56,10 @@
     padding: 24px;
     border-radius: 32px;
   }
+  .container,
+  .containerEvent {
+    min-width: unset;
+  }
   .container img {
     height: 100px;
   }

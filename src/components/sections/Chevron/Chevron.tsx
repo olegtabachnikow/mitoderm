@@ -12,7 +12,11 @@ const Chevron: FC = () => {
   return (
     <div className={styles.container}>
       <div className={styles.row}>
-        <div className={styles.textContainer}>
+        <div
+          className={`${styles.textContainer} ${
+            locale === 'ru' ? styles.textContainerRu : ''
+          }`}
+        >
           <span dir={locale === 'he' ? 'rtl' : 'ltr'}>
             <span className={styles.bold}>{t('chevron.text1')}</span>
             {t('chevron.text2')}
