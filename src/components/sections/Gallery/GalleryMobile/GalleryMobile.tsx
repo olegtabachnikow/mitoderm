@@ -23,22 +23,8 @@ const GalleryMobile: FC<Props> = ({ items }) => {
     const scrollDistance =
       locale === 'he' ? -container.scrollLeft : container.scrollLeft;
 
-    switch (scrollDistance) {
-      case 0:
-        return setGalleryPage(0);
-      case itemWidth * 1:
-        return setGalleryPage(1);
-      case itemWidth * 2:
-        return setGalleryPage(2);
-      case itemWidth * 3:
-        return setGalleryPage(3);
-      case itemWidth * 4:
-        return setGalleryPage(4);
-      case itemWidth * 5:
-        return setGalleryPage(5);
-      case itemWidth * 6:
-        return setGalleryPage(6);
-    }
+    const page = Math.round(scrollDistance / itemWidth);
+    setGalleryPage(page);
   };
 
   useEffect(() => {
