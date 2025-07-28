@@ -5,3 +5,7 @@
 .env.development
 .env.production
 **/*.env.development
+
+# SSH Deploy Keys
+mitoderm_deploy_key
+mitoderm_deploy_key.pub
