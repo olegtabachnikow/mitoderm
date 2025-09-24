@@ -10,7 +10,6 @@ import {
 } from './types';
 
 export const navMainList: NavItem[] = [
-  { text: 'navigation.product', scrollId: ScrollItems.solution },
   { text: 'navigation.results', scrollId: ScrollItems.gallery },
   { text: 'navigation.about', scrollId: ScrollItems.mission },
   { text: 'navigation.info', scrollId: ScrollItems.moreInfo },
@@ -20,7 +19,6 @@ export const navMainList: NavItem[] = [
 ];
 
 export const navEventList: NavItem[] = [
-  { text: 'navigation.product', url: '/' },
   { text: 'navigation.info', scrollId: ScrollItems.about },
   { text: 'navigation.agenda', scrollId: ScrollItems.agenda },
   { text: 'navigation.contact', scrollId: ScrollItems.contactUs },

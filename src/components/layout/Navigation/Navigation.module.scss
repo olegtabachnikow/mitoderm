@@ -16,18 +16,11 @@
   line-height: 24px;
   padding-inline: 10px;
   transition: color 0.3s linear;
+  cursor: pointer;
 }
 
 .button:hover {
   color: rgba(255, 255, 255, 1);
-}
-
-.arrowIcon {
-  margin: 0 0 2px 5px;
-}
-
-.arrowIcon.reversed {
-  margin: 0 5px 2px 0;
 }
 
 .mobileNavigation {

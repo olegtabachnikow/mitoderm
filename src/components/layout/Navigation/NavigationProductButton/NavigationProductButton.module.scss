@@ -1,0 +1,55 @@
+.button {
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 16px;
+  line-height: 24px;
+  padding-inline: 10px;
+  transition: color 0.3s linear;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.button.closed:hover {
+  color: rgba(255, 255, 255, 1);
+}
+
+.dropDownButton {
+  position: relative;
+}
+
+.dropDownList {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 42px;
+  right: 0;
+  width: calc(100% + 20px);
+}
+
+.arrowIcon {
+  margin: 0 0 2px 5px;
+  transition: all 0.3s linear;
+}
+
+.arrowIcon.opened {
+  transform: rotate(180deg);
+}
+
+.arrowIcon.reversed {
+  margin: 0 5px 2px 0;
+}
+
+.link {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  width: 100%;
+  padding-block: 5px;
+  padding-inline-end: 20px;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.link:hover {
+  color: rgba(255, 255, 255, 1);
+}
