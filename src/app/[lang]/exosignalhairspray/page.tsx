@@ -38,8 +38,8 @@ export default function HomePage({ params: { lang } }: any) {
   unstable_setRequestLocale(lang);
   return (
     <main id='mainpage'>
-      {/* <Intro />
-      <Chevron />
+      <Intro />
+      {/* <Chevron />
       <Synergy />
       <HowCanBeUsed />
       <Solution />
@@ -48,7 +48,6 @@ export default function HomePage({ params: { lang } }: any) {
       <CenterList />
       <Faq />
       <Contact /> */}
-      EBANIY GEL
     </main>
   );
 }

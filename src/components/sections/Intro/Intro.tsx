@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic';
 import styles from './Intro.module.scss';
 import Image from 'next/image';
 import { useTranslations, useLocale } from 'next-intl';
-import { usePathname } from '@/i18n/routing';
+import { usePathname, useRouter } from '@/i18n/routing';
 import DotPagination from '../../sharedUI/DotPagination/DotPagination';
 import useAppStore from '@/store/store';
 
@@ -15,9 +15,13 @@ const Button = dynamic(() => import('@/components/sharedUI/Button/Button'), {
 const Intro: FC = () => {
   const t = useTranslations();
   const locale = useLocale();
+  const router = useRouter();
   const pathname = usePathname();
   const ref = useRef<HTMLDivElement>(null);
   const isEventPage = pathname.includes('event');
+  const isSignalPage = pathname.includes('exosignalhair');
+  const isGelPage = pathname.includes('exotechgel');
+  const isSprayPage = pathname.includes('exosignalhairspray');
   const { introPage, setIntroPage } = useAppStore((state) => state);
 
   const scrollToNextChild = () => {
@@ -39,6 +43,12 @@ const Intro: FC = () => {
   useEffect(() => {
     if (isEventPage) {
       setIntroPage(1);
+    } else if (isSprayPage) {
+      setIntroPage(2);
+    } else if (isSignalPage) {
+      setIntroPage(3);
+    } else if (isGelPage) {
+      setIntroPage(4);
     } else setIntroPage(0);
   }, []);
 
@@ -49,11 +59,17 @@ const Intro: FC = () => {
       const containerWidth = ref.current?.clientWidth;
       if (locale === 'he' && container?.scrollLeft && containerWidth) {
         if (container?.scrollLeft === -containerWidth) setIntroPage(1);
+        else if (container?.scrollLeft === -containerWidth * 2) setIntroPage(2);
+        else if (container?.scrollLeft === -containerWidth * 3) setIntroPage(3);
+        else if (container?.scrollLeft === -containerWidth * 4) setIntroPage(4);
       } else if (container?.scrollLeft === 0) {
         setIntroPage(0);
       }
       if (locale !== 'he' && container?.scrollLeft && containerWidth) {
         if (container?.scrollLeft === containerWidth) setIntroPage(1);
+        else if (container?.scrollLeft === containerWidth * 2) setIntroPage(2);
+        else if (container?.scrollLeft === containerWidth * 3) setIntroPage(3);
+        else if (container?.scrollLeft === containerWidth * 4) setIntroPage(4);
       } else if (container?.scrollLeft === 0) {
         setIntroPage(0);
       }
@@ -68,7 +84,7 @@ const Intro: FC = () => {
   }, [introPage]);
 
   useEffect(() => {
-    const currentValue = introPage === 0 ? 1 : 0;
+    const currentValue = introPage < 4 ? introPage + 1 : 0;
     const interval = setInterval(() => {
       setIntroPage(currentValue);
     }, 15000);
@@ -149,9 +165,117 @@ const Intro: FC = () => {
             </div>
           </div>
         </div>
+        <div
+          className={`${styles.introProducts} ${styles.introSpray} ${
+            locale === 'he' ? styles.reversed : ''
+          }`}
+        >
+          <div dir='ltr' className={styles.introProductsContent}>
+            <div className={styles.container}>
+              <h1
+                className={`${styles.title} ${
+                  locale === 'ru' ? styles.ru : ''
+                }`}
+              >
+                {t('intro.title')}
+              </h1>
+              <p className={styles.text}>{t('intro.text')}</p>
+              <Button
+                text={t('buttons.intro')}
+                style={{
+                  marginTop: 20,
+                  width: '100%',
+                }}
+                onClick={
+                  isSprayPage ? undefined : () => router.push('/exotechgel')
+                }
+                formPage={isSprayPage ? 'main' : undefined}
+              />
+              <Image
+                className={styles.leaves}
+                src='/images/leaves.svg'
+                width={90}
+                height={100}
+                alt='leavest pattern'
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          className={`${styles.introProducts} ${styles.introGel} ${
+            locale === 'he' ? styles.reversed : ''
+          }`}
+        >
+          <div dir='ltr' className={styles.introProductsContent}>
+            <div className={styles.container}>
+              <h1
+                className={`${styles.title} ${
+                  locale === 'ru' ? styles.ru : ''
+                }`}
+              >
+                {t('intro.title')}
+              </h1>
+              <p className={styles.text}>{t('intro.text')}</p>
+              <Button
+                text={t('buttons.intro')}
+                style={{
+                  marginTop: 20,
+                  width: '100%',
+                }}
+                onClick={
+                  isGelPage ? undefined : () => router.push('/exotechgel')
+                }
+                formPage={isGelPage ? 'main' : undefined}
+              />
+              <Image
+                className={styles.leaves}
+                src='/images/leaves.svg'
+                width={90}
+                height={100}
+                alt='leavest pattern'
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          className={`${styles.introProducts} ${styles.introHair} ${
+            locale === 'he' ? styles.reversed : ''
+          }`}
+        >
+          <div dir='ltr' className={styles.introProductsContent}>
+            <div className={styles.container}>
+              <h1
+                className={`${styles.title} ${
+                  locale === 'ru' ? styles.ru : ''
+                }`}
+              >
+                {t('intro.title')}
+              </h1>
+              <p className={styles.text}>{t('intro.text')}</p>
+              <Button
+                text={t('buttons.intro')}
+                style={{
+                  marginTop: 20,
+                  width: '100%',
+                }}
+                onClick={
+                  isSignalPage ? undefined : () => router.push('/exosignalhair')
+                }
+                formPage={isSignalPage ? 'main' : undefined}
+              />
+              <Image
+                className={styles.leaves}
+                src='/images/leaves.svg'
+                width={90}
+                height={100}
+                alt='leavest pattern'
+              />
+            </div>
+          </div>
+        </div>
       </div>
       <div className={styles.paginationBox}>
-        <DotPagination count={2} intro />
+        <DotPagination count={5} intro />
       </div>
     </section>
   );

@@ -20,14 +20,16 @@
 }
 
 .introMain,
-.introEvent {
+.introEvent,
+.introProducts {
   display: flex;
   flex-direction: column;
   align-items: center;
   scroll-snap-align: start;
 }
 
-.introMain {
+.introMain,
+.introProducts {
   min-width: 100vw;
   width: 100%;
   height: 100%;
@@ -35,7 +37,10 @@
   overflow: hidden;
 }
 
-.introMain::before {
+.introMain::before,
+.introSpray::before,
+.introGel::before,
+.introHair::before {
   content: '';
   position: absolute;
   top: 0;
@@ -48,13 +53,26 @@
   background-repeat: no-repeat;
 }
 
+.introSpray::before {
+  background-image: url(/images/introHairSpray.png);
+}
+
+.introGel::before {
+  background-image: url(/images/gelBG.png);
+}
+
+.introHair::before {
+  background-image: url(/images/hairBG.png);
+}
+
 .introEvent {
   min-width: 100vw;
   width: 100%;
   height: 100%;
 }
 
-.introMainContent {
+.introMainContent,
+.introProductsContent {
   display: flex;
   flex: 1;
   justify-content: flex-end;
