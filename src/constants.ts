@@ -32,12 +32,29 @@ export const navFormList: NavItem[] = [
 ];
 
 export const howToUseItemList: HowToUseItem[] = [
-  { imagePath: '/images/howToUse/skin.png', text: 'howToUse.item1' },
-  { imagePath: '/images/howToUse/acne.png', text: 'howToUse.item2' },
-  { imagePath: '/images/howToUse/butt.png', text: 'howToUse.item3' },
-  { imagePath: '/images/howToUse/acne2.png', text: 'howToUse.item4' },
-  { imagePath: '/images/howToUse/surgery.png', text: 'howToUse.item5' },
-  { imagePath: '/images/howToUse/blood.png', text: 'howToUse.item6' },
+  { imagePath: '/images/howToUse/skin.png', text: 'howToUse.main.item1' },
+  { imagePath: '/images/howToUse/acne.png', text: 'howToUse.main.item2' },
+  { imagePath: '/images/howToUse/butt.png', text: 'howToUse.main.item3' },
+  { imagePath: '/images/howToUse/acne2.png', text: 'howToUse.main.item4' },
+  { imagePath: '/images/howToUse/surgery.png', text: 'howToUse.main.item5' },
+  { imagePath: '/images/howToUse/blood.png', text: 'howToUse.main.item6' },
+];
+
+export const howToUseHairItemList: HowToUseItem[] = [
+  { imagePath: '/images/howToUse/hair1.png', text: 'howToUse.hair.item1' },
+  { imagePath: '/images/howToUse/hair2.png', text: 'howToUse.hair.item2' },
+  { imagePath: '/images/howToUse/hair3.png', text: 'howToUse.hair.item3' },
+  { imagePath: '/images/howToUse/hair4.png', text: 'howToUse.hair.item4' },
+  { imagePath: '/images/howToUse/hair5.png', text: 'howToUse.hair.item5' },
+  { imagePath: '/images/howToUse/hair6.png', text: 'howToUse.hair.item6' },
+];
+
+export const howToUseGelItemList: HowToUseItem[] = [
+  { imagePath: '/images/howToUse/skin.png', text: 'howToUse.gel.item1' },
+  { imagePath: '/images/howToUse/gel2.png', text: 'howToUse.gel.item2' },
+  { imagePath: '/images/howToUse/gel3.png', text: 'howToUse.gel.item3' },
+  { imagePath: '/images/howToUse/gel4.png', text: 'howToUse.gel.item4' },
+  { imagePath: '/images/howToUse/gel5.png', text: 'howToUse.gel.item5' },
 ];
 
 export const eventBulletsItemList: EventBulletItem[] = [
@@ -68,26 +85,26 @@ export const languageSwitchItemList: LanguageSwitchItem[] = [
 export const solutionItems: SolutionItem[] = [
   {
     imageUrl: '/images/solution/item1.png',
-    title: 'solution.item1title',
+    title: 'solution.main.item1title',
     text: [
-      'solution.item1textP1',
-      'solution.item1textP2',
-      'solution.item1textP3',
-      'solution.item1textP4',
-      'solution.item1textP5',
-      'solution.item1textP6',
+      'solution.main.item1textP1',
+      'solution.main.item1textP2',
+      'solution.main.item1textP3',
+      'solution.main.item1textP4',
+      'solution.main.item1textP5',
+      'solution.main.item1textP6',
     ],
   },
   {
     imageUrl: '/images/solution/item2.png',
-    title: 'solution.item2title',
+    title: 'solution.main.item2title',
     column: true,
     text: [
-      'solution.item2textP1',
-      'solution.item2textP2',
-      'solution.item2textP3',
-      'solution.item2textP4',
-      'solution.item2textP5',
+      'solution.main.item2textP1',
+      'solution.main.item2textP2',
+      'solution.main.item2textP3',
+      'solution.main.item2textP4',
+      'solution.main.item2textP5',
     ],
   },
   {

@@ -4,7 +4,6 @@ import styles from './Navigation.module.scss';
 import { navMainList, navEventList, navFormList } from '@/constants';
 import { NavItem } from '@/types';
 import { useLocale, useTranslations } from 'next-intl';
-import Image from 'next/image';
 import { useMediaQuery } from 'react-responsive';
 import { usePathname, Link } from '@/i18n/routing';
 import NavigationProductButton from './NavigationProductButton/NavigationProductButton';
@@ -30,7 +29,6 @@ const Navigation: FC<Props> = ({ isOpen, setIsOpen }) => {
   const randomString = () => (Math.random() + 1).toString(36).substring(7);
 
   const t = useTranslations();
-  const locale = useLocale();
 
   const handleClick = () => {
     setIsOpen(false);
@@ -43,18 +41,7 @@ const Navigation: FC<Props> = ({ isOpen, setIsOpen }) => {
           aria-label='Main Navigation'
           className={`${styles.mobileNavigation} ${isOpen && styles.active}`}
         >
-          <div className={styles.buttonMobile}>
-            {t('navigation.product')}
-            <Image
-              className={`${styles.arrowIcon} ${
-                locale === 'he' ? styles.reversed : ''
-              }`}
-              src='/images/arrowDown.svg'
-              width={10}
-              height={5.5}
-              alt='arrow icon'
-            />
-          </div>
+          <NavigationProductButton isMobile handleClick={handleClick} />
           {navList.map((item: NavItem, index: number) => (
             <div
               className={styles.linkContainerMobile}

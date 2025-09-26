@@ -45,9 +45,9 @@ const Intro: FC = () => {
       setIntroPage(1);
     } else if (isSprayPage) {
       setIntroPage(2);
-    } else if (isSignalPage) {
-      setIntroPage(3);
     } else if (isGelPage) {
+      setIntroPage(3);
+    } else if (isSignalPage) {
       setIntroPage(4);
     } else setIntroPage(0);
   }, []);
@@ -177,9 +177,9 @@ const Intro: FC = () => {
                   locale === 'ru' ? styles.ru : ''
                 }`}
               >
-                {t('intro.title')}
+                {t('intro.hairSprayTitle')}
               </h1>
-              <p className={styles.text}>{t('intro.text')}</p>
+              <p className={styles.text}>{t('intro.hairSubtitle')}</p>
               <Button
                 text={t('buttons.intro')}
                 style={{
@@ -187,7 +187,9 @@ const Intro: FC = () => {
                   width: '100%',
                 }}
                 onClick={
-                  isSprayPage ? undefined : () => router.push('/exotechgel')
+                  isSprayPage
+                    ? undefined
+                    : () => router.push('/exosignalhairspray')
                 }
                 formPage={isSprayPage ? 'main' : undefined}
               />

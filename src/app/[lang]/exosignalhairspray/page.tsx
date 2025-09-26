@@ -39,15 +39,15 @@ export default function HomePage({ params: { lang } }: any) {
   return (
     <main id='mainpage'>
       <Intro />
-      {/* <Chevron />
+      <Chevron page='hairspray' imageName='chevronImage1' />
       <Synergy />
-      <HowCanBeUsed />
-      <Solution />
+      <HowCanBeUsed page='hair' />
+      <Solution page='hair' />
       <Gallery />
       <Mission />
       <CenterList />
       <Faq />
-      <Contact /> */}
+      <Contact />
     </main>
   );
 }

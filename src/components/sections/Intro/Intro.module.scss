@@ -187,6 +187,13 @@
   z-index: 2;
 }
 
+.introProductsContent {
+  .title {
+    text-align: center;
+    line-height: 80px;
+  }
+}
+
 @media screen and (min-width: 1440px) {
   .introEvent {
     background-position: 70% 60px;
@@ -200,7 +207,8 @@
   .container {
     padding-inline: 20px;
   }
-  .introMain {
+  .introMain,
+  .introProducts {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -227,6 +235,13 @@
   .introMain::before {
     content: '';
     background-position: 40%;
+  }
+  .introProducts::before {
+    content: '';
+    background-position: 25%;
+  }
+  .introSpray::before {
+    background-position: 32.5%;
   }
   .leaves {
     bottom: 20px;

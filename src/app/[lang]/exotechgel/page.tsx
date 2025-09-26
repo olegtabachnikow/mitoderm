@@ -38,17 +38,16 @@ export default function HomePage({ params: { lang } }: any) {
   unstable_setRequestLocale(lang);
   return (
     <main id='mainpage'>
-      {/* <Intro />
-      <Chevron />
+      <Intro />
+      <Chevron page='gel' imageName='chevronGel' />
       <Synergy />
-      <HowCanBeUsed />
-      <Solution />
+      <HowCanBeUsed page='gel' />
+      <Solution page='gel' />
       <Gallery />
       <Mission />
       <CenterList />
       <Faq />
-      <Contact /> */}
-      EBANIY GEL
+      <Contact />
     </main>
   );
 }

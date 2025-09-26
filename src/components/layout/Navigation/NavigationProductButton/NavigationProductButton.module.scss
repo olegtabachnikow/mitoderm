@@ -10,6 +10,19 @@
   align-items: center;
 }
 
+.buttonMobile {
+  user-select: none;
+  width: 100%;
+  padding: 20px 40px;
+  color: var(--colorLightBG);
+  background-color: transparent;
+  font-size: var(--fontSizeP2);
+  text-align: end;
+}
+
+.buttonMobile.opened {
+  padding-bottom: 0px;
+}
 .button.closed:hover {
   color: rgba(255, 255, 255, 1);
 }
@@ -24,7 +37,22 @@
   flex-direction: column;
   top: 42px;
   right: 0;
-  width: calc(100% + 20px);
+  width: 200px;
+}
+
+.dropdownListMobile {
+  position: relative;
+  width: 100%;
+  top: 0;
+}
+
+.dropDownList.reversed {
+  right: auto;
+  left: 0;
+}
+
+.dropDownList.opened {
+  padding-bottom: 0px;
 }
 
 .arrowIcon {
@@ -52,4 +80,19 @@
 
 .link:hover {
   color: rgba(255, 255, 255, 1);
+}
+
+.linkMobile {
+  padding-block: 10px;
+  padding-inline-end: 0;
+  background-color: transparent;
+  font-size: 14px;
+}
+
+.linkMobile:hover {
+  color: var(--colorLightBG);
+}
+
+.linkMobile:nth-child(1) {
+  margin-top: 20px;
 }

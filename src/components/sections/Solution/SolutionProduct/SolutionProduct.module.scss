@@ -1,0 +1,50 @@
+.container {
+  display: flex;
+  background-color: var(--colorLightBG);
+  border-radius: 56px;
+  flex: 1;
+  position: relative;
+  gap: 10%;
+}
+
+.title {
+  font-size: var(--fontSizeP1);
+  margin-block: 30px;
+}
+
+.subtitle {
+  font-size: var(--fontSizeP1);
+  margin-bottom: 20px;
+}
+
+.text {
+  font-size: var(--fontSizeP2);
+}
+
+.textContainer {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.imageContainer {
+  max-width: 50%;
+  overflow: hidden;
+  width: 100%;
+}
+
+.imageContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 1224px) {
+  .container {
+    flex-direction: column;
+    width: 100%;
+  }
+  .imageContainer {
+    max-width: 100%;
+  }
+}
