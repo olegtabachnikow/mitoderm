@@ -6,6 +6,10 @@ import styles from './Gallery.module.scss';
 import { getTranslations } from 'next-intl/server';
 import GalleryPagination from './GalleryPagination/GalleryPagination';
 
+interface Props {
+  isHairPage?: boolean;
+}
+
 const env = process.env.NODE_ENV;
 
 const GalleryWrapper = dynamic(
@@ -15,16 +19,21 @@ const GalleryWrapper = dynamic(
   }
 );
 
-const Gallery: FC = async () => {
+const Gallery: FC<Props> = async ({ isHairPage }) => {
   const t = await getTranslations('gallery');
-  const imageDirectory = path.join(process.cwd(), '/public/images/beforeAfter');
+  const imageDirectory = path.join(
+    process.cwd(),
+    isHairPage
+      ? '/public/images/beforeAfter/hair'
+      : '/public/images/beforeAfter'
+  );
   const imageFilenames = await fs.readdir(imageDirectory);
   let sliderItemsArray: string[] = [];
 
   let itemList: string[] = [];
 
   if (env == 'development') {
-    sliderItemsArray = imageFilenames.slice(1);
+    sliderItemsArray = imageFilenames.filter((file) => file !== '.DS_Store');
   } else sliderItemsArray = imageFilenames;
 
   if (sliderItemsArray) itemList = sliderItemsArray;

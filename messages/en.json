@@ -61,7 +61,11 @@
   "intro": {
     "title": "V-Tech System",
     "hairSprayTitle": "Exosignal Hair Spray",
+    "gelTitle": "Exotech Gel",
+    "gelSubtitle": "Concentration of active ingredients within synthetic exosome structures",
     "hairSubtitle": "Next generation daily treatment based on synthetic exosomes for strengthening nourishment and biological renewal from the roots",
+    "sygnalTitle": "Exosignal Hair",
+    "sygnalSubtitle": "Professional use ampoules",
     "text": "A new generation in cosmeceuticals - a breakthrough in skincare for cosmeticians",
     "eventSubtitle1": "Are you a Cosmetologist? Aesthetician?  Working with professional devices?",
     "eventSubtitle2": "The company that brings the next generation of aesthetics.",
@@ -89,22 +93,22 @@
       "button": "More information about the products"
     },
     "gel": {
-      "text1": "",
-      "text2": "",
+      "text1": "Exotech Gel - ",
+      "text2": "Gel containing synthetic exosomes with biomimetic peptides, hyaluronic acid, pure snail mucin polysaccharide and PDRN",
       "title1": "Unique",
       "title2": "Effective",
       "title3": "Safe",
-      "subtitle": "",
-      "button": ""
+      "subtitle": "Mitoderm presents advanced technology based on a unique Italian combination developed by VM Corporation experts designed to deliver firming renewal and biological restoration of the skin",
+      "button": "More information about the products"
     },
     "hair": {
-      "text1": "",
-      "text2": "",
+      "text1": "Hair loss ",
+      "text2": "is a common issue affecting men and women worldwide. Exosomes act on \"dormant\" follicles that are in the resting phase, stimulating them to return to a longer growth phase. The treatment suits both men and women and can be applied in early or advanced stages of hair loss.",
       "title1": "Unique",
       "title2": "Effective",
       "title3": "Safe",
-      "subtitle": "",
-      "button": ""
+      "subtitle": "Mitoderm presents advanced technology based on a unique Italian combination developed by VM Corporation experts designed to deliver firming renewal and biological restoration of the skin",
+      "button": "More information about the products"
     }
   },
   "fastResult": {
@@ -142,6 +146,12 @@
     "item3": {
       "title": "Soothing and moisturizing ingredients",
       "text": "Epidermal barrier restoration, nourishment and hydration, protection against external irritants."
+    },
+    "item4": {
+      "title": "Biomimetic Peptides",
+      "text1": "Dedicated to stimulating hair follicles",
+      "text2": "Encourage healthy hair growth",
+      "text3": "Stimulate new cell creation"
     }
   },
   "howToUse": {
@@ -163,11 +173,11 @@
       "item6": "Alopecia areata scalp beard eyebrows"
     },
     "gel": {
-      "item1": "",
-      "item2": "",
-      "item3": "",
-      "item4": "",
-      "item5": ""
+      "item1": "Maintaining results after clinical treatment",
+      "item2": "Redness reduction",
+      "item3": "Bio-stimulation",
+      "item4": "Firming and wrinkle blurring",
+      "item5": "Moisture and epidermal barrier restoration"
     }
   },
   "about": {
@@ -224,8 +234,38 @@
       "bundleText1": "15 ml spray bottle",
       "bundleText2": "Once a day on clean and dry scalp shake before use and spray on desired area at roots massage gently for distribution recommended in the evening for two months"
     },
-    "gel": {},
-    "signal": {}
+    "gel": {
+      "title": "Exotech Gel",
+      "itemTitle": "V-Tech Gel 30 ml",
+      "item1": "",
+      "item2": "Synthetic exosomes",
+      "item3": "Biomimetic peptides + colloidal gold",
+      "item4": "Purified snail mucin polysaccharide",
+      "item5": "Hyaluronic acid",
+      "item6": "PDRN",
+      "discountTitle": "Clinic + Home = Maximum Results",
+      "discountLabelText1": "",
+      "discountLabelText2": "Professional treatment activates renewal processes together with daily use of ExoSignal Hair Spray preserves results over time",
+      "bundleTitle": "Each package contains:",
+      "bundleText1": "V-Tech Gel 30 ml",
+      "bundleText2": "Once a day on clean and dry scalp shake before use and spray on desired area at roots massage gently for distribution recommended in the evening for two months"
+    },
+    "signal": {
+      "title": "Exotech Gel",
+      "itemTitle": "V-Tech Gel 30 ml",
+      "item1": "",
+      "item2": "Synthetic exosomes",
+      "item3": "Biomimetic peptides + colloidal gold",
+      "item4": "Purified snail mucin polysaccharide",
+      "item5": "Hyaluronic acid",
+      "item6": "PDRN",
+      "discountTitle": "Clinic + Home = Maximum Results",
+      "discountLabelText1": "",
+      "discountLabelText2": "Professional treatment activates renewal processes together with daily use of ExoSignal Hair Spray preserves results over time",
+      "bundleTitle": "Each package contains:",
+      "bundleText1": "V-Tech Gel 30 ml",
+      "bundleText2": "Once a day on clean and dry scalp shake before use and spray on desired area at roots massage gently for distribution recommended in the evening for two months"
+    }
   },
   "faq": {
     "centerTitle": "List of certified cosmeticians and clinics",

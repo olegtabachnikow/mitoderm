@@ -10,7 +10,7 @@ import SolutionItem from './SolutionItem/SolutionItem';
 import SolutionProduct from './SolutionProduct/SolutionProduct';
 
 interface Props {
-  page: 'main' | 'hair' | 'gel';
+  page: 'main' | 'hair' | 'gel' | 'sygnal';
 }
 
 const Solution: FC<Props> = ({ page }) => {
@@ -40,6 +40,7 @@ const Solution: FC<Props> = ({ page }) => {
                 </div>
               ))}
             {page === 'hair' && <SolutionProduct page='hair' />}
+            {page === 'gel' && <SolutionProduct page='gel' />}
           </div>
         </div>
         <Button

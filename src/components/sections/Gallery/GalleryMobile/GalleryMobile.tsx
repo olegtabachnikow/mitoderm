@@ -8,9 +8,10 @@ import useAppStore from '@/store/store';
 
 interface Props {
   items: string[];
+  isHairPage?: boolean;
 }
 
-const GalleryMobile: FC<Props> = ({ items }) => {
+const GalleryMobile: FC<Props> = ({ items, isHairPage }) => {
   const setGalleryPage = useAppStore((state) => state.setGalleryPage);
   const locale = useLocale();
   const t = useTranslations();
@@ -48,10 +49,16 @@ const GalleryMobile: FC<Props> = ({ items }) => {
           <PhotoProvider>
             {items.map((item, i) => (
               <div className={styles.item} key={i}>
-                <PhotoView src={`/images/beforeAfter/${item}`}>
+                <PhotoView
+                  src={`/images/beforeAfter/${
+                    isHairPage ? `hair/` : ''
+                  }${item}`}
+                >
                   <img
                     className={styles.image}
-                    src={`/images/beforeAfter/${item}`}
+                    src={`/images/beforeAfter/${
+                      isHairPage ? `hair/` : ''
+                    }${item}`}
                     alt='Example of Exosomes effect'
                   />
                 </PhotoView>

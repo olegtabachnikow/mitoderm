@@ -38,17 +38,16 @@ export default function HomePage({ params: { lang } }: any) {
   unstable_setRequestLocale(lang);
   return (
     <main id='mainpage'>
-      {/* <Intro />
-      <Chevron />
-      <Synergy />
-      <HowCanBeUsed />
-      <Solution />
-      <Gallery />
+      <Intro />
+      <Chevron page='hair' imageName='chevronHair' />
+      <Synergy page='hair' />
+      <HowCanBeUsed page='hair' />
+      <Solution page='sygnal' />
+      <Gallery isHairPage />
       <Mission />
       <CenterList />
       <Faq />
-      <Contact /> */}
-      EBANIY GEL
+      <Contact />x
     </main>
   );
 }

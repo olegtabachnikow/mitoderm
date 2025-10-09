@@ -215,9 +215,9 @@ const Intro: FC = () => {
                   locale === 'ru' ? styles.ru : ''
                 }`}
               >
-                {t('intro.title')}
+                {t('intro.gelTitle')}
               </h1>
-              <p className={styles.text}>{t('intro.text')}</p>
+              <p className={styles.text}>{t('intro.gelSubtitle')}</p>
               <Button
                 text={t('buttons.intro')}
                 style={{
@@ -251,9 +251,9 @@ const Intro: FC = () => {
                   locale === 'ru' ? styles.ru : ''
                 }`}
               >
-                {t('intro.title')}
+                {t('intro.sygnalTitle')}
               </h1>
-              <p className={styles.text}>{t('intro.text')}</p>
+              <p className={styles.text}>{t('intro.sygnalSubtitle')}</p>
               <Button
                 text={t('buttons.intro')}
                 style={{

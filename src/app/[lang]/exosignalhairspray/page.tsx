@@ -40,10 +40,10 @@ export default function HomePage({ params: { lang } }: any) {
     <main id='mainpage'>
       <Intro />
       <Chevron page='hairspray' imageName='chevronImage1' />
-      <Synergy />
+      <Synergy page='hair' />
       <HowCanBeUsed page='hair' />
       <Solution page='hair' />
-      <Gallery />
+      <Gallery isHairPage />
       <Mission />
       <CenterList />
       <Faq />
