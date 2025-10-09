@@ -39,10 +39,10 @@ export default function HomePage({ params: { lang } }: any) {
   return (
     <main id='mainpage'>
       <Intro />
-      <Chevron />
+      <Chevron page='intro' imageName='chevronImage' />
       <Synergy />
-      <HowCanBeUsed />
-      <Solution />
+      <HowCanBeUsed page='main' />
+      <Solution page='main' />
       <Gallery />
       <Mission />
       <CenterList />

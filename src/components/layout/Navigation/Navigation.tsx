@@ -4,9 +4,9 @@ import styles from './Navigation.module.scss';
 import { navMainList, navEventList, navFormList } from '@/constants';
 import { NavItem } from '@/types';
 import { useLocale, useTranslations } from 'next-intl';
-import Image from 'next/image';
 import { useMediaQuery } from 'react-responsive';
 import { usePathname, Link } from '@/i18n/routing';
+import NavigationProductButton from './NavigationProductButton/NavigationProductButton';
 
 interface Props {
   isOpen: boolean;
@@ -29,25 +29,9 @@ const Navigation: FC<Props> = ({ isOpen, setIsOpen }) => {
   const randomString = () => (Math.random() + 1).toString(36).substring(7);
 
   const t = useTranslations();
-  const locale = useLocale();
 
   const handleClick = () => {
     setIsOpen(false);
-  };
-
-  const putImage = (text: string) => {
-    if (text === 'navigation.product')
-      return (
-        <Image
-          className={`${styles.arrowIcon} ${
-            locale === 'he' ? styles.reversed : ''
-          }`}
-          src='/images/arrowDown.svg'
-          width={10}
-          height={5.5}
-          alt='arrow icon'
-        />
-      );
   };
 
   return (
@@ -57,6 +41,7 @@ const Navigation: FC<Props> = ({ isOpen, setIsOpen }) => {
           aria-label='Main Navigation'
           className={`${styles.mobileNavigation} ${isOpen && styles.active}`}
         >
+          <NavigationProductButton isMobile handleClick={handleClick} />
           {navList.map((item: NavItem, index: number) => (
             <div
               className={styles.linkContainerMobile}
@@ -69,7 +54,6 @@ const Navigation: FC<Props> = ({ isOpen, setIsOpen }) => {
                   className={styles.buttonMobile}
                 >
                   {t(item.text)}
-                  {putImage(item.text)}
                 </button>
               ) : (
                 <Link
@@ -79,7 +63,6 @@ const Navigation: FC<Props> = ({ isOpen, setIsOpen }) => {
                   className={styles.buttonMobile}
                 >
                   {t(item.text)}
-                  {putImage(item.text)}
                 </Link>
               )}
             </div>
@@ -91,6 +74,7 @@ const Navigation: FC<Props> = ({ isOpen, setIsOpen }) => {
             isFormPage || isSuccessPage ? styles.formPage : ''
           }`}
         >
+          <NavigationProductButton />
           {navList.map((item: NavItem, index: number) => (
             <div
               className={styles.linkContainer}
@@ -103,7 +87,6 @@ const Navigation: FC<Props> = ({ isOpen, setIsOpen }) => {
                   className={styles.button}
                 >
                   {t(item.text)}
-                  {putImage(item.text)}
                 </button>
               ) : (
                 <Link
@@ -112,7 +95,6 @@ const Navigation: FC<Props> = ({ isOpen, setIsOpen }) => {
                   className={styles.button}
                 >
                   {t(item.text)}
-                  {putImage(item.text)}
                 </Link>
               )}
             </div>

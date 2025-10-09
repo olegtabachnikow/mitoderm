@@ -7,28 +7,40 @@ import { solutionItems } from '@/constants';
 import { combinedArray } from '@/utils/helpers';
 import { SolutionItem as SolutionItemType } from '@/types';
 import SolutionItem from './SolutionItem/SolutionItem';
+import SolutionProduct from './SolutionProduct/SolutionProduct';
 
-const Solution: FC = () => {
+interface Props {
+  page: 'main' | 'hair' | 'gel' | 'sygnal';
+}
+
+const Solution: FC<Props> = ({ page }) => {
   const t = useTranslations();
 
   const solutionBlocks = combinedArray(solutionItems);
   return (
     <>
       <section id='solution' className={styles.section}>
-        <p className={styles.title}>{t('solution.title')}</p>
-        <span className={styles.subtitle}>{t('solution.subtitle')}</span>
+        <p className={styles.title}>{t(`solution.${page}.title`)}</p>
+        {page === 'main' && (
+          <span className={styles.subtitle}>
+            {t(`solution.${page}.subtitle`)}
+          </span>
+        )}
         <div className={styles.sliderContainer}>
           <div className={styles.slider}>
-            {solutionBlocks.map((block: SolutionItemType[], index: number) => (
-              <div
-                id={`block${index + 1}`}
-                className={styles.solutionBlock}
-                key={index}
-              >
-                <SolutionItem item={block[0]} withLabel />
-                <SolutionItem item={block[1]} />
-              </div>
-            ))}
+            {page === 'main' &&
+              solutionBlocks.map((block: SolutionItemType[], index: number) => (
+                <div
+                  id={`block${index + 1}`}
+                  className={styles.solutionBlock}
+                  key={index}
+                >
+                  <SolutionItem item={block[0]} withLabel />
+                  <SolutionItem item={block[1]} />
+                </div>
+              ))}
+            {page === 'hair' && <SolutionProduct page='hair' />}
+            {page === 'gel' && <SolutionProduct page='gel' />}
           </div>
         </div>
         <Button
@@ -40,27 +52,24 @@ const Solution: FC = () => {
       <section className={styles.solutionLabelsContainer}>
         <div className={styles.discrontLabel}>
           <span dir='ltr' className={styles.discountLabelTitle}>
-            1 + 1 = 3
+            {t(`solution.${page}.discountTitle`)}
           </span>
-          <span>{t('solution.discountLabelText1')}</span>
-          <span>{t('solution.discountLabelText2')}</span>
+          <span>{t(`solution.${page}.discountLabelText1`)}</span>
+          <span>{t(`solution.${page}.discountLabelText2`)}</span>
         </div>
         <div className={styles.bundleContainer}>
           <div className={styles.bundleTextContainer}>
             <span className={styles.bundleTitle}>
-              {t('solution.bundleTitle')}
+              {t(`solution.${page}.bundleTitle`)}
             </span>
             <span className={styles.bundleText}>
-              {t('solution.bundleText1')}
+              {t(`solution.${page}.bundleText1`)}
             </span>
             <span className={styles.bundleText}>
-              {t('solution.bundleText2')}
+              {t(`solution.${page}.bundleText2`)}
             </span>
           </div>
-          <img
-            src='/images/solution/solutionVTech.png'
-            alt='bundle explanation'
-          />
+          <img src={`/images/solution/${page}.png`} alt='bundle explanation' />
         </div>
         <Button
           style={{ margin: '40px auto' }}

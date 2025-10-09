@@ -8,7 +8,6 @@ import GalleryMobile from '../GalleryMobile/GalleryMobile';
 import { useLocale } from 'next-intl';
 
 interface Props {
-  // itemList: Array<[string, string]>;
   itemList: string[];
 }
 

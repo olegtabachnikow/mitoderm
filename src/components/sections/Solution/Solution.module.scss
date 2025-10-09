@@ -100,6 +100,10 @@
   margin-top: 40px;
 }
 
+.bundleContainer img {
+  max-width: 55%;
+}
+
 .bundleTextContainer {
   display: flex;
   flex-direction: column;
@@ -145,6 +149,7 @@
   }
   .bundleContainer img {
     width: 100%;
+    max-width: 100%;
   }
   .bundleTextContainer {
     display: none;

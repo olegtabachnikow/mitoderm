@@ -20,14 +20,16 @@
 }
 
 .introMain,
-.introEvent {
+.introEvent,
+.introProducts {
   display: flex;
   flex-direction: column;
   align-items: center;
   scroll-snap-align: start;
 }
 
-.introMain {
+.introMain,
+.introProducts {
   min-width: 100vw;
   width: 100%;
   height: 100%;
@@ -35,7 +37,10 @@
   overflow: hidden;
 }
 
-.introMain::before {
+.introMain::before,
+.introSpray::before,
+.introGel::before,
+.introHair::before {
   content: '';
   position: absolute;
   top: 0;
@@ -48,13 +53,26 @@
   background-repeat: no-repeat;
 }
 
+.introSpray::before {
+  background-image: url(/images/introHairSpray.png);
+}
+
+.introGel::before {
+  background-image: url(/images/gelBG.png);
+}
+
+.introHair::before {
+  background-image: url(/images/hairBG.png);
+}
+
 .introEvent {
   min-width: 100vw;
   width: 100%;
   height: 100%;
 }
 
-.introMainContent {
+.introMainContent,
+.introProductsContent {
   display: flex;
   flex: 1;
   justify-content: flex-end;
@@ -169,6 +187,13 @@
   z-index: 2;
 }
 
+.introProductsContent {
+  .title {
+    text-align: center;
+    line-height: 80px;
+  }
+}
+
 @media screen and (min-width: 1440px) {
   .introEvent {
     background-position: 70% 60px;
@@ -182,7 +207,8 @@
   .container {
     padding-inline: 20px;
   }
-  .introMain {
+  .introMain,
+  .introProducts {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -209,6 +235,13 @@
   .introMain::before {
     content: '';
     background-position: 40%;
+  }
+  .introProducts::before {
+    content: '';
+    background-position: 25%;
+  }
+  .introSpray::before {
+    background-position: 32.5%;
   }
   .leaves {
     bottom: 20px;

@@ -33,7 +33,10 @@ const Header: FC = () => {
         id='overlay'
       />
       <div className={styles.container}>
-        <Link className={styles.logoContainer} href='#intro'>
+        <Link
+          className={styles.logoContainer}
+          href={pathname.length > 1 ? '/' : '#intro'}
+        >
           <Image
             src='/images/logo.svg'
             width={isTabletOrMobile ? 96 : 120}

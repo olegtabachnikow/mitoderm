@@ -16,10 +16,14 @@ const LanguageSwitch: FC = () => {
   const isEventFormPage = pathname.includes('event/form');
   const isEventPage = pathname.includes('event');
   const isFormPage = pathname.includes('form');
+  const isSignalPage = pathname.includes('exosignalhair');
+  const isGelPage = pathname.includes('exotechgel');
+  const isSprayPage = pathname.includes('exosignalhairspray');
 
   const handleClick = () => {
     setIsOpen(() => !isOpen);
   };
+
   const closeOpenMenu = (e: MouseEvent) => {
     if (
       isOpen &&
@@ -34,13 +38,30 @@ const LanguageSwitch: FC = () => {
     return () => window.removeEventListener('click', closeOpenMenu);
   }, [isOpen]);
 
-  const currentUrl = isEventFormPage
-    ? '/event/form'
-    : isFormPage
-    ? '/form'
-    : isEventPage
-    ? '/event'
-    : '/';
+  let currentUrl = '';
+
+  switch (true) {
+    case isEventFormPage:
+      currentUrl = 'event/form';
+      break;
+    case isFormPage:
+      currentUrl = 'form';
+      break;
+    case isEventPage:
+      currentUrl = 'event';
+      break;
+    case isSignalPage:
+      currentUrl = 'exosignalhair';
+      break;
+    case isGelPage:
+      currentUrl = 'exotechgel';
+      break;
+    case isSprayPage:
+      currentUrl = 'exosignalhairspray';
+      break;
+    default:
+      currentUrl = '';
+  }
 
   return (
     <div
