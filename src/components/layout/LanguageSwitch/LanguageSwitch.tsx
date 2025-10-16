@@ -16,7 +16,7 @@ const LanguageSwitch: FC = () => {
   const isEventFormPage = pathname.includes('event/form');
   const isEventPage = pathname.includes('event');
   const isFormPage = pathname.includes('form');
-  const isSignalPage = pathname.includes('exosignalhair');
+  const isSignalPage = pathname.includes('exosignal_hair');
   const isGelPage = pathname.includes('exotechgel');
   const isSprayPage = pathname.includes('exosignalhairspray');
 
@@ -51,7 +51,7 @@ const LanguageSwitch: FC = () => {
       currentUrl = 'event';
       break;
     case isSignalPage:
-      currentUrl = 'exosignalhair';
+      currentUrl = 'exosignal_hair';
       break;
     case isGelPage:
       currentUrl = 'exotechgel';

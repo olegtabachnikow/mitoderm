@@ -7,19 +7,21 @@ import { usePathname } from '@/i18n/routing';
 
 interface Props {
   data: HowToUseItem[] | EventBulletItem[];
+  page?: 'hair' | 'gel' | 'main';
 }
 
-const BulletList: FC<Props> = ({ data }) => {
+const BulletList: FC<Props> = ({ data, page }) => {
   const pathname = usePathname();
   const isEventPage = pathname.includes('event');
   return (
     <div
       className={`${styles.itemList} ${
         isEventPage && styles.eventPageItemList
-      }`}
+      } ${page && page !== 'main' && styles.productList}`}
     >
       {data.map((item) => (
         <BulletItem
+          page={page}
           isEventPage={isEventPage}
           key={item.text}
           imageUrl={item.imagePath}
