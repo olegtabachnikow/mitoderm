@@ -29,7 +29,7 @@ const HowCanBeUsed: FC<Props> = ({ page }) => {
   return (
     <section className={styles.section}>
       <p className={styles.title}>{t('howToUse.title')}</p>
-      <BulletList data={currentData} />
+      <BulletList page={page} data={currentData} />
     </section>
   );
 };

@@ -10,7 +10,7 @@ import SolutionItem from './SolutionItem/SolutionItem';
 import SolutionProduct from './SolutionProduct/SolutionProduct';
 
 interface Props {
-  page: 'main' | 'hair' | 'gel' | 'sygnal';
+  page: 'main' | 'hair' | 'gel' | 'signal';
 }
 
 const Solution: FC<Props> = ({ page }) => {
@@ -41,6 +41,7 @@ const Solution: FC<Props> = ({ page }) => {
               ))}
             {page === 'hair' && <SolutionProduct page='hair' />}
             {page === 'gel' && <SolutionProduct page='gel' />}
+            {page === 'signal' && <SolutionProduct page='signal' />}
           </div>
         </div>
         <Button
@@ -57,17 +58,80 @@ const Solution: FC<Props> = ({ page }) => {
           <span>{t(`solution.${page}.discountLabelText1`)}</span>
           <span>{t(`solution.${page}.discountLabelText2`)}</span>
         </div>
-        <div className={styles.bundleContainer}>
-          <div className={styles.bundleTextContainer}>
-            <span className={styles.bundleTitle}>
-              {t(`solution.${page}.bundleTitle`)}
-            </span>
-            <span className={styles.bundleText}>
-              {t(`solution.${page}.bundleText1`)}
-            </span>
-            <span className={styles.bundleText}>
-              {t(`solution.${page}.bundleText2`)}
-            </span>
+        <div
+          className={
+            styles.page === 'main'
+              ? styles.bundleContainer
+              : styles.bundleProductContainer
+          }
+        >
+          <div
+            className={`${
+              page === 'main'
+                ? styles.bundleTextContainer
+                : styles.bundleProductTextContainer
+            } ${page === 'gel' && styles.bundleGelTextContainer}`}
+          >
+            {page === 'main' ? (
+              <>
+                <span className={styles.bundleTitle}>
+                  {t(`solution.${page}.bundleTitle`)}
+                </span>
+                <span className={styles.bundleText}>
+                  {t(`solution.${page}.bundleText1`)}
+                </span>
+                <span className={styles.bundleText}>
+                  {t(`solution.${page}.bundleText2`)}
+                </span>
+              </>
+            ) : (
+              <>
+                <span className={styles.bundleTitle}>
+                  {t(`solution.${page}.bundleTitle`)}
+                </span>
+                {page === 'signal' && (
+                  <>
+                    <span className={styles.bundleProductText}>
+                      &bull; {t(`solution.${page}.bundleText1`)}
+                    </span>
+                    <span className={styles.bundleProductText}>
+                      &bull; {t(`solution.${page}.bundleText2`)}
+                    </span>
+                    <span className={styles.bundleProductText}>
+                      &bull; {t(`solution.${page}.bundleText3`)}
+                    </span>
+                    <span className={styles.bundleProductText}>
+                      &bull; {t(`solution.${page}.bundleText4`)}
+                    </span>
+                  </>
+                )}
+                {page === 'gel' && (
+                  <>
+                    <span className={styles.bundleProductText}>
+                      {t(`solution.${page}.bundleText1`)}
+                    </span>
+                    <span className={styles.bundleTitle}>
+                      {t(`solution.${page}.bundleText2`)}
+                    </span>
+                    <span className={styles.bundleProductText}>
+                      {t(`solution.${page}.bundleText3`)}
+                    </span>
+                  </>
+                )}
+                {page === 'hair' && (
+                  <>
+                    <span
+                      className={`${styles.bundleProductText} ${styles.spray}`}
+                    >
+                      {t(`solution.${page}.bundleText1`)}
+                    </span>
+                    <span className={styles.bundleProductText}>
+                      {t(`solution.${page}.bundleText2`)}
+                    </span>
+                  </>
+                )}
+              </>
+            )}
           </div>
           <img src={`/images/solution/${page}.png`} alt='bundle explanation' />
         </div>

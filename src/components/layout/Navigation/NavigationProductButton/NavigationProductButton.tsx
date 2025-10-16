@@ -52,7 +52,7 @@ const NavigationProductButton: FC<Props> = ({ isMobile, handleClick }) => {
           <Link
             onClick={handleClick}
             className={`${styles.link} ${isMobile && styles.linkMobile}`}
-            href={`../${locale}/exosignalhair`}
+            href={`../${locale}/exosignal_hair`}
           >
             Exosignal Hair
           </Link>

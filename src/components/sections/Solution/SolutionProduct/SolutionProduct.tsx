@@ -3,7 +3,7 @@ import styles from './SolutionProduct.module.scss';
 import { useTranslations } from 'next-intl';
 
 interface Props {
-  page: 'hair' | 'gel';
+  page: 'hair' | 'gel' | 'signal';
 }
 
 const SolutionProduct: FC<Props> = ({ page }) => {

@@ -251,9 +251,9 @@ const Intro: FC = () => {
                   locale === 'ru' ? styles.ru : ''
                 }`}
               >
-                {t('intro.sygnalTitle')}
+                {t('intro.signalTitle')}
               </h1>
-              <p className={styles.text}>{t('intro.sygnalSubtitle')}</p>
+              <p className={styles.text}>{t('intro.signalSubtitle')}</p>
               <Button
                 text={t('buttons.intro')}
                 style={{

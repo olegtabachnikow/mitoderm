@@ -42,7 +42,7 @@ export default function HomePage({ params: { lang } }: any) {
       <Chevron page='hair' imageName='chevronHair' />
       <Synergy page='hair' />
       <HowCanBeUsed page='hair' />
-      <Solution page='sygnal' />
+      <Solution page='signal' />
       <Gallery isHairPage />
       <Mission />
       <CenterList />
