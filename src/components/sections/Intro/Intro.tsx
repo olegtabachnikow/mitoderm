@@ -261,7 +261,9 @@ const Intro: FC = () => {
                   width: '100%',
                 }}
                 onClick={
-                  isSignalPage ? undefined : () => router.push('/exosignalhair')
+                  isSignalPage
+                    ? undefined
+                    : () => router.push('/exosignal_hair')
                 }
                 formPage={isSignalPage ? 'main' : undefined}
               />
