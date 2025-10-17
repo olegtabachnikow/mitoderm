@@ -36,7 +36,6 @@ const MainForm: FC = () => {
   });
   const [isSending, setIsSending] = useState<boolean>(false);
   const [isSent, setIsSent] = useState<boolean>(false);
-
   const handleData = (
     data: string,
     name: NameTypeMain | NameTypeEvent,
@@ -191,7 +190,7 @@ const MainForm: FC = () => {
           </>
         )}
       </div>
-      {isTabletOrMobile && isSending ? null : isSent ? null : (
+      {isTabletOrMobile ? null : isSending ? null : isSent ? null : (
         <div className={styles.formImageContainer}>
           <Image
             className={styles.desktopImage}
