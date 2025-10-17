@@ -40,11 +40,7 @@ const Chevron: FC<Props> = ({ page, imageName }) => {
           alt='item preview'
         />
         <div className={styles.description}>
-          <div
-            className={`${styles.titleBox} ${
-              isTabletOrMobile && locale === 'he' ? '' : styles.titleBoxColumn
-            }`}
-          >
+          <div className={`${styles.titleBox} ${styles.titleBoxColumn}`}>
             <span className={styles.title}>{t(`chevron.${page}.title1`)}</span>
             <span className={styles.title}>{t(`chevron.${page}.title2`)}</span>
             <span className={styles.title}>{t(`chevron.${page}.title3`)}</span>
