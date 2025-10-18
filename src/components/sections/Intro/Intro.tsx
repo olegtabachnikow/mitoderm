@@ -83,14 +83,14 @@ const Intro: FC = () => {
     scrollToNextChild();
   }, [introPage]);
 
-  // useEffect(() => {
-  //   const currentValue = introPage < 4 ? introPage + 1 : 0;
-  //   const interval = setInterval(() => {
-  //     setIntroPage(currentValue);
-  //   }, 15000);
+  useEffect(() => {
+    const currentValue = introPage < 4 ? introPage + 1 : 0;
+    const interval = setInterval(() => {
+      setIntroPage(currentValue);
+    }, 15000);
 
-  //   return () => clearInterval(interval);
-  // }, [introPage]);
+    return () => clearInterval(interval);
+  }, [introPage]);
 
   return (
     <section id='intro' className={styles.section}>
