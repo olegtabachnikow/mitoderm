@@ -83,14 +83,14 @@ const Intro: FC = () => {
     scrollToNextChild();
   }, [introPage]);
 
-  useEffect(() => {
-    const currentValue = introPage < 4 ? introPage + 1 : 0;
-    const interval = setInterval(() => {
-      setIntroPage(currentValue);
-    }, 15000);
+  // useEffect(() => {
+  //   const currentValue = introPage < 4 ? introPage + 1 : 0;
+  //   const interval = setInterval(() => {
+  //     setIntroPage(currentValue);
+  //   }, 15000);
 
-    return () => clearInterval(interval);
-  }, [introPage]);
+  //   return () => clearInterval(interval);
+  // }, [introPage]);
 
   return (
     <section id='intro' className={styles.section}>
@@ -184,6 +184,7 @@ const Intro: FC = () => {
                 text={t('buttons.intro')}
                 style={{
                   marginTop: 20,
+                  marginBottom: 60,
                   width: '100%',
                 }}
                 onClick={
@@ -222,6 +223,7 @@ const Intro: FC = () => {
                 text={t('buttons.intro')}
                 style={{
                   marginTop: 20,
+                  marginBottom: 60,
                   width: '100%',
                 }}
                 onClick={
@@ -258,6 +260,7 @@ const Intro: FC = () => {
                 text={t('buttons.intro')}
                 style={{
                   marginTop: 20,
+                  marginBottom: 60,
                   width: '100%',
                 }}
                 onClick={

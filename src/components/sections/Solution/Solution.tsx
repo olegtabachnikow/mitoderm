@@ -52,7 +52,7 @@ const Solution: FC<Props> = ({ page }) => {
       </section>
       <section className={styles.solutionLabelsContainer}>
         <div className={styles.discrontLabel}>
-          <span dir='ltr' className={styles.discountLabelTitle}>
+          <span className={styles.discountLabelTitle}>
             {t(`solution.${page}.discountTitle`)}
           </span>
           <span>{t(`solution.${page}.discountLabelText1`)}</span>
