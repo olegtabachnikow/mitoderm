@@ -68,7 +68,7 @@ const Synergy: FC<Props> = ({ page }) => {
                   borderRadius: '24px',
                 }}
               >
-                <source src='/videos/synergy4.mp4' type='video/webm' />
+                <source src='/videos/synergy4.webm' type='video/webm' />
                 Your browser does not support the video tag.
               </video>
               <span className={styles.subtitle}>
