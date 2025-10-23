@@ -15,6 +15,7 @@
     "learnMore": "Learn More",
     "moreAbout": "More About",
     "contactForPrice": "Contact for Price details",
+    "contactForPrice1": "Contact for Price details",
     "contactForInfo": "Contact for More Info",
     "requestCallback": "Request A Callback",
     "contactForSolutions": "Contact for personal solutions",
@@ -62,8 +63,8 @@
     "title": "V-Tech System",
     "hairSprayTitle": "Exosignal Hair Spray",
     "gelTitle": "Exotech Gel",
-    "gelSubtitle": "Concentration of active ingredients within synthetic exosome structures",
-    "hairSubtitle": "Next generation daily treatment based on synthetic exosomes for strengthening nourishment and biological renewal from the roots",
+    "gelSubtitle": "The concentration of active ingredients is contained within the structures of synthetic exosomes.",
+    "hairSubtitle": "The next generation of daily care based on synthetic exosomes for strengthening, nourishment, and biological regeneration from the root.",
     "signalTitle": "Exosignal Hair",
     "signalSubtitle": "Professional use ampoules",
     "text": "A new generation in cosmeceuticals - a breakthrough in skincare for cosmeticians",
@@ -85,20 +86,20 @@
     },
     "hairspray": {
       "text1": "ExoSignal Hair Spray — ",
-      "text2": "innovative formula for daily treatment combining synthetic exosomes biomimetic peptides and PDRN designed to reduce hair loss balance the scalp and support visible renewal of strong and healthy hair from the first weeks of use",
+      "text2": "an innovative formula for daily care, combining synthetic exosomes, biomimetic peptides and PDRN. Designed to reduce hair loss, balance the scalp and support visible renewal of strong and healthy hair from the first weeks of use.",
       "title1": "Unique",
       "title2": "Effective",
       "title3": "Safe",
-      "subtitle": "Mitoderm presents an advanced technology based on a unique combination from Italy, developed by vm corporation experts, designed to provide results of firming, renewal, and biological skin rejuvenation.",
+      "subtitle": "Mitoderm presents advanced technology from Italy (VM Corporation) based on synthetic exosomes — to slow down hair loss, balance the scalp and support visible renewal at home and during subsequent professional treatment.",
       "button": "More information about the products"
     },
     "gel": {
       "text1": "Exotech Gel - ",
-      "text2": "Gel containing synthetic exosomes with biomimetic peptides, hyaluronic acid, pure snail mucin polysaccharide and PDRN",
+      "text2": "A gel containing synthetic exosomes that encapsulate biomimetic peptides, hyaluronic acid, pure snail mucin polysaccharide, and PDRN.",
       "title1": "Unique",
       "title2": "Effective",
       "title3": "Safe",
-      "subtitle": "Mitoderm presents advanced technology based on a unique Italian combination developed by VM Corporation experts designed to deliver firming renewal and biological restoration of the skin",
+      "subtitle": "Mitoderm presents an advanced technology based on a unique combination from Italy, developed by experts from VM Corporation, designed to provide results of skin firming, renewal, and biological restoration.",
       "button": "More information about the products"
     },
     "hair": {
@@ -132,11 +133,11 @@
     "text": "At the conference, you'll be introduced to this breakthrough technology! This conference will open the door for you to the world of innovative treatments, which are what clients really want and look for,along with a significant reduction in working time, corresponding increase in profits, and faster recovery time compared to traditional and simpler treatments"
   },
   "synergy": {
-    "title": "Combination of active ingredients for synergistic action",
+    "title": "A combination of active ingredients for a synergistic effect",
     "item1": {
       "title": "Polynucleotides",
       "text1": "Skin cell renewal",
-      "text2": "Anti-oxidant effect",
+      "text2": "Antioxidant effect",
       "text3": "Intensive deep skin hydration action"
     },
     "item2": {
@@ -166,9 +167,9 @@
     },
     "hair": {
       "item1": "Thin/brittle/dry hair",
-      "item2": "Hair loss - stress",
+      "item2": "Stress-related hair loss",
       "item3": "Androgenetic alopecia",
-      "item4": "Scalp balance (excess sebum itch redness)",
+      "item4": "Balancing the scalp (excess sebum, itching, redness)",
       "item5": "Preserving results after hair transplant",
       "item6": "Alopecia areata (scalp/beard/eyebrows)"
     },
@@ -229,10 +230,10 @@
       "item6": "Biomimetic peptides 8 types",
       "discountTitle": "Clinic + Home = Maximum Results",
       "discountLabelText1": "",
-      "discountLabelText2": "Professional treatment activates renewal processes together with daily use of ExoSignal Hair Spray preserves results over time",
+      "discountLabelText2": "The professional treatment activates the regeneration processes together with the daily use of ExoSignal Hair Spray, which maintains the results over time.",
       "bundleTitle": "Each package contains:",
       "bundleText1": "15 ml spray bottle",
-      "bundleText2": "Once a day on clean and dry scalp shake before use and spray on desired area at roots massage gently for distribution recommended in the evening for two months"
+      "bundleText2": "Once a day, on a clean and dry scalp. Shake before use and spray on the desired area at the roots. Gently massage to distribute. Recommended for evening use, for a duration of two months."
     },
     "gel": {
       "title": "Exotech Gel",
@@ -243,13 +244,13 @@
       "item4": "Purified snail mucin polysaccharide",
       "item5": "Hyaluronic acid",
       "item6": "PDRN",
-      "discountTitle": "Smart synergy = immediate result",
+      "discountTitle": "Smart synergy = Immediate result",
       "discountLabelText1": "",
-      "discountLabelText2": "The combination of synthetic exosomes biomimetic peptides hyaluronic acid snail mucin and PDRN creates a complementary action: deep moisture and soothing epidermal barrier restoration and wrinkle smoothing — from the very first use",
+      "discountLabelText2": "A combination of synthetic exosomes, biomimetic peptides, hyaluronic acid, snail mucin, and PDRN creates a complementary action: deep hydration and soothing, restoration of the epidermal barrier, and smoothing of fine lines — from the very first use.",
       "bundleTitle": "Each package contains:",
       "bundleText1": "V-Tech Gel 30 ml",
       "bundleText2": "Usage:",
-      "bundleText3": "Morning and evening on clean dry skin until fully absorbed"
+      "bundleText3": "Morning and evening on clean, dry skin until fully absorbed."
     },
     "signal": {
       "title": "What the serum contains",
