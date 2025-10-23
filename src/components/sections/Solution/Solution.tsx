@@ -137,7 +137,7 @@ const Solution: FC<Props> = ({ page }) => {
         </div>
         <Button
           style={{ margin: '40px auto' }}
-          text={t('buttons.contactForPrice')}
+          text={t('buttons.contactForPrice1')}
           formPage='main'
         />
       </section>
