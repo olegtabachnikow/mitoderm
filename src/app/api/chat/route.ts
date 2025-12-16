@@ -24,7 +24,7 @@ const openai = new OpenAI({
 });
 
 // Assistant ID from user
-const ASSISTANT_ID = 'asst_iLuuoGjP8ljZJDcRSus2819a';
+const ASSISTANT_ID = 'asst_imYIRcz4cYCmmhOgNYLpuHjk';
 
 // הגדרת timeout מותאם לתוכנית Vercel hobby
 export const maxDuration = 60; // 60 שניות - המקסימום בתוכנית hobby
