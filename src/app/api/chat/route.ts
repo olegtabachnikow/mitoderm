@@ -15,15 +15,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
 
-// בדיקת API key
-const apiKey = process.env.OPENAI_API_KEY;
-if (!apiKey) {
-  console.error('WARNING: OPENAI_API_KEY is not set in environment variables!');
-}
-
 // Initialize OpenAI client
 const openai = new OpenAI({
-  apiKey: apiKey || '',
+  apiKey: process.env.OPENAI_API_KEY || 'YOUR_OPENAI_API_KEY_HERE',
   defaultHeaders: {
     'OpenAI-Beta': 'assistants=v2',
   },
@@ -51,7 +45,9 @@ async function waitForRunCompletion(
         {
           method: 'GET',
           headers: {
-            Authorization: `Bearer ${apiKey || ''}`,
+            Authorization: `Bearer ${
+              process.env.OPENAI_API_KEY || 'YOUR_OPENAI_API_KEY_HERE'
+            }`,
             'OpenAI-Beta': 'assistants=v2',
             'Content-Type': 'application/json',
           },
@@ -91,22 +87,7 @@ async function waitForRunCompletion(
 }
 
 export async function POST(request: NextRequest) {
-  // שמירת הנתונים בתחילת הפונקציה כדי שנוכל להשתמש בהם גם ב-error handler
-  let requestData: any = {};
-  
   try {
-    // בדיקת API key בתחילת הבקשה
-    if (!apiKey) {
-      console.error('OPENAI_API_KEY is missing - cannot process chat request');
-      return NextResponse.json({
-        message: 'מצטערת, יש בעיה עם הגדרות המערכת. אנא צרי קשר ישירות 😊',
-        threadId: null,
-        error: 'API key not configured'
-      }, { status: 500 });
-    }
-    
-    requestData = await request.json();
-    
     const {
       message,
       threadId = null, // קבלת thread ID קיים
@@ -118,7 +99,7 @@ export async function POST(request: NextRequest) {
       isSuccessMessage = false,
       isErrorMessage = false,
       errorType = '',
-    } = requestData;
+    } = await request.json();
 
     if (!message) {
       return NextResponse.json(
@@ -259,10 +240,9 @@ export async function POST(request: NextRequest) {
       console.error('Error details:', error.message);
 
       // Provide more specific fallback based on error type
-      if (error.message.includes('API key') || error.message.includes('Incorrect API key')) {
+      if (error.message.includes('API key')) {
         fallbackMessage =
           'מצטערת, יש בעיה עם הגדרות המערכת. אנא צרי קשר ישירות בוואטסאפ 😊';
-        console.error('API Key issue detected. Please check OPENAI_API_KEY environment variable.');
       } else if (
         error.message.includes('timeout') ||
         error.message.includes('Gateway Timeout')
@@ -272,10 +252,12 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // שימוש בנתונים ששמרנו בתחילת הפונקציה במקום לקרוא שוב את ה-body
+    // Parse request body again for error handling
+    const requestBody = await request.json();
+
     return NextResponse.json({
       message: fallbackMessage,
-      threadId: requestData?.threadId || null,
+      threadId: requestBody.threadId || null,
     });
   }
 }
