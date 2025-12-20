@@ -24,7 +24,7 @@ const openai = new OpenAI({
 });
 
 // Assistant ID from user
-const ASSISTANT_ID = 'asst_iLuuoGjP8ljZJDcRSus2819a';
+const ASSISTANT_ID = 'asst_imYIRcz4cYCmmhOgNYLpuHjk';
 
 // הגדרת timeout מותאם לתוכנית Vercel hobby
 export const maxDuration = 60; // 60 שניות - המקסימום בתוכנית hobby
@@ -87,20 +87,32 @@ async function waitForRunCompletion(
 }
 
 export async function POST(request: NextRequest) {
+  // Parse request body once at the start
+  let requestBody: any;
   try {
-    const {
-      message,
-      threadId = null, // קבלת thread ID קיים
-      isInitial = false,
-      isInactivityTimeout = false,
-      hasPhoneNumber = false,
-      phoneNumber = '',
-      isContactRequest = false,
-      isSuccessMessage = false,
-      isErrorMessage = false,
-      errorType = '',
-    } = await request.json();
+    requestBody = await request.json();
+  } catch (parseError) {
+    console.error('Error parsing request body:', parseError);
+    return NextResponse.json(
+      { error: 'Invalid request body' },
+      { status: 400 }
+    );
+  }
 
+  const {
+    message,
+    threadId = null, // קבלת thread ID קיים
+    isInitial = false,
+    isInactivityTimeout = false,
+    hasPhoneNumber = false,
+    phoneNumber = '',
+    isContactRequest = false,
+    isSuccessMessage = false,
+    isErrorMessage = false,
+    errorType = '',
+  } = requestBody;
+
+  try {
     if (!message) {
       return NextResponse.json(
         { error: 'Message is required' },
@@ -252,12 +264,9 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Parse request body again for error handling
-    const requestBody = await request.json();
-
     return NextResponse.json({
       message: fallbackMessage,
-      threadId: requestBody.threadId || null,
+      threadId: requestBody?.threadId || null,
     });
   }
 }
