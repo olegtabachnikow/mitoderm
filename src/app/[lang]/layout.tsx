@@ -151,8 +151,8 @@ export default async function RootLayout({
     <html lang={params.lang}>
       {/* Google Tag Manager */}
       <Script
-        id='gtm-script'
-        strategy='afterInteractive'
+        id="gtm-script"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -172,9 +172,9 @@ export default async function RootLayout({
           {/* Google Tag Manager (noscript) */}
           <noscript>
             <iframe
-              src='https://www.googletagmanager.com/ns.html?id=GTM-W7HBVJPC'
-              height='0'
-              width='0'
+              src="https://www.googletagmanager.com/ns.html?id=GTM-W7HBVJPC"
+              height="0"
+              width="0"
               style={{ display: 'none', visibility: 'hidden' }}
             />
           </noscript>
@@ -186,7 +186,7 @@ export default async function RootLayout({
           {params.lang === 'he' && <Chatbot locale={params.lang} />}
           <WhatsappLink />
           <script
-            type='application/ld+json'
+            type="application/ld+json"
             dangerouslySetInnerHTML={{
               __html: JSON.stringify(getOrganizationSchema(params.lang)),
             }}

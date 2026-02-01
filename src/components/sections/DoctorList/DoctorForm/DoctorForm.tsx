@@ -16,7 +16,6 @@ const DoctorForm: FC<Props> = ({ doctor, setIsOpen }) => {
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
-    console.log(name, value);
     setFormData((prev) => ({
       ...prev,
       [name]: value,
@@ -33,7 +32,7 @@ const DoctorForm: FC<Props> = ({ doctor, setIsOpen }) => {
       body: JSON.stringify(doctorData),
     });
     const data = await res.json();
-    router.refresh();
+    data && router.refresh();
   };
 
   const handleEdit = async () => {
@@ -45,7 +44,6 @@ const DoctorForm: FC<Props> = ({ doctor, setIsOpen }) => {
       body: JSON.stringify(formData),
     });
     const data = await res.json();
-    console.log(data);
     router.refresh();
   };
 

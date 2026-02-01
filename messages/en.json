@@ -423,5 +423,16 @@
     "email": "Email: ",
     "phone": "Phone: ",
     "amount": "Amount: "
+  },
+  "doctorList": {
+    "name": "Name",
+    "city": "City",
+    "area": "Area",
+    "contact": "Contact",
+    "profession": {
+      "profession":"Profession",
+      "1": "Cosmetologist",
+      "2" : "Trichologist"
+    }
   }
 }
