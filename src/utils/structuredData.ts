@@ -6,9 +6,6 @@ export interface StructuredData {
 
 const baseUrl = 'https://mitoderm.com';
 
-/**
- * Generate Organization schema
- */
 export function getOrganizationSchema(lang: string): StructuredData {
   const orgData: Record<string, any> = {
     '@context': 'https://schema.org',
@@ -45,9 +42,6 @@ export function getOrganizationSchema(lang: string): StructuredData {
   return orgData as StructuredData;
 }
 
-/**
- * Generate Product schema
- */
 export function getProductSchema(
   productName: string,
   productUrl: string,
@@ -74,7 +68,6 @@ export function getProductSchema(
     },
   };
 
-  // Add language-specific descriptions
   if (productName.includes('Exotech Gel') || productName.includes('ג׳ל')) {
     if (lang === 'he') {
       productData.description =
@@ -116,7 +109,6 @@ export function getProductSchema(
     }
   }
 
-  // Ensure the returned object matches the StructuredData type
   return {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -124,9 +116,6 @@ export function getProductSchema(
   } as StructuredData;
 }
 
-/**
- * Generate FAQPage schema
- */
 export function getFAQPageSchema(
   faqs: Array<{ question: string; answer: string }>
 ): StructuredData {
@@ -144,9 +133,6 @@ export function getFAQPageSchema(
   };
 }
 
-/**
- * Generate BreadcrumbList schema
- */
 export function getBreadcrumbSchema(
   items: Array<{ name: string; url: string }>
 ): StructuredData {
@@ -162,9 +148,6 @@ export function getBreadcrumbSchema(
   };
 }
 
-/**
- * Generate Event schema
- */
 export function getEventSchema(
   eventUrl: string,
   lang: string

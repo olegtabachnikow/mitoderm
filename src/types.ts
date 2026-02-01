@@ -113,3 +113,21 @@ export interface ContactFormData {
   email: string;
   subject: string;
 }
+
+export type Area = "צפון" | "מרכז" | "דרום";
+
+export interface DoctorType {
+  _id: string;       
+  name: string;
+
+  city: string;         
+  area: Area;
+
+  profession: "1" | "2";  
+
+  contact: string;
+  instagram: string;
+
+  createdAt: string;     
+  updatedAt: string;  
+}
