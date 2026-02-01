@@ -51,7 +51,6 @@ const DoctorListFilter: FC<Props> = ({ doctors, setFilteredList }) => {
     <div>
       <select
         onChange={(e) => setAreaFilter(e.target.value as AreaType)}
-        defaultValue={'all'}
         value={areaFilter}
         name="area-select"
         id="area-select"
@@ -66,7 +65,6 @@ const DoctorListFilter: FC<Props> = ({ doctors, setFilteredList }) => {
       </select>
       <select
         onChange={(e) => setProfessionFilter(e.target.value as ProfessionType)}
-        defaultValue={'all'}
         value={professionFilter}
         name="profession-select"
         id="profession-select"
@@ -80,7 +78,6 @@ const DoctorListFilter: FC<Props> = ({ doctors, setFilteredList }) => {
       </select>
       <select
         onChange={(e) => setCityFilter(e.target.value as string)}
-        defaultValue={'all'}
         value={cityFilter}
         name="city-select"
         id="city-select"

@@ -1,34 +1,30 @@
-import NextAuth from "next-auth";
-import Credentials from "next-auth/providers/credentials";
+import NextAuth, { type NextAuthOptions } from "next-auth";
+import CredentialsProvider from "next-auth/providers/credentials";
 import { connectDB } from "@/lib/mongodb";
 import User from "@/models/User";
 import bcrypt from "bcryptjs";
-import { JWT } from "next-auth/jwt";
 
-export const authOptions = {
+const authOptions: NextAuthOptions = {
   providers: [
-    Credentials({
+    CredentialsProvider({
       name: "Credentials",
       credentials: {
         email: { label: "Email", type: "email" },
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        if (!credentials?.email || !credentials.password) {
-          throw new Error("Missing credentials");
-        }
+        if (!credentials?.email || !credentials.password) return null;
 
         await connectDB();
 
-        const user = await User.findOne({ email: credentials.email });
-        if (!user) throw new Error("User not found");
-
-        const isValid = await bcrypt.compare(
-          credentials.password,
-          user.password
+        const user = await User.findOne({ email: credentials.email }).select(
+          "+password"
         );
 
-        if (!isValid) throw new Error("Invalid password");
+        if (!user) return null;
+
+        const isValid = await bcrypt.compare(credentials.password, user.password);
+        if (!isValid) return null;
 
         return {
           id: user._id.toString(),
@@ -40,26 +36,22 @@ export const authOptions = {
   ],
 
   session: {
-    strategy: "jwt" as const,
+    strategy: "jwt",
     maxAge: 60 * 60,
   },
-  jwt: {
-    maxAge: 60 * 60, 
-  },
+
   callbacks: {
-    async jwt({ token, user }: {token:JWT; user?: any}) {
-      if (user) {
-        token.role = user.role;
-      }
+    async jwt({ token, user }) {
+      if (user) token.role = (user as any).role;
       return token;
     },
-    async session({ session, token }:{ session: any; token: JWT }) {
-      session.user.role = token.role;
+    async session({ session, token }) {
+      if (session.user) (session.user as any).role = token.role;
       return session;
     },
   },
 
-  secret: process.env.NEXT_PUBLIC_NEXTAUTH_SECRET,
+  secret: process.env.NEXTAUTH_SECRET,
 };
 
 const handler = NextAuth(authOptions);
