@@ -29,3 +29,20 @@
 .phoneLink:hover {
   opacity: 0.5;
 }
+
+.whatsAppCustomClass {
+  width: 25px;
+  height: 25px;
+  opacity: 1;
+  transition: all 0.3s linear;
+}
+
+.whatsAppCustomClass img {
+  width: 22px;
+  height: 22px;
+  filter: brightness(0) saturate(100%);
+}
+
+.whatsAppCustomClass:hover {
+  opacity: 0.5;
+}

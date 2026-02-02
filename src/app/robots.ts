@@ -17,6 +17,7 @@ export default function robots(): MetadataRoute.Robots {
       '/*/form',
       '/*/event/form',
       '/*/event/success',
+      '/*/doctors'
     ],
   }));
   

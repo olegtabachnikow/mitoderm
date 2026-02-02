@@ -3,9 +3,10 @@ import { routing } from '@/i18n/routing';
 
 const baseUrl = 'https://mitoderm.com';
 
+// Define all routes that should be in the sitemap
 const routes = [
   {
-    path: '', 
+    path: '', // Home page
     priority: 1.0,
     changefreq: 'weekly' as const,
   },
@@ -26,7 +27,7 @@ const routes = [
   },
   {
     path: 'event',
-    priority: 0.7,
+    priority: 0.8,
     changefreq: 'monthly' as const,
   },
 ];
@@ -34,6 +35,7 @@ const routes = [
 export default function sitemap(): MetadataRoute.Sitemap {
   const sitemapEntries: MetadataRoute.Sitemap = [];
 
+  // Generate entries for each route and each language
   routes.forEach((route) => {
     routing.locales.forEach((locale) => {
       const url = route.path
@@ -42,7 +44,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
       sitemapEntries.push({
         url,
-        lastModified: new Date('2026-01-01'),
+        lastModified: new Date(),
         changeFrequency: route.changefreq,
         priority: route.priority,
       });

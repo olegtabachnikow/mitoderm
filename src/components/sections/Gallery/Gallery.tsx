@@ -32,7 +32,9 @@ const Gallery: FC<Props> = async ({ isHairPage }) => {
 
   let itemList: string[] = [];
 
-  sliderItemsArray = imageFilenames.filter((file) => file !== '.DS_Store' && /\.(jpe?g|png|webp|avif)$/i.test(file));
+  if (env == 'development') {
+    sliderItemsArray = imageFilenames.filter((file) => file !== '.DS_Store' && file !== 'hair');
+  } else sliderItemsArray = imageFilenames;
 
   if (sliderItemsArray) itemList = sliderItemsArray;
 

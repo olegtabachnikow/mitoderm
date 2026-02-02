@@ -5,6 +5,7 @@ import { DoctorType } from '@/types';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
+import WhatsappLink from '@/components/layout/WhatsappLink/WhatsappLink';
 
 interface Props {
   doctor: DoctorType;
@@ -76,6 +77,10 @@ const DoctorItem: FC<Props> = ({
           />
         </a>
       ) : null}
+      <WhatsappLink
+        phone={doctor.contact}
+        customClassName={styles.whatsAppCustomClass}
+      />
       {loggedIn && (
         <div className={styles.buttonBox}>
           <button className={styles.editButton} onClick={handleEdit}>
