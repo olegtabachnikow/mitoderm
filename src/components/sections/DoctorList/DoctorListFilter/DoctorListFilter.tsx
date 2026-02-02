@@ -7,7 +7,7 @@ import { useSession } from 'next-auth/react';
 import { initialState } from '../DoctorList/DoctorList';
 
 type AreaType = 'צפון' | 'מרכז' | 'דרום' | 'all';
-type ProfessionType = '1' | '2' | 'all';
+type ProfessionType = '1' | '2' | '3' | 'all';
 
 interface Props {
   doctors: DoctorType[];
@@ -59,7 +59,9 @@ const DoctorListFilter: FC<Props> = ({
     }
 
     if (professionFilter !== 'all') {
-      result = result.filter((el) => el.profession === professionFilter);
+      result = result.filter(
+        (el) => el.profession === professionFilter || el.profession === '3'
+      );
     }
 
     setFilteredList(result);
@@ -88,10 +90,11 @@ const DoctorListFilter: FC<Props> = ({
         id="profession-select"
       >
         <option value="" disabled>
-          Filter by profession
+          Filter by Expertise
         </option>
-        <option value="1">Cosmetologist</option>
-        <option value="2">Tracheologist</option>
+        <option value="1">Facial treatments</option>
+        <option value="2">Hair treatments</option>
+        <option value="3">Facial & Hair Treatments</option>
         <option value="all">All</option>
       </select>
       <select

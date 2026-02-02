@@ -123,7 +123,7 @@ export interface DoctorType {
   city: string;         
   area: Area;
 
-  profession: "1" | "2";  
+  profession: "1" | "2" | "3";  
 
   contact: string;
   instagram: string;

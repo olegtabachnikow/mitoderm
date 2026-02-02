@@ -52,7 +52,9 @@ const DoctorItem: FC<Props> = ({
         <span>{`${t('doctorList.profession.profession')}: ${
           doctor.profession === '1'
             ? t('doctorList.profession.1')
-            : t('doctorList.profession.2')
+            : doctor.profession === '2'
+            ? t('doctorList.profession.2')
+            : t('doctorList.profession.3')
         }`}</span>
       ) : null}
       {doctor.area.length ? (

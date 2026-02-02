@@ -105,10 +105,11 @@ const DoctorForm: FC<Props> = ({ doctor, setIsOpen }) => {
           defaultValue={doctor?.profession || '1'}
         >
           <option value="" disabled>
-            Select profession
+            Select Expertise
           </option>
-          <option value="1">Cosmetologist</option>
-          <option value="2">Trichologist</option>
+          <option value="1">Facial treatments</option>
+          <option value="2">Hair treatments</option>
+          <option value="3">Facial & Hair Treatments</option>
         </select>
         <select
           id="area"

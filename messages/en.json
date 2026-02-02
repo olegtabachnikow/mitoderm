@@ -430,9 +430,10 @@
     "area": "Area",
     "contact": "Contact",
     "profession": {
-      "profession":"Profession",
-      "1": "Cosmetologist",
-      "2" : "Trichologist"
+      "profession":"Expertise",
+      "1": "Facial treatments",
+      "2" : "Hair treatments",
+      "3": "Facial & Hair Treatments"
     }
   }
 }
