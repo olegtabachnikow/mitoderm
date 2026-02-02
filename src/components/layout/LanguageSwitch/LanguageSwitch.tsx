@@ -94,7 +94,7 @@ const LanguageSwitch: FC = () => {
         </span>
         <Image
           className={`${styles.switchIcon} + ${isOpen ? styles.active : ''}`}
-          src={'/images/arrowDownBlack.svg'}
+          src={'/images/icons/arrowDownBlack.svg'}
           width={10}
           height={5.5}
           alt="arrow icon"

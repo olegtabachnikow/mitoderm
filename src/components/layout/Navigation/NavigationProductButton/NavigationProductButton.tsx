@@ -24,10 +24,10 @@ const NavigationProductButton: FC<Props> = ({ isMobile, handleClick }) => {
         className={`${styles.arrowIcon} ${
           locale === 'he' ? styles.reversed : ''
         } ${isOpen ? styles.opened : ''}`}
-        src='/images/arrowDown.svg'
+        src="/images/icons/arrowDown.svg"
         width={10}
         height={5.5}
-        alt='arrow icon'
+        alt="arrow icon"
       />
       {isOpen && (
         <div

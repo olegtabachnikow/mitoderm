@@ -20,7 +20,10 @@ const FormCloseButton: FC<Props> = ({ onClick, style }) => {
       onClick={handleGoBack}
       className={`${styles.button} ${locale === 'he' && styles.he}`}
     >
-      <img src="/images/crossYellow.svg" alt="yellow cross icon for button" />
+      <img
+        src="/images/icons/crossYellow.svg"
+        alt="yellow cross icon for button"
+      />
     </button>
   );
 };

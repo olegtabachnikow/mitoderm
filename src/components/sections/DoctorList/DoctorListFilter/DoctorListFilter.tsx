@@ -115,7 +115,7 @@ const DoctorListFilter: FC<Props> = ({
       </select>
       <button onClick={handleReset} className={styles.resetButton}>
         <Image
-          src="/images/reset.svg"
+          src="/images/icons/reset.svg"
           width={25}
           height={25}
           alt="round arrow icon"
@@ -124,7 +124,7 @@ const DoctorListFilter: FC<Props> = ({
       {loggedIn ? (
         <button className={styles.addButton} onClick={handleOpen}>
           <Image
-            src="/images/plus.svg"
+            src="/images/icons/plus.svg"
             width={25}
             height={25}
             alt="plus icon"

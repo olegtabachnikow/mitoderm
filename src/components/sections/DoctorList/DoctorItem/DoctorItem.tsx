@@ -85,7 +85,7 @@ const DoctorItem: FC<Props> = ({
         <div className={styles.buttonBox}>
           <button className={styles.editButton} onClick={handleEdit}>
             <Image
-              src="/images/edit.svg"
+              src="/images/icons/edit.svg"
               width={20}
               height={20}
               alt="edit icon"
@@ -93,7 +93,7 @@ const DoctorItem: FC<Props> = ({
           </button>
           <button className={styles.deleteButton} onClick={handleDelete}>
             <Image
-              src="/images/delete.svg"
+              src="/images/icons/delete.svg"
               width={20}
               height={20}
               alt="delete icon"

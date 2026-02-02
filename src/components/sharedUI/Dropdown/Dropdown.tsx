@@ -29,8 +29,8 @@ const Dropdown: FC<Props> = ({ data }) => {
       <div className={styles.label}>
         <Image
           className={`${styles.image} ${isShown ? styles.active : ''}`}
-          src='/images/arrowDown.svg'
-          alt='arrow icon'
+          src="/images/icons/arrowDown.svg"
+          alt="arrow icon"
           width={26}
           height={15}
         />

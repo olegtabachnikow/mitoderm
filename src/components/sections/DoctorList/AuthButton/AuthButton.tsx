@@ -17,7 +17,7 @@ const AuthButton: FC<Props> = ({ setIsAuthFormOpen }) => {
       className={styles.authButton}
     >
       <Image
-        src={loggedIn ? '/images/logout.svg' : '/images/login.svg'}
+        src={loggedIn ? '/images/icons/logout.svg' : '/images/icons/login.svg'}
         width={25}
         height={25}
         alt="authentication icon"

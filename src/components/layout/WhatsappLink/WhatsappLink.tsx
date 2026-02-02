@@ -39,7 +39,7 @@ const WhatsappLink: FC<Props> = ({ phone, customClassName }) => {
       target="_blank"
       rel="noopener noreferrer"
     >
-      <img src="/images/whatsappIcon.svg" alt="WhatsApp" />
+      <img src="/images/icons/whatsappIcon.svg" alt="WhatsApp" />
     </a>
   );
 };
