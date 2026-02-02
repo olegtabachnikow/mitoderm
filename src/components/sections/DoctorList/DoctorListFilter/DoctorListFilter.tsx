@@ -2,6 +2,9 @@ import { Dispatch, FC, SetStateAction, useEffect, useState } from 'react';
 import { DoctorType } from '@/types';
 import styles from './DoctorListFilter.module.scss';
 import Image from 'next/image';
+import AuthButton from '../AuthButton/AuthButton';
+import { useSession } from 'next-auth/react';
+import { initialState } from '../DoctorList/DoctorList';
 
 type AreaType = 'צפון' | 'מרכז' | 'דרום' | 'all';
 type ProfessionType = '1' | '2' | 'all';
@@ -9,19 +12,34 @@ type ProfessionType = '1' | '2' | 'all';
 interface Props {
   doctors: DoctorType[];
   setFilteredList: Dispatch<SetStateAction<DoctorType[]>>;
+  setIsAuthFormOpen: Dispatch<SetStateAction<boolean>>;
+  setIsDoctorFormOpen: Dispatch<SetStateAction<boolean>>;
+  setCurrentDoctor: Dispatch<SetStateAction<DoctorType>>;
 }
 
-const DoctorListFilter: FC<Props> = ({ doctors, setFilteredList }) => {
+const DoctorListFilter: FC<Props> = ({
+  doctors,
+  setFilteredList,
+  setIsAuthFormOpen,
+  setIsDoctorFormOpen,
+  setCurrentDoctor,
+}) => {
   const [areaFilter, setAreaFilter] = useState<AreaType>('all');
   const [cityFilter, setCityFilter] = useState<string>('all');
   const [professionFilter, setProfessionFilter] =
     useState<ProfessionType>('all');
-
+  const session = useSession();
+  const loggedIn = session.status === 'authenticated';
   const cities = Array.from(
     new Set(
       doctors.filter((el) => el.city && el.city.length > 0).map((el) => el.city)
     )
   );
+
+  const handleOpen = () => {
+    setCurrentDoctor(initialState);
+    setIsDoctorFormOpen(true);
+  };
 
   const handleReset = () => {
     setAreaFilter('all');
@@ -48,7 +66,7 @@ const DoctorListFilter: FC<Props> = ({ doctors, setFilteredList }) => {
   }, [areaFilter, cityFilter, professionFilter, doctors]);
 
   return (
-    <div>
+    <div className={styles.container}>
       <select
         onChange={(e) => setAreaFilter(e.target.value as AreaType)}
         value={areaFilter}
@@ -100,6 +118,17 @@ const DoctorListFilter: FC<Props> = ({ doctors, setFilteredList }) => {
           alt="round arrow icon"
         />
       </button>
+      {loggedIn ? (
+        <button className={styles.addButton} onClick={handleOpen}>
+          <Image
+            src="/images/plus.svg"
+            width={25}
+            height={25}
+            alt="plus icon"
+          />
+        </button>
+      ) : null}
+      <AuthButton setIsAuthFormOpen={setIsAuthFormOpen} />
     </div>
   );
 };

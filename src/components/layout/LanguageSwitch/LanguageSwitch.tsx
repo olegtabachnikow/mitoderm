@@ -19,6 +19,7 @@ const LanguageSwitch: FC = () => {
   const isSignalPage = pathname.includes('exosignal_hair');
   const isGelPage = pathname.includes('exotechgel');
   const isSprayPage = pathname.includes('exosignalhairspray');
+  const isDoctorPage = pathname.includes('doctors');
 
   const handleClick = () => {
     setIsOpen(() => !isOpen);
@@ -59,14 +60,17 @@ const LanguageSwitch: FC = () => {
     case isSprayPage:
       currentUrl = 'exosignalhairspray';
       break;
+    case isDoctorPage:
+      currentUrl = 'doctors';
+      break;
     default:
       currentUrl = '';
   }
 
   return (
     <div
-      aria-label='language switch'
-      role='button'
+      aria-label="language switch"
+      role="button"
       ref={popupRef}
       className={`${styles.container} ${
         isTabletOrMobile && styles.containerMobile
@@ -93,56 +97,56 @@ const LanguageSwitch: FC = () => {
           src={'/images/arrowDownBlack.svg'}
           width={10}
           height={5.5}
-          alt='arrow icon'
+          alt="arrow icon"
         />
-          <div className={`${styles.popup} + ${isOpen ? styles.opened : ''}`}>
-            {locale === 'en' ? (
-              <>
-                <SwitchItem
-                  url={currentUrl}
-                  imageSrc='/images/languageSwitch/ru.svg'
-                  text='RU'
-                  locale='ru'
-                />
-                <SwitchItem
-                  url={currentUrl}
-                  imageSrc='/images/languageSwitch/he.svg'
-                  text='HE'
-                  locale='he'
-                />
-              </>
-            ) : locale === 'ru' ? (
-              <>
-                <SwitchItem
-                  url={currentUrl}
-                  imageSrc='/images/languageSwitch/en.svg'
-                  text='EN'
-                  locale='en'
-                />
-                <SwitchItem
-                  url={currentUrl}
-                  imageSrc='/images/languageSwitch/he.svg'
-                  text='HE'
-                  locale='he'
-                />
-              </>
-            ) : (
-              <>
-                <SwitchItem
-                  url={currentUrl}
-                  imageSrc='/images/languageSwitch/en.svg'
-                  text='EN'
-                  locale='en'
-                />
-                <SwitchItem
-                  url={currentUrl}
-                  imageSrc='/images/languageSwitch/ru.svg'
-                  text='RU'
-                  locale='ru'
-                />
-              </>
-            )}
-          </div>
+        <div className={`${styles.popup} + ${isOpen ? styles.opened : ''}`}>
+          {locale === 'en' ? (
+            <>
+              <SwitchItem
+                url={currentUrl}
+                imageSrc="/images/languageSwitch/ru.svg"
+                text="RU"
+                locale="ru"
+              />
+              <SwitchItem
+                url={currentUrl}
+                imageSrc="/images/languageSwitch/he.svg"
+                text="HE"
+                locale="he"
+              />
+            </>
+          ) : locale === 'ru' ? (
+            <>
+              <SwitchItem
+                url={currentUrl}
+                imageSrc="/images/languageSwitch/en.svg"
+                text="EN"
+                locale="en"
+              />
+              <SwitchItem
+                url={currentUrl}
+                imageSrc="/images/languageSwitch/he.svg"
+                text="HE"
+                locale="he"
+              />
+            </>
+          ) : (
+            <>
+              <SwitchItem
+                url={currentUrl}
+                imageSrc="/images/languageSwitch/en.svg"
+                text="EN"
+                locale="en"
+              />
+              <SwitchItem
+                url={currentUrl}
+                imageSrc="/images/languageSwitch/ru.svg"
+                text="RU"
+                locale="ru"
+              />
+            </>
+          )}
+        </div>
       </div>
     </div>
   );

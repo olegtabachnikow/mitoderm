@@ -64,6 +64,16 @@ const DoctorItem: FC<Props> = ({
           {doctor.contact}
         </a>
       </span>
+      {doctor.instagram.length ? (
+        <a href={doctor.instagram} target="_blank">
+          <Image
+            src="/images/contacts/instagram.svg"
+            width={25}
+            height={25}
+            alt="instagram icon"
+          />
+        </a>
+      ) : null}
       {loggedIn && (
         <div className={styles.buttonBox}>
           <button className={styles.editButton} onClick={handleEdit}>

@@ -23,7 +23,7 @@ const SwitchItem: FC<Props> = ({ url, style, imageSrc, text, locale }) => {
     >
       <Image
         src={imageSrc}
-        alt='flag'
+        alt="flag"
         width={isTabletOrMobile ? 16 : 20}
         height={isTabletOrMobile ? 16 : 20}
       />

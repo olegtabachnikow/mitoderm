@@ -2,11 +2,9 @@ import { FC, useState, useEffect } from 'react';
 import styles from './DoctorList.module.scss';
 import { useSession } from 'next-auth/react';
 import DoctorItem from '../DoctorItem/DoctorItem';
-import AddButton from '../AddButton/AddButton';
-import DoctorForm from '../DoctorForm/DoctorForm';
+import DoctorForm from '../../../forms/DoctorForm/DoctorForm';
 import { DoctorType } from '@/types';
-import AuthForm from '@/components/layout/AuthForm/AuthForm';
-import { signOut } from 'next-auth/react';
+import AuthForm from '@/components/forms/AuthForm/AuthForm';
 import DoctorListFilter from '../DoctorListFilter/DoctorListFilter';
 
 interface Props {
@@ -45,7 +43,13 @@ const DoctorList: FC<Props> = ({ doctors }) => {
 
   return (
     <div className={styles.container}>
-      <DoctorListFilter doctors={doctors} setFilteredList={setFilteredList} />
+      <DoctorListFilter
+        setIsDoctorFormOpen={setIsOpen}
+        setCurrentDoctor={setCurrentDoctor}
+        doctors={doctors}
+        setFilteredList={setFilteredList}
+        setIsAuthFormOpen={setIsAuthFormOpen}
+      />
       {filteredList.map((el: DoctorType) => (
         <DoctorItem
           loggedIn={loggedIn}
@@ -55,15 +59,8 @@ const DoctorList: FC<Props> = ({ doctors }) => {
           setIsOpen={setIsOpen}
         />
       ))}
-      <AddButton
-        setIsOpen={setIsOpen}
-        setCurrentDoctor={setCurrentDoctor}
-        loggedIn={loggedIn}
-        setIsAuthFormOpen={setIsAuthFormOpen}
-      />
       {isOpen && <DoctorForm doctor={currentDoctor} setIsOpen={setIsOpen} />}
       {isAuthFormOpen && <AuthForm setIsAuthFormOpen={setIsAuthFormOpen} />}
-      <button onClick={() => signOut()}>Sign out</button>
     </div>
   );
 };
