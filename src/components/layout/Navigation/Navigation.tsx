@@ -1,9 +1,14 @@
 'use client';
 import { FC } from 'react';
 import styles from './Navigation.module.scss';
-import { navMainList, navEventList, navFormList } from '@/constants';
+import {
+  navMainList,
+  navEventList,
+  navFormList,
+  navDoctorList,
+} from '@/constants';
 import { NavItem } from '@/types';
-import { useLocale, useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import { useMediaQuery } from 'react-responsive';
 import { usePathname, Link } from '@/i18n/routing';
 import NavigationProductButton from './NavigationProductButton/NavigationProductButton';
@@ -18,13 +23,15 @@ const Navigation: FC<Props> = ({ isOpen, setIsOpen }) => {
   const pathName = usePathname();
   const isFormPage = pathName.includes('form');
   const isSuccessPage = pathName.includes('success');
+  const isDoctorPage = pathName.includes('doctors');
 
-  const navList =
-    isFormPage || isSuccessPage
-      ? navFormList
-      : pathName.includes('event')
-      ? navEventList
-      : navMainList;
+  const navList = (() => {
+    if (isFormPage || isSuccessPage) return navFormList;
+    if (isDoctorPage) return navDoctorList;
+    if (pathName.includes('event')) return navEventList;
+
+    return navMainList;
+  })();
 
   const randomString = () => (Math.random() + 1).toString(36).substring(7);
 
@@ -38,7 +45,7 @@ const Navigation: FC<Props> = ({ isOpen, setIsOpen }) => {
     <>
       {isTabletOrMobile ? (
         <nav
-          aria-label='Main Navigation'
+          aria-label="Main Navigation"
           className={`${styles.mobileNavigation} ${isOpen && styles.active}`}
         >
           <NavigationProductButton isMobile handleClick={handleClick} />
@@ -72,7 +79,7 @@ const Navigation: FC<Props> = ({ isOpen, setIsOpen }) => {
         <nav
           className={`${styles.navigation} ${
             isFormPage || isSuccessPage ? styles.formPage : ''
-          }`}
+          } ${isDoctorPage ? styles.doctorPage : ''}`}
         >
           <NavigationProductButton />
           {navList.map((item: NavItem, index: number) => (

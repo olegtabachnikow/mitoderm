@@ -51,7 +51,8 @@ export async function generateMetadata({
       ogLocale: 'he_IL',
     },
     en: {
-      title: 'V-Tech Exosomes | Mitoderm - Advanced System for Cosmetologists in Israel',
+      title:
+        'V-Tech Exosomes | Mitoderm - Advanced System for Cosmetologists in Israel',
       description:
         'V-Tech System - Synthetic exosomes + PDRN polynucleotides for cosmetologists. Results from the first treatment | Professional training | Mitoderm Israel 054-762-1889',
       keywords:
@@ -59,7 +60,8 @@ export async function generateMetadata({
       ogLocale: 'en_US',
     },
     ru: {
-      title: 'Экзосомы V-Tech | Митодерм - Продвинутая система для косметологов в Израиле',
+      title:
+        'Экзосомы V-Tech | Митодерм - Продвинутая система для косметологов в Израиле',
       description:
         'Система V-Tech - синтетические экзосомы + PDRN полинуклеотиды для косметологов. Результаты с первого лечения | Профессиональное обучение | Митодерм Израиль 054-762-1889',
       keywords:
@@ -92,7 +94,7 @@ export async function generateMetadata({
       type: 'website',
       images: [
         {
-          url: `${baseUrl}/images/introBG.png`,
+          url: `${baseUrl}/images/backgrounds/introBG.png`,
           width: 1200,
           height: 630,
           alt: meta.title,
@@ -111,7 +113,7 @@ export async function generateMetadata({
       description: meta.description,
       images: [
         {
-          url: `${baseUrl}/images/introBG.png`,
+          url: `${baseUrl}/images/backgrounds/introBG.png`,
           alt: meta.title,
         },
       ],
@@ -156,12 +158,12 @@ export default async function HomePage({ params: { lang } }: any) {
 
   return (
     <>
-      <main id='mainpage'>
+      <main id="mainpage">
         <Intro />
-        <Chevron page='intro' imageName='chevronImage' />
+        <Chevron page="intro" imageName="chevronImage" />
         <Synergy />
-        <HowCanBeUsed page='main' />
-        <Solution page='main' />
+        <HowCanBeUsed page="main" />
+        <Solution page="main" />
         <Gallery />
         <Mission />
         <CenterList />
@@ -169,8 +171,8 @@ export default async function HomePage({ params: { lang } }: any) {
         <Contact />
       </main>
       <Script
-        id='faq-schema'
-        type='application/ld+json'
+        id="faq-schema"
+        type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(faqSchema),
         }}

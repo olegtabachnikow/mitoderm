@@ -19,7 +19,7 @@ const Intro: FC = () => {
   const pathname = usePathname();
   const ref = useRef<HTMLDivElement>(null);
   const isEventPage = pathname.includes('event');
-  const isSignalPage = pathname.includes('exosignalhair');
+  const isSignalPage = pathname.includes('exosignal_hair');
   const isGelPage = pathname.includes('exotechgel');
   const isSprayPage = pathname.includes('exosignalhairspray');
   const { introPage, setIntroPage } = useAppStore((state) => state);

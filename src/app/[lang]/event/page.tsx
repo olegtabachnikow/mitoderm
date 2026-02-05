@@ -48,7 +48,6 @@ const About = dynamic(() => import('@/components/sections/About/About'), {
   ssr: false,
 });
 
-
 const baseUrl = 'https://mitoderm.com';
 
 export async function generateMetadata({
@@ -74,7 +73,8 @@ export async function generateMetadata({
       ogLocale: 'he_IL',
     },
     en: {
-      title: 'Professional Event for Cosmetologists | Mitoderm - Next Generation Aesthetics',
+      title:
+        'Professional Event for Cosmetologists | Mitoderm - Next Generation Aesthetics',
       description:
         'Professional event for cosmetologists and aestheticians. Discover the V-Tech System - synthetic exosomes + PDRN. Professional training, live demonstrations, and opportunity to learn about innovative aesthetics technology | Mitoderm Israel',
       keywords:
@@ -82,7 +82,8 @@ export async function generateMetadata({
       ogLocale: 'en_US',
     },
     ru: {
-      title: 'Профессиональное мероприятие для косметологов | Митодерм - Новое поколение эстетики',
+      title:
+        'Профессиональное мероприятие для косметологов | Митодерм - Новое поколение эстетики',
       description:
         'Профессиональное мероприятие для косметологов и эстетистов. Откройте для себя систему V-Tech - синтетические экзосомы + PDRN. Профессиональное обучение, живые демонстрации и возможность узнать об инновационных технологиях в эстетике | Митодерм Израиль',
       keywords:
@@ -115,7 +116,7 @@ export async function generateMetadata({
       type: 'website',
       images: [
         {
-          url: `${baseUrl}/images/introBG.png`,
+          url: `${baseUrl}/images/backgrounds/introBG.png`,
           width: 1200,
           height: 630,
           alt: meta.title,
@@ -134,7 +135,7 @@ export async function generateMetadata({
       description: meta.description,
       images: [
         {
-          url: `${baseUrl}/images/introBG.png`,
+          url: `${baseUrl}/images/backgrounds/introBG.png`,
           alt: meta.title,
         },
       ],
@@ -176,15 +177,15 @@ export default function EventPage({ params: { lang } }: any) {
           <Button
             style={{ margin: '20px auto 40px auto' }}
             text={t('buttons.seat')}
-            formPage='event'
+            formPage="event"
           />
         </div>
         <About />
         <Mission />
       </main>
       <Script
-        id='event-schema'
-        type='application/ld+json'
+        id="event-schema"
+        type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(eventSchema),
         }}

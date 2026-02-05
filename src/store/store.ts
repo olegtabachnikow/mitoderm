@@ -10,8 +10,6 @@ interface RootState {
   setGalleryPage: (page: number) => void;
   introPage: number;
   setIntroPage: (page: number) => void;
-  reviewPage: number;
-  setReviewPage: (page: number) => void;
   modalContent: ModalType;
   setModalContent: (arg: ModalType) => void;
   numberOfTickets: number;
@@ -33,9 +31,6 @@ const useAppStore = create<RootState>((set) => ({
   introPage: 0,
   setIntroPage: (page: number) =>
     set((state) => ({ introPage: (state.introPage = page) })),
-  reviewPage: 0,
-  setReviewPage: (page: number) =>
-    set((state) => ({ reviewPage: (state.reviewPage = page) })),
   modalContent: 'privatePolicy',
   setModalContent: (arg: ModalType) =>
     set((state) => ({ modalContent: (state.modalContent = arg) })),

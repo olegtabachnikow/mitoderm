@@ -89,7 +89,7 @@ export async function generateMetadata({
       type: 'website',
       images: [
         {
-          url: `${baseUrl}/images/introBG.png`,
+          url: `${baseUrl}/images/backgrounds/introBG.png`,
           width: 1200,
           height: 630,
           alt: meta.title,
@@ -108,7 +108,7 @@ export async function generateMetadata({
       description: meta.description,
       images: [
         {
-          url: `${baseUrl}/images/introBG.png`,
+          url: `${baseUrl}/images/backgrounds/introBG.png`,
           alt: meta.title,
         },
       ],
@@ -127,8 +127,8 @@ export default async function HomePage({ params: { lang } }: any) {
     lang === 'he'
       ? 'Exosignal Hair'
       : lang === 'ru'
-        ? 'Exosignal Hair'
-        : 'Exosignal Hair';
+      ? 'Exosignal Hair'
+      : 'Exosignal Hair';
   const productUrl = `${baseUrl}/${lang}/exosignal_hair`;
   const productSchema = getProductSchema(productName, productUrl, lang);
 
@@ -163,12 +163,12 @@ export default async function HomePage({ params: { lang } }: any) {
 
   return (
     <>
-      <main id='mainpage'>
+      <main id="mainpage">
         <Intro />
-        <Chevron page='hair' imageName='chevronHair' />
-        <Synergy page='hair' />
-        <HowCanBeUsed page='hair' />
-        <Solution page='signal' />
+        <Chevron page="hair" imageName="chevronHair" />
+        <Synergy page="hair" />
+        <HowCanBeUsed page="hair" />
+        <Solution page="signal" />
         <Gallery isHairPage />
         <Mission />
         <CenterList />
@@ -176,15 +176,15 @@ export default async function HomePage({ params: { lang } }: any) {
         <Contact />
       </main>
       <Script
-        id='product-schema'
-        type='application/ld+json'
+        id="product-schema"
+        type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(productSchema),
         }}
       />
       <Script
-        id='faq-schema'
-        type='application/ld+json'
+        id="faq-schema"
+        type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(faqSchema),
         }}

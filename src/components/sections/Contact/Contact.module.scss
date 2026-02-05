@@ -88,10 +88,9 @@
     z-index: 8;
   }
   .contactsItem {
-    padding: 24px 20px 20px 20px;
+    padding: 40px;
   }
   .item2textBox {
-    padding-bottom: 80px;
     position: relative;
   }
   .item2textBox .column {
@@ -116,5 +115,9 @@
   }
   .contactsItem {
     border-radius: 32px;
+    padding: 24px 20px 20px;
+  }
+  .item2textBox {
+    padding-bottom: 80px;
   }
 }

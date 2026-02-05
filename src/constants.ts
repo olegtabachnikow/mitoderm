@@ -4,7 +4,6 @@ import {
   LanguageSwitchItem,
   SolutionItem,
   ScrollItems,
-  ReviewType,
   EventBulletItem,
   CenterItemData,
 } from './types';
@@ -15,7 +14,7 @@ export const navMainList: NavItem[] = [
   { text: 'navigation.info', scrollId: ScrollItems.moreInfo },
   { text: 'navigation.contact', scrollId: ScrollItems.contactUs },
   { text: 'navigation.event', url: '/event' },
-  { text: 'navigation.clinic', scrollId: ScrollItems.clinic },
+  { text: 'navigation.clinic', url: '/doctors' },
 ];
 
 export const navEventList: NavItem[] = [
@@ -27,9 +26,12 @@ export const navEventList: NavItem[] = [
 ];
 
 export const navFormList: NavItem[] = [
-  { text: 'navigation.product', url: '/' },
   { text: 'navigation.event', url: '/event' },
 ];
+
+export const navDoctorList: NavItem[] = [
+  { text: 'navigation.event', url: '/event' },
+]
 
 export const howToUseItemList: HowToUseItem[] = [
   { imagePath: '/images/howToUse/skin.png', text: 'howToUse.main.item1' },
@@ -134,19 +136,6 @@ export const solutionItems: SolutionItem[] = [
 ];
 
 export const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
-
-export const reviews: ReviewType[] = [
-  {
-    name: 'reviews.item1.name',
-    rating: 5,
-    text: 'reviews.item1.text',
-  },
-  {
-    name: 'reviews.item2.name',
-    rating: 5,
-    text: 'reviews.item2.text',
-  },
-];
 
 export const centerItemData: CenterItemData[] = [
   {

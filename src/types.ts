@@ -61,12 +61,6 @@ export enum ScrollItems {
 
 export type ModalType = 'privatePolicy' | 'accessibility';
 
-export interface ReviewType {
-  name: string;
-  rating: number;
-  text: string;
-}
-
 export interface EventBulletItem {
   imagePath: string;
   text: string;

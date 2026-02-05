@@ -1,10 +1,12 @@
 .section {
   min-height: 578px;
-  position: relative;
-  z-index: 1;
   height: 100%;
   padding-top: 60px;
+  position: relative;
   width: 100vw;
+  z-index: 1;
+  color: var(--colorWhite);
+  font-size: var(--fontSizeP1);
 }
 
 .scrollBox {
@@ -119,11 +121,6 @@
   left: 100px;
 }
 
-.section {
-  color: var(--colorWhite);
-  font-size: var(--fontSizeP1);
-}
-
 .title,
 .eventTitle {
   font-size: var(--fontSizeH1);
@@ -134,14 +131,16 @@
   max-width: 690px;
   letter-spacing: -3px;
 }
-
 .title.ru,
 .eventTitle.ru {
   font-size: 70px;
 }
-
 .eventTitle {
+  color: var(--colorGold);
   line-height: 80px;
+}
+.eventTitle span {
+  color: var(--colorAccentLight);
 }
 
 .textContainer {
@@ -167,14 +166,6 @@
   margin-top: 100px;
 }
 
-.eventTitle {
-  color: var(--colorGold);
-}
-
-.eventTitle span {
-  color: var(--colorAccentLight);
-}
-
 .subtitleEvent:last-of-type {
   margin-bottom: 30px;
 }
@@ -187,11 +178,9 @@
   z-index: 2;
 }
 
-.introProductsContent {
-  .title {
-    text-align: center;
-    line-height: 80px;
-  }
+.introProductsContent .title {
+  text-align: center;
+  line-height: 80px;
 }
 
 @media screen and (min-width: 1440px) {
@@ -212,7 +201,6 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-position: center;
   }
   .buttonBox {
     display: none;
@@ -296,15 +284,15 @@
     }
   }
   .introSpray::before {
-    background-image: url(/images/hairSprayBGMobile.png);
+    background-image: url(/images/backgrounds/hairSprayBGMobile.png);
     background-position: 45% -60px;
   }
   .introHair::before {
-    background-image: url(/images/introHairBGMobile.png);
+    background-image: url(/images/backgrounds/introHairBGMobile.png);
     background-position: 50% -40px;
   }
   .introGel::before {
-    background-image: url(/images/introGelBGMobile.png);
+    background-image: url(/images/backgrounds/introGelBGMobile.png);
   }
   .eventVideo,
   .eventVideo.he {

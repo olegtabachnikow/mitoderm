@@ -30,15 +30,17 @@ const GalleryDesktop: FC<Props> = ({
         onClick={onClickLeft}
       />
       <div className={styles.itemWrapper}>
-        <div id='galleryItemBox' className={styles.imageBox}>
+        <div id="galleryItemBox" className={styles.imageBox}>
           {items.map((item, i) => (
             <div className={styles.item} key={i}>
               <Image
                 className={styles.image}
                 src={`/images/beforeAfter/${item}`}
-                alt='Example of Exosomes effect'
+                alt="Example of Exosomes effect"
                 fill
                 style={{ objectFit: 'contain' }}
+                sizes="100%"
+                priority
               />
             </div>
           ))}

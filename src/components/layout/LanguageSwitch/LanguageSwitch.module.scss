@@ -36,7 +36,7 @@
 
 .switchIcon {
   transition: transform 0.2s linear;
-  transform: rotate(0deg);
+  width: auto;
 }
 
 .active {
@@ -59,7 +59,7 @@
   pointer-events: all;
   opacity: 1;
   bottom: -90px;
-} 
+}
 
 .containerMobile .popup {
   bottom: -62px;

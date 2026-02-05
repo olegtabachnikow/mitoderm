@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useState, useEffect } from 'react';
 import styles from './NavigationProductButton.module.scss';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -12,14 +12,20 @@ const NavigationProductButton: FC<Props> = ({ isMobile, handleClick }) => {
   const locale = useLocale();
   const t = useTranslations();
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    isMobile ? setIsOpen(true) : setIsOpen(false);
+  }, [isMobile]);
+
   return (
-    <button
-      onClick={() => setIsOpen(!isOpen)}
+    <div
+      onMouseEnter={() => (isMobile ? null : setIsOpen(true))}
+      onMouseLeave={() => (isMobile ? null : setIsOpen(false))}
       className={`${isMobile ? styles.buttonMobile : styles.button} ${
         styles.dropDownButton
       } ${!isOpen ? styles.closed : styles.opened}`}
     >
-      {t('navigation.product')}
+      <Link href={`/${locale}/`}>{t('navigation.product')}</Link>
       <Image
         className={`${styles.arrowIcon} ${
           locale === 'he' ? styles.reversed : ''
@@ -58,7 +64,7 @@ const NavigationProductButton: FC<Props> = ({ isMobile, handleClick }) => {
           </Link>
         </div>
       )}
-    </button>
+    </div>
   );
 };
 

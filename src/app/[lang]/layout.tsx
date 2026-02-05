@@ -107,7 +107,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: `${baseUrl}/images/introBG.png`,
+        url: `${baseUrl}/images/backgrounds/introBG.png`,
         width: 1200,
         height: 630,
         alt: 'V-Tech System - Synthetic Exosomes + PDRN Polynucleotides',
@@ -123,7 +123,7 @@ export const metadata: Metadata = {
       'מערכת V-Tech - אקסוזומים סינתטיים + PDRN פולינוקלאוטידים לקוסמטיקאיות. תוצאות מהטיפול הראשון | הכשרות מקצועיות | מיטודרם ישראל 054-762-1889',
     images: [
       {
-        url: `${baseUrl}/images/introBG.png`,
+        url: `${baseUrl}/images/backgrounds/introBG.png`,
         alt: 'V-Tech System - Synthetic Exosomes + PDRN Polynucleotides',
       },
     ],

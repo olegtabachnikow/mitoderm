@@ -8,6 +8,7 @@
   cursor: pointer;
   display: flex;
   align-items: center;
+  height: 100%;
 }
 
 .buttonMobile {
@@ -21,7 +22,7 @@
 }
 
 .buttonMobile.opened {
-  padding-bottom: 0px;
+  padding-bottom: 0;
 }
 .button.closed:hover {
   color: rgba(255, 255, 255, 1);
@@ -35,9 +36,10 @@
   position: absolute;
   display: flex;
   flex-direction: column;
-  top: 42px;
+  top: 40px;
   right: 0;
   width: 200px;
+  padding-top: 10px;
 }
 
 .dropdownListMobile {
@@ -52,12 +54,14 @@
 }
 
 .dropDownList.opened {
-  padding-bottom: 0px;
+  padding-bottom: 0;
 }
 
 .arrowIcon {
-  margin: 0 0 2px 5px;
+  margin: 0 5px 2px 5px;
   transition: all 0.3s linear;
+  width: auto;
+  height: auto;
 }
 
 .arrowIcon.opened {

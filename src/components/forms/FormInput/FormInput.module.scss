@@ -11,16 +11,15 @@
   padding-inline: 15px;
   border-radius: 12px;
   outline: none;
-  border: none;
+  border: 1px solid transparent;
   background-color: var(--colorLightBG);
   font-size: var(--fontSizeP2);
   margin-top: 5px;
-  border: 1px solid transparent;
   transition: all 0.3s linear;
 }
 
 .inputLabel input::placeholder {
-  color: #222222;
+  color: var(--colorAccentDark);
   opacity: 0.5;
 }
 
