@@ -5,6 +5,8 @@ import DoctorListSessionWrapper from '@/components/sections/DoctorList/DoctorLis
 
 const baseUrl = 'https://mitoderm.com';
 
+export const dynamic = 'force-dynamic';
+
 export async function generateMetadata({
   params: { lang },
 }: {
