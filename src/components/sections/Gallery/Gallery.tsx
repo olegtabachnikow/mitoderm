@@ -32,14 +32,14 @@ const Gallery: FC<Props> = async ({ isHairPage }) => {
 
   let itemList: string[] = [];
 
-  if (env == 'development') {
-    sliderItemsArray = imageFilenames.filter((file) => file !== '.DS_Store' && file !== 'hair');
-  } else sliderItemsArray = imageFilenames;
+  sliderItemsArray = imageFilenames.filter(
+    (file) => file !== '.DS_Store' && file !== 'hair'
+  );
 
   if (sliderItemsArray) itemList = sliderItemsArray;
 
   return (
-    <section id='gallery' className={styles.container}>
+    <section id="gallery" className={styles.container}>
       <h2 className={styles.title}>{t('title')}</h2>
       <GalleryWrapper itemList={itemList as string[]} />
       <GalleryPagination count={itemList.length} />

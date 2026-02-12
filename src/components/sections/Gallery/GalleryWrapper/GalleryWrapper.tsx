@@ -12,7 +12,6 @@ interface Props {
 }
 
 const GalleryWrapper: FC<Props> = ({ itemList }) => {
-  console.log('itemList', itemList);
   const locale = useLocale();
   const isTabletOrMobile = useMediaQuery({
     query: '(max-width: 1224px)',
