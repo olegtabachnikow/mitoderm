@@ -130,7 +130,6 @@ const DoctorForm: FC<Props> = ({ doctor, setIsOpen }) => {
           name="instagram"
           type="text"
           placeholder="Instagram"
-          required
           onChange={handleChange}
           aria-required="true"
           defaultValue={doctor?.instagram || ''}
