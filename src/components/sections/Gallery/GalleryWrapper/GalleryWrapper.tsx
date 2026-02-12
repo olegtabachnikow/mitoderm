@@ -12,6 +12,7 @@ interface Props {
 }
 
 const GalleryWrapper: FC<Props> = ({ itemList }) => {
+  console.log('itemList', itemList);
   const locale = useLocale();
   const isTabletOrMobile = useMediaQuery({
     query: '(max-width: 1224px)',
@@ -38,9 +39,9 @@ const GalleryWrapper: FC<Props> = ({ itemList }) => {
     }
   };
 
-useEffect(() => {
-  setGalleryPage(0);
-}, [])
+  useEffect(() => {
+    setGalleryPage(0);
+  }, []);
 
   useEffect(() => {
     isTabletOrMobile ? null : scrollTo();
