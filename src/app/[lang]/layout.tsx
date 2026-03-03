@@ -11,6 +11,7 @@ import Footer from '@/components/layout/Footer/Footer';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import Script from 'next/script';
 import { getOrganizationSchema } from '@/utils/structuredData';
+import ScrollToTop from '@/components/layout/ScrollToTop/ScrollToTop';
 
 const Header = dynamic(() => import('@/components/layout/Header/Header'), {
   ssr: false,
@@ -28,7 +29,7 @@ const WhatsappLink = dynamic(
   () => import('@/components/layout/WhatsappLink/WhatsappLink'),
   {
     ssr: false,
-  }
+  },
 );
 
 const rubik = Rubik({
@@ -169,9 +170,9 @@ export default async function RootLayout({
           className={rubik.className}
           dir={params.lang === 'he' ? 'rtl' : 'ltr'}
         >
-          {/* Google Tag Manager (noscript) */}
           <noscript>
             <iframe
+              title="Google Tag Manager (noscript)"
               src="https://www.googletagmanager.com/ns.html?id=GTM-W7HBVJPC"
               height="0"
               width="0"
@@ -185,6 +186,7 @@ export default async function RootLayout({
           <Footer />
           {params.lang === 'he' && <Chatbot locale={params.lang} />}
           <WhatsappLink />
+          <ScrollToTop />
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{

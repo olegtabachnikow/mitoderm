@@ -74,6 +74,13 @@ const Navigation: FC<Props> = ({ isOpen, setIsOpen }) => {
               )}
             </div>
           ))}
+          <Link
+            onClick={handleClick}
+            href={'/'}
+            className={styles.buttonMobile}
+          >
+            {t('navigation.homepage')}
+          </Link>
         </nav>
       ) : (
         <nav

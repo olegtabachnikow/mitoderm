@@ -10,13 +10,11 @@ interface Props {
   isHairPage?: boolean;
 }
 
-const env = process.env.NODE_ENV;
-
 const GalleryWrapper = dynamic(
   () => import('@/components/sections/Gallery/GalleryWrapper/GalleryWrapper'),
   {
     ssr: false,
-  }
+  },
 );
 
 const Gallery: FC<Props> = async ({ isHairPage }) => {
@@ -25,7 +23,7 @@ const Gallery: FC<Props> = async ({ isHairPage }) => {
     process.cwd(),
     isHairPage
       ? '/public/images/beforeAfter/hair'
-      : '/public/images/beforeAfter'
+      : '/public/images/beforeAfter',
   );
   const imageFilenames = await fs.readdir(imageDirectory);
   let sliderItemsArray: string[] = [];
@@ -33,7 +31,7 @@ const Gallery: FC<Props> = async ({ isHairPage }) => {
   let itemList: string[] = [];
 
   sliderItemsArray = imageFilenames.filter(
-    (file) => file !== '.DS_Store' && file !== 'hair'
+    (file) => file !== '.DS_Store' && file !== 'hair',
   );
 
   if (sliderItemsArray) itemList = sliderItemsArray;

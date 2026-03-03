@@ -24,68 +24,68 @@ const Intro: FC = () => {
   const isSprayPage = pathname.includes('exosignalhairspray');
   const { introPage, setIntroPage } = useAppStore((state) => state);
 
-  const scrollToNextChild = () => {
+  useEffect(() => {
+    if (isEventPage) {
+      scrollTo(1);
+      setIntroPage(1);
+    } else if (isSprayPage) {
+      scrollTo(2);
+      setIntroPage(2);
+    } else if (isGelPage) {
+      scrollTo(3);
+      setIntroPage(3);
+    } else if (isSignalPage) {
+      scrollTo(4);
+      setIntroPage(4);
+    } else setIntroPage(0);
+  }, []);
+
+  const scrollTo = (page: number, smooth: boolean = false) => {
     const container = document.getElementById('scroller');
-    const scrollPosition = introPage * window.innerWidth;
+    const scrollPosition = page * window.innerWidth;
     if (locale === 'he') {
       container?.scrollTo({
         left: -scrollPosition,
-        behavior: 'smooth',
+        behavior: smooth ? 'smooth' : 'auto',
       });
     } else {
       container?.scrollTo({
         left: scrollPosition,
-        behavior: 'smooth',
+        behavior: smooth ? 'smooth' : 'auto',
       });
     }
   };
 
   useEffect(() => {
-    if (isEventPage) {
-      setIntroPage(1);
-    } else if (isSprayPage) {
-      setIntroPage(2);
-    } else if (isGelPage) {
-      setIntroPage(3);
-    } else if (isSignalPage) {
-      setIntroPage(4);
-    } else setIntroPage(0);
-  }, []);
-
-  useEffect(() => {
     const container = ref.current;
 
-    const handleScroll = () => {
-      const containerWidth = ref.current?.clientWidth;
-      if (locale === 'he' && container?.scrollLeft && containerWidth) {
-        if (container?.scrollLeft === -containerWidth) setIntroPage(1);
-        else if (container?.scrollLeft === -containerWidth * 2) setIntroPage(2);
-        else if (container?.scrollLeft === -containerWidth * 3) setIntroPage(3);
-        else if (container?.scrollLeft === -containerWidth * 4) setIntroPage(4);
-      } else if (container?.scrollLeft === 0) {
-        setIntroPage(0);
-      }
-      if (locale !== 'he' && container?.scrollLeft && containerWidth) {
-        if (container?.scrollLeft === containerWidth) setIntroPage(1);
-        else if (container?.scrollLeft === containerWidth * 2) setIntroPage(2);
-        else if (container?.scrollLeft === containerWidth * 3) setIntroPage(3);
-        else if (container?.scrollLeft === containerWidth * 4) setIntroPage(4);
-      } else if (container?.scrollLeft === 0) {
-        setIntroPage(0);
+    const handleScroll = (value: number | Event) => {
+      const container = document.getElementById('scroller');
+      if (!container) return;
+
+      const itemWidth = container.clientWidth;
+      const scrollDistance =
+        locale === 'he' ? -container.scrollLeft : container.scrollLeft;
+
+      let page: number;
+      if (typeof value === 'number') {
+        const scrollDestination =
+          locale === 'he' ? -itemWidth * value : itemWidth * value;
+        container.scrollTo({ left: scrollDestination });
+      } else {
+        page = Math.round(scrollDistance / itemWidth);
+        setIntroPage(page);
       }
     };
 
-    container?.addEventListener('scroll', handleScroll);
+    container?.addEventListener('scroll', handleScroll, { passive: true });
     return () => container?.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
-    scrollToNextChild();
-  }, [introPage]);
-
-  useEffect(() => {
     const currentValue = introPage < 4 ? introPage + 1 : 0;
     const interval = setInterval(() => {
+      scrollTo(currentValue, true);
       setIntroPage(currentValue);
     }, 15000);
 
@@ -282,10 +282,11 @@ const Intro: FC = () => {
         </div>
       </div>
       <div className={styles.paginationBox}>
-        <DotPagination count={5} intro />
+        <DotPagination count={5} intro handleIntroSwitch={scrollTo} />
       </div>
     </section>
   );
 };
+``;
 
 export default Intro;

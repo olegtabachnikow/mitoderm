@@ -1,4 +1,5 @@
 import { unstable_setRequestLocale } from 'next-intl/server';
+import { getDoctors } from '@/lib/mongodb';
 import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import Script from 'next/script';
@@ -15,7 +16,7 @@ const Solution = dynamic(
   () => import('@/components/sections/Solution/Solution'),
   {
     ssr: false,
-  }
+  },
 );
 
 const Mission = dynamic(() => import('@/components/sections/Mission/Mission'), {
@@ -126,6 +127,7 @@ export async function generateMetadata({
 export default async function HomePage({ params: { lang } }: any) {
   unstable_setRequestLocale(lang);
   const t = await getTranslations({ locale: lang });
+  const doctors = await getDoctors();
 
   // FAQ schema
   const faqs = [
@@ -166,7 +168,7 @@ export default async function HomePage({ params: { lang } }: any) {
         <Solution page="main" />
         <Gallery />
         <Mission />
-        <CenterList />
+        <CenterList doctors={doctors} />
         <Faq />
         <Contact />
       </main>

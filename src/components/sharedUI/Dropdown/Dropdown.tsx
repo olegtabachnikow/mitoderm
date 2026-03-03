@@ -11,7 +11,7 @@ interface Props {
 }
 
 const isFaqItem = (
-  data: FaqItemProps | CenterItemData[]
+  data: FaqItemProps | CenterItemData[],
 ): data is FaqItemProps => {
   return (data as FaqItemProps).item !== undefined;
 };
@@ -53,15 +53,15 @@ const Dropdown: FC<Props> = ({ data }) => {
             <div key={i} className={styles.centerDataRow}>
               <div className={styles.centerDataColumn}>
                 <span>{t('faq.name')}</span>
-                <span>{t(`${item.name}`)}</span>
+                <span>{item.name}</span>
               </div>
               <div className={styles.centerDataColumn}>
                 <span>{t('faq.city')}</span>
-                <span>{t(`${item.city}`)}</span>
+                <span>{item.city}</span>
               </div>
               <div className={styles.centerDataColumn}>
                 <span>{t('faq.contact')}</span>
-                <span>{t(`${item.contact}`)}</span>
+                <span>{item.contact}</span>
               </div>
             </div>
           ))

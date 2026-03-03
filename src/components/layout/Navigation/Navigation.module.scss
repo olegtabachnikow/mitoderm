@@ -12,15 +12,16 @@
 .button {
   background-color: transparent;
   color: rgba(255, 255, 255, 0.6);
-  font-size: 16px;
+  font-size: 15px;
   line-height: 24px;
   padding-inline: 10px;
-  transition: color 0.3s linear;
+  transition: all 0.3s linear;
   cursor: pointer;
 }
 
 .button:hover {
   color: rgba(255, 255, 255, 1);
+  font-size: 16px;
 }
 
 .mobileNavigation {

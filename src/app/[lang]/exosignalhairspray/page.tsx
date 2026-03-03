@@ -11,12 +11,13 @@ import HowCanBeUsed from '@/components/sections/HowCanBeUsed/HowCanBeUsed';
 import Gallery from '@/components/sections/Gallery/Gallery';
 import { getProductSchema, getFAQPageSchema } from '@/utils/structuredData';
 import { getTranslations } from 'next-intl/server';
+import { getDoctors } from '@/lib/mongodb';
 
 const Solution = dynamic(
   () => import('@/components/sections/Solution/Solution'),
   {
     ssr: false,
-  }
+  },
 );
 
 const Chevron = dynamic(() => import('@/components/sections/Chevron/Chevron'));
@@ -121,14 +122,14 @@ export async function generateMetadata({
 export default async function HomePage({ params: { lang } }: any) {
   unstable_setRequestLocale(lang);
   const t = await getTranslations({ locale: lang });
-
+  const doctors = await getDoctors();
   // Product schema
   const productName =
     lang === 'he'
       ? 'Exosignal Hair Spray'
       : lang === 'ru'
-      ? 'Exosignal Hair Spray'
-      : 'Exosignal Hair Spray';
+        ? 'Exosignal Hair Spray'
+        : 'Exosignal Hair Spray';
   const productUrl = `${baseUrl}/${lang}/exosignalhairspray`;
   const productSchema = getProductSchema(productName, productUrl, lang);
 
@@ -171,7 +172,7 @@ export default async function HomePage({ params: { lang } }: any) {
         <Solution page="hair" />
         <Gallery isHairPage />
         <Mission />
-        <CenterList />
+        <CenterList doctors={doctors} />
         <Faq />
         <Contact />
       </main>

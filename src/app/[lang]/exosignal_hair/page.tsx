@@ -11,12 +11,13 @@ import Faq from '@/components/sections/Faq/Faq';
 import Contact from '@/components/sections/Contact/Contact';
 import { getProductSchema, getFAQPageSchema } from '@/utils/structuredData';
 import { getTranslations } from 'next-intl/server';
+import { getDoctors } from '@/lib/mongodb';
 
 const Solution = dynamic(
   () => import('@/components/sections/Solution/Solution'),
   {
     ssr: false,
-  }
+  },
 );
 
 const Chevron = dynamic(() => import('@/components/sections/Chevron/Chevron'));
@@ -121,14 +122,15 @@ export async function generateMetadata({
 export default async function HomePage({ params: { lang } }: any) {
   unstable_setRequestLocale(lang);
   const t = await getTranslations({ locale: lang });
+  const doctors = await getDoctors();
 
   // Product schema
   const productName =
     lang === 'he'
       ? 'Exosignal Hair'
       : lang === 'ru'
-      ? 'Exosignal Hair'
-      : 'Exosignal Hair';
+        ? 'Exosignal Hair'
+        : 'Exosignal Hair';
   const productUrl = `${baseUrl}/${lang}/exosignal_hair`;
   const productSchema = getProductSchema(productName, productUrl, lang);
 
@@ -171,7 +173,7 @@ export default async function HomePage({ params: { lang } }: any) {
         <Solution page="signal" />
         <Gallery isHairPage />
         <Mission />
-        <CenterList />
+        <CenterList doctors={doctors} />
         <Faq />
         <Contact />
       </main>

@@ -38,7 +38,7 @@ const GalleryMobile: FC<Props> = ({ items, isHairPage }) => {
   useEffect(() => {
     const container = document.getElementById('galleryItemBox');
     if (container) {
-      container.addEventListener('scroll', handleScroll);
+      container.addEventListener('scroll', handleScroll, { passive: true });
     }
 
     return () => {
