@@ -1,5 +1,4 @@
 :root {
-  --font-Rubik: 'Rubik', sans-serif;
   --fontSizeH1: 88px;
   --fontSizeH2: 48px;
   --fontSizeP1: 24px;
@@ -17,9 +16,17 @@
   --colorLightBG: #f8ecd6;
   --contentWidthDesktop: 1200px;
   --buttonAccentColor: #940030;
-  --color-gold: #dfba74;
-  --color-gold-dark: #be800c;
+  --color-gold: rgb(223, 186, 116);
+  --color-gold-light: rgb(252, 211, 132);
+  --color-gold-dark: rgb(190, 128, 12);
+  --color-navy-dark: #0f1829;
+  --color-navy: #1a2744;
+  --color-navy-light: #2a3654;
+  --color-whatsapp: #25d366;
+  --color-whatsapp-dark: #128c7e;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300..900&display=swap');
 
 html,
 body {

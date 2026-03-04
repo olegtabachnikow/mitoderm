@@ -1,5 +1,6 @@
 'use client';
 import { FC, useEffect, useRef } from 'react';
+import { motion } from 'motion/react';
 import dynamic from 'next/dynamic';
 import styles from './Intro.module.scss';
 import Image from 'next/image';
@@ -82,15 +83,15 @@ const Intro: FC = () => {
     return () => container?.removeEventListener('scroll', handleScroll);
   }, []);
 
-  useEffect(() => {
-    const currentValue = introPage < 4 ? introPage + 1 : 0;
-    const interval = setInterval(() => {
-      scrollTo(currentValue, true);
-      setIntroPage(currentValue);
-    }, 15000);
+  // useEffect(() => {
+  //   const currentValue = introPage < 4 ? introPage + 1 : 0;
+  //   const interval = setInterval(() => {
+  //     scrollTo(currentValue, true);
+  //     setIntroPage(currentValue);
+  //   }, 15000);
 
-    return () => clearInterval(interval);
-  }, [introPage]);
+  //   return () => clearInterval(interval);
+  // }, [introPage]);
 
   return (
     <section id="intro" className={styles.section}>
@@ -134,34 +135,101 @@ const Intro: FC = () => {
           </div>
         </div>
         <div className={styles.introEvent}>
-          <div className={`${styles.container} ${styles.eventPageContainer}`}>
-            <video
-              className={`${styles.eventVideo} ${locale === 'he' && styles.he}`}
-              autoPlay
-              loop
-              muted
-              playsInline
-            >
-              <source src="/videos/eventIntroVideo.webm" type="video/webm" />
-              Your browser does not support the video tag.
-            </video>
-            <div className={styles.textContainer}>
-              <span className={styles.subtitleEvent}>
-                {t('intro.eventSubtitle1')}
-              </span>
-              <h1
-                className={`${styles.eventTitle} ${
-                  locale === 'ru' ? styles.ru : ''
-                }`}
+          <div className={styles.eventBG}>
+            <motion.div
+              animate={{ scale: [1, 1.2, 1], rotate: [0, 90, 0] }}
+              transition={{ duration: 20, repeat: Infinity }}
+              className={styles.blur1}
+            />
+            <motion.div
+              animate={{ scale: [1.2, 1, 1.2], rotate: [0, -90, 0] }}
+              transition={{ duration: 25, repeat: Infinity }}
+              className={styles.blur2}
+            />
+          </div>
+          <div className={styles.eventContent}>
+            <div className={styles.contentWrapper}>
+              <motion.video
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className={`${styles.eventVideo} ${locale === 'he' && styles.he}`}
+                autoPlay
+                loop
+                muted
+                playsInline
               >
-                {t('intro.eventTitleP1')}
-                <span>{t('intro.eventTitleP2')}</span>
-                {t('intro.eventTitleP3')}
-              </h1>
-              <span className={styles.subtitleEvent}>
-                {t('intro.eventSubtitle2')}
-              </span>
-              <Button text={t('buttons.seat')} formPage={'event'} />
+                <source src="/videos/eventIntroVideo.webm" type="video/webm" />
+                Your browser does not support the video tag.
+              </motion.video>
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                className={styles.eventTextContainer}
+              >
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2, duration: 0.5 }}
+                  className={styles.badge}
+                >
+                  <div
+                    className={styles.badgeDot + ' ' + styles.animatePulse}
+                  />
+                  {t('intro.eventBadge')}
+                </motion.div>
+                <motion.h1
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3, duration: 0.8 }}
+                  className={styles.eventTitle}
+                >
+                  <span style={{ color: 'white' }}>
+                    {t('intro.eventTitleP1')}
+                  </span>
+                  <span className={styles.eventTitleAccent}>
+                    {t('intro.eventTitleP2')}
+                  </span>
+                  <span style={{ color: 'white' }}>
+                    {t('intro.eventTitleP3')}
+                  </span>
+                </motion.h1>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5, duration: 0.8 }}
+                  className={styles.eventSubtitle}
+                >
+                  <p className={styles.eventSubtitleText}>
+                    {t('intro.eventSubtitle')}
+                  </p>
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.9, duration: 0.6 }}
+                  className={styles.eventCTA}
+                >
+                  <motion.button
+                    whileHover={{
+                      scale: 1.05,
+                      boxShadow: '0 20px 40px rgba(37, 211, 102, 0.3)',
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                    // onClick={handleWhatsAppClick}
+                    className={styles.eventCTAButton}
+                  >
+                    <Image
+                      src="/images/icons/messageIcon.svg"
+                      width={19}
+                      height={19}
+                      alt="message icon"
+                    />
+                    <span>{t('buttons.cta')}</span>
+                  </motion.button>
+                </motion.div>
+              </motion.div>
             </div>
           </div>
         </div>

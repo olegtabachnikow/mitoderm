@@ -125,3 +125,5 @@ export interface DoctorType {
   createdAt: string;     
   updatedAt: string;  
 }
+
+export type WorkshopVariant = "990" | "180" | "480"

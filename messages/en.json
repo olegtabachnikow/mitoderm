@@ -21,7 +21,8 @@
     "requestCallback": "Request A Callback",
     "contactForSolutions": "Contact for personal solutions",
     "seat": "Reserve Seat",
-    "reserveSeat": "Reserve"
+    "reserveSeat": "Reserve",
+    "cta": "Register via WhatsApp"
   },
   "form": {
     "titleP1": "Get Personalized",
@@ -69,11 +70,11 @@
     "signalTitle": "Exosignal Hair",
     "signalSubtitle": "Professional use ampoules",
     "text": "A new generation in cosmeceuticals - a breakthrough in skincare for cosmeticians",
-    "eventSubtitle1": "Are you a Cosmetologist? Aesthetician?  Working with professional devices?",
-    "eventSubtitle2": "The company that brings the next generation of aesthetics.",
-    "eventTitleP1": "This ",
-    "eventTitleP2": "event ",
-    "eventTitleP3": "is exactly for you!"
+    "eventTitleP1": "Choose the ",
+    "eventTitleP2": "training ",
+    "eventTitleP3": "that suits you",
+    "eventBadge": "קורס מקצועי בן 180 שעות",
+    "eventSubtitle": "Professional training in skills and expertise - for cosmetologists, hairdressers, veterinarians and paramedics"
   },
   "chevron": {
     "intro": {
@@ -428,6 +429,203 @@
       "1": "Facial treatments",
       "2" : "Hair treatments",
       "3": "Facial & Hair Treatments"
+    }
+  },
+  "benefits": {
+    "heading": "Why choose us?",
+    "subtitle": "Benefits that will help you succeed"
+  },
+  "courses": {
+    "heading": "Our Programs",
+    "recommended": "Recommended",
+    "register": "Register",
+    "course1": {
+      "badge": "For cosmetologists",
+      "title": "Professional Hair Training",
+      "subtitle": "Guided by the MitoDerm team",
+      "items": "Microneedling fundamentals for scalp|Using exosomes for scalp recovery and accelerating hair growth|Diagnosing scalp problems and matching clinical protocols|Integrating treatments into business for results and sales"
+    },
+    "course2": {
+      "badge": "For hairdressers",
+      "title": "Dedicated Training for Hairdressers",
+      "subtitle": "Introduction to the scalp world from an advanced trichological perspective",
+      "items": "Understanding hair loss and growth processes|Proper scalp work as part of hair treatment|Integrating innovative solutions for scalp recovery and growth|Turning professional knowledge into differentiation, results and added value"
+    },
+    "course3": {
+      "badge": "For aesthetics professionals",
+      "title": "MITODERM — First Offer for the Future of Aesthetics",
+      "subtitle": "We invite you to discover",
+      "items": "Hair loss and growth processes|Introduction to the world of exosomes and their integration|Proper and precise scalp work|Innovative solutions for scalp recovery, hair follicle strengthening and growth|Turning trichological knowledge into professional differentiation and real added value"
+    }
+  },
+  "stickyBar": {
+    "workshop": "Workshop",
+    "hours180": "180 Hours",
+    "hours480": "480 Hours"
+  },
+  "v990": {
+    "benefits": "Innovative Products|Networking with professionals|Certificate|Personal Growth|Official Italian Distributor in Israel|Limited offer",
+    "invite": {
+      "title": "MitoDerm company invites you to a ",
+      "titleAccent": "boutique conference for leaders",
+      "titleEnd": " in the field of aesthetics in Israel",
+      "body": "At the conference, you'll be introduced to this ",
+      "bodyAccent": "breakthrough technology!",
+      "bodyEnd": "\nThis conference will open the door for you to the world of innovative treatments, which are what clients really want, along with significant reduction in working time, increased profits, and faster recovery",
+      "cta": "Contact for Price details"
+    },
+    "topics": {
+      "heading": "Topics we'll cover:",
+      "items": "Understanding the scalp as a living biological system, scalp structure and hair follicle|Hair loss processes and diagnosis - the connection between skin, inflammation, stress and follicle impact|Exosomes and advanced scalp technology - what are exosomes and how they work at the cellular level|Advantages of synthetic and stable source: scalp recovery, follicle strengthening and growth matching|Clinical practice and protocols: integrating exosomes into scalp treatments|Differentiation, results and business value: integrating treatment into business",
+      "cta": "Reserve Seat"
+    },
+    "eventDetails": {
+      "heading": "Event Details",
+      "dateLabel": "Date",
+      "dateValue": "08.03.26",
+      "timeLabel": "Hours",
+      "timeValue": "11:00 - 14:00",
+      "locationLabel": "Location",
+      "locationValue": "Beer Sheva",
+      "extraLocation": "Haifa",
+      "extraDate": "09.05.26",
+      "extraTime": "10:00 - 14:00",
+      "selectLabel": "Select preferred location and date"
+    },
+    "unique": {
+      "title1": "What ",
+      "titleAccent": "makes you unique",
+      "title2": " compared to competitors?",
+      "body1": "MitoDerm company is the ",
+      "bodyAccent": "only company in Israel working with exosomes",
+      "bodyEnd": " that can connect and trigger a chain reaction of natural cell actions, allowing the skin to enjoy great benefits"
+    },
+    "gallery": {
+      "heading": "Gallery",
+      "before": "Before",
+      "after": "After",
+      "cta": "Reserve Seat"
+    },
+    "exosomes": {
+      "heading": "What are exosomes?",
+      "subheading": "First introduction to the revolutionary technology changing the aesthetics industry",
+      "card1Title": "Why is it important?",
+      "card1Body": "Enable more effective treatments for hair loss, scalp recovery and growth acceleration",
+      "card2Title": "How does it work?",
+      "card2Body": "Transfer biological messages between cells, triggering natural renewal and recovery processes",
+      "card3Title": "What is it?",
+      "card3Body": "Nanometric particles naturally formed in body cells, used for intercellular communication",
+      "footer": "In the workshop you'll learn the scientific foundations and practical applications"
+    }
+  },
+  "v180": {
+    "benefits": "180 hours training|Recognized certificate|Personal guidance|Professional tools|In-person course|Leading experts",
+    "invite": {
+      "title": "MitoDerm invites you to a ",
+      "titleAccent": "comprehensive professional course",
+      "titleEnd": " in medical cosmetology",
+      "body": "A ",
+      "bodyAccent": "180-hour course",
+      "bodyEnd": " combining deep theoretical knowledge with extensive practice. Learn advanced techniques, discover the latest technologies and receive professional tools for success",
+      "cta": "More details"
+    },
+    "topics": {
+      "heading": "Course Curriculum:",
+      "items": "Understanding skin as a living biological system: skin aging processes|Advanced cosmetic treatments - peels, mesotherapy and combined treatments|Exosomes and biological technologies - the new generation of aesthetic treatments|Professional microneedling - techniques, protocols and applications|Independent clinic management - marketing, sales and personal branding|Extensive clinical practice - practice on real models",
+      "cta": "Register for Course"
+    },
+    "eventDetails": {
+      "heading": "Course Details",
+      "dateLabel": "Start Date",
+      "dateValue": "15.04.26",
+      "timeLabel": "Duration",
+      "timeValue": "180 hours",
+      "locationLabel": "Location",
+      "locationValue": "Tel Aviv",
+      "extraLocation": "Jerusalem",
+      "extraDate": "20.05.26",
+      "extraTime": "180 hours",
+      "selectLabel": "Select preferred location and date"
+    },
+    "unique": {
+      "title1": "Why is ",
+      "titleAccent": "MitoDerm",
+      "title2": " the right choice for you?",
+      "body1": "We are ",
+      "bodyAccent": "the only ones in Israel",
+      "bodyEnd": " combining advanced exosome technologies in an in-person course with personal guidance and professional tools for every student"
+    },
+    "gallery": {
+      "heading": "Our Students' Results",
+      "before": "Before",
+      "after": "After",
+      "cta": "Join us"
+    },
+    "exosomes": {
+      "heading": "What will you learn?",
+      "subheading": "Comprehensive curriculum combining practical theory and advanced practice",
+      "card1Title": "Theoretical Foundation",
+      "card1Body": "Deep understanding of anatomy, physiology and skin/face structure",
+      "card2Title": "Practical Training",
+      "card2Body": "Extensive practice on real models with experienced expert guidance",
+      "card3Title": "Advanced Technologies",
+      "card3Body": "Introduction and hands-on experience with the most advanced equipment and products",
+      "footer": "Upon completion you'll receive a recognized certificate and tools to start a successful career"
+    }
+  },
+  "v480": {
+    "benefits": "480 professional hours|Full certification|Clinical internship|Business coaching|Portfolio|Clinic placement",
+    "invite": {
+      "title": "MitoDerm Academy presents the ",
+      "titleAccent": "most advanced professional program",
+      "titleEnd": " in Israel",
+      "body": "A program of ",
+      "bodyAccent": "480 hours",
+      "bodyEnd": " combining deep academic study, clinical internship, professional portfolio building and business coaching for establishing an independent clinic. The complete path to professional success!",
+      "cta": "Personal consultation"
+    },
+    "topics": {
+      "heading": "Comprehensive Curriculum:",
+      "items": "Understanding hair loss professionally - hair cycle, types of loss|Scalp as foundation for healthy hair - camera-assisted scalp diagnosis|Exosomes, microneedling and advanced technology|Treatment matching by diagnosis: safe and precise work|Clinical practice and protocols: integrating exosomes in scalp treatments|Differentiation, results and business value: integrating treatment into business",
+      "cta": "Schedule Consultation"
+    },
+    "eventDetails": {
+      "heading": "Professional Program Details",
+      "dateLabel": "Start Date",
+      "dateValue": "01.05.26",
+      "timeLabel": "Duration",
+      "timeValue": "480 hours",
+      "locationLabel": "Location",
+      "locationValue": "Tel Aviv + Clinics",
+      "extraLocation": "Haifa + Clinics",
+      "extraDate": "15.06.26",
+      "extraTime": "480 hours",
+      "selectLabel": "Select preferred location and date"
+    },
+    "unique": {
+      "title1": "What makes our program ",
+      "titleAccent": "unique",
+      "title2": "?",
+      "body1": "The only program in Israel combining ",
+      "bodyAccent": "academic certification + clinical internship + full business coaching",
+      "bodyEnd": ". You'll receive all the tools for success: knowledge, practical experience, portfolio and a ready business plan"
+    },
+    "gallery": {
+      "heading": "Our Graduates' Portfolios",
+      "before": "Before",
+      "after": "After",
+      "cta": "Join the best"
+    },
+    "exosomes": {
+      "heading": "What does the professional track include?",
+      "subheading": "A comprehensive 480-hour program leading you to full professional success",
+      "card1Title": "Academic Study",
+      "card1Body": "300 hours of deep theoretical study with leading instructors",
+      "card2Title": "Clinical Internship",
+      "card2Body": "120 hours of hands-on work with real clients at leading clinics",
+      "card3Title": "Business Coaching",
+      "card3Body": "60 hours of personal guidance for establishing an independent clinic",
+      "footer": "Upon completion: full certification + professional portfolio + business plan"
     }
   }
 }

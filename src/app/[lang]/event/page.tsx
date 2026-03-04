@@ -9,20 +9,21 @@ import Mission from '@/components/sections/Mission/Mission';
 import { useTranslations } from 'next-intl';
 import EventBulletList from '@/components/sections/EventBulletList/EventBulletList';
 import Gallery from '@/components/sections/Gallery/Gallery';
+import Benefit from '@/components/sections/Benefit/Benefit';
 import { getEventSchema } from '@/utils/structuredData';
 
 const FirstLook = dynamic(
   () => import('@/components/sections/FirstLook/FirstLook'),
   {
     ssr: false,
-  }
+  },
 );
 
 const FastResult = dynamic(
   () => import('@/components/sections/FastResult/FastResult'),
   {
     ssr: false,
-  }
+  },
 );
 
 const Invite = dynamic(() => import('@/components/sections/Invite/Invite'), {
@@ -37,7 +38,7 @@ const ToTopItOff = dynamic(
   () => import('@/components/sections/ToTopItOff/ToTopItOff'),
   {
     ssr: false,
-  }
+  },
 );
 
 const Unique = dynamic(() => import('@/components/sections/Unique/Unique'), {
@@ -157,6 +158,8 @@ export default function EventPage({ params: { lang } }: any) {
     <>
       <main>
         <Intro />
+        <Benefit variant="480" />
+        {/* <Intro />
         <EventBulletList />
         <FastResult />
         <Invite />
@@ -181,7 +184,7 @@ export default function EventPage({ params: { lang } }: any) {
           />
         </div>
         <About />
-        <Mission />
+        <Mission /> */}
       </main>
       <Script
         id="event-schema"
