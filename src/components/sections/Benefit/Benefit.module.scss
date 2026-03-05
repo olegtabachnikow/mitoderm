@@ -1,0 +1,136 @@
+@use 'variables' as *;
+.benefits {
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(
+    to bottom,
+    $colorNavyDark,
+    $colorNavy
+  );
+  padding: 2rem 0;
+
+  @media (min-width: 768px) {
+    padding: 3rem 0;
+  }
+
+  .container {
+    max-width: 150rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .sectionHead {
+    margin-bottom: 2rem;
+
+    h2 {
+      font-size: 1.5rem;
+      color: $colorWhite;
+
+      @media (min-width: 768px) {
+        font-size: 1.875rem;
+      }
+    }
+    p {
+      margin-top: 0.5rem;
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media (min-width: 1024px) {
+      grid-template-columns: repeat(6, 1fr);
+    }
+  }
+
+  .item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.25rem;
+    backdrop-filter: blur(4px);
+    transition:
+      border-color 0.2s,
+      background 0.2s,
+      box-shadow 0.2s;
+
+    &:hover {
+      border-color: rgba(223, 186, 116, 0.4);
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .itemBg {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.2s;
+
+    .item:hover & {
+      opacity: 1;
+    }
+  }
+
+  .itemBgInner {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom right,
+      rgba(223, 186, 116, 0.1),
+      transparent
+    );
+  }
+
+  .itemContent {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    text-align: center;
+  }
+
+  .iconWrap {
+    display: flex;
+    height: 3rem;
+    width: 3rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    background: linear-gradient(
+      to bottom right,
+      rgba(223, 186, 116, 0.2),
+      rgba(190, 128, 12, 0.2)
+    );
+  }
+
+  .icon {
+    height: 1.5rem;
+    width: 1.5rem;
+  }
+
+  .text {
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1.25;
+    color: $colorWhite;
+
+    @media (min-width: 768px) {
+      font-size: 0.875rem;
+    }
+  }
+}

@@ -1,10 +1,11 @@
+@use 'variables' as *;
 .header {
   position: fixed;
   display: flex;
   align-items: center;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.8);
-  padding-block: 10px;
+  padding-block: 1.25rem;
   z-index: 10;
 }
 
@@ -13,8 +14,8 @@
 }
 
 .container {
-  max-width: var(--contentWidthDesktop);
-  height: 40px;
+  max-width: $contentWidthDesktop;
+  height: 5rem;
   width: 100%;
   margin-inline: auto;
   display: flex;
@@ -38,7 +39,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: var(--colorBG);
+  background-color: $colorBg;
   filter: blur(5px);
   opacity: 0;
   transition: all 0.3s linear;
@@ -53,7 +54,7 @@
 
 @media screen and (max-width: 1224px) {
   .header {
-    height: 72px;
-    padding: 0 80px 0 20px;
+    height: 9rem;
+    padding: 0 10rem 0 2.5rem;
   }
 }

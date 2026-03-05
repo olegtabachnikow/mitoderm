@@ -1,7 +1,7 @@
 .container {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 2.5rem;
 }
 
 .buttonBox {
@@ -31,15 +31,15 @@
 }
 
 .whatsAppCustomClass {
-  width: 25px;
-  height: 25px;
+  width: 3.125rem;
+  height: 3.125rem;
   opacity: 1;
   transition: all 0.3s linear;
 }
 
 .whatsAppCustomClass img {
-  width: 22px;
-  height: 22px;
+  width: 2.75rem;
+  height: 2.75rem;
   filter: brightness(0) saturate(100%);
 }
 

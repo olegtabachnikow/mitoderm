@@ -16,52 +16,63 @@ const Benefit: FC<Props> = ({ variant }) => {
   const items = t(`v${variant}.benefits`).split('|');
   const icons = [
     <Image
+      className={styles.icon}
       src="/images/icons/award.svg"
       width={24}
       height={24}
       alt="award medal icon"
     />,
     <Image
+      className={styles.icon}
       src="/images/icons/users.svg"
       width={24}
       height={24}
       alt="users icon"
     />,
     <Image
+      className={styles.icon}
       src="/images/icons/bookOpened.svg"
       width={24}
       height={24}
       alt="book icon"
     />,
     <Image
+      className={styles.icon}
       src="/images/icons/trophy.svg"
       width={24}
       height={24}
       alt="trophy icon"
     />,
     <Image
+      className={styles.icon}
       src="/images/icons/target.svg"
       width={24}
       height={24}
       alt="target icon"
     />,
-    <Image src="/images/icons/zap.svg" width={24} height={24} alt="zap icon" />,
+    <Image
+      className={styles.icon}
+      src="/images/icons/zap.svg"
+      width={24}
+      height={24}
+      alt="zap icon"
+    />,
   ];
   return (
-    <section className="benefits">
-      <div className="container">
+    <section className={styles.benefits}>
+      <div className={styles.container}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="section-head"
+          className={styles.sectionHead}
         >
           <h2>{t('benefits.heading')}</h2>
           <p>{t('benefits.subtitle')}</p>
         </motion.div>
 
-        <div className="benefits__grid">
+        <div className={styles.grid}>
           {items.map((item, i) => {
             const icon = icons[i % icons.length];
             return (
@@ -72,20 +83,20 @@ const Benefit: FC<Props> = ({ variant }) => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
                 whileHover={{ y: -8, scale: 1.02 }}
-                className="benefits__item"
+                className={styles.item}
               >
-                <div className="benefits__item-bg">
-                  <div className="benefits__item-bg-inner" />
+                <div className={styles.itemBg}>
+                  <div className={styles.itemBgInner} />
                 </div>
-                <div className="benefits__item-content">
+                <div className={styles.itemContent}>
                   <motion.div
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
-                    className="benefits__icon-wrap"
+                    className={styles.iconWrap}
                   >
                     {icon}
                   </motion.div>
-                  <p className="benefits__text">{item}</p>
+                  <p className={styles.text}>{item}</p>
                 </div>
               </motion.div>
             );

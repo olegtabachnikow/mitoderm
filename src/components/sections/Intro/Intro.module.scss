@@ -1,12 +1,13 @@
+@use 'variables' as *;
 .section {
-  min-height: 578px;
+  min-height: 72.25rem;
   height: 100%;
-  padding-top: 60px;
+  padding-top: 7.5rem;
   position: relative;
   width: 100vw;
   z-index: 1;
-  color: var(--colorWhite);
-  font-size: var(--fontSizeP1);
+  color: $colorWhite;
+  font-size: $fontSizeP1;
 }
 
 .scrollBox {
@@ -75,9 +76,9 @@
   overflow: hidden;
   background: linear-gradient(
     to bottom right,
-    var(--color-navy),
-    var(--color-navy-dark),
-    var(--color-navy)
+    $colorNavy,
+    $colorNavyDark,
+    $colorNavy
   );
 }
 
@@ -92,21 +93,21 @@
   display: flex;
   flex: 1;
   justify-content: flex-end;
-  max-width: 1200px;
+  max-width: 150rem;
   width: 100%;
   position: relative;
 }
 
 .leaves {
   position: absolute;
-  bottom: 80px;
+  bottom: 10rem;
   right: 0;
   -webkit-user-drag: none;
   user-select: none;
 }
 
 .container {
-  max-width: 620px;
+  max-width: 77.5rem;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -117,11 +118,11 @@
 
 .eventVideo {
   object-fit: cover;
-  width: 367px;
+  width: 45.875rem;
   height: calc(100% - 30px);
   z-index: 1;
   margin: 0 10% 0 auto;
-  border-radius: 24px;
+  border-radius: 3rem;
 }
 
 .eventVideo.he {
@@ -129,23 +130,23 @@
 }
 
 .title {
-  font-size: var(--fontSizeH1);
+  font-size: $fontSizeH1;
   font-weight: 400;
-  color: var(--colorWhite);
+  color: $colorWhite;
   margin: 30px 0;
   padding: 0;
-  max-width: 690px;
+  max-width: 86.25rem;
   letter-spacing: -3px;
 }
 .title.ru {
-  font-size: 70px;
+  font-size: 8.75rem;
 }
 
 .eventTitle {
-  font-size: 64px;
-  max-width: 580px;
+  font-size: 8rem;
+  max-width: 72.5rem;
   font-weight: 700;
-  line-height: 70px;
+  line-height: 8.75rem;
   font-style: normal;
   font-family: 'Rubik', sans-serif;
 }
@@ -153,7 +154,7 @@
 .eventSubtitle {
   font-size: 1.125rem;
   color: rgba(255, 255, 255, 0.8);
-  max-width: 580px;
+  max-width: 72.5rem;
 
   @media (min-width: 768px) {
     font-size: 1.25rem;
@@ -173,12 +174,12 @@
   border-radius: 9999px;
   background: linear-gradient(
     to right,
-    var(--color-whatsapp),
-    var(--color-whatsapp-dark)
+    $colorWhatsapp,
+    $colorWhatsappDark
   );
   padding: 1rem 2rem;
   font-weight: 700;
-  color: var(--colorWhite);
+  color: $colorWhite;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   transition:
     transform 0.2s,
@@ -198,9 +199,9 @@
 .eventTitleAccent {
   background: linear-gradient(
     to right,
-    var(--color-gold-light),
-    var(--color-gold),
-    var(--color-gold-dark)
+    $colorGoldLight,
+    $colorGold,
+    $colorGoldDark
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -220,7 +221,7 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: flex-start;
-  padding-block: 35px;
+  padding-block: 4.375rem;
 }
 
 .badge {
@@ -233,7 +234,7 @@
   padding: 0.5rem 1.25rem;
   font-size: 0.875rem;
   font-weight: 500;
-  color: var(--color-gold);
+  color: $colorGold;
   backdrop-filter: blur(4px);
 }
 
@@ -241,20 +242,20 @@
   height: 0.5rem;
   width: 0.5rem;
   border-radius: 9999px;
-  background: var(--color-gold);
+  background: $colorGold;
 }
 
 .text {
-  color: var(--colorWhite);
-  font-size: var(--fontSizeP1);
+  color: $colorWhite;
+  font-size: $fontSizeP1;
   font-weight: 500;
-  margin: 0 auto 58px auto;
+  margin: 0 auto 7.25rem auto;
   text-align: center;
 }
 
 .paginationBox {
   position: absolute;
-  bottom: 15px;
+  bottom: 1.875rem;
   left: 50%;
   transform: translateX(-50%);
   z-index: 2;
@@ -262,7 +263,7 @@
 
 .introProductsContent .title {
   text-align: center;
-  line-height: 80px;
+  line-height: 10rem;
 }
 
 .blur1 {
@@ -271,7 +272,7 @@
   height: 20rem;
   width: 20rem;
   border-radius: 9999px;
-  background: var(--color-gold);
+  background: $colorGold;
   opacity: 0.05;
   filter: blur(48px);
   z-index: 100;
@@ -284,7 +285,7 @@
   height: 24rem;
   width: 24rem;
   border-radius: 9999px;
-  background: var(--color-gold-dark);
+  background: $colorGoldDark;
   opacity: 0.05;
   filter: blur(48px);
   z-index: 100;
@@ -292,13 +293,13 @@
 }
 
 .eventContent {
-  padding: 45px 0;
-  max-width: 1200px;
+  padding: 5.625rem 0;
+  max-width: 150rem;
   position: relative;
   width: 100%;
   height: 100%;
   z-index: 10;
-  max-width: 1280px;
+  max-width: 160rem;
 }
 
 .contentWrapper {
@@ -312,7 +313,7 @@
     height: 100%;
   }
   .container {
-    padding-inline: 20px;
+    padding-inline: 2.5rem;
   }
   .introMain,
   .introProducts {
@@ -324,15 +325,15 @@
     display: none;
   }
   .title {
-    font-size: var(--fontSizeMobH1);
-    margin-block: 25px;
+    font-size: $fontSizeMobH1;
+    margin-block: 3.125rem;
     font-weight: 500;
   }
   .title.ru {
-    font-size: 36px;
+    font-size: 4.5rem;
   }
   .text {
-    font-size: var(--fontSizeMobP2);
+    font-size: $fontSizeMobP2;
     max-width: 100%;
   }
 }
@@ -350,20 +351,20 @@
     background-position: 32.5%;
   }
   .leaves {
-    bottom: 20px;
-    right: 20px;
+    bottom: 2.5rem;
+    right: 2.5rem;
   }
 }
 
 @media screen and (max-width: 600px) {
   .section {
-    padding-top: 70px;
+    padding-top: 8.75rem;
   }
 
   .textContainer {
-    padding-inline: 20px;
+    padding-inline: 2.5rem;
     button {
-      margin-top: 30px;
+      margin-top: 3.75rem;
     }
   }
   .introSpray,
@@ -371,7 +372,7 @@
   .introHair {
     .title {
       font-weight: 400;
-      line-height: 40px;
+      line-height: 5rem;
       letter-spacing: 0.5px;
       margin-top: auto;
       background: linear-gradient(to right, #fdfbcb, #d1ae6b);
@@ -383,8 +384,8 @@
       margin-bottom: 0;
     }
     .leaves {
-      bottom: 10px;
-      right: 10px;
+      bottom: 1.25rem;
+      right: 1.25rem;
       scale: 0.6;
     }
   }

@@ -3,7 +3,7 @@ import { unstable_setRequestLocale } from 'next-intl/server';
 import dynamic from 'next/dynamic';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
-import '../globals.scss';
+import '../../styles/globals.scss';
 import { Rubik } from 'next/font/google';
 import { routing } from '@/i18n/routing';
 import { notFound } from 'next/navigation';

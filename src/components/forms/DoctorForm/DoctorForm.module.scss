@@ -1,3 +1,4 @@
+@use 'variables' as *;
 .container {
   position: fixed;
   display: flex;
@@ -23,26 +24,26 @@
   align-items: center;
   flex-direction: column;
   z-index: 2;
-  padding: 90px 40px 40px 40px;
+  padding: 11.25rem 5rem 5rem 5rem;
   max-width: 600px;
   width: 100%;
-  background-color: var(--colorWhite);
-  border-radius: 40px;
+  background-color: $colorWhite;
+  border-radius: 5rem;
   position: relative;
 }
 .form input,
 .form select {
-  font-size: var(--fontSizeMobP2);
+  font-size: $fontSizeMobP2;
   width: 100%;
-  padding: 10px 20px;
-  height: 53px;
-  padding-inline: 15px;
-  border-radius: 12px;
+  padding: 1.25rem 2.5rem;
+  height: 6.625rem;
+  padding-inline: 1.875rem;
+  border-radius: 1.5rem;
   outline: none;
   border: none;
-  background-color: var(--colorLightBG);
-  font-size: var(--fontSizeP2);
-  margin-top: 5px;
+  background-color: $colorLightBg;
+  font-size: $fontSizeP2;
+  margin-top: 0.625rem;
   border: 1px solid transparent;
   transition: all 0.3s linear;
 }
@@ -54,11 +55,11 @@
 }
 
 .form input::placeholder {
-  font-size: var(--fontSizeMobP1);
+  font-size: $fontSizeMobP1;
 }
 
 .error {
   color: red;
-  font-size: var(--fontSizeMobP2);
-  margin-top: 5px;
+  font-size: $fontSizeMobP2;
+  margin-top: 0.625rem;
 }
