@@ -1,4 +1,5 @@
 @use 'variables' as *;
+
 .section {
   min-height: 72.25rem;
   height: 100%;
@@ -152,12 +153,14 @@
 }
 
 .eventSubtitle {
-  font-size: 1.125rem;
   color: rgba(255, 255, 255, 0.8);
   max-width: 72.5rem;
 
   @media (min-width: 768px) {
     font-size: 1.25rem;
+  }
+  p {
+    font-size: 2.5rem;
   }
 }
 
@@ -168,16 +171,13 @@
 }
 
 .eventCTAButton {
+  font-size: 2.25rem;
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
   border-radius: 9999px;
-  background: linear-gradient(
-    to right,
-    $colorWhatsapp,
-    $colorWhatsappDark
-  );
-  padding: 1rem 2rem;
+  background: linear-gradient(to right, $colorWhatsapp, $colorWhatsappDark);
+  padding: 2.5rem 5rem;
   font-weight: 700;
   color: $colorWhite;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
@@ -232,7 +232,7 @@
   border: 1px solid rgba(223, 186, 116, 0.3);
   background: rgba(223, 186, 116, 0.1);
   padding: 0.5rem 1.25rem;
-  font-size: 0.875rem;
+  font-size: 1.75rem;
   font-weight: 500;
   color: $colorGold;
   backdrop-filter: blur(4px);
