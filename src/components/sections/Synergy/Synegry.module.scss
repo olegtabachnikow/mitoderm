@@ -37,10 +37,13 @@
   flex-direction: column;
   margin-bottom: 2.5rem;
   max-width: 27.5rem;
+  span {
+    font-size: $fontSizeMobExtra;
+  }
 }
 
 .subtitle {
-  font-size: $fontSizeP1;
+  font-size: $fontSizeP1 !important;
   margin-block: 1.875rem;
 }
 
@@ -60,6 +63,9 @@
   }
   .title {
     font-size: $fontSizeMobH2;
+  }
+  .subtitle {
+    font-size: $fontSizeMobP1;
   }
   .items {
     flex-direction: column;
