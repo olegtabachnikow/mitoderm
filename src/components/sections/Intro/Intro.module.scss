@@ -150,6 +150,10 @@
   line-height: 8.75rem;
   font-style: normal;
   font-family: 'Rubik', sans-serif;
+  @media (max-width: $breakpointMd) {
+    font-size: 4.5rem;
+    line-height: 5rem;
+  }
 }
 
 .eventSubtitle {
@@ -306,6 +310,9 @@
   display: flex;
   height: 100%;
   text-align: start;
+  @media (max-width: $breakpointMd) {
+    flex-direction: column-reverse;
+  }
 }
 
 @media screen and (max-width: 1224px) {
