@@ -93,7 +93,7 @@ const NavigationMobile: FC<Props> = ({ navList, setIsOpen, isOpen }) => {
           <Link
             onClick={handleClick}
             href={'/'}
-            className={styles.buttonMobile}
+            className={`${styles.buttonMobile} ${styles.homepageButton}`}
           >
             {t('navigation.homepage')}
           </Link>
