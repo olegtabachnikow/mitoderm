@@ -22,14 +22,18 @@
   color: rgba(255, 255, 255, 1);
 }
 
-.buttonMobile {
+.buttonMobile,
+.buttonMobile button {
   user-select: none;
   width: 100%;
-  padding: 2.5rem 40px;
   color: $colorLightBg;
   background-color: transparent;
   font-size: $fontSizeP2;
   text-align: end;
+}
+
+.buttonMobile {
+  padding: 2.5rem 40px;
 }
 
 .buttonMobile.opened {

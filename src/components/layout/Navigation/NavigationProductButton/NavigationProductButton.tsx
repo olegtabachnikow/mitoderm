@@ -18,11 +18,11 @@ const variants = {
 const itemVariants = {
   hidden: {
     opacity: 0,
-    y: 20,
+    x: 20,
   },
   show: {
     opacity: 1,
-    y: 0,
+    x: 0,
     transition: { duration: 0.1 },
   },
 };
@@ -30,15 +30,36 @@ const itemVariants = {
 interface Props {
   isMobile?: boolean;
   handleClick?: () => void;
+  isMenuOpen?: boolean;
 }
-const NavigationProductButton: FC<Props> = ({ isMobile, handleClick }) => {
+const NavigationProductButton: FC<Props> = ({
+  isMobile,
+  handleClick,
+  isMenuOpen,
+}) => {
   const locale = useLocale();
   const t = useTranslations();
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    isMobile ? setIsOpen(true) : setIsOpen(false);
+    !isMobile && setIsOpen(false);
   }, [isMobile]);
+
+  useEffect(() => {
+    !isMenuOpen && setIsOpen(false);
+  }, [isMenuOpen]);
+
+  const iconArrowDown = (
+    <Image
+      className={`${styles.arrowIcon} ${
+        locale === 'he' ? styles.reversed : ''
+      } ${isOpen ? styles.opened : ''}`}
+      src="/images/icons/arrowDown.svg"
+      width={10}
+      height={5.5}
+      alt="arrow icon"
+    />
+  );
 
   return (
     <motion.div
@@ -50,18 +71,17 @@ const NavigationProductButton: FC<Props> = ({ isMobile, handleClick }) => {
       } ${!isOpen ? styles.closed : styles.opened}`}
     >
       <motion.div variants={itemVariants}>
-        <Link onClick={handleClick} href={`/${locale}/`}>
-          {t('navigation.product')}
-        </Link>
-        <Image
-          className={`${styles.arrowIcon} ${
-            locale === 'he' ? styles.reversed : ''
-          } ${isOpen ? styles.opened : ''}`}
-          src="/images/icons/arrowDown.svg"
-          width={10}
-          height={5.5}
-          alt="arrow icon"
-        />
+        {isMobile ? (
+          <button onClick={() => setIsOpen((isOpen) => !isOpen)}>
+            {t('navigation.product')}
+            {iconArrowDown}
+          </button>
+        ) : (
+          <Link onClick={handleClick} href={`/${locale}/`}>
+            {t('navigation.product')}
+            {iconArrowDown}
+          </Link>
+        )}
       </motion.div>
       {isOpen && (
         <motion.div

@@ -30,7 +30,7 @@ const Header: FC = () => {
     <header className={styles.header}>
       <div
         className={`${styles.overlay} ${isOpen ? styles.active : ''}`}
-        id='overlay'
+        id="overlay"
       />
       <div className={styles.container}>
         <Link
@@ -38,11 +38,11 @@ const Header: FC = () => {
           href={pathname.length > 1 ? '/' : '#intro'}
         >
           <Image
-            src='/images/logo.svg'
+            src="/images/logo.svg"
             width={isTabletOrMobile ? 96 : 120}
             height={isTabletOrMobile ? 32 : 40}
             quality={100}
-            alt='mitoderm logo'
+            alt="mitoderm logo"
           />
         </Link>
         <Navigation setIsOpen={setIsOpen} isOpen={isOpen} />
