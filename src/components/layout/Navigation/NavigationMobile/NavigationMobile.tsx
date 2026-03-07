@@ -88,7 +88,7 @@ const NavigationMobile: FC<Props> = ({ navList, setIsOpen, isOpen }) => {
         <motion.div
           custom={navList?.length}
           variants={itemVariants}
-          className={styles.linkContainerMobile}
+          className={`${styles.linkContainerMobile} ${styles.homepageLinkContainerMobile}`}
         >
           <Link
             onClick={handleClick}
