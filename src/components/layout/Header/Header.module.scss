@@ -31,6 +31,7 @@
 
 .logoContainer img {
   -webkit-user-drag: none;
+  z-index: 11;
 }
 
 .overlay {
@@ -39,17 +40,18 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: $colorBg;
-  filter: blur(5px);
+  background: rgba($colorBg, 0.9);
   opacity: 0;
   transition: all 0.3s linear;
-  z-index: -1;
+  z-index: 10;
   pointer-events: none;
 }
 
 .overlay.active {
-  opacity: 80%;
+  opacity: 90%;
   pointer-events: all;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 @media screen and (max-width: 1224px) {

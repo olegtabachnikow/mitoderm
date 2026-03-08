@@ -19,20 +19,16 @@ const GalleryWrapper = dynamic(
 
 const Gallery: FC<Props> = async ({ isHairPage }) => {
   const t = await getTranslations('gallery');
-  const imageDirectory = path.join(
-    process.cwd(),
-    isHairPage
-      ? '/public/images/beforeAfter/hair'
-      : '/public/images/beforeAfter',
-  );
+  const imageDirectory = path.join(process.cwd(), '/public/images/beforeAfter');
   const imageFilenames = await fs.readdir(imageDirectory);
   let sliderItemsArray: string[] = [];
 
   let itemList: string[] = [];
 
-  sliderItemsArray = imageFilenames.filter(
-    (file) => file !== '.DS_Store' && file !== 'hair',
-  );
+  sliderItemsArray = imageFilenames.filter((file) => file !== '.DS_Store');
+
+  if (isHairPage)
+    sliderItemsArray = sliderItemsArray.filter((file) => file.includes('hair'));
 
   if (sliderItemsArray) itemList = sliderItemsArray;
 

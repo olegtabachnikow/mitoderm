@@ -26,7 +26,7 @@
   border-radius: 50%;
   color: white;
   cursor: pointer;
-  z-index: 1000;
+  z-index: 9;
   box-shadow: 0 4px 20px rgba(218, 165, 32, 0.4);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
@@ -125,7 +125,7 @@
     font-size: 2rem;
     font-weight: 600;
   }
-  
+
   p {
     margin: 0;
     font-size: 12px;
@@ -252,12 +252,12 @@
   color: #a0aec0;
   margin-top: 4px;
   direction: rtl;
-  
+
   .assistantMessage & {
     margin-left: 40px;
     text-align: right;
   }
-  
+
   .userMessage & {
     margin-right: 8px;
     text-align: left;
@@ -370,7 +370,8 @@
 }
 
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
     opacity: 1;
   }
@@ -381,7 +382,9 @@
 }
 
 @keyframes typing {
-  0%, 60%, 100% {
+  0%,
+  60%,
+  100% {
     transform: translateY(0);
     opacity: 0.4;
   }
@@ -409,7 +412,7 @@
   display: block;
   width: 100%;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  
+
   &:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 16px rgba(218, 165, 32, 0.4);
@@ -432,7 +435,7 @@
 .formHeader {
   text-align: center;
   margin-bottom: 16px;
-  
+
   h4 {
     margin: 0;
     color: #2d3748;
@@ -443,7 +446,7 @@
 
 .formField {
   margin-bottom: 12px;
-  
+
   label {
     display: block;
     margin-bottom: 4px;
@@ -454,7 +457,8 @@
   }
 }
 
-.formInput, .formTextarea {
+.formInput,
+.formTextarea {
   width: 100%;
   border: 1px solid #e2e8f0;
   border-radius: 8px;
@@ -463,20 +467,22 @@
   font-family: inherit;
   direction: rtl;
   text-align: right;
-  transition: border-color 0.2s, box-shadow 0.2s;
-  
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+
   &:focus {
     outline: none;
     border-color: $colorGold;
     box-shadow: 0 0 0 3px rgba(218, 165, 32, 0.1);
   }
-  
+
   &::placeholder {
     color: #a0aec0;
     direction: rtl;
     text-align: right;
   }
-  
+
   &[required] {
     border-left: 3px solid $colorGold;
   }
@@ -505,12 +511,12 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  
+
   &:hover:not(:disabled) {
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(218, 165, 32, 0.4);
   }
-  
+
   &:disabled {
     opacity: 0.6;
     cursor: not-allowed;
@@ -529,7 +535,7 @@
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
-  
+
   &:hover {
     background: #edf2f7;
     border-color: #cbd5e0;
@@ -555,10 +561,10 @@
   border: 1px solid #e2e8f0;
   border-radius: 1.5rem;
   animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  
+
   .formField {
     margin-bottom: 12px;
-    
+
     label {
       display: block;
       margin-bottom: 4px;
@@ -569,7 +575,8 @@
     }
   }
 
-  .formInput, .formTextarea {
+  .formInput,
+  .formTextarea {
     width: 100%;
     border: 1px solid #e2e8f0;
     border-radius: 8px;
@@ -578,20 +585,22 @@
     font-family: inherit;
     direction: rtl;
     text-align: right;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    
+    transition:
+      border-color 0.2s,
+      box-shadow 0.2s;
+
     &:focus {
       outline: none;
       border-color: $colorGold;
       box-shadow: 0 0 0 2px rgba(218, 165, 32, 0.1);
     }
-    
+
     &::placeholder {
       color: #a0aec0;
       direction: rtl;
       text-align: right;
     }
-    
+
     &[required] {
       border-left: 3px solid $colorGold;
     }
@@ -620,12 +629,12 @@
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    
+
     &:hover:not(:disabled) {
       transform: translateY(-1px);
       box-shadow: 0 4px 12px rgba(218, 165, 32, 0.4);
     }
-    
+
     &:disabled {
       opacity: 0.6;
       cursor: not-allowed;
@@ -644,7 +653,7 @@
     font-weight: 500;
     cursor: pointer;
     transition: all 0.2s ease;
-    
+
     &:hover {
       background: #edf2f7;
       border-color: #cbd5e0;
@@ -661,4 +670,4 @@
     transform: translateY(0);
     opacity: 1;
   }
-} 
+}
