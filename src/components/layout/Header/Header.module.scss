@@ -42,16 +42,16 @@
   height: 100vh;
   background: rgba($colorBg, 0.9);
   opacity: 0;
-  transition: all 0.3s linear;
+  transition: opacity 0.3s linear;
   z-index: 10;
   pointer-events: none;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .overlay.active {
   opacity: 90%;
   pointer-events: all;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
 }
 
 @media screen and (max-width: 1224px) {
