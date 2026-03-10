@@ -5,6 +5,7 @@ import {
   SolutionItem,
   ScrollItems,
   EventBulletItem,
+  WorkshopVariant,
 } from './types';
 
 export const navMainList: NavItem[] = [
@@ -138,3 +139,33 @@ export const solutionItems: SolutionItem[] = [
 ];
 
 export const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+
+export const courses = [
+  {
+    id: 0,
+    key: 'course1',
+    colorKey: 'from-[#c4a764] to-[#a68a4d]',
+    featured: false,
+    image: '/images/speaker1.png',
+  },
+  {
+    id: 1,
+    key: 'course2',
+    colorKey: 'from-[#dfba74] to-[#be800c]',
+    featured: true,
+    image: '/images/speaker2.png',
+  },
+  {
+    id: 2,
+    key: 'course3',
+    colorKey: 'from-[#be800c] to-[#9a6600]',
+    featured: false,
+    image: '/images/speaker3.png',
+  },
+];
+
+export  const variantToIndex: Record<WorkshopVariant, number> = {
+  '990': 0,
+  '180': 1,
+  '480': 2,
+};

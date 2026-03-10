@@ -40,17 +40,18 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba($colorBg, 0.9);
+  background: rgba(0, 0, 0, 0.65);
   opacity: 0;
   transition: opacity 0.3s linear;
   z-index: 10;
   pointer-events: none;
+  inset: 0;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
 
 .overlay.active {
-  opacity: 90%;
+  opacity: 100%;
   pointer-events: all;
 }
 

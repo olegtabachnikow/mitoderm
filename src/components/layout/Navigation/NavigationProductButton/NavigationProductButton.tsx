@@ -98,8 +98,8 @@ const NavigationProductButton: FC<Props> = ({
         initial="hidden"
         animate={isOpen ? 'show' : 'hidden'}
         variants={variants}
-        className={`${styles.dropDownList} ${
-          isMobile && styles.dropdownListMobile
+        className={`${
+          isMobile ? styles.dropdownListMobile : styles.dropDownList
         } ${locale === 'he' && styles.reversed}`}
       >
         <motion.div variants={itemVariants}>

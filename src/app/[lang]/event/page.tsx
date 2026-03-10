@@ -12,6 +12,13 @@ import Gallery from '@/components/sections/Gallery/Gallery';
 import Benefit from '@/components/sections/Benefit/Benefit';
 import { getEventSchema } from '@/utils/structuredData';
 
+const WorkShop = dynamic(
+  () => import('@/components/sections/WorkShop/WorkShop'),
+  {
+    ssr: false,
+  },
+);
+
 const FirstLook = dynamic(
   () => import('@/components/sections/FirstLook/FirstLook'),
   {
@@ -148,7 +155,6 @@ export async function generateMetadata({
 
 export default function EventPage({ params: { lang } }: any) {
   unstable_setRequestLocale(lang);
-  const t = useTranslations();
 
   // Event schema
   const eventUrl = `${baseUrl}/${lang}/event`;
@@ -156,10 +162,9 @@ export default function EventPage({ params: { lang } }: any) {
 
   return (
     <>
-      <main>
-        <Intro />
-        <Benefit variant="480" />
-        {/* <Intro />
+      <WorkShop />
+
+      {/* <Intro />
         <EventBulletList />
         <FastResult />
         <Invite />
@@ -185,7 +190,6 @@ export default function EventPage({ params: { lang } }: any) {
         </div>
         <About />
         <Mission /> */}
-      </main>
       <Script
         id="event-schema"
         type="application/ld+json"

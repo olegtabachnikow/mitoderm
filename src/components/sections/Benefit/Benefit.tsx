@@ -78,6 +78,7 @@ const Benefit: FC<Props> = ({ variant }) => {
             return (
               <motion.div
                 key={i}
+                whileTap={{ scale: 1.02 }}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
