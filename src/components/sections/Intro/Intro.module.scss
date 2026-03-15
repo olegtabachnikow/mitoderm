@@ -9,6 +9,15 @@
   z-index: 1;
   color: $colorWhite;
   font-size: $fontSizeP1;
+
+  @media screen and (max-width: 1224px) {
+    height: 100%;
+    padding-top: 9rem;
+  }
+
+  @media screen and (max-width: 600px) {
+    padding-top: 8.75rem;
+  }
 }
 
 .scrollBox {
@@ -39,6 +48,12 @@
   height: 100%;
   position: relative;
   overflow: hidden;
+
+  @media screen and (max-width: 1224px) {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
 }
 
 .introMain::before,
@@ -57,16 +72,48 @@
   background-repeat: no-repeat;
 }
 
+.introMain::before {
+  @media screen and (max-width: 768px) {
+    content: '';
+    background-position: 40%;
+  }
+}
+
+.introProducts::before {
+  @media screen and (max-width: 768px) {
+    content: '';
+    background-position: 25%;
+  }
+}
+
 .introSpray::before {
   background-image: url(/images/backgrounds/introHairSpray.png);
+
+  @media screen and (max-width: 768px) {
+    background-position: 32.5%;
+  }
+
+  @media screen and (max-width: 600px) {
+    background-image: url(/images/backgrounds/hairSprayBGMobile.png);
+    background-position: 45%;
+  }
 }
 
 .introGel::before {
   background-image: url(/images/backgrounds/gelBG.png);
+
+  @media screen and (max-width: 600px) {
+    background-image: url(/images/backgrounds/introGelBGMobile.png);
+  }
 }
 
 .introHair::before {
   background-image: url(/images/backgrounds/hairBG.png);
+
+  @media screen and (max-width: 600px) {
+    background-image: url(/images/backgrounds/introHairBGMobile.png);
+    background-position: 50%;
+  }
 }
 
 .introEvent {
@@ -81,6 +128,15 @@
     $colorNavyDark,
     $colorNavy
   );
+
+  @media screen and (max-width: 1224px) {
+    padding-inline: 2rem;
+  }
+
+  @media screen and (max-width: 600px) {
+    z-index: 7;
+    padding-inline: 0;
+  }
 }
 
 .eventBG {
@@ -105,6 +161,11 @@
   right: 0;
   -webkit-user-drag: none;
   user-select: none;
+
+  @media screen and (max-width: 768px) {
+    bottom: 2.5rem;
+    right: 2.5rem;
+  }
 }
 
 .container {
@@ -115,6 +176,10 @@
   justify-content: center;
   align-items: center;
   flex: 1;
+
+  @media screen and (max-width: 1224px) {
+    padding-inline: 2.5rem;
+  }
 }
 
 .eventVideo {
@@ -124,10 +189,28 @@
   z-index: 1;
   margin: 0 10% 0 auto;
   border-radius: 3rem;
+
+  @media screen and (max-width: 600px) {
+    right: auto;
+    left: auto;
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    z-index: 8;
+  }
 }
 
 .eventVideo.he {
   margin: 0 auto 0 10%;
+
+  @media screen and (max-width: 600px) {
+    right: auto;
+    left: auto;
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    z-index: 8;
+  }
 }
 
 .title {
@@ -138,9 +221,20 @@
   padding: 0;
   max-width: 86.25rem;
   letter-spacing: -3px;
+
+  @media screen and (max-width: 1224px) {
+    font-size: $fontSizeMobH1;
+    margin-block: 3.125rem;
+    font-weight: 500;
+  }
 }
+
 .title.ru {
   font-size: 8.75rem;
+
+  @media screen and (max-width: 1224px) {
+    font-size: 4.5rem;
+  }
 }
 
 .eventTitle {
@@ -150,21 +244,26 @@
   line-height: 8.75rem;
   font-style: normal;
   font-family: 'Rubik', sans-serif;
+
   @media (max-width: $breakpointMd) {
     font-size: 4.5rem;
     line-height: 5rem;
+  }
+
+  @media screen and (max-width: 1224px) {
+    font-size: $fontSizeMobH1;
+    line-height: 4.5rem;
   }
 }
 
 .eventSubtitle {
   color: rgba(255, 255, 255, 0.8);
   max-width: 72.5rem;
+  font-size: 2.5rem;
 
-  @media (min-width: 768px) {
-    font-size: 1.25rem;
-  }
-  p {
-    font-size: 2.5rem;
+  @media (max-width: 768px) {
+    max-width: 70%;
+    font-size: $fontSizeMobP2;
   }
 }
 
@@ -200,6 +299,12 @@
   }
 }
 
+.buttonBox {
+  @media screen and (max-width: 1224px) {
+    display: none;
+  }
+}
+
 .eventTitleAccent {
   background: linear-gradient(
     to right,
@@ -217,6 +322,13 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+
+  @media screen and (max-width: 600px) {
+    padding-inline: 2.5rem;
+    button {
+      margin-top: 3.75rem;
+    }
+  }
 }
 
 .eventTextContainer {
@@ -226,6 +338,26 @@
   justify-content: space-around;
   align-items: flex-start;
   padding-block: 4.375rem;
+
+  @media screen and (max-width: 1224px) {
+    padding: 0;
+  }
+
+  @media screen and (max-width: 600px) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    justify-content: center;
+    gap: 10%;
+    min-width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+    border-radius: 0;
+    padding: 2.5rem;
+    z-index: 9;
+  }
 }
 
 .badge {
@@ -240,6 +372,15 @@
   font-weight: 500;
   color: $colorGold;
   backdrop-filter: blur(4px);
+
+  @media screen and (max-width: 1224px) {
+    font-size: $fontSizeMobP2;
+  }
+
+  @media screen and (max-width: 600px) {
+    font-size: $fontSizeMobExtra;
+    gap: 1rem;
+  }
 }
 
 .badgeDot {
@@ -247,6 +388,10 @@
   width: 0.5rem;
   border-radius: 9999px;
   background: $colorGold;
+  @media screen and (max-width: 600px) {
+  }
+  width: 1rem;
+  height: 1rem;
 }
 
 .text {
@@ -255,6 +400,11 @@
   font-weight: 500;
   margin: 0 auto 7.25rem auto;
   text-align: center;
+
+  @media screen and (max-width: 1224px) {
+    font-size: $fontSizeMobP2;
+    max-width: 100%;
+  }
 }
 
 .paginationBox {
@@ -262,7 +412,7 @@
   bottom: 1.875rem;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 2;
+  z-index: 9;
 }
 
 .introProductsContent .title {
@@ -304,79 +454,34 @@
   height: 100%;
   z-index: 10;
   max-width: 160rem;
+
+  @media screen and (max-width: 600px) {
+    position: relative;
+    padding: 0;
+  }
+}
+
+.eventContentWrapper {
+  @media screen and (max-width: 600px) {
+    height: 100%;
+    padding: 0;
+  }
 }
 
 .contentWrapper {
   display: flex;
   height: 100%;
   text-align: start;
+
   @media (max-width: $breakpointMd) {
     flex-direction: column-reverse;
   }
 }
 
-@media screen and (max-width: 1224px) {
-  .section {
-    height: 100%;
-  }
-  .container {
-    padding-inline: 2.5rem;
-  }
-  .introMain,
-  .introProducts {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-  .buttonBox {
-    display: none;
-  }
-  .title {
-    font-size: $fontSizeMobH1;
-    margin-block: 3.125rem;
-    font-weight: 500;
-  }
-  .title.ru {
-    font-size: 4.5rem;
-  }
-  .text {
-    font-size: $fontSizeMobP2;
-    max-width: 100%;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .introMain::before {
-    content: '';
-    background-position: 40%;
-  }
-  .introProducts::before {
-    content: '';
-    background-position: 25%;
-  }
-  .introSpray::before {
-    background-position: 32.5%;
-  }
-  .leaves {
-    bottom: 2.5rem;
-    right: 2.5rem;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .section {
-    padding-top: 8.75rem;
-  }
-
-  .textContainer {
-    padding-inline: 2.5rem;
-    button {
-      margin-top: 3.75rem;
-    }
-  }
-  .introSpray,
-  .introGel,
-  .introHair {
+.introSpray,
+.introGel,
+.introHair {
+  @media screen and (max-width: 600px) {
     .title {
       font-weight: 400;
       line-height: 5rem;
@@ -395,23 +500,6 @@
       right: 1.25rem;
       scale: 0.6;
     }
-  }
-  .introSpray::before {
-    background-image: url(/images/backgrounds/hairSprayBGMobile.png);
-    background-position: 45% -60px;
-  }
-  .introHair::before {
-    background-image: url(/images/backgrounds/introHairBGMobile.png);
-    background-position: 50% -40px;
-  }
-  .introGel::before {
-    background-image: url(/images/backgrounds/introGelBGMobile.png);
-  }
-  .eventVideo,
-  .eventVideo.he {
-    right: auto;
-    left: auto;
-    width: 100%;
   }
 }
 

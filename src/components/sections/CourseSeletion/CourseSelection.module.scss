@@ -9,6 +9,9 @@
   @media screen and (max-width: $breakpointTablet) {
     padding-bottom: 8rem;
   }
+  @media screen and (max-width: 600px) {
+    padding-bottom: 0;
+  }
 }
 
 .bg1 {

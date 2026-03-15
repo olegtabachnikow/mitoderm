@@ -83,15 +83,15 @@ const Intro: FC = () => {
     return () => container?.removeEventListener('scroll', handleScroll);
   }, []);
 
-  useEffect(() => {
-    const currentValue = introPage < 4 ? introPage + 1 : 0;
-    const interval = setInterval(() => {
-      scrollTo(currentValue, true);
-      setIntroPage(currentValue);
-    }, 15000);
+  // useEffect(() => {
+  //   const currentValue = introPage < 4 ? introPage + 1 : 0;
+  //   const interval = setInterval(() => {
+  //     scrollTo(currentValue, true);
+  //     setIntroPage(currentValue);
+  //   }, 15000);
 
-    return () => clearInterval(interval);
-  }, [introPage]);
+  //   return () => clearInterval(interval);
+  // }, [introPage]);
 
   return (
     <section id="intro" className={styles.section}>
@@ -205,7 +205,7 @@ const Intro: FC = () => {
                     {t('intro.eventSubtitle')}
                   </p>
                 </motion.div>
-                <motion.div
+                {/* <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.9, duration: 0.6 }}
@@ -228,7 +228,7 @@ const Intro: FC = () => {
                     />
                     <span>{t('buttons.cta')}</span>
                   </motion.button>
-                </motion.div>
+                </motion.div> */}
               </motion.div>
             </div>
           </div>
