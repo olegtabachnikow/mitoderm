@@ -14,6 +14,7 @@ const Header: FC = () => {
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
   const pathname = usePathname();
   const isSuccessPage = pathname.includes('success');
+  const isEventPage = pathname.includes('event') && !pathname.includes('form');
   const handleClose = (e: MouseEvent) => {
     const { target } = e;
     if ((target as HTMLDivElement).id === 'overlay') setIsOpen(false);
@@ -27,7 +28,9 @@ const Header: FC = () => {
   }, [isOpen]);
 
   return (
-    <header className={styles.header}>
+    <header
+      className={`${styles.header} ${isEventPage ? styles.eventPage : ''}`}
+    >
       <div
         className={`${styles.overlay} ${isOpen ? styles.active : ''}`}
         id="overlay"

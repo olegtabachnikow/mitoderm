@@ -6,7 +6,9 @@ import { motion } from 'motion/react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import type { WorkshopVariant } from '@/types';
-import { courses, variantToIndex } from '@/constants';
+import { courses, variantToIndex, indexToVariant } from '@/constants';
+import CardSliderMobile from './CardSliderMobile/CardSliderMobile';
+import { useMediaQuery } from 'react-responsive';
 
 interface Props {
   onRegisterClick: () => void;
@@ -28,9 +30,9 @@ const CourseSelection: FC<Props> = ({
   onVariantChange,
 }) => {
   const t = useTranslations('courses');
-  const indexToVariant: WorkshopVariant[] = ['990', '180', '480'];
   const selectedCourse = variantToIndex[selectedVariant];
   const sectionRef = useRef<HTMLDivElement>(null);
+  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -59,89 +61,81 @@ const CourseSelection: FC<Props> = ({
         >
           <h2 className={styles.heading}>{t('heading')}</h2>
         </motion.div>
-        <div className={styles.list}>
-          {courses.map((course, index) => {
-            const isSelected = selectedCourse === course.id;
-            const isFeatured = course.featured;
-            const courseItems = t(`${course.key}.items`).split('|');
-            const gradientClass =
-              gradientClasses[course.colorKey] || styles.gradient2;
-            return (
-              <motion.div
-                key={course.id}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                onClick={() => onVariantChange(indexToVariant[course.id])}
-                animate={{
-                  scale: isSelected ? 1.08 : 1,
-                  zIndex: isSelected ? 3 : 2,
-                }}
-                transition={{
-                  opacity: { duration: 0.6, delay: index * 0.15 },
-                  y: { duration: 0.6, delay: index * 0.15 },
-                  scale: { duration: 0.3 },
-                  zIndex: { duration: 0 },
-                }}
-                className={`${styles.card} ${isSelected ? styles.cardSelected : ''}`}
-              >
-                <div className={`${styles.cardOverlay} ${gradientClass}`} />
-                <div className={styles.badgeWrap}>
-                  <div className={`${styles.badge} ${gradientClass}`}>
-                    {t(`${course.key}.badge`)}
+        {isMobile ? (
+          <CardSliderMobile
+            selectedVariant={selectedVariant}
+            onRegisterClick={onRegisterClick}
+            onVisibilityChange={onVisibilityChange}
+            onVariantChange={onVariantChange}
+          />
+        ) : (
+          <div className={styles.list}>
+            {courses.map((course, index) => {
+              const isSelected = selectedCourse === course.id;
+              const courseItems = t(`${course.key}.items`).split('|');
+              const gradientClass =
+                gradientClasses[course.colorKey] || styles.gradient2;
+              return (
+                <motion.div
+                  key={course.id}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  onClick={() => onVariantChange(indexToVariant[course.id])}
+                  animate={{
+                    scale: isSelected ? 1.02 : 1,
+                    zIndex: isSelected ? 3 : 2,
+                  }}
+                  transition={{
+                    opacity: { duration: 0.6, delay: index * 0.15 },
+                    y: { duration: 0.6, delay: index * 0.15 },
+                    scale: { duration: 0.3 },
+                    zIndex: { duration: 0 },
+                  }}
+                  className={`${styles.card} ${isSelected ? styles.cardSelected : ''}`}
+                >
+                  <div className={`${styles.cardOverlay} ${gradientClass}`} />
+                  <div className={styles.imageWrap}>
+                    <Image
+                      src={course.image}
+                      alt={t(`${course.key}.title`)}
+                      fill
+                      className={styles.image}
+                      style={{ objectPosition: 'center 20%' }}
+                    />
                   </div>
-                  {isFeatured && (
-                    <div className={styles.recommended}>
-                      <motion.div
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        transition={{ delay: 0.3, type: 'spring' }}
-                        className={styles.recommendedBadge}
-                      >
-                        {t('recommended')}
-                      </motion.div>
+                  <div className={styles.body}>
+                    <span className={styles.prefix}>{t('prefix')}</span>
+                    <div className={styles.prefixLine} />
+                    <h3 className={styles.title}>{t(`${course.key}.title`)}</h3>
+                    <p className={styles.subtitle}>
+                      {t(`${course.key}.subtitle`)}
+                    </p>
+                    <div className={styles.items}>
+                      {courseItems.map((item, i) => (
+                        <div key={i} className={styles.item}>
+                          <span className={styles.itemDot} />
+                          <p className={styles.itemText}>{item}</p>
+                        </div>
+                      ))}
                     </div>
-                  )}
-                </div>
-                <div className={styles.imageWrap}>
-                  <Image
-                    src={course.image}
-                    alt={t(`${course.key}.title`)}
-                    fill
-                    className={styles.image}
-                    style={{ objectPosition: 'center 20%' }}
-                  />
-                  <div className={`${styles.imageOverlay} ${gradientClass}`} />
-                </div>
-                <div className={styles.body}>
-                  <h3 className={styles.title}>{t(`${course.key}.title`)}</h3>
-                  <p className={styles.subtitle}>
-                    {t(`${course.key}.subtitle`)}
-                  </p>
-                  <div className={styles.items}>
-                    {courseItems.map((item, i) => (
-                      <div key={i} className={styles.item}>
-                        <span className={styles.itemDot} />
-                        <p className={styles.itemText}>{item}</p>
-                      </div>
-                    ))}
+                    <motion.button
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onRegisterClick();
+                      }}
+                      className={`${styles.registerBtn} ${selectedCourse === course.id ? gradientClass : ''}`}
+                    >
+                      {t('register')}
+                    </motion.button>
                   </div>
-                  <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      onRegisterClick();
-                    }}
-                    className={`${styles.registerBtn} ${gradientClass}`}
-                  >
-                    {t('register')}
-                  </motion.button>
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        )}
       </div>
     </section>
   );

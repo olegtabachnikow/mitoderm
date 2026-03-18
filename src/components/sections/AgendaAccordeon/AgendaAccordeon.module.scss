@@ -6,56 +6,92 @@
   display: flex;
   justify-content: center;
 }
+.container {
+  max-width: $contentWidthDesktopMd;
+  margin: 0 auto;
+  width: 100%;
 
-//   .container {
-//     max-width: $contentWidthDesktop;
-//     width: 100%;
-//   }
-
+  @media (max-width: $breakpointTablet) {
+    padding-inline: 2rem;
+  }
+}
 .heading {
-  margin-bottom: 6rem;
   text-align: center;
   font-size: 3.75rem;
   font-weight: 700;
-  color: $colorWhite;
+  color: $colorGold;
 
   @media (min-width: $breakpointTablet) {
     font-size: 4.5rem;
   }
 }
 
+.ctaWrap {
+  margin-top: 6rem;
+  text-align: center;
+}
+
 .list {
-  display: flex;
-  max-width: $contentWidthDesktop;
-  width: 100%;
-  flex-direction: column;
-  gap: 2rem;
+  display: grid;
+  max-width: 100%;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1.5rem;
+  margin: 0 auto;
+
+  @media (min-width: 768px) {
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .item {
+  position: relative;
   overflow: hidden;
-  border-radius: 32px;
-  background: $colorWhite;
-  padding: 2rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-
-  @media (min-width: $breakpointTablet) {
-    padding: 4rem;
-  }
+  border-radius: 0.75rem;
+  border: 1px solid rgba(223, 186, 116, 0.1);
+  background: linear-gradient(to bottom, $colorNavy, $colorNavyDark);
+  padding: 2.5rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  border-radius: 2rem;
 
   p {
-    text-align: start;
+    margin-top: 1rem;
     font-size: 2rem;
-    line-height: 1.625;
-    color: $colorNavy;
-
-    @media (min-width: $breakpointTablet) {
-      font-size: 2.25rem;
-    }
+    max-width: 80%;
+  }
+  .imgWrapper {
+    display: flex;
+    justify-content: flex-end;
   }
 }
 
-.ctaWrap {
-  margin-top: 3rem;
-  text-align: center;
+.prefixLine {
+  width: 8rem;
+  height: 1.5px;
+  background: linear-gradient(to bottom, $colorBlack, $colorGold, $colorBlack);
+  margin: 0.5rem auto 1rem auto;
+  margin-bottom: 6rem;
+}
+
+.cta {
+  border-radius: 9999px;
+  background: linear-gradient(to right, $colorGold, $colorGoldDark);
+  padding: 2rem 4rem;
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: $colorWhite;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 20px 40px rgba(223, 186, 116, 0.4);
+  }
+  &:active {
+    transform: scale(0.95);
+  }
 }

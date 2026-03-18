@@ -127,3 +127,17 @@ export interface DoctorType {
 }
 
 export type WorkshopVariant = "990" | "180" | "480"
+
+export interface InviteBulletItem {
+  imagePath: string;
+  alt: string;
+  title: string;
+  text: string;
+}
+
+export interface StatItem {
+  icon: string;
+  value: number;
+  suffix: string;
+  labelKey: string;
+}

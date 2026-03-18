@@ -113,6 +113,9 @@
     &:hover {
       transform: scale(1.05);
       box-shadow: 0 20px 50px rgba(252, 211, 132, 0.4);
+      .ctaIcon {
+        transform: translateX(0.5rem);
+      }
     }
     &:active {
       transform: scale(0.95);
@@ -120,9 +123,8 @@
   }
 
   .ctaIcon {
-    height: 2rem;
-    width: 2rem;
-    filter: brightness(0);
+    color: $colorBlack;
+    transition: transform 0.2s;
   }
 
   .line {

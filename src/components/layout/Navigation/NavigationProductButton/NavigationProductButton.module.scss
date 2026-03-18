@@ -31,6 +31,33 @@
   text-align: end;
 }
 
+.productButtonDesktop {
+  user-select: none;
+  width: 100%;
+  color: $colorLightBg;
+  background-color: transparent;
+  font-size: $fontSizeP2;
+  text-align: end;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 2.5rem 5rem;
+  padding-inline-end: 0;
+  font-size: 1.875rem;
+  color: rgba(255, 255, 255, 0.6);
+  transition: font-size 0.3s linear;
+
+  &:hover {
+    font-size: 2rem;
+    color: rgba(255, 255, 255, 1);
+  }
+
+  &.opened:hover {
+    font-size: 1.875rem;
+    color: rgba(255, 255, 255, 0.6);
+  }
+}
+
 .buttonMobile.opened {
   padding-bottom: 0;
 }
@@ -109,6 +136,7 @@
   padding-block: 0.625rem;
   padding-inline-end: 2.5rem;
   background-color: rgba(0, 0, 0, 0.8);
+  transition: font-size 0.3s linear;
 }
 
 .link:hover {

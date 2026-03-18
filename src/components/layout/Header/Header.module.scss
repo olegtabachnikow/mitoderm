@@ -9,6 +9,11 @@
   z-index: 10;
 }
 
+.eventPage {
+  background-color: $colorNavy;
+  border-bottom: 1px solid rgba($colorGold, 0.1);
+}
+
 .header .scrolled {
   background-color: #000;
 }

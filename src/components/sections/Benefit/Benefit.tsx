@@ -6,12 +6,14 @@ import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import styles from './Benefit.module.scss';
 import { WorkshopVariant } from '@/types';
+import { useMediaQuery } from 'react-responsive';
 
 interface Props {
   variant: WorkshopVariant;
 }
 
 const Benefit: FC<Props> = ({ variant }) => {
+  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
   const t = useTranslations();
   const items = t(`v${variant}.benefits`).split('|');
   const icons = [
@@ -83,8 +85,8 @@ const Benefit: FC<Props> = ({ variant }) => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
-                whileHover={{ y: -8, scale: 1.02 }}
-                className={styles.item}
+                whileHover={isTabletOrMobile ? {} : { y: -8, scale: 1.02 }}
+                className={`${styles.item} ${isTabletOrMobile ? styles.itemUncolored : ''}`}
               >
                 <div className={styles.itemBg}>
                   <div className={styles.itemBgInner} />

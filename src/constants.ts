@@ -6,6 +6,7 @@ import {
   ScrollItems,
   EventBulletItem,
   WorkshopVariant,
+  InviteBulletItem,
 } from './types';
 
 export const navMainList: NavItem[] = [
@@ -145,22 +146,19 @@ export const courses = [
     id: 0,
     key: 'course1',
     colorKey: 'from-[#c4a764] to-[#a68a4d]',
-    featured: false,
-    image: '/images/speaker1.png',
+    image: '/images/courses/card1.png',
   },
   {
     id: 1,
     key: 'course2',
     colorKey: 'from-[#dfba74] to-[#be800c]',
-    featured: true,
-    image: '/images/speaker2.png',
+    image: '/images/courses/card2.png',
   },
   {
     id: 2,
     key: 'course3',
     colorKey: 'from-[#be800c] to-[#9a6600]',
-    featured: false,
-    image: '/images/speaker3.png',
+    image: '/images/courses/card3.png',
   },
 ];
 
@@ -169,3 +167,32 @@ export  const variantToIndex: Record<WorkshopVariant, number> = {
   '180': 1,
   '480': 2,
 };
+
+export const inviteBulletsItemList: InviteBulletItem[] = [
+  {
+    imagePath: '/images/icons/award.svg',
+    alt: 'award icon on yellow background',
+    title: '',
+    text: '',
+  },
+  {
+    imagePath: '/images/icons/users.svg',
+    alt: 'users icon on yellow background',
+    title: '',
+    text: '',
+  },
+  {
+    imagePath: '/images/icons/bookOpened.svg',
+    alt: 'opened book icon on yellow background',
+    title: '',
+    text: '',
+  },
+  {
+    imagePath: '/images/icons/micro.svg',
+    alt: 'microscope icon on yellow background',
+    title: '',
+    text: '',
+  }
+]
+
+export const indexToVariant: WorkshopVariant[] = ['990', '180', '480'];

@@ -7,7 +7,7 @@
   padding: 2rem 0;
 
   @media (min-width: 768px) {
-    padding: 6rem 0;
+    padding: 6rem 2rem;
   }
 
   @media (max-width: 767px) {
@@ -51,6 +51,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
+    width: 100%;
 
     @media (min-width: 768px) {
       grid-template-columns: repeat(3, 1fr);
@@ -80,15 +81,19 @@
     }
   }
 
+  .itemUncolored {
+    &:hover {
+      border-color: rgba(255, 255, 255, 0.1);
+      box-shadow: none;
+      background: rgba(255, 255, 255, 0.05);
+    }
+  }
+
   .itemBg {
     position: absolute;
     inset: 0;
     opacity: 0;
     transition: opacity 0.2s;
-
-    .item:hover & {
-      opacity: 1;
-    }
   }
 
   .itemBgInner {

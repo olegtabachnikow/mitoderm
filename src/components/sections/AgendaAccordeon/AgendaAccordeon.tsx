@@ -4,6 +4,7 @@ import { FC } from 'react';
 import styles from './AgendaAccordeon.module.scss';
 import { motion } from 'motion/react';
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 import type { WorkshopVariant } from '@/types';
 
 interface Props {
@@ -26,6 +27,7 @@ const AgendaAccordion: FC<Props> = ({ variant }) => {
         >
           {t(`v${variant}.topics.heading`)}
         </motion.h2>
+        <div className={styles.prefixLine} />
 
         <div className={styles.list}>
           {items.map((item, i) => (
@@ -35,9 +37,16 @@ const AgendaAccordion: FC<Props> = ({ variant }) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              whileHover={{ scale: 1.02 }}
               className={styles.item}
             >
+              <div className={styles.imgWrapper}>
+                <Image
+                  src="/images/icons/ok.svg"
+                  alt="ok icon"
+                  width={20}
+                  height={20}
+                />
+              </div>
               <p>{item}</p>
             </motion.div>
           ))}

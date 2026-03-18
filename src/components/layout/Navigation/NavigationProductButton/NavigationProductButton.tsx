@@ -52,8 +52,6 @@ const NavigationProductButton: FC<Props> = ({
 
   return (
     <motion.div
-      onHoverStart={() => (isMobile ? null : setIsOpen(true))}
-      onHoverEnd={() => (isMobile ? null : setIsOpen(false))}
       className={`${isMobile ? styles.buttonMobile : styles.button} ${
         styles.dropDownButton
       } ${!isOpen ? styles.closed : styles.opened}`}
@@ -74,24 +72,19 @@ const NavigationProductButton: FC<Props> = ({
             />
           </button>
         ) : (
-          <motion.div
-            whileHover={
-              !isMobile
-                ? { scale: 1.05, transition: { duration: 0.3 } }
-                : undefined
-            }
+          <button
+            onClick={() => setIsOpen((isOpen) => !isOpen)}
+            className={`${styles.productButtonDesktop} ${isOpen ? styles.opened : ''}`}
           >
-            <Link onClick={handleClick} href={`/${locale}/`}>
-              {t('navigation.product')}
-              <Image
-                className={`${styles.arrowIcon} ${isOpen ? styles.opened : ''}`}
-                src="/images/icons/arrowDown.svg"
-                width={15}
-                height={11}
-                alt="arrow icon"
-              />
-            </Link>
-          </motion.div>
+            {t('navigation.product')}
+            <Image
+              className={`${styles.arrowIcon} ${isOpen ? styles.opened : ''}`}
+              src="/images/icons/arrowDown.svg"
+              width={15}
+              height={11}
+              alt="arrow icon"
+            />
+          </button>
         )}
       </motion.div>
       <motion.div

@@ -346,10 +346,21 @@
     "followUs": "Follow us on"
   },
   "footer": {
-    "copyright": "© 2024 Mitoderm. All Rights Reserved.",
+    "copyright": "©",
+    "copyrightText": "Mitoderm. All Rights Reserved.",
     "accessibility": "Accessibility Statement",
     "privacy": "Privacy Policy",
     "group": "SinoSciences Group"
+  },
+  "eventFooter": {
+    "copyright": "© ",
+    "accessibility": "Accessibility Statement",
+    "privacy": "Privacy Policy",
+    "group": "SinoSciences Group",
+    "made": "Made with",
+    "by": "by MitoDerm Team",
+    "rights": "MITODERM ACADEMY. All Rights Reserved.",
+    "subtitle": "The leading academy for professional training in medical cosmetics"
   },
   "accessibility": {
     "title": "Accessibility Declaration for mitoderm.com and mitoderm.co.il",
@@ -436,6 +447,7 @@
     "subtitle": "Benefits that will help you succeed"
   },
   "courses": {
+    "prefix": "הדרכה מקצועית",
     "heading": "Our Programs",
     "recommended": "Recommended",
     "register": "Register",
@@ -463,7 +475,25 @@
     "hours180": "180 Hours",
     "hours480": "480 Hours"
   },
-  "v990": {
+  "inviteEventSection" : {
+    "item1": {
+      "title":"תעודות השתתפות",
+      "text": "הסמכה מקצועית "
+    },
+    "item2": {
+      "title":"פרקטיקה קלינית",
+      "text": "התנסות מעשית והתאמת פרוטוקולים"
+    },
+    "item3": {
+      "title":"מרצים מומחים",
+      "text": "הובלה מקצועית והרחבת הידע"
+    },
+    "item4": {
+      "title":"אסתטיקה מתקדמת",
+      "text": "טכניקות עדכניות ומדעיות"
+    }
+  },
+   "v990": {
     "benefits": "Innovative Products|Networking with professionals|Certificate|Personal Growth|Official Italian Distributor in Israel|Limited offer",
     "invite": {
       "title": "MitoDerm company invites you to a ",
@@ -627,5 +657,23 @@
       "card3Body": "60 hours of personal guidance for establishing an independent clinic",
       "footer": "Upon completion: full certification + professional portfolio + business plan"
     }
+  },
+  "stats": {
+    "heading": "The Numbers Speak for Themselves",
+    "subtitle": "Success measured in real results",
+    "experts": "Experts participated",
+    "years": "Years of experience",
+    "workshops": "Successful workshops",
+    "satisfaction": "Satisfaction rate"
+  },
+  "contact": {
+    "heading": "Contact Us",
+    "phoneLabel": "Phone",
+    "phoneValue": "For all details: +972 54-326-2182",
+    "addressLabel": "Address",
+    "addressValue": "Rafael Eitan 38, Ramat Gan, 5590500",
+    "emailLabel": "Email",
+    "emailValue": "info@mitoderm.com",
+    "follow": "Follow us"
   }
 }

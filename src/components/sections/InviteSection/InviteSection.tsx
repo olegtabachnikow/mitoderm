@@ -3,10 +3,9 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import styles from './InviteSection.module.scss';
-// import { ArrowLeft } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import Image from 'next/image';
 import type { WorkshopVariant } from '@/types';
+import InviteBullets from './InviteBullets/InviteBullets';
 
 interface InviteSectionProps {
   variant: WorkshopVariant;
@@ -17,6 +16,7 @@ export default function InviteSection({ variant }: InviteSectionProps) {
 
   return (
     <section className={styles.invite}>
+      <InviteBullets />
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
@@ -79,13 +79,7 @@ export default function InviteSection({ variant }: InviteSectionProps) {
           className={styles.cta}
         >
           <span>{t(`v${variant}.invite.cta`)}</span>
-          <Image
-            className={styles.ctaIcon}
-            src="/images/icons/arrowRight.svg"
-            alt="arrow right"
-            width={16}
-            height={16}
-          />
+          <span className={styles.ctaIcon}>&#x2B95;</span>
         </motion.a>
 
         <motion.div
