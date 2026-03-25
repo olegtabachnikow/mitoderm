@@ -9,9 +9,10 @@ import { useLocale } from 'next-intl';
 
 interface Props {
   itemList: string[];
+  isEventPage?: boolean;
 }
 
-const GalleryWrapper: FC<Props> = ({ itemList }) => {
+const GalleryWrapper: FC<Props> = ({ itemList, isEventPage }) => {
   const locale = useLocale();
   const isTabletOrMobile = useMediaQuery({
     query: '(max-width: 1224px)',
@@ -60,9 +61,10 @@ const GalleryWrapper: FC<Props> = ({ itemList }) => {
   return (
     <div className={styles.container}>
       {isTabletOrMobile ? (
-        <GalleryMobile items={itemList} />
+        <GalleryMobile items={itemList} isEventPage={isEventPage} />
       ) : (
         <GalleryDesktop
+          isEventPage={isEventPage}
           disabledLeft={false}
           disabledRight={false}
           onClickLeft={decrement}

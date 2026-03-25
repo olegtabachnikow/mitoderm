@@ -172,26 +172,26 @@ export const inviteBulletsItemList: InviteBulletItem[] = [
   {
     imagePath: '/images/icons/award.svg',
     alt: 'award icon on yellow background',
-    title: '',
-    text: '',
+    title: 'inviteEventSection.item1.title',
+    text: 'inviteEventSection.item1.text',
   },
   {
     imagePath: '/images/icons/users.svg',
     alt: 'users icon on yellow background',
-    title: '',
-    text: '',
+    title: 'inviteEventSection.item2.title',
+    text: 'inviteEventSection.item2.text',
   },
   {
     imagePath: '/images/icons/bookOpened.svg',
     alt: 'opened book icon on yellow background',
-    title: '',
-    text: '',
+    title: 'inviteEventSection.item3.title',
+    text: 'inviteEventSection.item3.text',
   },
   {
     imagePath: '/images/icons/micro.svg',
     alt: 'microscope icon on yellow background',
-    title: '',
-    text: '',
+    title: 'inviteEventSection.item4.title',
+    text: 'inviteEventSection.item4.text',
   }
 ]
 

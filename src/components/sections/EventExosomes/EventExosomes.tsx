@@ -5,26 +5,24 @@ import styles from './EventExosomes.module.scss';
 import { motion } from 'motion/react';
 import { useTranslations } from 'next-intl';
 import type { WorkshopVariant } from '@/types';
+import useAppStore from '@/store/store';
 
-interface Props {
-  variant: WorkshopVariant;
-}
-
-const EventExosomes: FC<Props> = ({ variant }) => {
+const EventExosomes: FC = () => {
+  const { courseVariant } = useAppStore((state) => state);
   const t = useTranslations();
 
   const cards = [
     {
-      title: t(`v${variant}.exosomes.card1Title`),
-      body: t(`v${variant}.exosomes.card1Body`),
+      title: t(`v${courseVariant}.exosomes.card1Title`),
+      body: t(`v${courseVariant}.exosomes.card1Body`),
     },
     {
-      title: t(`v${variant}.exosomes.card2Title`),
-      body: t(`v${variant}.exosomes.card2Body`),
+      title: t(`v${courseVariant}.exosomes.card2Title`),
+      body: t(`v${courseVariant}.exosomes.card2Body`),
     },
     {
-      title: t(`v${variant}.exosomes.card3Title`),
-      body: t(`v${variant}.exosomes.card3Body`),
+      title: t(`v${courseVariant}.exosomes.card3Title`),
+      body: t(`v${courseVariant}.exosomes.card3Body`),
     },
   ];
 
@@ -38,8 +36,8 @@ const EventExosomes: FC<Props> = ({ variant }) => {
           transition={{ duration: 0.6 }}
           className={styles.sectionHead}
         >
-          <h2>{t(`v${variant}.exosomes.heading`)}</h2>
-          <p>{t(`v${variant}.exosomes.subheading`)}</p>
+          <h2>{t(`v${courseVariant}.exosomes.heading`)}</h2>
+          <p>{t(`v${courseVariant}.exosomes.subheading`)}</p>
         </motion.div>
 
         <div className={styles.grid}>
@@ -67,7 +65,7 @@ const EventExosomes: FC<Props> = ({ variant }) => {
           transition={{ delay: 0.8, duration: 0.6 }}
           className={styles.footer}
         >
-          {t(`v${variant}.exosomes.footer`)}
+          {t(`v${courseVariant}.exosomes.footer`)}
         </motion.p>
       </div>
     </section>

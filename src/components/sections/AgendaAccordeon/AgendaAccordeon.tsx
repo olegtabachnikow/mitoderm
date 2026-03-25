@@ -5,15 +5,12 @@ import styles from './AgendaAccordeon.module.scss';
 import { motion } from 'motion/react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
-import type { WorkshopVariant } from '@/types';
+import useAppStore from '@/store/store';
 
-interface Props {
-  variant: WorkshopVariant;
-}
-
-const AgendaAccordion: FC<Props> = ({ variant }) => {
+const AgendaAccordion: FC = () => {
   const t = useTranslations();
-  const items = t(`v${variant}.topics.items`).split('|');
+  const { courseVariant } = useAppStore((state) => state);
+  const items = t(`v${courseVariant}.topics.items`).split('|');
 
   return (
     <section className={styles.agenda}>
@@ -25,7 +22,7 @@ const AgendaAccordion: FC<Props> = ({ variant }) => {
           transition={{ duration: 0.6 }}
           className={styles.heading}
         >
-          {t(`v${variant}.topics.heading`)}
+          {t(`v${courseVariant}.topics.heading`)}
         </motion.h2>
         <div className={styles.prefixLine} />
 
@@ -64,7 +61,7 @@ const AgendaAccordion: FC<Props> = ({ variant }) => {
             whileTap={{ scale: 0.95 }}
             className={styles.cta}
           >
-            {t(`v${variant}.topics.cta`)}
+            {t(`v${courseVariant}.topics.cta`)}
           </motion.button>
         </motion.div>
       </div>

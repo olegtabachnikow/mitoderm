@@ -6,7 +6,7 @@
     "info": "More info",
     "contact": "Contact us",
     "event": "Event",
-    "agenda": "Event program",
+    "agenda": "Agenda",
     "clinic": "Local clinic",
     "homepage": "Back to website"
   },
@@ -314,6 +314,7 @@
   },
   "gallery": {
     "title": "Gallery",
+    "eventTitle": "תוצאות התלמידים שלנו",
     "before": "Before",
     "after": "After",
     "zoom": "Tap to zoom"
@@ -447,27 +448,24 @@
     "subtitle": "Benefits that will help you succeed"
   },
   "courses": {
-    "prefix": "הדרכה מקצועית",
+    "prefix": "Professional Training",
     "heading": "Our Programs",
-    "recommended": "Recommended",
-    "register": "Register",
+    "headingSubtitle": "Training days and workshops in various fields",
+    "register": "More Details",
     "course1": {
-      "badge": "For cosmetologists",
-      "title": "Professional Hair Training",
-      "subtitle": "Guided by the MitoDerm team",
-      "items": "Microneedling fundamentals for scalp|Using exosomes for scalp recovery and accelerating hair growth|Diagnosing scalp problems and matching clinical protocols|Integrating treatments into business for results and sales"
+      "title": "Training Day for Hair Stylists in the Scalp Field",
+      "subtitle": "Introduction to the world of scalp care from an advanced trichological perspective",
+      "items": "Understanding hair loss and hair growth processes|Fundamentals of microneedling and proper scalp work as part of hair treatment|Exosomes: integrating innovative solutions for scalp restoration and accelerating growth|Turning professional knowledge into a differentiation tool, results and added value for clients"
     },
     "course2": {
-      "badge": "For hairdressers",
-      "title": "Dedicated Training for Hairdressers",
-      "subtitle": "Introduction to the scalp world from an advanced trichological perspective",
-      "items": "Understanding hair loss and growth processes|Proper scalp work as part of hair treatment|Integrating innovative solutions for scalp recovery and growth|Turning professional knowledge into differentiation, results and added value"
+      "title": "Training Day for Cosmeticians in the Facial Field",
+      "subtitle": "We invite you to discover the new generation of professional aesthetics",
+      "items": "Introduction to the world of exosomes and skin biology|How exosomes communicate with and renew cells|The clinical advantages of synthetic and stable exosomes|Protocols tailored for maximum effectiveness|Integrating treatments for clinic differentiation|Lectures delivered to many doctors around the world|Innovative materials and technologies such as PDRN, synthetic exosomes and biomimetic peptides. Aging theories, latest research"
     },
     "course3": {
-      "badge": "For aesthetics professionals",
-      "title": "MITODERM — First Offer for the Future of Aesthetics",
-      "subtitle": "We invite you to discover",
-      "items": "Hair loss and growth processes|Introduction to the world of exosomes and their integration|Proper and precise scalp work|Innovative solutions for scalp recovery, hair follicle strengthening and growth|Turning trichological knowledge into professional differentiation and real added value"
+      "title": "Training Day for Cosmeticians in the Scalp Field",
+      "subtitle": "Professional development and knowledge expansion",
+      "items": "Understanding biological processes and what affects hair loss, including blood tests and diseases|Using exosomes for scalp restoration and accelerating hair growth|Diagnosing scalp conditions and tailoring effective clinical protocols|Microneedling: proper and precise work with the scalp|Integrating treatments in the clinic to generate results and sales"
     }
   },
   "stickyBar": {
@@ -477,20 +475,20 @@
   },
   "inviteEventSection" : {
     "item1": {
-      "title":"תעודות השתתפות",
-      "text": "הסמכה מקצועית "
+      "title":"Certificate of Participation",
+      "text": "Professional certification"
     },
     "item2": {
-      "title":"פרקטיקה קלינית",
-      "text": "התנסות מעשית והתאמת פרוטוקולים"
+      "title":"Clinical Practice",
+      "text":"Hands-on experience and protocol customization"
     },
     "item3": {
-      "title":"מרצים מומחים",
-      "text": "הובלה מקצועית והרחבת הידע"
+      "title":"Expert Lectures",
+      "text": "Professional leadership and knowledge expansion"
     },
     "item4": {
-      "title":"אסתטיקה מתקדמת",
-      "text": "טכניקות עדכניות ומדעיות"
+      "title":"Advanced Aesthetics",
+      "text": "Up-to-date and science-based techniques"
     }
   },
    "v990": {
@@ -501,13 +499,13 @@
       "titleEnd": " in the field of aesthetics in Israel",
       "body": "At the conference, you'll be introduced to this ",
       "bodyAccent": "breakthrough technology!",
-      "bodyEnd": "\nThis conference will open the door for you to the world of innovative treatments, which are what clients really want, along with significant reduction in working time, increased profits, and faster recovery",
-      "cta": "Contact for Price details"
+      "bodyEnd": "\nThis conference will open the door for you to the world of innovative treatments, which are what clients really want, along with significant reduction in working time, increased profits, and faster recovery time compared to traditional and simpler treatments",
+      "cta": "Contact Us"
     },
     "topics": {
       "heading": "Topics we'll cover:",
-      "items": "Understanding the scalp as a living biological system, scalp structure and hair follicle|Hair loss processes and diagnosis - the connection between skin, inflammation, stress and follicle impact|Exosomes and advanced scalp technology - what are exosomes and how they work at the cellular level|Advantages of synthetic and stable source: scalp recovery, follicle strengthening and growth matching|Clinical practice and protocols: integrating exosomes into scalp treatments|Differentiation, results and business value: integrating treatment into business",
-      "cta": "Reserve Seat"
+      "items": "Understanding the scalp as a living biological system, scalp structure and hair follicle|Hair loss processes and diagnosis - the connection between skin, inflammation, stress and follicle impact|Exosomes and advanced scalp technology - what are exosomes and how they work at the cellular level|Advantages of synthetic and stable source: scalp recovery, follicle strengthening and growth optimization|Clinical practice and protocols: integrating exosomes into scalp treatments – treatment validation by diagnosis together with the camera|Differentiation, results and business value: integrating treatment into business – how to offer proper scalp treatment, professional differentiation from competitors, generating results, trust and sales",
+      "cta": "Register Now"
     },
     "eventDetails": {
       "heading": "Event Details",

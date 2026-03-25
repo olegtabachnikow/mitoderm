@@ -153,3 +153,11 @@
 .linkMobile:hover {
   color: $colorLightBg;
 }
+
+.eventLink {
+  background-color: $colorNavy;
+}
+
+.linkMobile.eventLink {
+  background-color: transparent;
+}

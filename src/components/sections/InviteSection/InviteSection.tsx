@@ -1,17 +1,19 @@
 'use client';
 
-import React from 'react';
+import { FC } from 'react';
 import { motion } from 'motion/react';
 import styles from './InviteSection.module.scss';
 import { useTranslations } from 'next-intl';
 import type { WorkshopVariant } from '@/types';
 import InviteBullets from './InviteBullets/InviteBullets';
+import useAppStore from '@/store/store';
 
 interface InviteSectionProps {
   variant: WorkshopVariant;
 }
 
-export default function InviteSection({ variant }: InviteSectionProps) {
+const InviteSection: FC = () => {
+  const { courseVariant } = useAppStore((state) => state);
   const t = useTranslations();
 
   return (
@@ -44,11 +46,11 @@ export default function InviteSection({ variant }: InviteSectionProps) {
           transition={{ delay: 0.2, duration: 0.8 }}
           className={styles.title}
         >
-          <span>{t(`v${variant}.invite.title`)}</span>
+          <span>{t(`v${courseVariant}.invite.title`)}</span>
           <span className={styles.titleAccent}>
-            {t(`v${variant}.invite.titleAccent`)}
+            {t(`v${courseVariant}.invite.titleAccent`)}
           </span>
-          <span>{t(`v${variant}.invite.titleEnd`)}</span>
+          <span>{t(`v${courseVariant}.invite.titleEnd`)}</span>
         </motion.h2>
 
         <motion.p
@@ -58,11 +60,11 @@ export default function InviteSection({ variant }: InviteSectionProps) {
           transition={{ delay: 0.4, duration: 0.8 }}
           className={styles.body}
         >
-          <span>{t(`v${variant}.invite.body`)}</span>
+          <span>{t(`v${courseVariant}.invite.body`)}</span>
           <span className={styles.bodyAccent}>
-            {t(`v${variant}.invite.bodyAccent`)}
+            {t(`v${courseVariant}.invite.bodyAccent`)}
           </span>
-          <span>{t(`v${variant}.invite.bodyEnd`)}</span>
+          <span>{t(`v${courseVariant}.invite.bodyEnd`)}</span>
         </motion.p>
 
         <motion.a
@@ -78,7 +80,7 @@ export default function InviteSection({ variant }: InviteSectionProps) {
           href="#contact"
           className={styles.cta}
         >
-          <span>{t(`v${variant}.invite.cta`)}</span>
+          <span>{t(`v${courseVariant}.invite.cta`)}</span>
           <span className={styles.ctaIcon}>&#x2B95;</span>
         </motion.a>
 
@@ -92,4 +94,6 @@ export default function InviteSection({ variant }: InviteSectionProps) {
       </motion.div>
     </section>
   );
-}
+};
+
+export default InviteSection;

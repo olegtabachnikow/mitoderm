@@ -1,17 +1,14 @@
 'use client';
 
-import React from 'react';
+import { FC } from 'react';
 import styles from './EventUnique.module.scss';
 import { motion } from 'motion/react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-import type { WorkshopVariant } from '@/types';
+import useAppStore from '@/store/store';
 
-interface UniqueProps {
-  variant: WorkshopVariant;
-}
-
-export default function UniqueSection({ variant }: UniqueProps) {
+const UniqueSection: FC = () => {
+  const { courseVariant } = useAppStore((state) => state);
   const t = useTranslations();
 
   return (
@@ -49,11 +46,11 @@ export default function UniqueSection({ variant }: UniqueProps) {
               transition={{ delay: 0.2, duration: 0.6 }}
               className={styles.title}
             >
-              <span>{t(`v${variant}.unique.title1`)}</span>
+              <span>{t(`v${courseVariant}.unique.title1`)}</span>
               <span className={styles.titleAccent}>
-                {t(`v${variant}.unique.titleAccent`)}
+                {t(`v${courseVariant}.unique.titleAccent`)}
               </span>
-              <span>{t(`v${variant}.unique.title2`)}</span>
+              <span>{t(`v${courseVariant}.unique.title2`)}</span>
             </motion.h3>
 
             <motion.p
@@ -63,11 +60,11 @@ export default function UniqueSection({ variant }: UniqueProps) {
               transition={{ delay: 0.4, duration: 0.6 }}
               className={styles.body}
             >
-              <span>{t(`v${variant}.unique.body1`)}</span>
+              <span>{t(`v${courseVariant}.unique.body1`)}</span>
               <span className={styles.bodyAccent}>
-                {t(`v${variant}.unique.bodyAccent`)}
+                {t(`v${courseVariant}.unique.bodyAccent`)}
               </span>
-              <span>{t(`v${variant}.unique.bodyEnd`)}</span>
+              <span>{t(`v${courseVariant}.unique.bodyEnd`)}</span>
             </motion.p>
 
             <motion.div
@@ -82,4 +79,6 @@ export default function UniqueSection({ variant }: UniqueProps) {
       </div>
     </section>
   );
-}
+};
+
+export default UniqueSection;

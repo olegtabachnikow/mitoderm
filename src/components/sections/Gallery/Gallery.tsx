@@ -8,6 +8,7 @@ import GalleryPagination from './GalleryPagination/GalleryPagination';
 
 interface Props {
   isHairPage?: boolean;
+  isEventPage?: boolean;
 }
 
 const GalleryWrapper = dynamic(
@@ -17,9 +18,13 @@ const GalleryWrapper = dynamic(
   },
 );
 
-const Gallery: FC<Props> = async ({ isHairPage }) => {
+const Gallery: FC<Props> = async ({ isHairPage, isEventPage }) => {
   const t = await getTranslations('gallery');
-  const imageDirectory = path.join(process.cwd(), '/public/images/beforeAfter');
+  const imageDirectory = path.join(
+    process.cwd(),
+    `/public/images/${isEventPage ? 'eventB' : 'b'}eforeAfter`,
+  );
+
   const imageFilenames = await fs.readdir(imageDirectory);
   let sliderItemsArray: string[] = [];
 
@@ -33,10 +38,28 @@ const Gallery: FC<Props> = async ({ isHairPage }) => {
   if (sliderItemsArray) itemList = sliderItemsArray;
 
   return (
-    <section id="gallery" className={styles.container}>
-      <h2 className={styles.title}>{t('title')}</h2>
-      <GalleryWrapper itemList={itemList as string[]} />
-      <GalleryPagination count={itemList.length} />
+    // <section id="gallery" className={styles.container}>
+    //   <h2 className={styles.title}>{t('title')}</h2>
+    //   <GalleryWrapper itemList={itemList as string[]} />
+    //   <GalleryPagination count={itemList.length} />
+    // </section>
+    <section
+      id="gallery"
+      className={`${styles.container} ${isEventPage ? styles.eventPage : ''}`}
+    >
+      {isEventPage ? (
+        <>
+          <h2 className={styles.eventTitle}>{t('eventTitle')}</h2>
+          <span className={styles.prefixLine} />
+        </>
+      ) : (
+        <h2 className={styles.title}>{t('title')}</h2>
+      )}
+      <GalleryWrapper
+        itemList={itemList as string[]}
+        isEventPage={isEventPage}
+      />
+      <GalleryPagination count={itemList.length} isEventPage={isEventPage} />
     </section>
   );
 };

@@ -1,9 +1,11 @@
+'use client';
 import { FC, useState, useEffect } from 'react';
 import styles from './NavigationProductButton.module.scss';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useLocale, useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
+import { usePathname } from 'next/navigation';
 
 const variants = {
   hidden: { opacity: 0, height: 0 },
@@ -41,6 +43,8 @@ const NavigationProductButton: FC<Props> = ({
   const locale = useLocale();
   const t = useTranslations();
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+  const isEventPage = pathname.includes('event');
 
   useEffect(() => {
     !isMobile && setIsOpen(false);
@@ -49,6 +53,11 @@ const NavigationProductButton: FC<Props> = ({
   useEffect(() => {
     !isMenuOpen && setIsOpen(false);
   }, [isMenuOpen]);
+
+  const handleBtnClick = () => {
+    setIsOpen(false);
+    handleClick?.();
+  };
 
   return (
     <motion.div
@@ -97,8 +106,8 @@ const NavigationProductButton: FC<Props> = ({
       >
         <motion.div variants={itemVariants}>
           <Link
-            onClick={handleClick}
-            className={`${styles.link} ${isMobile && styles.linkMobile}`}
+            onClick={handleBtnClick}
+            className={`${styles.link} ${isMobile && styles.linkMobile} ${isEventPage && styles.eventLink}`}
             href={`../${locale}/exotechgel`}
           >
             Exotech Gel
@@ -106,8 +115,8 @@ const NavigationProductButton: FC<Props> = ({
         </motion.div>
         <motion.div variants={itemVariants}>
           <Link
-            onClick={handleClick}
-            className={`${styles.link} ${isMobile && styles.linkMobile}`}
+            onClick={handleBtnClick}
+            className={`${styles.link} ${isMobile && styles.linkMobile} ${isEventPage && styles.eventLink}`}
             href={`../${locale}/exosignalhairspray`}
           >
             Exosignal Hair Spray
@@ -115,8 +124,8 @@ const NavigationProductButton: FC<Props> = ({
         </motion.div>
         <motion.div variants={itemVariants}>
           <Link
-            onClick={handleClick}
-            className={`${styles.link} ${isMobile && styles.linkMobile}`}
+            onClick={handleBtnClick}
+            className={`${styles.link} ${isMobile && styles.linkMobile} ${isEventPage && styles.eventLink}`}
             href={`../${locale}/exosignal_hair`}
           >
             Exosignal Hair

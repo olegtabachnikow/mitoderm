@@ -5,17 +5,10 @@ import styles from './CourseSelection.module.scss';
 import { motion } from 'motion/react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-import type { WorkshopVariant } from '@/types';
 import { courses, variantToIndex, indexToVariant } from '@/constants';
 import CardSliderMobile from './CardSliderMobile/CardSliderMobile';
 import { useMediaQuery } from 'react-responsive';
-
-interface Props {
-  onRegisterClick: () => void;
-  onVisibilityChange: (isVisible: boolean) => void;
-  selectedVariant: WorkshopVariant;
-  onVariantChange: (variant: WorkshopVariant) => void;
-}
+import useAppStore from '@/store/store';
 
 const gradientClasses: Record<string, string> = {
   'from-[#c4a764] to-[#a68a4d]': styles.gradient1,
@@ -23,21 +16,19 @@ const gradientClasses: Record<string, string> = {
   'from-[#be800c] to-[#9a6600]': styles.gradient3,
 };
 
-const CourseSelection: FC<Props> = ({
-  selectedVariant,
-  onRegisterClick,
-  onVisibilityChange,
-  onVariantChange,
-}) => {
+const CourseSelection: FC = () => {
   const t = useTranslations('courses');
-  const selectedCourse = variantToIndex[selectedVariant];
+  const { courseVariant, setCourseVariant, setShowStickyBar } = useAppStore(
+    (state) => state,
+  );
+  const selectedCourse = variantToIndex[courseVariant];
   const sectionRef = useRef<HTMLDivElement>(null);
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (onVisibilityChange) onVisibilityChange(entry.isIntersecting);
+        if (setShowStickyBar) setShowStickyBar(!entry.isIntersecting);
       },
       { threshold: 0.1 },
     );
@@ -45,7 +36,7 @@ const CourseSelection: FC<Props> = ({
     return () => {
       if (sectionRef.current) observer.unobserve(sectionRef.current);
     };
-  }, [onVisibilityChange]);
+  }, []);
 
   return (
     <section ref={sectionRef} className={styles.courses}>
@@ -60,13 +51,14 @@ const CourseSelection: FC<Props> = ({
           className={styles.headingWrap}
         >
           <h2 className={styles.heading}>{t('heading')}</h2>
+          <p className={styles.headingSubtitle}>{t('headingSubtitle')}</p>
         </motion.div>
         {isMobile ? (
           <CardSliderMobile
-            selectedVariant={selectedVariant}
-            onRegisterClick={onRegisterClick}
-            onVisibilityChange={onVisibilityChange}
-            onVariantChange={onVariantChange}
+            selectedVariant={courseVariant}
+            onRegisterClick={() => {}}
+            onVisibilityChange={setShowStickyBar}
+            onVariantChange={setCourseVariant}
           />
         ) : (
           <div className={styles.list}>
@@ -81,7 +73,7 @@ const CourseSelection: FC<Props> = ({
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  onClick={() => onVariantChange(indexToVariant[course.id])}
+                  onClick={() => setCourseVariant(indexToVariant[course.id])}
                   animate={{
                     scale: isSelected ? 1.02 : 1,
                     zIndex: isSelected ? 3 : 2,
@@ -124,7 +116,7 @@ const CourseSelection: FC<Props> = ({
                       whileTap={{ scale: 0.98 }}
                       onClick={(e) => {
                         e.stopPropagation();
-                        onRegisterClick();
+                        () => {};
                       }}
                       className={`${styles.registerBtn} ${selectedCourse === course.id ? gradientClass : ''}`}
                     >

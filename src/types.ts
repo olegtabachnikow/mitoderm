@@ -141,3 +141,10 @@ export interface StatItem {
   suffix: string;
   labelKey: string;
 }
+
+export interface Course {
+  id: number;
+  city: string;
+  date: string;
+  time: string;
+}

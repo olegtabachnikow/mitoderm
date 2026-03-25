@@ -5,17 +5,14 @@ import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import styles from './Benefit.module.scss';
-import { WorkshopVariant } from '@/types';
 import { useMediaQuery } from 'react-responsive';
+import useAppStore from '@/store/store';
 
-interface Props {
-  variant: WorkshopVariant;
-}
-
-const Benefit: FC<Props> = ({ variant }) => {
+const Benefit: FC = () => {
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
+  const { courseVariant } = useAppStore((state) => state);
   const t = useTranslations();
-  const items = t(`v${variant}.benefits`).split('|');
+  const items = t(`v${courseVariant}.benefits`).split('|');
   const icons = [
     <Image
       className={styles.icon}

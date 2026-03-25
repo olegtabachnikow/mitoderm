@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { ModalType, DiscountModifier } from '@/types';
+import { ModalType, DiscountModifier, WorkshopVariant } from '@/types';
 
 interface RootState {
   modalIsOpen: boolean;
@@ -16,6 +16,10 @@ interface RootState {
   setNumberOfTickets: (arg: number) => void;
   discountModifier: DiscountModifier;
   setDiscountModifier: (arg: DiscountModifier) => void;
+  courseVariant: WorkshopVariant;
+  setCourseVariant: (arg: WorkshopVariant) => void;
+  showStickyBar: boolean;
+  setShowStickyBar: (value: boolean) => void;
 }
 
 const useAppStore = create<RootState>((set) => ({
@@ -40,6 +44,12 @@ const useAppStore = create<RootState>((set) => ({
   discountModifier: 1,
   setDiscountModifier: (arg: DiscountModifier) =>
     set((state) => ({ discountModifier: (state.discountModifier = arg) })),
+  courseVariant: '990',
+  setCourseVariant: (arg: WorkshopVariant) =>
+    set((state) => ({ courseVariant: (state.courseVariant = arg) })),
+  showStickyBar: false,
+  setShowStickyBar: (value: boolean) =>
+    set((state) => ({ showStickyBar: (state.showStickyBar = value) })),
 }));
 
 export default useAppStore;
