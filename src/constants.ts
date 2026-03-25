@@ -7,6 +7,7 @@ import {
   EventBulletItem,
   WorkshopVariant,
   InviteBulletItem,
+  StatItem,
 } from './types';
 
 export const navMainList: NavItem[] = [
@@ -196,3 +197,14 @@ export const inviteBulletsItemList: InviteBulletItem[] = [
 ]
 
 export const indexToVariant: WorkshopVariant[] = ['990', '180', '480'];
+
+export const stats: StatItem[] = [
+  { icon: 'award.svg', value: 15, suffix: '+', labelKey: 'years' },
+  { icon: 'briefcase.svg', value: 50, suffix: '+', labelKey: 'workshops' },
+  {
+    icon: 'trendingup.svg',
+    value: 98,
+    suffix: '%',
+    labelKey: 'satisfaction',
+  },
+];

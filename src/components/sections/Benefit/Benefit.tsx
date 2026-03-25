@@ -30,13 +30,6 @@ const Benefit: FC = () => {
     />,
     <Image
       className={styles.icon}
-      src="/images/icons/bookOpened.svg"
-      width={24}
-      height={24}
-      alt="book icon"
-    />,
-    <Image
-      className={styles.icon}
       src="/images/icons/trophy.svg"
       width={24}
       height={24}
