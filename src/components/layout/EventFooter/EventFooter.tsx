@@ -26,7 +26,6 @@ const EventFooter: FC = () => {
   return (
     <footer className={styles.eventFooter}>
       <div className={styles.inner}>
-        <Image src={'/images/logo.svg'} alt="logo" width={80} height={100} />
         <span className={styles.copyright}>
           {t('copyright') + new Date().getFullYear() + ' ' + t('rights')}
         </span>
