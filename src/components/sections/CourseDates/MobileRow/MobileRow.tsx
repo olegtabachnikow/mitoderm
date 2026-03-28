@@ -1,12 +1,12 @@
 import { FC } from 'react';
-import { Course } from '@/types';
+import { Event } from '@/types';
 import { motion } from 'motion/react';
 import styles from './MobileRow.module.scss';
 import Image from 'next/image';
 import CourseDatesCheckbox from '../CourseDatesCheckbox/CourseDatesCheckbox';
 
 interface Props {
-  c: Course;
+  c: Event;
   isSelected: boolean;
   onSelect: () => void;
   index: number;
@@ -54,7 +54,9 @@ const MobileRow: FC<Props> = ({ c, isSelected, onSelect, index }) => {
             height={12}
             alt="calendar icon"
           />
-          <span className={styles.metaTextSm}>{c.date}</span>
+          <span className={styles.metaTextSm}>
+            {c.date.toLocaleDateString()}
+          </span>
         </div>
         <div className={styles.dividerSm} />
         <div className={styles.metaBarInner}>

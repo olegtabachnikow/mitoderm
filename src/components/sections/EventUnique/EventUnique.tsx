@@ -12,7 +12,7 @@ const UniqueSection: FC = () => {
   const t = useTranslations();
 
   return (
-    <section className={styles.unique}>
+    <section className={styles.unique} id="mission">
       <div className={styles.container}>
         <div className={styles.grid}>
           <motion.div

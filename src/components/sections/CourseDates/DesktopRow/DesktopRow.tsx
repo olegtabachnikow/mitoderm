@@ -1,12 +1,12 @@
 import { FC } from 'react';
 import styles from './DesktopRow.module.scss';
-import { Course } from '@/types';
+import { Event } from '@/types';
 import { motion } from 'motion/react';
 import Image from 'next/image';
 import CourseDatesCheckbox from '../CourseDatesCheckbox/CourseDatesCheckbox';
 
 interface Props {
-  c: Course;
+  c: Event;
   isSelected: boolean;
   onSelect: () => void;
   index: number;
@@ -54,7 +54,7 @@ const DesktopRow: FC<Props> = ({ c, isSelected, onSelect, index }) => {
           height={12}
           alt="calendar icon"
         />
-        <span className={styles.metaText}>{c.date}</span>
+        <span className={styles.metaText}>{c.date.toLocaleDateString()}</span>
       </div>
 
       <div className={styles.divider} />

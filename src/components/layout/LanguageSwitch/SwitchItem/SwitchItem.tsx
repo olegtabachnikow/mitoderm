@@ -18,7 +18,9 @@ const SwitchItem: FC<Props> = ({ url, style, imageSrc, text, locale }) => {
     <Link
       className={`${styles.link} ${isTabletOrMobile && styles.linkMobile}`}
       style={style}
-      href={`../${locale}/${url}`}
+      href={
+        url === 'event/form' ? `../../${locale}/${url}` : `../${locale}/${url}`
+      }
       locale={locale}
     >
       <Image

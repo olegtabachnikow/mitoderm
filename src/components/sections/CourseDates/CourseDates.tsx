@@ -1,43 +1,37 @@
 'use client';
 
-import { FC, useState } from 'react';
+import { FC, useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import styles from './CourseDates.module.scss';
 import { useMediaQuery } from 'react-responsive';
 import Image from 'next/image';
-import CourseDatesCheckbox from './CourseDatesCheckbox/CourseDatesCheckbox';
-import type { Course } from '@/types';
+import { useTranslations } from 'next-intl';
+import type { Event } from '@/types';
 import DesktopRow from './DesktopRow/DesktopRow';
 import MobileRow from './MobileRow/MobileRow';
-
-const defaultCourses: Course[] = [
-  {
-    id: 1,
-    city: 'תל אביב',
-    date: '15.04.26',
-    time: '10:00 - 14:00',
-  },
-  { id: 2, city: 'ירושלים', date: '22.04.26', time: '10:00 - 14:00' },
-  { id: 3, city: 'חיפה', date: '29.04.26', time: '10:00 - 14:00' },
-  { id: 4, city: 'באר שבע', date: '06.05.26', time: '10:00 - 14:00' },
-];
+import useAppStore from '@/store/store';
+import { Link } from '@/i18n/routing';
 
 interface Props {
-  courses?: Course[];
-  heading?: string;
-  subtitle?: string;
+  events: Event[];
 }
 
-const CourseDates: FC<Props> = ({
-  courses = defaultCourses,
-  heading = 'פרטי הקורס',
-  subtitle = 'בחר מיקום ותאריך מועדף',
-}) => {
-  const [selected, setSelected] = useState(courses[0]?.id ?? 1);
+const CourseDates: FC<Props> = ({ events }) => {
+  const [selected, setSelected] = useState('');
+  const { courseVariant } = useAppStore((state) => state);
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+  const t = useTranslations();
+
+  const courses = events?.filter(
+    (ev) => ev.category.toString() === courseVariant,
+  );
+
+  useEffect(() => {
+    setSelected('');
+  }, [courseVariant]);
 
   return (
-    <section className={styles.section} dir="rtl">
+    <section className={styles.section} dir="rtl" id="course-dates">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -54,12 +48,12 @@ const CourseDates: FC<Props> = ({
             alt="star icon"
           />
         </div>
-        <h2 className={styles.heading}>{heading}</h2>
-        <p className={styles.subtitle}>{subtitle}</p>
+        <h2 className={styles.heading}>{t('courses.datesHeading')}</h2>
+        <p className={styles.subtitle}>{t('courses.datesSubtitle')}</p>
       </motion.div>
 
       <div className={styles.rows}>
-        {courses.map((c, index) =>
+        {courses?.map((c, index) =>
           isMobile ? (
             <MobileRow
               key={c.id}
@@ -79,6 +73,39 @@ const CourseDates: FC<Props> = ({
           ),
         )}
       </div>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.4, duration: 0.6 }}
+        className={styles.ctaWrap}
+      >
+        <motion.div
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className={styles.cta}
+        >
+          <Link href={'/event/form'}>{t(`v${courseVariant}.topics.cta`)}</Link>
+        </motion.div>
+      </motion.div>
+
+      <button
+        onClick={() => {
+          const eventDate = new Date('2026-04-04');
+          fetch('/api/events', {
+            method: 'POST',
+            body: JSON.stringify({
+              category: courseVariant,
+              city: 'Haifa',
+              date: eventDate,
+              time: '14:00 - 14:30',
+              expireAt: eventDate,
+            }),
+          });
+        }}
+      >
+        Add Event
+      </button>
     </section>
   );
 };

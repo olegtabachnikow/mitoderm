@@ -11,6 +11,7 @@ import EventBulletList from '@/components/sections/EventBulletList/EventBulletLi
 import Gallery from '@/components/sections/Gallery/Gallery';
 import Benefit from '@/components/sections/Benefit/Benefit';
 import { getEventSchema } from '@/utils/structuredData';
+import { getEvents } from '@/lib/mongodb';
 
 const WorkShop = dynamic(
   () => import('@/components/sections/WorkShop/WorkShop'),
@@ -153,16 +154,27 @@ export async function generateMetadata({
   };
 }
 
-export default function EventPage({ params: { lang } }: any) {
+export default async function EventPage({ params: { lang } }: any) {
   unstable_setRequestLocale(lang);
 
   // Event schema
   const eventUrl = `${baseUrl}/${lang}/event`;
   const eventSchema = getEventSchema(eventUrl, lang);
 
+  const events = await getEvents();
+  const plainEvents = events.map((e) => ({
+    id: e._id,
+    category: e.category,
+    city: e.city,
+    date: e.date,
+    time: e.time,
+    isAvailable: e.isAvailable,
+    expireAt: e.expireAt,
+  }));
+
   return (
     <>
-      <WorkShop />
+      <WorkShop events={plainEvents} />
 
       {/* <Intro />
         <EventBulletList />

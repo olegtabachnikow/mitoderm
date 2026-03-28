@@ -48,7 +48,7 @@ const EventContacts: FC = () => {
   ];
 
   return (
-    <section className={styles.section}>
+    <section className={styles.section} id="contact">
       <div className={styles.container}>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}

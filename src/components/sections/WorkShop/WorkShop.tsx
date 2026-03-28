@@ -12,8 +12,13 @@ import EventContacts from '../EventContacts/EventContacts';
 import EventUnique from '../EventUnique/EventUnique';
 import Gallery from '../Gallery/Gallery';
 import CourseDates from '../CourseDates/CourseDates';
+import { Event } from '@/types';
 
-const WorkShop: FC = () => {
+interface Props {
+  events: Event[];
+}
+
+const WorkShop: FC<Props> = ({ events }) => {
   return (
     <main className={styles.workshop}>
       <Intro />
@@ -21,7 +26,7 @@ const WorkShop: FC = () => {
       <StickyBar />
       <InviteSection />
       <AgendaAccordion />
-      <CourseDates />
+      <CourseDates events={events} />
       <Benefit />
       <EventUnique />
       <Gallery isEventPage={true} />

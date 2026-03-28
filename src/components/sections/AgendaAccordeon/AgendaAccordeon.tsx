@@ -13,7 +13,7 @@ const AgendaAccordion: FC = () => {
   const items = t(`v${courseVariant}.topics.items`).split('|');
 
   return (
-    <section className={styles.agenda}>
+    <section className={styles.agenda} id="agenda">
       <div className={styles.container}>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}

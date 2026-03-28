@@ -142,9 +142,12 @@ export interface StatItem {
   labelKey: string;
 }
 
-export interface Course {
-  id: number;
+export interface Event {
+  id: string;
+  category: number;
   city: string;
-  date: string;
+  date: Date;
   time: string;
+  isAvailable: boolean;
+  expireAt: Date;
 }

@@ -14,8 +14,8 @@ const LanguageSwitch: FC = () => {
   const locale = useLocale();
   const pathname = usePathname();
   const isEventFormPage = pathname.includes('event/form');
-  const isEventPage = pathname.includes('event');
-  const isFormPage = pathname.includes('form');
+  const isEventPage = pathname.includes('event') && !pathname.includes('form');
+  const isFormPage = pathname.includes('form') && !pathname.includes('event');
   const isSignalPage = pathname.includes('exosignal_hair');
   const isGelPage = pathname.includes('exotechgel');
   const isSprayPage = pathname.includes('exosignalhairspray');

@@ -39,7 +39,7 @@ const CourseSelection: FC = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className={styles.courses}>
+    <section ref={sectionRef} className={styles.courses} id="about">
       <div className={styles.bg1} />
       <div className={styles.bg2} />
       <div className={styles.inner}>

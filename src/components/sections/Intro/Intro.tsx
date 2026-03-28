@@ -83,15 +83,15 @@ const Intro: FC = () => {
     return () => container?.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // useEffect(() => {
-  //   const currentValue = introPage < 4 ? introPage + 1 : 0;
-  //   const interval = setInterval(() => {
-  //     scrollTo(currentValue, true);
-  //     setIntroPage(currentValue);
-  //   }, 15000);
+  useEffect(() => {
+    const currentValue = introPage < 4 ? introPage + 1 : 0;
+    const interval = setInterval(() => {
+      scrollTo(currentValue, true);
+      setIntroPage(currentValue);
+    }, 15000);
 
-  //   return () => clearInterval(interval);
-  // }, [introPage]);
+    return () => clearInterval(interval);
+  }, [introPage]);
 
   return (
     <section id="intro" className={styles.section}>

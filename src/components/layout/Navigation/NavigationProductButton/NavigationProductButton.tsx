@@ -20,10 +20,12 @@ const variants = {
 
 const itemVariants = {
   hidden: {
+    pointerEvents: 'none',
     opacity: 0,
     x: 20,
   },
   show: {
+    pointerEvents: 'all',
     opacity: 1,
     x: 0,
     transition: { duration: 0.1 },

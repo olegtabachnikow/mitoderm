@@ -45,7 +45,7 @@ const EventForm: FC = () => {
   const handleData = (
     data: string,
     name: NameTypeEvent | NameTypeMain,
-    isValid: boolean
+    isValid: boolean,
   ) => {
     setFormData({ ...formData, [name]: { value: data, isValid } });
   };
@@ -195,7 +195,7 @@ const EventForm: FC = () => {
                 text={t(
                   isEventPage
                     ? 'buttons.reserveSeat'
-                    : 'buttons.requestCallback'
+                    : 'buttons.requestCallback',
                 )}
               />
               <div
