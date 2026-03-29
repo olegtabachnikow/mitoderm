@@ -5,7 +5,7 @@
   overflow: hidden;
   background: linear-gradient(to bottom, $colorNavyDark, $colorNavy);
   padding-top: 10rem;
-  padding-bottom: 10rem;
+  padding-bottom: 2rem;
   @media screen and (max-width: $breakpointTablet) {
     padding-bottom: 8rem;
   }
@@ -123,7 +123,7 @@
 
 .cardSelected {
   border-color: $colorGold;
-  box-shadow: 0 25px 50px -12px rgba($colorGold, 0.3);
+  box-shadow: 0 5px 50px -12px rgba($colorGold, 0.3);
 }
 
 .cardOverlay {
@@ -222,6 +222,7 @@
 
 .registerBtn {
   background-color: rgba($colorWhite, 0.1);
+  font-size: 1.5rem;
   width: 100%;
   margin-top: auto;
   border-radius: 9999px;
@@ -237,6 +238,10 @@
   &:hover {
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
   }
+}
+
+.registerBtnLink {
+  width: 100%;
 }
 
 // Gradient variants for cards

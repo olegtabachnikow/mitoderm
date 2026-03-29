@@ -39,15 +39,6 @@ const CourseDates: FC<Props> = ({ events }) => {
         transition={{ duration: 0.6 }}
         className={styles.header}
       >
-        <div className={styles.iconWrap}>
-          <Image
-            src="/images/icons/courseDateStar.svg"
-            className={styles.starIcon}
-            width={22}
-            height={22}
-            alt="star icon"
-          />
-        </div>
         <h2 className={styles.heading}>{t('courses.datesHeading')}</h2>
         <p className={styles.subtitle}>{t('courses.datesSubtitle')}</p>
       </motion.div>

@@ -167,6 +167,7 @@
   width: 100%;
   margin-top: auto;
   border-radius: 9999px;
+  font-size: 1.5rem;
   padding: 1.5rem 3rem;
   font-weight: 700;
   color: $colorWhite;
@@ -179,6 +180,10 @@
   &:hover {
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
   }
+}
+
+.registerBtnLink {
+  width: 100%;
 }
 
 // Gradient variants for cards

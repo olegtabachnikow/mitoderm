@@ -5,9 +5,10 @@ import dynamic from 'next/dynamic';
 import styles from './Intro.module.scss';
 import Image from 'next/image';
 import { useTranslations, useLocale } from 'next-intl';
-import { usePathname, useRouter } from '@/i18n/routing';
+import { Link, usePathname, useRouter } from '@/i18n/routing';
 import DotPagination from '../../sharedUI/DotPagination/DotPagination';
 import useAppStore from '@/store/store';
+import EventButton from '@/components/sharedUI/EventButton/EventButton';
 
 const Button = dynamic(() => import('@/components/sharedUI/Button/Button'), {
   ssr: false,
@@ -205,30 +206,15 @@ const Intro: FC = () => {
                     {t('intro.eventSubtitle')}
                   </p>
                 </motion.div>
-                {/* <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.9, duration: 0.6 }}
-                  className={styles.eventCTA}
-                >
-                  <motion.button
-                    whileHover={{
-                      scale: 1.05,
-                      boxShadow: '0 20px 40px rgba(37, 211, 102, 0.3)',
-                    }}
-                    whileTap={{ scale: 0.95 }}
-                    // onClick={handleWhatsAppClick}
-                    className={styles.eventCTAButton}
-                  >
-                    <Image
-                      src="/images/icons/messageIcon.svg"
-                      width={19}
-                      height={19}
-                      alt="message icon"
-                    />
-                    <span>{t('buttons.cta')}</span>
-                  </motion.button>
-                </motion.div> */}
+                <EventButton
+                  text={t('buttons.cta')}
+                  url={isEventPage ? '#about' : undefined}
+                  onClick={() => {
+                    if (!isEventPage) {
+                      router.push('/event');
+                    }
+                  }}
+                />
               </motion.div>
             </div>
           </div>

@@ -6,6 +6,7 @@ import { motion } from 'motion/react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import useAppStore from '@/store/store';
+import EventButton from '@/components/sharedUI/EventButton/EventButton';
 
 const AgendaAccordion: FC = () => {
   const t = useTranslations();
@@ -49,7 +50,11 @@ const AgendaAccordion: FC = () => {
           ))}
         </div>
 
-        <motion.div
+        <EventButton
+          text={t(`v${courseVariant}.topics.cta`)}
+          onClick={() => {}}
+        />
+        {/* <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -63,7 +68,7 @@ const AgendaAccordion: FC = () => {
           >
             {t(`v${courseVariant}.topics.cta`)}
           </motion.button>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   );

@@ -5,6 +5,7 @@ import { promises as fs } from 'fs';
 import styles from './Gallery.module.scss';
 import { getTranslations } from 'next-intl/server';
 import GalleryPagination from './GalleryPagination/GalleryPagination';
+import EventButton from '@/components/sharedUI/EventButton/EventButton';
 
 interface Props {
   isHairPage?: boolean;
@@ -19,7 +20,7 @@ const GalleryWrapper = dynamic(
 );
 
 const Gallery: FC<Props> = async ({ isHairPage, isEventPage }) => {
-  const t = await getTranslations('gallery');
+  const t = await getTranslations();
   const imageDirectory = path.join(
     process.cwd(),
     `/public/images/${isEventPage ? 'eventB' : 'b'}eforeAfter`,
@@ -38,28 +39,26 @@ const Gallery: FC<Props> = async ({ isHairPage, isEventPage }) => {
   if (sliderItemsArray) itemList = sliderItemsArray;
 
   return (
-    // <section id="gallery" className={styles.container}>
-    //   <h2 className={styles.title}>{t('title')}</h2>
-    //   <GalleryWrapper itemList={itemList as string[]} />
-    //   <GalleryPagination count={itemList.length} />
-    // </section>
     <section
       id="gallery"
       className={`${styles.container} ${isEventPage ? styles.eventPage : ''}`}
     >
       {isEventPage ? (
         <>
-          <h2 className={styles.eventTitle}>{t('eventTitle')}</h2>
+          <h2 className={styles.eventTitle}>{t('gallery.eventTitle')}</h2>
           <span className={styles.prefixLine} />
         </>
       ) : (
-        <h2 className={styles.title}>{t('title')}</h2>
+        <h2 className={styles.title}>{t('gallery.title')}</h2>
       )}
       <GalleryWrapper
         itemList={itemList as string[]}
         isEventPage={isEventPage}
       />
       <GalleryPagination count={itemList.length} isEventPage={isEventPage} />
+      {isEventPage ? (
+        <EventButton text={t('buttons.cta')} url={'#about'} />
+      ) : null}
     </section>
   );
 };

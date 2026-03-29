@@ -7,6 +7,7 @@ import { motion } from 'motion/react';
 import { WorkshopVariant } from '@/types';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
+import { Link } from '@/i18n/routing';
 
 const gradientClasses: Record<string, string> = {
   'from-[#c4a764] to-[#a68a4d]': styles.gradient1,
@@ -15,17 +16,12 @@ const gradientClasses: Record<string, string> = {
 };
 
 interface Props {
-  onRegisterClick: () => void;
   onVisibilityChange: (isVisible: boolean) => void;
   selectedVariant: WorkshopVariant;
   onVariantChange: (variant: WorkshopVariant) => void;
 }
 
-const CardSliderMobile: FC<Props> = ({
-  onRegisterClick,
-  selectedVariant,
-  onVariantChange,
-}) => {
+const CardSliderMobile: FC<Props> = ({ selectedVariant, onVariantChange }) => {
   const [activeIndex, setActiveIndex] = useState<0 | 1 | 2>(0);
   const t = useTranslations('courses');
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -139,17 +135,16 @@ const CardSliderMobile: FC<Props> = ({
                     </div>
                   ))}
                 </div>
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    onRegisterClick();
-                  }}
-                  className={`${styles.registerBtn} ${selectedCourse === course.id ? gradientClass : ''}`}
-                >
-                  {t('register')}
-                </motion.button>
+
+                <Link className={styles.registerBtnLink} href={'#course-dates'}>
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className={`${styles.registerBtn} ${selectedCourse === course.id ? gradientClass : ''}`}
+                  >
+                    {t('register')}
+                  </motion.div>
+                </Link>
               </div>
             </motion.div>
           );

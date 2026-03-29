@@ -9,6 +9,7 @@ import { courses, variantToIndex, indexToVariant } from '@/constants';
 import CardSliderMobile from './CardSliderMobile/CardSliderMobile';
 import { useMediaQuery } from 'react-responsive';
 import useAppStore from '@/store/store';
+import { Link } from '@/i18n/routing';
 
 const gradientClasses: Record<string, string> = {
   'from-[#c4a764] to-[#a68a4d]': styles.gradient1,
@@ -56,7 +57,6 @@ const CourseSelection: FC = () => {
         {isMobile ? (
           <CardSliderMobile
             selectedVariant={courseVariant}
-            onRegisterClick={() => {}}
             onVisibilityChange={setShowStickyBar}
             onVariantChange={setCourseVariant}
           />
@@ -111,17 +111,19 @@ const CourseSelection: FC = () => {
                         </div>
                       ))}
                     </div>
-                    <motion.button
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        () => {};
-                      }}
-                      className={`${styles.registerBtn} ${selectedCourse === course.id ? gradientClass : ''}`}
+
+                    <Link
+                      className={styles.registerBtnLink}
+                      href={'#course-dates'}
                     >
-                      {t('register')}
-                    </motion.button>
+                      <motion.div
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        className={`${styles.registerBtn} ${selectedCourse === course.id ? gradientClass : ''}`}
+                      >
+                        {t('register')}
+                      </motion.div>
+                    </Link>
                   </div>
                 </motion.div>
               );
