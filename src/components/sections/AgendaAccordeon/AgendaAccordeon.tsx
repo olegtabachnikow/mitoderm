@@ -50,25 +50,7 @@ const AgendaAccordion: FC = () => {
           ))}
         </div>
 
-        <EventButton
-          text={t(`v${courseVariant}.topics.cta`)}
-          onClick={() => {}}
-        />
-        {/* <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4, duration: 0.6 }}
-          className={styles.ctaWrap}
-        >
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className={styles.cta}
-          >
-            {t(`v${courseVariant}.topics.cta`)}
-          </motion.button>
-        </motion.div> */}
+        <EventButton text={t(`v${courseVariant}.topics.cta`)} url={'#about'} />
       </div>
     </section>
   );

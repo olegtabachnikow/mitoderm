@@ -22,13 +22,15 @@ const EventButton: FC<Props> = ({ text, onClick, url }) => {
       className={styles.buttonWrapper}
     >
       {url ? (
-        <motion.div
-          whileHover={{ scale: isMobile ? 1 : 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className={styles.button}
-        >
-          <Link href={url}>{text}</Link>
-        </motion.div>
+        <Link className={styles.buttonLink} href={url}>
+          <motion.div
+            whileHover={{ scale: isMobile ? 1 : 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className={styles.button}
+          >
+            {text}
+          </motion.div>
+        </Link>
       ) : (
         <motion.button
           onClick={onClick}
