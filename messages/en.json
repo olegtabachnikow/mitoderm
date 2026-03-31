@@ -461,7 +461,7 @@
     },
     "course2": {
       "title": "Training Day for Cosmeticians in the Facial Field",
-      "subtitle": "We invite you to discover the new generation of professional aesthetics",
+      "subtitle": "Innovative materials and technologies such as PDRN, synthetic exosomes and biomimetic peptides. Aging theories, latest research.",
       "items": "Introduction to the world of exosomes and skin biology|How exosomes communicate with and renew cells|The clinical advantages of synthetic and stable exosomes|Protocols tailored for maximum effectiveness|Integrating treatments for clinic differentiation|Lectures delivered to many doctors from all over the world"
     },
     "course3": {
@@ -493,6 +493,17 @@
       "text": "Up-to-date and science-based techniques"
     }
   },
+  "exosomes": {
+    "heading": "What are exosomes?",
+    "subheading": "First introduction to the revolutionary technology changing the aesthetics industry",
+    "card1Title": "Why is it important?",
+    "card1Body": "Enable more effective treatments for hair loss, scalp recovery and growth acceleration",
+    "card2Title": "How does it work?",
+    "card2Body": "Transfer biological messages between cells, triggering natural renewal and recovery processes",
+    "card3Title": "What is it?",
+    "card3Body": "Nanometric particles naturally formed in body cells, used for intercellular communication",
+    "footer": "In the workshop you'll learn the scientific foundations and practical applications"
+  },
    "v990": {
     "benefits": "Innovative Products|Networking with professionals|Personal Growth|Official Italian Distributor in Israel|Limited offer",
     "invite": {
@@ -516,23 +527,6 @@
       "body1": "MitoDerm company is the ",
       "bodyAccent": "only company in Israel working with exosomes",
       "bodyEnd": " that can connect and trigger a chain reaction of natural cell actions, allowing the skin to enjoy great benefits"
-    },
-    "gallery": {
-      "heading": "Gallery",
-      "before": "Before",
-      "after": "After",
-      "cta": "Reserve Seat"
-    },
-    "exosomes": {
-      "heading": "What are exosomes?",
-      "subheading": "First introduction to the revolutionary technology changing the aesthetics industry",
-      "card1Title": "Why is it important?",
-      "card1Body": "Enable more effective treatments for hair loss, scalp recovery and growth acceleration",
-      "card2Title": "How does it work?",
-      "card2Body": "Transfer biological messages between cells, triggering natural renewal and recovery processes",
-      "card3Title": "What is it?",
-      "card3Body": "Nanometric particles naturally formed in body cells, used for intercellular communication",
-      "footer": "In the workshop you'll learn the scientific foundations and practical applications"
     }
   },
   "v180": {
@@ -558,23 +552,6 @@
       "body1": "We are ",
       "bodyAccent": "the only ones in Israel",
       "bodyEnd": " combining advanced exosome technologies in an in-person course with personal guidance and professional tools for every student"
-    },
-    "gallery": {
-      "heading": "Our Students' Results",
-      "before": "Before",
-      "after": "After",
-      "cta": "Join us"
-    },
-    "exosomes": {
-      "heading": "What will you learn?",
-      "subheading": "Comprehensive curriculum combining practical theory and advanced practice",
-      "card1Title": "Theoretical Foundation",
-      "card1Body": "Deep understanding of anatomy, physiology and skin/face structure",
-      "card2Title": "Practical Training",
-      "card2Body": "Extensive practice on real models with experienced expert guidance",
-      "card3Title": "Advanced Technologies",
-      "card3Body": "Introduction and hands-on experience with the most advanced equipment and products",
-      "footer": "Upon completion you'll receive a recognized certificate and tools to start a successful career"
     }
   },
   "v480": {
@@ -591,7 +568,7 @@
     "topics": {
       "heading": "Full Training Day",
       "items": "Understanding hair loss from professional perspectives – hair life cycle, common types of hair loss, when the problem is in the scalp and when in the follicle|The scalp as the foundation for healthy hair – diagnosing scalp conditions using a camera.|Exosomes, microneedling and advanced technology: how biological technology meets the world of hairdressing|Tailoring treatment by diagnosis: combining microneedling and complementary technologies: safe and precise work|Clinical practice and protocols: integrating exosomes in scalp treatments – hands-on|Differentiation, results and business value: integrating the treatment into your business – how to offer proper scalp treatment, professional differentiation from competitors, generating results, trust and sales",
-      "cta": "Register Now"
+      "cta": "Contact Us"
     },
     "unique": {
       "title1": "What makes our program ",
@@ -600,27 +577,11 @@
       "body1": "The only program in Israel combining ",
       "bodyAccent": "academic certification + clinical internship + full business coaching",
       "bodyEnd": ". You'll receive all the tools for success: knowledge, practical experience, portfolio and a ready business plan"
-    },
-    "gallery": {
-      "heading": "Our Students' Results",
-      "cta": "Register Now"
-    },
-    "exosomes": {
-      "heading": "What does the professional track include?",
-      "subheading": "A comprehensive 480-hour program leading you to full professional success",
-      "card1Title": "Academic Study",
-      "card1Body": "300 hours of deep theoretical study with leading instructors",
-      "card2Title": "Clinical Internship",
-      "card2Body": "120 hours of hands-on work with real clients at leading clinics",
-      "card3Title": "Business Coaching",
-      "card3Body": "60 hours of personal guidance for establishing an independent clinic",
-      "footer": "Upon completion: full certification + professional portfolio + business plan"
     }
   },
   "stats": {
     "heading": "The Numbers Speak for Themselves",
     "subtitle": "Success measured in real results",
-    "experts": "Experts participated",
     "years": "Years of experience",
     "workshops": "Successful workshops",
     "satisfaction": "Satisfaction rate"

@@ -33,7 +33,13 @@ const Footer: FC = () => {
           className={styles.footer}
         >
           <div className={styles.content}>
-            <span className={styles.copyright}>{t('footer.copyright')}</span>
+            <span className={styles.copyright}>
+              {t('footer.copyright') +
+                ' ' +
+                new Date().getFullYear() +
+                ' ' +
+                t('footer.copyrightText')}
+            </span>
             <div className={styles.textContainer}>
               <span onClick={handleAccessibilityClick} className={styles.item}>
                 {t('footer.accessibility')}

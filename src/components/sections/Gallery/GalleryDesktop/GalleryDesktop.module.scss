@@ -83,7 +83,7 @@
 }
 
 .navBtn {
-  z-index: 20;
+  z-index: 9;
   border-radius: 9999px;
   background: linear-gradient(to bottom right, $colorGold, $colorGoldDark);
   padding: 1.5rem;
@@ -97,4 +97,8 @@
 
 .navIconRotated {
   transform: rotate(180deg);
+}
+
+.navIconRotated.navBtnHebrew {
+  transform: rotate(0deg);
 }

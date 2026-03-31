@@ -35,7 +35,7 @@ const GalleryDesktop: FC<Props> = ({
         >
           <Image
             src="/images/icons/arrowRight.svg"
-            className={`${styles.navIcon} ${styles.navIconRotated}`}
+            className={`${styles.navIcon} ${styles.navIconRotated} ${locale === 'he' ? styles.navBtnHebrew : ''}`}
             width={30}
             height={30}
             alt="arrow button"
@@ -78,7 +78,7 @@ const GalleryDesktop: FC<Props> = ({
         >
           <Image
             src="/images/icons/arrowRight.svg"
-            className={styles.navIcon}
+            className={`${styles.navIcon} ${locale === 'he' ? styles.navIconRotated : ''}`}
             width={30}
             height={30}
             alt="arrow button"

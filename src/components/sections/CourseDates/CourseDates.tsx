@@ -1,10 +1,9 @@
 'use client';
 
-import { FC, useState, useEffect } from 'react';
+import { FC, useEffect } from 'react';
 import { motion } from 'motion/react';
 import styles from './CourseDates.module.scss';
 import { useMediaQuery } from 'react-responsive';
-import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import type { Event } from '@/types';
 import DesktopRow from './DesktopRow/DesktopRow';
@@ -17,7 +16,7 @@ interface Props {
 }
 
 const CourseDates: FC<Props> = ({ events }) => {
-  const [selected, setSelected] = useState('');
+  const { selectedEvent, setSelectedEvent } = useAppStore((state) => state);
   const { courseVariant } = useAppStore((state) => state);
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
   const t = useTranslations();
@@ -27,7 +26,7 @@ const CourseDates: FC<Props> = ({ events }) => {
   );
 
   useEffect(() => {
-    setSelected('');
+    setSelectedEvent(null);
   }, [courseVariant]);
 
   return (
@@ -49,16 +48,16 @@ const CourseDates: FC<Props> = ({ events }) => {
             <MobileRow
               key={c.id}
               c={c}
-              isSelected={selected === c.id}
-              onSelect={() => setSelected(c.id)}
+              isSelected={selectedEvent?.id === c.id}
+              onSelect={() => setSelectedEvent(c)}
               index={index}
             />
           ) : (
             <DesktopRow
               key={c.id}
               c={c}
-              isSelected={selected === c.id}
-              onSelect={() => setSelected(c.id)}
+              isSelected={selectedEvent?.id === c.id}
+              onSelect={() => setSelectedEvent(c)}
               index={index}
             />
           ),
@@ -74,13 +73,13 @@ const CourseDates: FC<Props> = ({ events }) => {
         <motion.div
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className={styles.cta}
+          className={`${styles.cta} ${!selectedEvent ? styles.ctaDisabled : ''}`}
         >
           <Link href={'/event/form'}>{t(`v${courseVariant}.topics.cta`)}</Link>
         </motion.div>
       </motion.div>
 
-      <button
+      {/* <button
         onClick={() => {
           const eventDate = new Date('2026-04-04');
           fetch('/api/events', {
@@ -96,7 +95,7 @@ const CourseDates: FC<Props> = ({ events }) => {
         }}
       >
         Add Event
-      </button>
+      </button> */}
     </section>
   );
 };
