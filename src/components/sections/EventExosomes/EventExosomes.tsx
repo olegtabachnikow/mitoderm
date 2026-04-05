@@ -64,7 +64,7 @@ const EventExosomes: FC = () => {
           transition={{ delay: 0.8, duration: 0.6 }}
           className={styles.footer}
         >
-          {t(`v${courseVariant}.exosomes.footer`)}
+          {t('exosomes.footer')}
         </motion.p>
       </div>
     </section>

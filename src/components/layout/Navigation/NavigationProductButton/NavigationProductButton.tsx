@@ -46,7 +46,7 @@ const NavigationProductButton: FC<Props> = ({
   const t = useTranslations();
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
-  const isEventPage = pathname.includes('event');
+  const isEventPage = pathname.includes('event') && !pathname.includes('form');
 
   useEffect(() => {
     !isMobile && setIsOpen(false);

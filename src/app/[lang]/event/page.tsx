@@ -2,14 +2,6 @@ import { unstable_setRequestLocale } from 'next-intl/server';
 import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import Script from 'next/script';
-import Intro from '@/components/sections/Intro/Intro';
-import Button from '@/components/sharedUI/Button/Button';
-import Contact from '@/components/sections/Contact/Contact';
-import Mission from '@/components/sections/Mission/Mission';
-import { useTranslations } from 'next-intl';
-import EventBulletList from '@/components/sections/EventBulletList/EventBulletList';
-import Gallery from '@/components/sections/Gallery/Gallery';
-import Benefit from '@/components/sections/Benefit/Benefit';
 import { getEventSchema } from '@/utils/structuredData';
 import { getEvents } from '@/lib/mongodb';
 
@@ -19,43 +11,6 @@ const WorkShop = dynamic(
     ssr: false,
   },
 );
-
-const FirstLook = dynamic(
-  () => import('@/components/sections/FirstLook/FirstLook'),
-  {
-    ssr: false,
-  },
-);
-
-const FastResult = dynamic(
-  () => import('@/components/sections/FastResult/FastResult'),
-  {
-    ssr: false,
-  },
-);
-
-const Invite = dynamic(() => import('@/components/sections/Invite/Invite'), {
-  ssr: false,
-});
-
-const Event = dynamic(() => import('@/components/sections/Event/Event'), {
-  ssr: false,
-});
-
-const ToTopItOff = dynamic(
-  () => import('@/components/sections/ToTopItOff/ToTopItOff'),
-  {
-    ssr: false,
-  },
-);
-
-const Unique = dynamic(() => import('@/components/sections/Unique/Unique'), {
-  ssr: false,
-});
-
-const About = dynamic(() => import('@/components/sections/About/About'), {
-  ssr: false,
-});
 
 const baseUrl = 'https://mitoderm.com';
 

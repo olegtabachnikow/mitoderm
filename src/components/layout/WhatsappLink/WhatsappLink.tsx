@@ -2,6 +2,7 @@
 import { FC } from 'react';
 import styles from './WhatsappLink.module.scss';
 import { useLocale } from 'next-intl';
+import { usePathname } from 'next/navigation';
 
 interface Props {
   phone?: string;
@@ -11,6 +12,7 @@ interface Props {
 const WhatsappLink: FC<Props> = ({ phone, customClassName }) => {
   const locale = useLocale();
   const ilonaPhone = '972547621889';
+  const pathname = usePathname();
 
   function normalizePhone(phone: string) {
     return phone.replace(/[-\s]/g, '').replace(/^0/, '972');
@@ -28,19 +30,25 @@ const WhatsappLink: FC<Props> = ({ phone, customClassName }) => {
     phone ? normalizePhone(phone) : ilonaPhone
   }?text=${encodeURIComponent(messages[locale] || messages.en)}`;
 
+  const isAdminPage = pathname.includes('admin');
+
   return (
-    <a
-      className={
-        customClassName
-          ? customClassName
-          : `${styles.link} ${locale === 'he' && styles.he} ${styles.class}`
-      }
-      href={whatsappUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <img src="/images/icons/whatsappIcon.svg" alt="WhatsApp" />
-    </a>
+    <>
+      {isAdminPage ? null : (
+        <a
+          className={
+            customClassName
+              ? customClassName
+              : `${styles.link} ${locale === 'he' && styles.he} ${styles.class}`
+          }
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src="/images/icons/whatsappIcon.svg" alt="WhatsApp" />
+        </a>
+      )}
+    </>
   );
 };
 

@@ -144,7 +144,6 @@ export default async function RootLayout({
     notFound();
   }
 
-  // Must run before any other next-intl server APIs (e.g. getMessages) for static rendering
   unstable_setRequestLocale(params.lang);
 
   const messages = await getMessages();

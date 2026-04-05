@@ -2,27 +2,28 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useLocale } from 'next-intl';
 import Image from 'next/image';
-// import { Calendar, Image, LogOut, ExternalLink } from 'lucide-react';
 import styles from './AdminSidebar.module.scss';
 
-const navItems = [
-  {
-    to: '/admin/programs',
-    icon: '/images/icons/calendar.svg',
-    label: 'Programs',
-    desc: 'Training & workshops',
-  },
-  {
-    to: '/admin/media',
-    icon: '/images/icons/meadia.svg',
-    label: 'Media',
-    desc: 'Images & assets',
-  },
-];
-
-export function AdminSidebar({ onLogout }: { onLogout: () => void }) {
+export function AdminSidebar({ onLogout }: { onLogout?: () => void }) {
   const pathname = usePathname();
+  const locale = useLocale();
+
+  const navItems = [
+    {
+      to: `/${locale}/admin/programs/`,
+      icon: '/images/icons/calendar.svg',
+      label: 'Programs',
+      desc: 'Training & workshops',
+    },
+    {
+      to: `/${locale}/admin/doctors`,
+      icon: '/images/icons/content.svg',
+      label: 'Doctors',
+      desc: 'List of Doctors',
+    },
+  ];
 
   return (
     <aside className={styles.aside}>
@@ -71,25 +72,6 @@ export function AdminSidebar({ onLogout }: { onLogout: () => void }) {
             </Link>
           );
         })}
-
-        <div className={styles.refBlock}>
-          <p className={styles.navSectionLabel}>Reference</p>
-          <Link href="/content-list" target="_blank" className={styles.refLink}>
-            <div className={styles.refIconWrap}>
-              <Image
-                src="/images/icons/contentListIcon.svg"
-                className={styles.refIcon}
-                width={16}
-                height={16}
-                alt="content list icon"
-              />
-            </div>
-            <div>
-              <span className={styles.refLabel}>Content List</span>
-              <span className={styles.refHint}>Opens in new tab</span>
-            </div>
-          </Link>
-        </div>
       </nav>
 
       <div className={styles.footer}>

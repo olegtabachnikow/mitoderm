@@ -12,6 +12,7 @@ const Footer: FC = () => {
   const pathname = usePathname();
   const isFormPage = pathname.includes('form');
   const isEventPage = pathname.includes('event') && !pathname.includes('form');
+  const isAdminPage = pathname.includes('admin');
 
   const handlePrivacyClick = () => {
     toggleModal(true);
@@ -25,7 +26,7 @@ const Footer: FC = () => {
 
   return (
     <>
-      {isEventPage ? (
+      {isAdminPage ? null : isEventPage ? (
         <EventFooter />
       ) : (
         <footer
