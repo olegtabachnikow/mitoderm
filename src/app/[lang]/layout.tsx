@@ -140,13 +140,14 @@ export default async function RootLayout({
   children: React.ReactNode;
   params: { lang: string };
 }>) {
-  const messages = await getMessages();
-
   if (!routing.locales.includes(params.lang as any)) {
     notFound();
   }
 
+  // Must run before any other next-intl server APIs (e.g. getMessages) for static rendering
   unstable_setRequestLocale(params.lang);
+
+  const messages = await getMessages();
 
   return (
     <html lang={params.lang}>
