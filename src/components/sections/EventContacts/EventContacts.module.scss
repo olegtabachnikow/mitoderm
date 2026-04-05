@@ -119,4 +119,6 @@
   height: 2rem;
   width: 2rem;
   color: $colorWhite;
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7481%)
+    hue-rotate(183deg) brightness(103%) contrast(98%);
 }

@@ -32,17 +32,17 @@ const EventContacts: FC = () => {
   const socialLinks = [
     {
       icon: '/images/icons/facebook.svg',
-      href: 'https://www.facebook.com/mitoderm.israel',
+      href: 'https://www.facebook.com/mitoderm',
       label: 'Facebook',
     },
     {
       icon: '/images/icons/instagram.svg',
-      href: 'https://www.instagram.com/mitoderm_israel/',
+      href: 'https://www.instagram.com/mitoderm', //www.instagram.com/mitoderm',/',
       label: 'Instagram',
     },
     {
-      icon: '/images/icons/linkedin.svg',
-      href: 'https://www.linkedin.com/company/mitoderm',
+      icon: '/images/icons/tiktok.svg',
+      href: 'https://www.tiktok.com/@mitoderm',
       label: 'LinkedIn',
     },
   ];

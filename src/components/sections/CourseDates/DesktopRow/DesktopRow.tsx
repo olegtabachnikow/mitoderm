@@ -54,20 +54,26 @@ const DesktopRow: FC<Props> = ({ c, isSelected, onSelect, index }) => {
           height={12}
           alt="calendar icon"
         />
-        <span className={styles.metaText}>{c.date.toLocaleDateString()}</span>
+        <span className={styles.metaText}>
+          {new Date(c.date).toLocaleDateString('he-IL')}
+        </span>
       </div>
 
       <div className={styles.divider} />
 
       <div className={styles.metaRow}>
-        <Image
-          src="/images/icons/courseDateClock.svg"
-          className={styles.clockIcon}
-          width={12}
-          height={12}
-          alt="clock icon"
-        />
-        <span className={styles.metaText}>{c.time}</span>
+        {c.time.length ? (
+          <>
+            <Image
+              src="/images/icons/courseDateClock.svg"
+              className={styles.clockIcon}
+              width={12}
+              height={12}
+              alt="clock icon"
+            />
+            <span className={styles.metaText}>{c.time}</span>
+          </>
+        ) : null}
       </div>
       <CourseDatesCheckbox isSelected={isSelected} />
     </motion.button>

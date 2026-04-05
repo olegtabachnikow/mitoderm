@@ -15,11 +15,10 @@ if (!cached) {
 
 export async function connectDB() {
   if (cached.conn) return cached.conn;
-
+  
   if (!cached.promise) {
     cached.promise = mongoose.connect(MONGODB_URI);
   }
-
   cached.conn = await cached.promise;
   return cached.conn;
 }
@@ -28,6 +27,7 @@ export async function getDoctors() {
   await connectDB();
   const doctorList = await Doctor.find({})
   .sort({ name: 1 }).lean()
+
   const doctors = doctorList.map((doc) => ({
     _id: doc._id.toString(),
     name: doc.name,

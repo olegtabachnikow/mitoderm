@@ -55,19 +55,23 @@ const MobileRow: FC<Props> = ({ c, isSelected, onSelect, index }) => {
             alt="calendar icon"
           />
           <span className={styles.metaTextSm}>
-            {c.date.toLocaleDateString()}
+            {new Date(c.date).toLocaleDateString('he-IL')}
           </span>
         </div>
         <div className={styles.dividerSm} />
         <div className={styles.metaBarInner}>
-          <Image
-            src="/images/icons/courseDateClock.svg"
-            className={styles.metaIconSm}
-            width={12}
-            height={12}
-            alt="clock icon"
-          />
-          <span className={styles.metaTextSm}>{c.time}</span>
+          {c.time.length ? (
+            <>
+              <Image
+                src="/images/icons/courseDateClock.svg"
+                className={styles.metaIconSm}
+                width={12}
+                height={12}
+                alt="clock icon"
+              />
+              <span className={styles.metaTextSm}>{c.time}</span>
+            </>
+          ) : null}
         </div>
       </div>
     </motion.button>
