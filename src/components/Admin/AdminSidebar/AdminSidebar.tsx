@@ -1,18 +1,58 @@
 'use client';
 
+import { FC, CSSProperties } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useLocale } from 'next-intl';
 import Image from 'next/image';
 import styles from './AdminSidebar.module.scss';
+import { useSession } from 'next-auth/react';
+import { useMediaQuery } from 'react-responsive';
+import { useEffect, useState } from 'react';
+import { motion } from 'motion/react';
 
-export function AdminSidebar({ onLogout }: { onLogout?: () => void }) {
+const contentVariants = {
+  hidden: { opacity: 0, x: 100 },
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.3,
+    },
+  },
+};
+
+const asideVariants = {
+  hidden: { width: 86 },
+  show: {
+    width: 500,
+    transition: {
+      duration: 0.3,
+    },
+  },
+};
+
+const asideContentDisabledStyles: CSSProperties = {
+  pointerEvents: 'none',
+};
+
+interface Props {
+  onLogout: () => void;
+}
+
+const AdminSidebar: FC<Props> = ({ onLogout }) => {
+  const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
   const locale = useLocale();
+  const isMobile = useMediaQuery({ maxWidth: 768 });
+  const session = useSession();
+  const user = session.data?.user;
+
+  const asideDisablingStyles = isOpen ? {} : asideContentDisabledStyles;
 
   const navItems = [
     {
-      to: `/${locale}/admin/programs/`,
+      to: `/${locale}/admin/programs`,
       icon: '/images/icons/calendar.svg',
       label: 'Programs',
       desc: 'Training & workshops',
@@ -25,27 +65,65 @@ export function AdminSidebar({ onLogout }: { onLogout?: () => void }) {
     },
   ];
 
+  useEffect(() => {
+    if (!isMobile) {
+      setIsOpen(true);
+    }
+  }, [isMobile]);
+
+  const handleClick = () => {
+    isMobile ? setIsOpen((state) => !state) : null;
+  };
+
   return (
-    <aside className={styles.aside}>
-      <div className={styles.logoSection}>
+    <motion.aside
+      variants={asideVariants}
+      initial={isMobile ? 'hidden' : 'show'}
+      animate={isOpen ? 'show' : 'hidden'}
+      aria-label="Main Navigation"
+      onClick={handleClick}
+      className={`${styles.aside} ${isMobile ? styles.asideMobile : ''}`}
+    >
+      <div className={styles.logoSection} style={asideDisablingStyles}>
         <div className={styles.logoRow}>
           <div className={styles.logoMark}>
             <span className={styles.logoLetter}>M</span>
           </div>
           <div>
-            <h1 className={styles.title}>MITODERM</h1>
-            <p className={styles.subtitle}>Admin Panel</p>
+            <motion.h1
+              variants={contentVariants}
+              initial="hidden"
+              animate={isOpen ? 'show' : 'hidden'}
+              className={styles.title}
+            >
+              MITODERM
+            </motion.h1>
+            <motion.p
+              variants={contentVariants}
+              initial="hidden"
+              animate={isOpen ? 'show' : 'hidden'}
+              className={styles.subtitle}
+            >
+              Admin Panel
+            </motion.p>
           </div>
         </div>
       </div>
 
       <nav className={styles.nav}>
-        <p className={styles.navSectionLabel}>Management</p>
+        <motion.p
+          variants={contentVariants}
+          initial="hidden"
+          animate={isOpen ? 'show' : 'hidden'}
+          className={styles.navSectionLabel}
+        >
+          Management
+        </motion.p>
         {navItems.map((item) => {
-          const isActive =
-            pathname === item.to || pathname.startsWith(item.to + '/');
+          const isActive = pathname === item.to;
           return (
             <Link
+              style={asideDisablingStyles}
               key={item.to}
               href={item.to}
               className={`${styles.navLink} ${isActive ? styles.navLinkActive : styles.navLinkInactive}`}
@@ -55,20 +133,21 @@ export function AdminSidebar({ onLogout }: { onLogout?: () => void }) {
               >
                 <Image
                   src={item.icon}
-                  className={styles.navIcon}
+                  className={`${styles.navIcon} ${isActive ? styles.navIconActive : ''}`}
                   width={18}
                   height={18}
                   alt={item.label}
                 />
               </div>
-              <div>
+              <motion.div
+                variants={contentVariants}
+                initial="hidden"
+                animate={isOpen ? 'show' : 'hidden'}
+                className={styles.navLabelContainer}
+              >
                 <span className={styles.navLabel}>{item.label}</span>
-                <span
-                  className={`${styles.navDesc} ${isActive ? styles.navDescActive : styles.navDescInactive}`}
-                >
-                  {item.desc}
-                </span>
-              </div>
+                <span className={styles.navDesc}>{item.desc}</span>
+              </motion.div>
             </Link>
           );
         })}
@@ -76,13 +155,34 @@ export function AdminSidebar({ onLogout }: { onLogout?: () => void }) {
 
       <div className={styles.footer}>
         <div className={styles.userRow}>
-          <div className={styles.avatar}>AD</div>
+          <div className={styles.avatar} style={asideDisablingStyles}>
+            AD
+          </div>
           <div className={styles.userMeta}>
-            <p className={styles.userName}>Admin</p>
-            <p className={styles.userEmail}>admin@mitoderm.com</p>
+            <motion.p
+              variants={contentVariants}
+              initial="hidden"
+              animate={isOpen ? 'show' : 'hidden'}
+              className={styles.userName}
+            >
+              Admin
+            </motion.p>
+            <motion.p
+              variants={contentVariants}
+              initial="hidden"
+              animate={isOpen ? 'show' : 'hidden'}
+              className={styles.userEmail}
+            >
+              {user?.email}
+            </motion.p>
           </div>
         </div>
-        <button type="button" onClick={onLogout} className={styles.signOut}>
+        <button
+          type="button"
+          onClick={onLogout}
+          className={styles.signOut}
+          style={asideDisablingStyles}
+        >
           <Image
             src="/images/icons/logOutIcon.svg"
             className={styles.signOutIcon}
@@ -90,9 +190,17 @@ export function AdminSidebar({ onLogout }: { onLogout?: () => void }) {
             height={16}
             alt="sign out"
           />{' '}
-          Sign Out
+          <motion.span
+            variants={contentVariants}
+            initial="hidden"
+            animate={isOpen ? 'show' : 'hidden'}
+          >
+            Sign Out
+          </motion.span>
         </button>
       </div>
-    </aside>
+    </motion.aside>
   );
-}
+};
+
+export default AdminSidebar;

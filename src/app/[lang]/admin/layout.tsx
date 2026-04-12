@@ -1,29 +1,19 @@
-// 'use client';
-
-import { useState } from 'react';
-import { AdminSidebar } from '@/components/Admin/AdminSidebar/AdminSidebar';
-import { AdminLoginPage } from '@/components/Admin/AdminLoginPage/AdminLoginPage';
+'use client';
+import { FC } from 'react';
 import styles from './layout.module.scss';
+import { SessionProvider } from 'next-auth/react';
+import AdminSessionWrapper from '@/components/Admin/AdminSessionWrapper/AdminSessionWrapper';
 
-export default function AdminLayout({
-  children,
-}: {
+interface Props {
   children: React.ReactNode;
-}) {
-  // const [loggedIn, setLoggedIn] = useState(false);
-
-  // if (true) {
-  //   return <AdminLoginPage onLogin={() => setLoggedIn(true)} />;
-  //   return <AdminLoginPage onLogin={() => {}} />;
-  // }
-
-  return (
-    <div className={styles.root}>
-      {/* <AdminSidebar onLogout={() => setLoggedIn(false)} /> */}
-      <AdminSidebar />
-      <main className={styles.main}>
-        <div className={styles.content}>{children}</div>
-      </main>
-    </div>
-  );
 }
+
+const AdminLayout: FC<Props> = ({ children }) => {
+  return (
+    <SessionProvider>
+      <AdminSessionWrapper>{children}</AdminSessionWrapper>
+    </SessionProvider>
+  );
+};
+
+export default AdminLayout;

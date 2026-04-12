@@ -1,32 +1,65 @@
 'use client';
 
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import styles from './AdminLoginPage.module.scss';
 import Image from 'next/image';
+import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
-export function AdminLoginPage({ onLogin }: { onLogin: () => void }) {
+const AdminLoginPage: FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // const handleSubmit = (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   setError('');
+  //   if (!email.trim()) {
+  //     setError('Enter your email');
+  //     return;
+  //   }
+  //   if (!password.trim()) {
+  //     setError('Enter your password');
+  //     return;
+  //   }
+  //   setLoading(true);
+  //   setTimeout(() => {
+  //     setLoading(false);
+  //     onLogin(email, password);
+  //   }, 800);
+  // };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setError('');
-    if (!email.trim()) {
-      setError('Enter your email');
-      return;
-    }
-    if (!password.trim()) {
-      setError('Enter your password');
-      return;
-    }
     setLoading(true);
-    setTimeout(() => {
+    // setError(null);
+
+    try {
+      const result = await signIn('credentials', {
+        redirect: false,
+        email,
+        password,
+      });
+
+      // const result = await fetch('/api/auth/register', {
+      //   method: 'POST',
+      //   body: JSON.stringify({ email, password }),
+      // }).then((res) => res.json());
+
       setLoading(false);
-      onLogin();
-    }, 800);
+
+      if (result?.error) {
+        setError(result.error);
+      } else {
+        router.refresh();
+      }
+    } catch (err: any) {
+      setLoading(false);
+      setError('Login failed');
+    }
   };
 
   return (
@@ -40,11 +73,11 @@ export function AdminLoginPage({ onLogin }: { onLogin: () => void }) {
           <p className={styles.hero}>
             Manage your programs,
             <br />
-            content & media
+            content
             <br />
             <span className={styles.heroAccent}>in one place.</span>
           </p>
-          <div className={styles.stats}>
+          {/* <div className={styles.stats}>
             {[
               { n: '48', l: 'Content items' },
               { n: '4', l: 'Programs' },
@@ -55,7 +88,7 @@ export function AdminLoginPage({ onLogin }: { onLogin: () => void }) {
                 <p className={styles.statLabel}>{s.l}</p>
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
         <p className={styles.footerNote}>
           &copy; 2026 MitoDerm. All rights reserved.
@@ -126,7 +159,7 @@ export function AdminLoginPage({ onLogin }: { onLogin: () => void }) {
                 >
                   {showPassword ? (
                     <Image
-                      src="/images/icons/eyeOff.svg"
+                      src="/images/icons/eye.svg"
                       width={16}
                       height={16}
                       alt="eye off"
@@ -134,7 +167,7 @@ export function AdminLoginPage({ onLogin }: { onLogin: () => void }) {
                     />
                   ) : (
                     <Image
-                      src="/images/icons/eye.svg"
+                      src="/images/icons/eyeOff.svg"
                       width={16}
                       height={16}
                       alt="eye"
@@ -145,7 +178,7 @@ export function AdminLoginPage({ onLogin }: { onLogin: () => void }) {
               </div>
             </div>
 
-            <div className={styles.rowBetween}>
+            {/* <div className={styles.rowBetween}>
               <label className={styles.rememberLabel}>
                 <input type="checkbox" className={styles.checkbox} />
                 <span className={styles.rememberText}>Remember me</span>
@@ -153,7 +186,7 @@ export function AdminLoginPage({ onLogin }: { onLogin: () => void }) {
               <button type="button" className={styles.linkForgot}>
                 Forgot password?
               </button>
-            </div>
+            </div> */}
 
             {error && <p className={styles.error}>{error}</p>}
 
@@ -178,4 +211,6 @@ export function AdminLoginPage({ onLogin }: { onLogin: () => void }) {
       </div>
     </div>
   );
-}
+};
+
+export default AdminLoginPage;
