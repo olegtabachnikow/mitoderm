@@ -6,6 +6,7 @@ import styles from './AdminModal.module.scss';
 import Image from 'next/image';
 import type { WorkshopVariant, Event } from '@/types';
 import { useRouter } from 'next/navigation';
+import { revalidatePath } from 'next/cache';
 
 interface FormData {
   type: WorkshopVariant;
@@ -142,6 +143,12 @@ const AdminModal: FC<Props> = ({
       isAvailable: true,
     });
     router.refresh();
+    revalidatePath('he/admin/programs');
+    revalidatePath('en/admin/programs');
+    revalidatePath('ru/admin/programs');
+    revalidatePath('he/event');
+    revalidatePath('en/event');
+    revalidatePath('ru/event');
     setEditingProgram(null);
     onClose();
   };
