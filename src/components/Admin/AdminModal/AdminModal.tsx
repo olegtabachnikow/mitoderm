@@ -131,6 +131,7 @@ const AdminModal: FC<Props> = ({
       }),
     });
     const data = await response.json();
+    console.log(data);
 
     setIsSubmitting(false);
 
@@ -142,14 +143,10 @@ const AdminModal: FC<Props> = ({
       to: '',
       isAvailable: true,
     });
-    router.refresh();
-    revalidatePath('he/admin/programs');
-    revalidatePath('en/admin/programs');
-    revalidatePath('ru/admin/programs');
-    revalidatePath('he/event');
-    revalidatePath('en/event');
-    revalidatePath('ru/event');
+
     setEditingProgram(null);
+
+    router.refresh();
     onClose();
   };
 
