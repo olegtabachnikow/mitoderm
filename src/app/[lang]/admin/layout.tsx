@@ -1,6 +1,5 @@
 'use client';
 import { FC } from 'react';
-import styles from './layout.module.scss';
 import { SessionProvider } from 'next-auth/react';
 import AdminSessionWrapper from '@/components/Admin/AdminSessionWrapper/AdminSessionWrapper';
 

@@ -107,6 +107,12 @@ $goldDark: #be800c;
   }
 }
 
+.field {
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+}
+
 .label {
   margin-bottom: 1rem;
   display: flex;
@@ -205,8 +211,14 @@ $goldDark: #be800c;
 .timeRow {
   display: flex;
   gap: 2rem;
+  @media screen and (max-width: 768px) {
+    justify-content: space-between;
+  }
   .field {
     width: 50%;
+    @media screen and (max-width: 768px) {
+      width: 50%;
+    }
   }
 }
 

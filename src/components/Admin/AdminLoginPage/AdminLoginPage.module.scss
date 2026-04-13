@@ -9,9 +9,6 @@ $destructive: #ef4444;
 .root {
   min-height: 100vh;
   display: flex;
-  max-height: 100vh;
-  max-height: 100dvh;
-  overflow: hidden;
 }
 
 .leftPanel {
@@ -78,6 +75,9 @@ $destructive: #ef4444;
   justify-content: center;
   padding: 32px;
   background: $bgPanel;
+  max-height: 100vh;
+  max-height: 100dvh;
+  overflow: hidden;
 }
 
 .formWrap {

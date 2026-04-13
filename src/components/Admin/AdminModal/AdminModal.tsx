@@ -6,7 +6,7 @@ import styles from './AdminModal.module.scss';
 import Image from 'next/image';
 import type { WorkshopVariant, Event } from '@/types';
 import { useRouter } from 'next/navigation';
-import { revalidatePath } from 'next/cache';
+import { useTranslations } from 'next-intl';
 
 interface FormData {
   type: WorkshopVariant;
@@ -48,10 +48,21 @@ const AdminModal: FC<Props> = ({
   onClose,
 }) => {
   const [formData, setFormData] = useState<FormData>(initialFormData);
-
+  const t = useTranslations();
   const [errors, setErrors] = useState<Partial<FormData>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
+
+  const getCategoryText = (category: number | string) => {
+    switch (parseInt(category.toString())) {
+      case 990:
+        return t('stickyBar.workshop');
+      case 480:
+        return t('stickyBar.hours480');
+      case 180:
+        return t('stickyBar.hours180');
+    }
+  };
 
   useEffect(() => {
     if (!editingProgram) {
@@ -212,9 +223,9 @@ const AdminModal: FC<Props> = ({
                     onChange={(e) => handleChange('type', e.target.value)}
                     className={`${styles.input} ${styles.select} ${errors.type && styles.inputError}`}
                   >
-                    <option value="990">990</option>
-                    <option value="180">180</option>
-                    <option value="480">480</option>
+                    <option value="990">{getCategoryText(990)}</option>
+                    <option value="180">{getCategoryText(180)}</option>
+                    <option value="480">{getCategoryText(480)}</option>
                   </select>
                   {errors.type && (
                     <motion.p

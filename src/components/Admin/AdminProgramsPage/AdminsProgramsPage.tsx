@@ -8,6 +8,8 @@ import { useMediaQuery } from 'react-responsive';
 import AdminModal from '../AdminModal/AdminModal';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
+import AdminListItem from '../AdminListItem/AdminListItem';
+import AdminAddButton from '../AdminAddButton/AdminAddButton';
 
 interface Props {
   events: Event[];
@@ -31,7 +33,7 @@ const AdminProgramsPage: FC<Props> = ({ events }) => {
     }
   };
 
-  const handleEdit = (program: Event) => {
+  const handleEventEdit = (program: Event) => {
     setEditingProgram(program);
     setIsModalOpen(true);
   };
@@ -70,79 +72,42 @@ const AdminProgramsPage: FC<Props> = ({ events }) => {
               Manage training programs, schedules and content
             </p>
           </div>
-          <button
-            type="button"
-            className={styles.addButton}
+          <AdminAddButton
             onClick={() => setIsModalOpen(true)}
-          >
-            <Image
-              src="/images/icons/plus.svg"
-              alt="Add Program"
-              width={16}
-              height={16}
-            />
-            Add Program
-          </button>
+            text="Add Program"
+          />
         </div>
 
         <div className={styles.eventList}>
           {events.map((prog) => {
             return (
-              <div key={prog.id} className={styles.programCard}>
-                <div className={styles.cardHeaderRow}>
-                  <div className={styles.cardBodyMain}>
-                    <div className={styles.badgeRow}>
-                      <span className={styles.statusBadge}>
-                        {new Date(prog.date).toLocaleDateString('he-IL')}
-                      </span>
-                      <span className={styles.cityBadge}>{prog.time}</span>
-                    </div>
-                    <h3 className={styles.programTitle}>
-                      {getCategoryText(prog.category)}
-                    </h3>
-                    <div className={styles.metaRow}>
-                      <span className={styles.metaItem}>
-                        <Image
-                          src="/images/icons/mapPin.svg"
-                          className={styles.icon3}
-                          alt="map pin"
-                          width={16}
-                          height={16}
-                        />
-                        {prog.city}
-                      </span>
-                    </div>
-                  </div>
-                  <div className={styles.cardActions}>
-                    <button
-                      type="button"
-                      className={styles.editButton}
-                      onClick={() => handleEdit(prog)}
-                    >
-                      <Image
-                        src="/images/icons/edit.svg"
-                        className={styles.iconActionButton}
-                        alt="Edit"
-                        width={16}
-                        height={16}
-                      />
-                    </button>
-                    <button
-                      type="button"
-                      className={styles.deleteButton}
-                      onClick={() => handleDelete(prog.id)}
-                    >
-                      <Image
-                        src="/images/icons/delete.svg"
-                        className={styles.iconActionButton}
-                        alt="Delete"
-                        width={16}
-                        height={16}
-                      />
-                    </button>
-                  </div>
+              <AdminListItem
+                key={prog.id}
+                onEdit={() => handleEventEdit(prog)}
+                onDelete={() => handleDelete(prog.id)}
+              >
+                <div className={styles.badgeRow}>
+                  <span className={styles.statusBadge}>
+                    {new Date(prog.date).toLocaleDateString('he-IL')}
+                  </span>
+                  <span className={styles.cityBadge}>{prog.time}</span>
                 </div>
-              </div>
+                <h3 className={styles.programTitle}>
+                  {getCategoryText(prog.category)}
+                </h3>
+                <div className={styles.metaRow}>
+                  <span className={styles.metaItem}>
+                    <Image
+                      src="/images/icons/mapPin.svg"
+                      className={styles.icon3}
+                      alt="map pin"
+                      width={16}
+                      height={16}
+                    />
+                    {prog.city}
+                  </span>
+                </div>
+              </AdminListItem>
             );
           })}
         </div>
