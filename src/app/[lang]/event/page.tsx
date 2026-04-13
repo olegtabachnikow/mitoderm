@@ -1,18 +1,11 @@
 import { unstable_setRequestLocale } from 'next-intl/server';
 import { Metadata } from 'next';
-// import dynamic from 'next/dynamic';
 import Script from 'next/script';
 import { getEventSchema } from '@/utils/structuredData';
 import { getEvents } from '@/lib/mongodb';
 import WorkShop from '@/components/sections/WorkShop/WorkShop';
 
 export const dynamic = 'force-dynamic';
-// const WorkShop = dynamic(
-//   () => import('@/components/sections/WorkShop/WorkShop'),
-//   {
-//     ssr: false,
-//   },
-// );
 
 const baseUrl = 'https://mitoderm.com';
 

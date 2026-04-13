@@ -54,7 +54,6 @@ const AdminModal: FC<Props> = ({
   const router = useRouter();
 
   useEffect(() => {
-    console.log(editingProgram);
     if (!editingProgram) {
       setFormData(initialFormData);
       return;
@@ -131,7 +130,6 @@ const AdminModal: FC<Props> = ({
       }),
     });
     const data = await response.json();
-    console.log(data);
 
     setIsSubmitting(false);
 

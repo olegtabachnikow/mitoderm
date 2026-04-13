@@ -9,6 +9,9 @@ $destructive: #ef4444;
 .root {
   min-height: 100vh;
   display: flex;
+  max-height: 100vh;
+  max-height: 100dvh;
+  overflow: hidden;
 }
 
 .leftPanel {

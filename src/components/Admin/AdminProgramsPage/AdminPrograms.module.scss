@@ -87,6 +87,9 @@ $accentHover: #6366f1;
   &:hover {
     background-color: $hoverRow;
   }
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
 }
 
 .cardBodyMain {

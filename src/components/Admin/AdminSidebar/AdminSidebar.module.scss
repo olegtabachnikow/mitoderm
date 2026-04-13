@@ -12,6 +12,10 @@ $accentDeep: #6366f1;
   position: sticky;
   top: 0;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+  @media (max-width: 768px) {
+    max-height: 100vh;
+    max-height: 100dvh;
+  }
 }
 
 .asideMobile,

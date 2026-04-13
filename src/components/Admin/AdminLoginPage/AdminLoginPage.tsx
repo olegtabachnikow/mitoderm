@@ -14,28 +14,9 @@ const AdminLoginPage: FC = () => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  // const handleSubmit = (e: React.FormEvent) => {
-  //   e.preventDefault();
-  //   setError('');
-  //   if (!email.trim()) {
-  //     setError('Enter your email');
-  //     return;
-  //   }
-  //   if (!password.trim()) {
-  //     setError('Enter your password');
-  //     return;
-  //   }
-  //   setLoading(true);
-  //   setTimeout(() => {
-  //     setLoading(false);
-  //     onLogin(email, password);
-  //   }, 800);
-  // };
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-    // setError(null);
 
     try {
       const result = await signIn('credentials', {
@@ -43,11 +24,6 @@ const AdminLoginPage: FC = () => {
         email,
         password,
       });
-
-      // const result = await fetch('/api/auth/register', {
-      //   method: 'POST',
-      //   body: JSON.stringify({ email, password }),
-      // }).then((res) => res.json());
 
       setLoading(false);
 
@@ -77,18 +53,6 @@ const AdminLoginPage: FC = () => {
             <br />
             <span className={styles.heroAccent}>in one place.</span>
           </p>
-          {/* <div className={styles.stats}>
-            {[
-              { n: '48', l: 'Content items' },
-              { n: '4', l: 'Programs' },
-              { n: '3', l: 'Languages' },
-            ].map((s) => (
-              <div key={s.l}>
-                <p className={styles.statValue}>{s.n}</p>
-                <p className={styles.statLabel}>{s.l}</p>
-              </div>
-            ))}
-          </div> */}
         </div>
         <p className={styles.footerNote}>
           &copy; 2026 MitoDerm. All rights reserved.
@@ -177,16 +141,6 @@ const AdminLoginPage: FC = () => {
                 </button>
               </div>
             </div>
-
-            {/* <div className={styles.rowBetween}>
-              <label className={styles.rememberLabel}>
-                <input type="checkbox" className={styles.checkbox} />
-                <span className={styles.rememberText}>Remember me</span>
-              </label>
-              <button type="button" className={styles.linkForgot}>
-                Forgot password?
-              </button>
-            </div> */}
 
             {error && <p className={styles.error}>{error}</p>}
 

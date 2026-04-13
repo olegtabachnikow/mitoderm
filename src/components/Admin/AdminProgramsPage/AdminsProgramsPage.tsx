@@ -7,16 +7,30 @@ import styles from './AdminPrograms.module.scss';
 import { useMediaQuery } from 'react-responsive';
 import AdminModal from '../AdminModal/AdminModal';
 import { useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 
 interface Props {
   events: Event[];
 }
 
 const AdminProgramsPage: FC<Props> = ({ events }) => {
+  const t = useTranslations('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingProgram, setEditingProgram] = useState<Event | null>(null);
   const isMobile = useMediaQuery({ maxWidth: 768 });
   const router = useRouter();
+
+  const getCategoryText = (category: number | string) => {
+    switch (parseInt(category.toString())) {
+      case 990:
+        return t('stickyBar.workshop');
+      case 480:
+        return t('stickyBar.hours480');
+      case 180:
+        return t('stickyBar.hours180');
+    }
+  };
+
   const handleEdit = (program: Event) => {
     setEditingProgram(program);
     setIsModalOpen(true);
@@ -83,7 +97,9 @@ const AdminProgramsPage: FC<Props> = ({ events }) => {
                       </span>
                       <span className={styles.cityBadge}>{prog.time}</span>
                     </div>
-                    <h3 className={styles.programTitle}>{prog.city}</h3>
+                    <h3 className={styles.programTitle}>
+                      {getCategoryText(prog.category)}
+                    </h3>
                     <div className={styles.metaRow}>
                       <span className={styles.metaItem}>
                         <Image
