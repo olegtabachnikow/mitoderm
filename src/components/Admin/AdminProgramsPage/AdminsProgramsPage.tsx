@@ -17,7 +17,7 @@ interface Props {
 }
 
 const AdminProgramsPage: FC<Props> = ({ events }) => {
-  const t = useTranslations('');
+  const t = useTranslations();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingProgram, setEditingProgram] = useState<Event | null>(null);
   const isMobile = useMediaQuery({ maxWidth: 768 });
@@ -66,16 +66,16 @@ const AdminProgramsPage: FC<Props> = ({ events }) => {
       <div className={styles.root}>
         <div className={styles.headerRow}>
           <div>
-            <h1 className={styles.title}>Programs</h1>
+            <h1 className={styles.title}>{t('admin.programs')}</h1>
             <p
               className={`${styles.subtitle} ${isMobile ? styles.subtitleMobile : ''}`}
             >
-              Manage training programs, schedules and content
+              {t('admin.programsDescPageText')}
             </p>
           </div>
           <AdminAddButton
             onClick={() => setIsModalOpen(true)}
-            text="Add Program"
+            text={t('admin.addProgram')}
           />
         </div>
 
@@ -116,8 +116,8 @@ const AdminProgramsPage: FC<Props> = ({ events }) => {
       <AdminModal
         isOpen={isModalOpen}
         onClose={handleCloseModal}
-        title="Add Program"
-        subtitle="Add a new program to the list"
+        title={t('admin.addProgram')}
+        subtitle={t('admin.addProgramSubtitle')}
       >
         <EventEditForm
           editingProgram={editingProgram}

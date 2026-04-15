@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { DoctorType } from '@/types';
 import AdminFormSubmitButton from '@/components/Admin/AdminFormSubmitButton/AdminFormSubmitButton';
 import { motion } from 'motion/react';
+import { useTranslations } from 'next-intl';
 
 export const initialFormData: DoctorType = {
   _id: '',
@@ -34,6 +35,7 @@ type DoctorFormField =
   | 'instagram';
 
 const DoctorForm: FC<Props> = ({ doctor, setDoctor, onClose, isOpen }) => {
+  const t = useTranslations();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
   const [formData, setFormData] = useState<DoctorType>(
@@ -82,15 +84,15 @@ const DoctorForm: FC<Props> = ({ doctor, setDoctor, onClose, isOpen }) => {
     const newErrors: Partial<Record<DoctorFormField, string>> = {};
 
     if (!formData.name.trim()) {
-      newErrors.name = 'Name is required';
+      newErrors.name = t('admin.nameRequired');
     }
 
     if (!formData.city.trim()) {
-      newErrors.city = 'City is required';
+      newErrors.city = t('admin.cityRequired');
     }
 
     if (!formData.contact.trim()) {
-      newErrors.contact = 'Phone number is required';
+      newErrors.contact = t('admin.phoneNumberRequired');
     }
 
     setErrors(newErrors);
@@ -146,13 +148,13 @@ const DoctorForm: FC<Props> = ({ doctor, setDoctor, onClose, isOpen }) => {
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <label className={styles.label} htmlFor="username">
-        Full name
+        {t('admin.fullName')}
       </label>
       <input
         id="username"
         name="name"
         type="text"
-        placeholder="Full name"
+        placeholder={t('admin.fullName')}
         onChange={handleChange}
         defaultValue={doctor?.name || ''}
       />
@@ -166,13 +168,13 @@ const DoctorForm: FC<Props> = ({ doctor, setDoctor, onClose, isOpen }) => {
         </motion.p>
       )}
       <label className={styles.label} htmlFor="city">
-        City
+        {t('admin.city')}
       </label>
       <input
         id="city"
         name="city"
         type="text"
-        placeholder="City"
+        placeholder={t('admin.city')}
         onChange={handleChange}
         defaultValue={doctor?.city || ''}
       />
@@ -186,13 +188,13 @@ const DoctorForm: FC<Props> = ({ doctor, setDoctor, onClose, isOpen }) => {
         </motion.p>
       )}
       <label className={styles.label} htmlFor="contact">
-        Phone number
+        {t('admin.phoneNumber')}
       </label>
       <input
         id="contact"
         name="contact"
         type="tel"
-        placeholder="Phone number"
+        placeholder={t('admin.phoneNumber')}
         onChange={handleChange}
         defaultValue={doctor?.contact || ''}
       />
@@ -206,7 +208,7 @@ const DoctorForm: FC<Props> = ({ doctor, setDoctor, onClose, isOpen }) => {
         </motion.p>
       )}
       <label className={styles.label} htmlFor="profession">
-        Expertise
+        {t('admin.expertise')}
       </label>
       <select
         id="profession"
@@ -215,31 +217,31 @@ const DoctorForm: FC<Props> = ({ doctor, setDoctor, onClose, isOpen }) => {
         defaultValue={doctor?.profession || '1'}
       >
         <option value="" disabled>
-          Select Expertise
+          {t('admin.selectExpertise')}
         </option>
         <option value="1">Facial treatments</option>
         <option value="2">Hair treatments</option>
         <option value="3">Facial & Hair Treatments</option>
       </select>
       <label className={styles.label} htmlFor="area">
-        Area
+        {t('admin.area')}
       </label>
       <select id="area" name="area" onChange={handleChange}>
         <option value="" disabled>
-          Select area
+          {t('admin.selectArea')}
         </option>
         <option value="צפון">North</option>
         <option value="מרכז">Center</option>
         <option value="דרום">South</option>
       </select>
       <label className={styles.label} htmlFor="instagram">
-        Instagram
+        {t('admin.instagram')}
       </label>
       <input
         id="instagram"
         name="instagram"
         type="text"
-        placeholder="Instagram"
+        placeholder={t('admin.instagram')}
         onChange={handleChange}
         defaultValue={doctor?.instagram || ''}
       />

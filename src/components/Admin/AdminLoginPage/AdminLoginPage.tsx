@@ -5,6 +5,7 @@ import styles from './AdminLoginPage.module.scss';
 import Image from 'next/image';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 
 const AdminLoginPage: FC = () => {
   const [email, setEmail] = useState('');
@@ -13,6 +14,7 @@ const AdminLoginPage: FC = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const t = useTranslations();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -43,15 +45,15 @@ const AdminLoginPage: FC = () => {
       <div className={styles.leftPanel}>
         <div>
           <h1 className={styles.brandTitle}>MITODERM</h1>
-          <p className={styles.brandTagline}>Admin Panel</p>
+          <p className={styles.brandTagline}>{t('admin.adminPanel')}</p>
         </div>
         <div>
           <p className={styles.hero}>
-            Manage your programs,
+            {t('admin.managePrograms')}
             <br />
-            content
+            {t('admin.content')}
             <br />
-            <span className={styles.heroAccent}>in one place.</span>
+            <span className={styles.heroAccent}>{t('admin.inOnePlace')}.</span>
           </p>
         </div>
         <p className={styles.footerNote}>
@@ -63,16 +65,16 @@ const AdminLoginPage: FC = () => {
         <div className={styles.formWrap}>
           <div className={styles.mobileBrand}>
             <h1 className={styles.mobileTitle}>MITODERM</h1>
-            <p className={styles.mobileTagline}>Admin Panel</p>
+            <p className={styles.mobileTagline}>{t('admin.adminPanel')}</p>
           </div>
 
-          <h2 className={styles.welcome}>Welcome back</h2>
-          <p className={styles.welcomeSub}>Sign in to your admin account</p>
+          <h2 className={styles.welcome}>{t('admin.welcomeBack')}</h2>
+          <p className={styles.welcomeSub}>{t('admin.signInToYourAccount')}</p>
 
           <form onSubmit={handleSubmit} className={styles.form}>
             <div>
               <label className={styles.fieldLabel} htmlFor="admin-email">
-                Email
+                {t('admin.email')}
               </label>
               <div className={styles.inputWrap}>
                 <Image
@@ -96,7 +98,7 @@ const AdminLoginPage: FC = () => {
 
             <div>
               <label className={styles.fieldLabel} htmlFor="admin-password">
-                Password
+                {t('admin.password')}
               </label>
               <div className={styles.inputWrap}>
                 <Image
@@ -149,7 +151,7 @@ const AdminLoginPage: FC = () => {
                 <div className={styles.spinner} />
               ) : (
                 <>
-                  Sign In{' '}
+                  {t('admin.signIn')}
                   <Image
                     src="/images/icons/adminArrowRight.svg"
                     width={16}

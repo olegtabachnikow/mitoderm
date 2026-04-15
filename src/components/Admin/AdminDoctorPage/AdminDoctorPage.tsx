@@ -18,6 +18,7 @@ const AdminDoctorPage: FC<Props> = ({ doctors }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editedDoctor, setEditedDoctor] = useState<DoctorType | null>(null);
   const router = useRouter();
+  const t = useTranslations();
 
   const handleClose = () => {
     setIsModalOpen(false);
@@ -45,22 +46,21 @@ const AdminDoctorPage: FC<Props> = ({ doctors }) => {
     }
   };
 
-  const t = useTranslations();
   const isMobile = useMediaQuery({ maxWidth: 768 });
   return (
     <main className={styles.root}>
       <div className={styles.headerRow}>
         <div>
-          <h1 className={styles.title}>Doctors</h1>
+          <h1 className={styles.title}>{t('admin.doctors')}</h1>
           <p
             className={`${styles.subtitle} ${isMobile ? styles.subtitleMobile : ''}`}
           >
-            Manage list of doctors
+            {t('admin.doctorsDescPageText')}
           </p>
         </div>
         <AdminAddButton
           onClick={() => setIsModalOpen(true)}
-          text="Add Doctor"
+          text={t('admin.addDoctor')}
         />
       </div>
       <div className={styles.doctorList}>
@@ -72,27 +72,39 @@ const AdminDoctorPage: FC<Props> = ({ doctors }) => {
           >
             <div className={styles.doctorInfo}>
               <span className={styles.doctorInfoItem}>
-                <span className={styles.doctorInfoItemLabel}>Name:</span>{' '}
+                <span className={styles.doctorInfoItemLabel}>
+                  {t('admin.name')}:
+                </span>{' '}
                 {doctor.name}
               </span>
               <span className={styles.doctorInfoItem}>
-                <span className={styles.doctorInfoItemLabel}>City:</span>{' '}
+                <span className={styles.doctorInfoItemLabel}>
+                  {t('admin.city')}:
+                </span>{' '}
                 {doctor.city}
               </span>
               <span className={styles.doctorInfoItem}>
-                <span className={styles.doctorInfoItemLabel}>Area:</span>{' '}
+                <span className={styles.doctorInfoItemLabel}>
+                  {t('admin.area')}:
+                </span>{' '}
                 {doctor.area}
               </span>
               <span className={styles.doctorInfoItem}>
-                <span className={styles.doctorInfoItemLabel}>Profession:</span>{' '}
+                <span className={styles.doctorInfoItemLabel}>
+                  {t('admin.profession')}:
+                </span>
                 {doctor.profession}
               </span>
               <span className={styles.doctorInfoItem}>
-                <span className={styles.doctorInfoItemLabel}>Contact:</span>{' '}
+                <span className={styles.doctorInfoItemLabel}>
+                  {t('admin.contact')}:
+                </span>
                 {doctor.contact}
               </span>
               <span className={styles.doctorInfoItem}>
-                <span className={styles.doctorInfoItemLabel}>Instagram:</span>{' '}
+                <span className={styles.doctorInfoItemLabel}>
+                  {t('admin.instagram')}:
+                </span>{' '}
                 {doctor.instagram}
               </span>
             </div>
@@ -102,8 +114,8 @@ const AdminDoctorPage: FC<Props> = ({ doctors }) => {
       <AdminModal
         isOpen={isModalOpen}
         onClose={handleClose}
-        title="Add Doctor"
-        subtitle="Add a new doctor to the list"
+        title={t('admin.addDoctor')}
+        subtitle={t('admin.addDoctorSubtitle')}
       >
         <DoctorForm
           doctor={editedDoctor}

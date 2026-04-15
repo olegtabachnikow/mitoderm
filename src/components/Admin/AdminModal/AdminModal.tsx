@@ -4,6 +4,7 @@ import { FC, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import styles from './AdminModal.module.scss';
 import Image from 'next/image';
+import { useLocale } from 'next-intl';
 
 interface Props {
   children: React.ReactNode;
@@ -20,6 +21,8 @@ const AdminModal: FC<Props> = ({
   title,
   subtitle,
 }) => {
+  const locale = useLocale();
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -54,7 +57,7 @@ const AdminModal: FC<Props> = ({
                   whileHover={{ scale: 1.1, rotate: 90 }}
                   whileTap={{ scale: 0.9 }}
                   onClick={onClose}
-                  className={styles.closeBtn}
+                  className={`${styles.closeBtn} ${locale === 'he' && styles.he}`}
                 >
                   <Image
                     src="/images/icons/x.svg"

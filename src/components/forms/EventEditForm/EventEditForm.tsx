@@ -107,24 +107,24 @@ const EventEditForm: FC<Props> = ({
     };
 
     if (!formData.city.trim()) {
-      newErrors.city = 'City is required';
+      newErrors.city = t('admin.cityRequired');
     }
 
     if (!formData.date.trim()) {
-      newErrors.date = 'Date is required';
+      newErrors.date = t('admin.dateRequired');
     }
 
     if (!formData.from.trim()) {
-      newErrors.from = 'Time is required';
+      newErrors.from = t('admin.timeRequired');
     } else if (!isValidTimeRange(formData.from, formData.to)) {
-      newErrors.from = 'Incorrect time range';
+      newErrors.from = t('admin.incorrectTimeRange');
       newErrors.to = ' ';
     }
 
     if (!formData.to.trim()) {
-      newErrors.to = 'Time is required';
+      newErrors.to = t('admin.timeRequired');
     } else if (!isValidTimeRange(formData.from, formData.to)) {
-      newErrors.from = 'Incorrect time range';
+      newErrors.from = t('admin.incorrectTimeRange');
       newErrors.to = ' ';
     }
 
@@ -176,7 +176,7 @@ const EventEditForm: FC<Props> = ({
     <form onSubmit={handleSubmit} className={styles.form}>
       <div className={styles.field}>
         <label className={styles.label}>
-          <span>Type</span>
+          <span>{t('admin.type')}</span>
         </label>
         <select
           value={formData.type}
@@ -199,14 +199,14 @@ const EventEditForm: FC<Props> = ({
       </div>
       <div className={styles.field}>
         <label className={styles.label}>
-          <span>City</span>
+          <span>{t('admin.city')}</span>
         </label>
         <input
           type="text"
           value={formData.city}
           onChange={(e) => handleChange('city', e.target.value)}
           className={`${styles.input} ${errors.city && styles.inputError}`}
-          placeholder="Enter city"
+          placeholder={t('admin.enterCity')}
         />
         {errors.city && (
           <motion.p
@@ -221,7 +221,7 @@ const EventEditForm: FC<Props> = ({
 
       <div className={styles.field}>
         <span className={styles.label}>
-          <span>Date</span>
+          <span>{t('admin.date')}</span>
         </span>
         <span
           id="date"
@@ -272,7 +272,7 @@ const EventEditForm: FC<Props> = ({
       <div className={styles.timeRow}>
         <div className={styles.field}>
           <label htmlFor="from" className={styles.label}>
-            <span>From</span>
+            <span>{t('admin.from')}</span>
           </label>
           <input
             name="from"
@@ -296,7 +296,7 @@ const EventEditForm: FC<Props> = ({
 
         <div className={styles.field}>
           <label htmlFor="to" className={styles.label}>
-            <span>To</span>
+            <span>{t('admin.to')}</span>
           </label>
           <input
             name="to"

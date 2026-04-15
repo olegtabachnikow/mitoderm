@@ -68,6 +68,10 @@ $goldDark: #be800c;
   &:hover {
     background: rgba(255, 255, 255, 0.2);
   }
+  &.he {
+    right: auto;
+    left: 2rem;
+  }
 }
 
 .closeIcon {

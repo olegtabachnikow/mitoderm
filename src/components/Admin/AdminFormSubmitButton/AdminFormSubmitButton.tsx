@@ -2,6 +2,7 @@ import { FC } from 'react';
 import styles from './AdminFormSubmitButton.module.scss';
 import { motion } from 'motion/react';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 
 interface Props {
   isSubmitting: boolean;
@@ -9,6 +10,7 @@ interface Props {
 }
 
 const AdminFormSubmitButton: FC<Props> = ({ isSubmitting, isEditing }) => {
+  const t = useTranslations();
   return (
     <motion.button
       type="submit"
@@ -20,11 +22,11 @@ const AdminFormSubmitButton: FC<Props> = ({ isSubmitting, isEditing }) => {
       {isSubmitting ? (
         <>
           <div className={styles.spinner} />
-          <span>Sending...</span>
+          <span>{t('admin.sending')}</span>
         </>
       ) : (
         <>
-          <span>{isEditing ? 'Update' : 'Send'}</span>
+          <span>{isEditing ? t('admin.update') : t('admin.send')}</span>
           <Image
             src="/images/icons/submitAdminPage.svg"
             width={16}

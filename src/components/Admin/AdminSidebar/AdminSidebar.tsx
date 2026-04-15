@@ -3,24 +3,13 @@
 import { FC, CSSProperties } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
 import styles from './AdminSidebar.module.scss';
 import { useSession } from 'next-auth/react';
 import { useMediaQuery } from 'react-responsive';
 import { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
-
-const contentVariants = {
-  hidden: { opacity: 0, x: 100 },
-  show: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      duration: 0.3,
-    },
-  },
-};
 
 const asideVariants = {
   hidden: { width: 86 },
@@ -42,6 +31,7 @@ interface Props {
 
 const AdminSidebar: FC<Props> = ({ onLogout }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const t = useTranslations();
   const pathname = usePathname();
   const locale = useLocale();
   const isMobile = useMediaQuery({ maxWidth: 768 });
@@ -54,16 +44,27 @@ const AdminSidebar: FC<Props> = ({ onLogout }) => {
     {
       to: `/${locale}/admin/programs`,
       icon: '/images/icons/calendar.svg',
-      label: 'Programs',
-      desc: 'Training & workshops',
+      label: t('admin.programs'),
+      desc: t('admin.programsDesc'),
     },
     {
       to: `/${locale}/admin/doctors`,
       icon: '/images/icons/content.svg',
-      label: 'Doctors',
-      desc: 'List of Doctors',
+      label: t('admin.doctors'),
+      desc: t('admin.doctorsDesc'),
     },
   ];
+
+  const contentVariants = {
+    hidden: { opacity: 0, x: locale === 'he' ? -100 : 100 },
+    show: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.3,
+      },
+    },
+  };
 
   useEffect(() => {
     if (!isMobile) {
@@ -82,7 +83,7 @@ const AdminSidebar: FC<Props> = ({ onLogout }) => {
       animate={isOpen ? 'show' : 'hidden'}
       aria-label="Main Navigation"
       onClick={handleClick}
-      className={`${styles.aside} ${isMobile ? styles.asideMobile : ''}`}
+      className={`${styles.aside} ${isMobile ? styles.asideMobile : ''} ${locale === 'he' && styles.he}`}
     >
       <div className={styles.logoSection} style={asideDisablingStyles}>
         <div className={styles.logoRow}>
@@ -104,7 +105,7 @@ const AdminSidebar: FC<Props> = ({ onLogout }) => {
               animate={isOpen ? 'show' : 'hidden'}
               className={styles.subtitle}
             >
-              Admin Panel
+              {t('admin.adminPanel')}
             </motion.p>
           </div>
         </div>
@@ -117,7 +118,7 @@ const AdminSidebar: FC<Props> = ({ onLogout }) => {
           animate={isOpen ? 'show' : 'hidden'}
           className={styles.navSectionLabel}
         >
-          Management
+          {t('admin.managementPanel')}
         </motion.p>
         {navItems.map((item) => {
           const isActive = pathname === item.to;
@@ -165,7 +166,7 @@ const AdminSidebar: FC<Props> = ({ onLogout }) => {
               animate={isOpen ? 'show' : 'hidden'}
               className={styles.userName}
             >
-              Admin
+              {t('admin.admin')}
             </motion.p>
             <motion.p
               variants={contentVariants}
@@ -195,7 +196,7 @@ const AdminSidebar: FC<Props> = ({ onLogout }) => {
             initial="hidden"
             animate={isOpen ? 'show' : 'hidden'}
           >
-            Sign Out
+            {t('admin.signOut')}
           </motion.span>
         </button>
       </div>
