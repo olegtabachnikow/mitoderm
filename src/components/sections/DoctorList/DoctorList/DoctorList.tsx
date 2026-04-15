@@ -4,7 +4,6 @@ import { useSession } from 'next-auth/react';
 import DoctorItem from '../DoctorItem/DoctorItem';
 import DoctorForm from '../../../forms/DoctorForm/DoctorForm';
 import { DoctorType } from '@/types';
-import AuthForm from '@/components/forms/AuthForm/AuthForm';
 import DoctorListFilter from '../DoctorListFilter/DoctorListFilter';
 
 interface Props {
@@ -59,8 +58,6 @@ const DoctorList: FC<Props> = ({ doctors }) => {
           setIsOpen={setIsOpen}
         />
       ))}
-      {isOpen && <DoctorForm doctor={currentDoctor} setIsOpen={setIsOpen} />}
-      {isAuthFormOpen && <AuthForm setIsAuthFormOpen={setIsAuthFormOpen} />}
     </div>
   );
 };

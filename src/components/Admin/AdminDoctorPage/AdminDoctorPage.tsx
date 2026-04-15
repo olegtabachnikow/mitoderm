@@ -1,17 +1,50 @@
 'use client';
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import styles from './AdminDoctorPage.module.scss';
 import { DoctorType } from '@/types';
 import { useTranslations } from 'next-intl';
 import AdminAddButton from '../AdminAddButton/AdminAddButton';
 import { useMediaQuery } from 'react-responsive';
 import AdminListItem from '../AdminListItem/AdminListItem';
+import AdminModal from '../AdminModal/AdminModal';
+import DoctorForm from '@/components/forms/DoctorForm/DoctorForm';
+import { useRouter } from 'next/navigation';
 
 interface Props {
   doctors: DoctorType[];
 }
 
 const AdminDoctorPage: FC<Props> = ({ doctors }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editedDoctor, setEditedDoctor] = useState<DoctorType | null>(null);
+  const router = useRouter();
+
+  const handleClose = () => {
+    setIsModalOpen(false);
+    setEditedDoctor(null);
+  };
+
+  const handleDoctorEdit = (doctor: DoctorType) => {
+    setEditedDoctor(doctor);
+    setIsModalOpen(true);
+  };
+
+  const handleDoctorDelete = async (doctor: DoctorType) => {
+    const confirmed = window.confirm(
+      `Are you sure you want to delete ${doctor.name}?`,
+    );
+    if (confirmed) {
+      const response = await fetch('/api/doctors', {
+        method: 'DELETE',
+        body: JSON.stringify({ _id: doctor._id }),
+      });
+      const data = await response.json();
+      if (data._id) {
+        router.refresh();
+      }
+    }
+  };
+
   const t = useTranslations();
   const isMobile = useMediaQuery({ maxWidth: 768 });
   return (
@@ -26,14 +59,17 @@ const AdminDoctorPage: FC<Props> = ({ doctors }) => {
           </p>
         </div>
         <AdminAddButton
-          // onClick={() => setIsModalOpen(true)}
-          onClick={() => {}}
+          onClick={() => setIsModalOpen(true)}
           text="Add Doctor"
         />
       </div>
       <div className={styles.doctorList}>
         {doctors.map((doctor) => (
-          <AdminListItem key={doctor._id} onEdit={() => {}} onDelete={() => {}}>
+          <AdminListItem
+            key={doctor._id}
+            onEdit={() => handleDoctorEdit(doctor)}
+            onDelete={() => handleDoctorDelete(doctor)}
+          >
             <div className={styles.doctorInfo}>
               <span className={styles.doctorInfoItem}>
                 <span className={styles.doctorInfoItemLabel}>Name:</span>{' '}
@@ -63,6 +99,19 @@ const AdminDoctorPage: FC<Props> = ({ doctors }) => {
           </AdminListItem>
         ))}
       </div>
+      <AdminModal
+        isOpen={isModalOpen}
+        onClose={handleClose}
+        title="Add Doctor"
+        subtitle="Add a new doctor to the list"
+      >
+        <DoctorForm
+          doctor={editedDoctor}
+          setDoctor={setEditedDoctor}
+          isOpen={isModalOpen}
+          onClose={handleClose}
+        />
+      </AdminModal>
     </main>
   );
 };

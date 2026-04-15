@@ -10,6 +10,7 @@ import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import AdminListItem from '../AdminListItem/AdminListItem';
 import AdminAddButton from '../AdminAddButton/AdminAddButton';
+import EventEditForm from '@/components/forms/EventEditForm/EventEditForm';
 
 interface Props {
   events: Event[];
@@ -113,11 +114,18 @@ const AdminProgramsPage: FC<Props> = ({ events }) => {
         </div>
       </div>
       <AdminModal
-        setEditingProgram={setEditingProgram}
-        editingProgram={editingProgram}
         isOpen={isModalOpen}
         onClose={handleCloseModal}
-      />
+        title="Add Program"
+        subtitle="Add a new program to the list"
+      >
+        <EventEditForm
+          editingProgram={editingProgram}
+          setEditingProgram={setEditingProgram}
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+        />
+      </AdminModal>
     </>
   );
 };

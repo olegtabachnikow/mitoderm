@@ -9,6 +9,18 @@ $destructive: #ef4444;
 .root {
   min-height: 100vh;
   display: flex;
+  max-height: 100vh;
+  max-height: 100dvh;
+  overflow: hidden;
+  @media (max-width: 768px) {
+    position: fixed;
+    inset: 0;
+  }
+  input,
+  select,
+  textarea {
+    font-size: 2rem;
+  }
 }
 
 .leftPanel {
