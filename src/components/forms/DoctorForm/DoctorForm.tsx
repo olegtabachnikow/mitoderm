@@ -217,11 +217,11 @@ const DoctorForm: FC<Props> = ({ doctor, setDoctor, onClose, isOpen }) => {
         defaultValue={doctor?.profession || '1'}
       >
         <option value="" disabled>
-          {t('admin.selectExpertise')}
+          {t('doctorList.profession.profession')}
         </option>
-        <option value="1">Facial treatments</option>
-        <option value="2">Hair treatments</option>
-        <option value="3">Facial & Hair Treatments</option>
+        <option value="1">{t('doctorList.profession.1')}</option>
+        <option value="2">{t('doctorList.profession.2')}</option>
+        <option value="3">{t('doctorList.profession.3')}</option>
       </select>
       <label className={styles.label} htmlFor="area">
         {t('admin.area')}
@@ -230,9 +230,10 @@ const DoctorForm: FC<Props> = ({ doctor, setDoctor, onClose, isOpen }) => {
         <option value="" disabled>
           {t('admin.selectArea')}
         </option>
-        <option value="צפון">North</option>
-        <option value="מרכז">Center</option>
-        <option value="דרום">South</option>
+        <option value="צפון">{t('admin.north')}</option>
+        <option value="מרכז">{t('admin.center')}</option>
+        <option value="דרום">{t('admin.south')}</option>
+        <option value="גוש דן">{t('admin.gushDan')}</option>
       </select>
       <label className={styles.label} htmlFor="instagram">
         {t('admin.instagram')}

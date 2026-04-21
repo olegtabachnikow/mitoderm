@@ -441,6 +441,24 @@
       "1": "Доктор",
       "2": "Косметолог",
       "3": "Трихолог"
+    },
+    "filters": {
+      "filterByExpertise": "Фильтр по профессии",
+      "selectArea": "Выберите район",
+      "selectCity": "Выберите город",
+      "resetAllFilters": "Сбросить все фильтры",
+      "all": "Все",
+      "north": "Север",
+      "center": "Центр",
+      "south": "Юг",
+      "gushDan": "Гуш Дан",
+      "facialTreatments": "Лечение лица",
+      "hairTreatments": "Лечение волос",
+      "facialAndHairTreatments": "Лечение лица и волос"
+    },
+    "pagination": {
+      "previous": "Предыдущая",
+      "next": "Следующая"
     }
   },
   "benefits": {
@@ -643,6 +661,10 @@
     "selectArea": "Выберите регион",
     "name": "Имя",
     "contact": "Контакт",
-    "profession": "Профессия"
+    "profession": "Профессия",
+    "gushDan": "Гуш Дан",
+    "north": "Север",
+    "center": "Центр",
+    "south": "Юг"
   }
 }

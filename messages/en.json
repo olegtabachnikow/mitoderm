@@ -441,6 +441,24 @@
       "1": "Facial treatments",
       "2" : "Hair treatments",
       "3": "Facial & Hair Treatments"
+    },
+    "filters": {
+      "filterByExpertise": "Filter by Expertise",
+      "selectArea": "Select area",
+      "selectCity": "Select city",
+      "resetAllFilters": "Reset all filters",
+      "all": "All",
+      "north": "North",
+      "center": "Center",
+      "south": "South",
+      "gushDan": "Gush Dan",
+      "facialTreatments": "Facial treatments",
+      "hairTreatments": "Hair treatments",
+      "facialAndHairTreatments": "Facial & Hair Treatments"
+    },
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next"
     }
   },
   "benefits": {
@@ -643,6 +661,10 @@
     "selectArea": "Select area",
     "name": "Name",
     "contact": "Contact",
-    "profession": "Profession"
+    "profession": "Profession",
+    "gushDan": "Gush Dan",
+    "north": "North",
+    "center": "Center",
+    "south": "South"
   }
 }
