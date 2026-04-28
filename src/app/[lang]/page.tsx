@@ -155,16 +155,16 @@ export default async function HomePage({
   return (
     <>
       <main id="mainpage">
-        {/* <Intro />
+        <Intro />
         <Chevron page="intro" imageName="chevronImage" />
         <Synergy />
         <HowCanBeUsed page="main" />
         <Solution page="main" />
         <Gallery />
-        <Mission /> */}
+        <Mission />
         <DoctorList doctors={doctors} />
-        {/* <Faq />
-        <Contact /> */}
+        <Faq />
+        <Contact />
       </main>
       <Script
         id="faq-schema"
