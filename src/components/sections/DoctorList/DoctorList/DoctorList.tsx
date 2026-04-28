@@ -5,8 +5,8 @@ import DoctorItem from '../DoctorItem/DoctorItem';
 import { DoctorType } from '@/types';
 import DoctorListFilter from '../DoctorListFilter/DoctorListFilter';
 import DoctorListPagination from '../DoctorListPagination/DoctorListPagination';
-import { useMediaQuery } from 'react-responsive';
-import { useTranslations } from 'next-intl';
+import useHydratedMediaQuery from '@/hooks/useHydratedMediaQuery';
+import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 
@@ -41,8 +41,9 @@ const DoctorList: FC<Props> = ({ doctors }) => {
   const [cityFilter, setCityFilter] = useState<string>('all');
   const [professionFilter, setProfessionFilter] =
     useState<ProfessionType>('all');
-  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+  const isMobile = useHydratedMediaQuery({ query: '(max-width: 768px)' });
   const t = useTranslations();
+  const locale = useLocale();
 
   const itemsPerPage = isMobile ? 5 : 10;
 
@@ -67,7 +68,7 @@ const DoctorList: FC<Props> = ({ doctors }) => {
   const paginatedDoctors = useMemo(() => {
     const start = (currentPage - 1) * itemsPerPage;
     return filteredDoctors.slice(start, start + itemsPerPage);
-  }, [filteredDoctors, currentPage]);
+  }, [filteredDoctors, currentPage, itemsPerPage]);
 
   const resetFilters = () => {
     setAreaFilter('all');
@@ -85,19 +86,31 @@ const DoctorList: FC<Props> = ({ doctors }) => {
       <div className={styles.container} id="clinic">
         {isMobile ? (
           <button
-            className={styles.filterButton}
+            className={`${styles.filterButton} ${locale === 'he' ? styles.rtl : ''}`}
             onClick={() => setFilterListOpened(!filterListOpened)}
           >
+            {filterListOpened
+              ? t('doctorList.filters.closeFilters')
+              : t('doctorList.filters.openFilters')}
             <Image
-              src="/images/icons/filterListOpened.svg"
+              src={
+                filterListOpened
+                  ? '/images/icons/filterListOpened.svg'
+                  : '/images/icons/filterListClosed.svg'
+              }
               alt="filter"
-              width={50}
-              height={50}
+              width={20}
+              height={20}
             />
           </button>
         ) : null}
         {isMobile ? (
-          <motion.div variants={variants} initial="closed" animate="opened">
+          <motion.div
+            className={styles.filterList}
+            variants={variants}
+            initial="closed"
+            animate={filterListOpened ? 'opened' : 'closed'}
+          >
             <DoctorListFilter
               doctors={filteredDoctors}
               areaFilter={areaFilter}
