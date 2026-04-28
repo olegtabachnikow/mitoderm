@@ -53,22 +53,24 @@ const DoctorItem: FC<Props> = ({ doctor }) => {
       ) : null}
       <div className={styles.contentItem}>
         <div className={styles.contacts}>
-          <span className={styles.contentItemLabel}>
-            {t('doctorList.contact')}:
-          </span>
-          <a
-            className={`${styles.phoneLink} ${locale === 'he' ? styles.he : ''}`}
-            href={`tel:${doctor.contact}`}
-          >
-            {doctor.contact}
-          </a>
+          <div className={styles.contact}>
+            <span className={styles.contentItemLabel}>
+              {t('doctorList.contact')}:
+            </span>
+            <a
+              className={`${styles.phoneLink} ${locale === 'he' ? styles.he : ''}`}
+              href={`tel:${doctor.contact}`}
+            >
+              {doctor.contact}
+            </a>
+          </div>
           {doctor.instagram.length ? (
-            <>
+            <div className={styles.contact}>
               <span className={styles.contentItemLabel}>
                 {t('admin.instagram')}:
               </span>
               <DoctorSocialLink url={doctor.instagram} />
-            </>
+            </div>
           ) : null}
         </div>
       </div>
