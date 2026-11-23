@@ -1,35 +1,13 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { LeadService } from '../../../services/leadService';
+import { NextResponse } from 'next/server';
 
-export async function POST(request: NextRequest) {
-  try {
-    const { name, phone, email, conversationSummary } = await request.json();
+export const dynamic = 'force-dynamic';
 
-    if (!phone) {
-      return NextResponse.json({ error: 'Phone number is required' }, { status: 400 });
+export async function POST() {
+  return NextResponse.json(
+    { error: 'Chat is temporarily unavailable' },
+    {
+      status: 503,
+      headers: { 'Cache-Control': 'no-store' },
     }
-
-    // שימוש בשירות החדש
-    const leadService = LeadService.getInstance();
-    
-    const success = await leadService.saveLead({
-      name,
-      phone,
-      email,
-      source: 'צ\'אטבוט אתר',
-      conversationSummary
-    });
-
-    return NextResponse.json({ 
-      success,
-      message: success ? 'הליד נשמר בהצלחה!' : 'שגיאה בשמירת הליד'
-    });
-
-  } catch (error) {
-    console.error('Leads API Error:', error);
-    return NextResponse.json(
-      { error: 'Failed to process lead' },
-      { status: 500 }
-    );
-  }
-} 
+  );
+}

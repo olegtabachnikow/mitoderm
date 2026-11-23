@@ -1,31 +1,13 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { LeadService } from '../../../services/leadService';
+import { NextResponse } from 'next/server';
 
-// הגדרת timeout מורחב למודל מתקדם
-export const maxDuration = 60; // 60 שניות
+export const dynamic = 'force-dynamic';
 
-export async function POST(request: NextRequest) {
-  try {
-    const { conversationHistory } = await request.json();
-
-    if (!conversationHistory || conversationHistory.length === 0) {
-      return NextResponse.json({ error: 'No conversation provided' }, { status: 400 });
+export async function POST() {
+  return NextResponse.json(
+    { error: 'Chat is temporarily unavailable' },
+    {
+      status: 503,
+      headers: { 'Cache-Control': 'no-store' },
     }
-
-    // שימוש בשירות החדש
-    const leadService = LeadService.getInstance();
-    const extractedInfo = await leadService.extractInfoFromConversation(conversationHistory);
-
-    return NextResponse.json({ 
-      success: true, 
-      data: extractedInfo 
-    });
-
-  } catch (error) {
-    console.error('Extract Info API Error:', error);
-    return NextResponse.json(
-      { error: 'Failed to extract information' },
-      { status: 500 }
-    );
-  }
-} 
+  );
+}

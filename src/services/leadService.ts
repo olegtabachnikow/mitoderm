@@ -3,7 +3,7 @@ import nodemailer from 'nodemailer';
 import type { LeadData, ExtractedInfo } from '../types';
 
 const genAI = new GoogleGenerativeAI(
-  process.env.NEXT_PUBLIC_GEMINI_API_KEY || ''
+  process.env.GEMINI_API_KEY || ''
 );
 
 export class LeadService {

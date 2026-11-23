@@ -13,7 +13,6 @@ import { getOrganizationSchema } from '@/utils/structuredData';
 import ScrollToTop from '@/components/layout/ScrollToTop/ScrollToTop';
 import Header from '@/components/layout/Header/Header';
 import Modal from '@/components/layout/Modal/Modal';
-import Chatbot from '@/components/ChatBot/ChatBot';
 import WhatsappLink from '@/components/layout/WhatsappLink/WhatsappLink';
 
 const rubik = Rubik({
@@ -167,7 +166,6 @@ export default async function RootLayout({
           <Modal />
           {children}
           <Footer />
-          {lang === 'he' && <Chatbot locale={lang} />}
           <WhatsappLink />
           <ScrollToTop />
           <script
